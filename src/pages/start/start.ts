@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { IdentityPage } from '../identity/identity';
 import { CatergoriesPage } from '../catergories/catergories';
 import { RegisterPage } from '../register/register';
+import { LoginPage } from '../login/login';
 
 /**
  * Generated class for the StartPage page.
@@ -23,17 +24,24 @@ export class StartPage {
   
   }
 
-  nextPage() {
-    this.navCtrl.push(CatergoriesPage);
-  }
-
-  register()
-  {
-    this.navCtrl.push(RegisterPage);
-  }
-
   ionViewDidEnter() {
 
 
   }
+
+  nextPage() {
+    this.navCtrl.push(CatergoriesPage);
+  }
+
+  signIn()
+  {
+    this.navCtrl.push(LoginPage);
+  }
+
+  signUp()
+  {
+    this.navCtrl.push(RegisterPage);
+  }
+
+ 
 }

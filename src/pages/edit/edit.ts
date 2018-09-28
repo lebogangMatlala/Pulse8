@@ -200,8 +200,7 @@ export class EditPage {
       email: form.value.email,
       stagename:form.value.stagename,
       bio: form.value.bio,
-      genre: this.genre,
-      role:this.role
+      genre: this.genre
     };
 
     this.arrProfile.push(obj);
