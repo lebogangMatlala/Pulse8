@@ -53,11 +53,15 @@ page-start {
             font-size: 1.5rem;
             letter-spacing: .3rem;
             font-weight: 400;
-            animation: infinite 1s pulseate;
+            // animation: infinite 1s pulseate;
           }
     
           &__button:nth-child(even){
             animation-delay: .5s;
+          }
+          .button1{
+            color: aliceblue;
+            top: 3.5em;
           }
         }
       }

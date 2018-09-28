@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, ActionSheetController } from 'ioni
 import { UploadPage } from '../upload/upload';
 import { EditPage } from '../edit/edit';
 import firebase from 'firebase';
+import { CatergoriesPage } from '../catergories/catergories';
 /**
  * Generated class for the ProfilePage page.
  *
@@ -214,6 +215,10 @@ export class ProfilePage {
         
       }
     });
+  }
+
+  back(){
+    this.navCtrl.push(CatergoriesPage);
   }
 
 

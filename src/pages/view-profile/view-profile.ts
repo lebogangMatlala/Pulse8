@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, ActionSheetController } from 'ioni
 import { EditPage } from '../edit/edit';
 import { UploadPage } from '../upload/upload';
 import firebase from 'firebase';
+import { CatergoriesPage } from '../catergories/catergories';
 /**
  * Generated class for the ViewProfilePage page.
  *
@@ -267,5 +268,7 @@ this.id = key;
   // {
   //   this.navCtrl.push('PlayerPage',{obj:i});
   // }
-
+  back(){
+    this.navCtrl.push(CatergoriesPage);
+  }
 }
