@@ -29,8 +29,9 @@
               </button> -->
           </div>
       </div>
+    
   </div>
-
+ 
   <ion-list>
     <h2 align="center">   {{massage}} </h2>
       <!-- <ion-item>
@@ -43,15 +44,49 @@
               <p>dope track here...</p>
           
       </ion-item> -->
+      <div padding class="segment">
+            <ion-segment [(ngModel)]="profile">
+              <ion-segment-button value="music">
+                MUSIC
+              </ion-segment-button>
+              <ion-segment-button value="bio">
+                BIO
+              </ion-segment-button>
+            </ion-segment>
+        </div>
+
+          <div [ngSwitch]="profile">
+                <ion-list *ngSwitchCase="'music'">
+                     <ion-item no-lines *ngFor="let x of trackarray;let i=index;"(click)="click(i)" >
+                       <ion-thumbnail item-start>
+                              <img [src]="pic" >
+                             </ion-thumbnail>
+                         <h2>{{x.artistName}}</h2>
+                         <h3>{{x.trackName}}</h3>
+                         <p>dope track here......</p>  
+                    </ion-item>
+            
+                </ion-list>
+              
+                <ion-list *ngSwitchCase="'kittens'">
+                  <ion-item>
+                    <ion-thumbnail item-start>
+                      <img src="img/thumbnail-kitten-1.jpg">
+                    </ion-thumbnail>
+                    <h2>Luna</h2>
+                  </ion-item>
+                  ...
+                </ion-list>
+              </div>
      
-      <ion-item no-lines *ngFor="let x of trackarray;let i=index;"(click)="click(i)" >
+      <!-- <ion-item no-lines *ngFor="let x of trackarray;let i=index;"(click)="click(i)" >
           <ion-thumbnail item-start>
               <img [src]="pic" >
           </ion-thumbnail>
           <h2>{{x.artistName}}</h2>
           <h3>{{x.trackName}}</h3>
           <p>dope track here......</p>  
-      </ion-item>
+      </ion-item> -->
   </ion-list>
 </ion-content>
 <!-- <div class="musicplayer">

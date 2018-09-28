@@ -111,6 +111,9 @@ export class UploadPage {
  
   }
 }
+back(){
+  this.navCtrl.push(ProfilePage);
+}
 
   saveArtist(form: NgForm)
   {

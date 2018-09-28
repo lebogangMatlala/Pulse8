@@ -29,10 +29,12 @@ export class ViewProfilePage {
   genreArr =[];
   artistName;
   id;
+  profile ="music";
   constructor(public navCtrl: NavController, public navParams: NavParams,public actionSheetCtrl: ActionSheetController) {
   }
 
   ionViewDidLoad() {
+
     console.log('ionViewDidLoad ViewProfilePage');
     let key = this.navParams.get("keyobj");
 
