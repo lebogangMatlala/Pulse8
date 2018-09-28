@@ -5,6 +5,7 @@ import firebase from "firebase";
 import { CatergoriesPage } from '../catergories/catergories';
 import { ProfilePage } from '../profile/profile';
 import { DatabaseProvider } from '../../providers/database/database';
+import { LoginPage } from '../login/login';
 /**
  * Generated class for the RegisterPage page.
  *
@@ -49,28 +50,13 @@ export class RegisterPage {
       
       let userID = firebase.auth().currentUser.uid;
       
-      if(this.role =="Dj"){
+      
         this.registrationObj = {
           fullname: form.value.fullname,
           password: form.value.password,
           email: form.value.email,
-          Role:this.role,
-          genre:"General"
-      
-         
-        };
-
-
-      }else{
-
-        this.registrationObj = {
-          fullname: form.value.fullname,
-          password: form.value.password,
-          email: form.value.email,
-          Role:this.role,
-      
-         
-        };
+          role:"Audience",
+          genre:"No Genre"
       
       }
     
@@ -106,7 +92,7 @@ export class RegisterPage {
       loading.dismiss();
       //check if the email already exists
       if(error.code == 'auth/email-already-in-use'){
-        this.navCtrl.push('LoginPage');
+        this.navCtrl.push(LoginPage);
       }
       const alert = this.alertCtrl.create({
         title: error.code,

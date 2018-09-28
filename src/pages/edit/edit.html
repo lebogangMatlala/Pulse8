@@ -42,14 +42,17 @@ giving the form a template variable of f-->
                       id="input" ngModel required></ion-input>
               </ion-item>
 
+            
+
               <ion-item no-lines>
                   <ion-label color="light">
                       <ion-icon name="contact"></ion-icon>
+                      Genre
                   </ion-label>
 
-                  <ion-select name="genre" [(ngModel)]="genre" multiple="true" cancelText="Nah" okText="Okay!">
+                  <ion-select name="genre" [(ngModel)]="genre" multiple="true" interface="popover">
                       <ion-option value="House" (change)="input($event)">House</ion-option>
-                      <ion-option value="Hip pop">Hip pop</ion-option>
+                      <ion-option value="Hip-Hop">Hip pop</ion-option>
                       <ion-option value="Rap">Rap</ion-option>
                       <ion-option value="Commercial house">Commercial house</ion-option>
                       <ion-option value="RnB">R`nB</ion-option>
@@ -57,7 +60,7 @@ giving the form a template variable of f-->
                       <ion-option value="Kwaito">Kwaito</ion-option>
                       <ion-option value="Afro Pop">Afro Pop</ion-option>
                       <ion-option value="Soul">Soul</ion-option>
-                      <ion-option value="General">General</ion-option>
+                    
                   </ion-select>
               </ion-item>
 
@@ -68,6 +71,8 @@ giving the form a template variable of f-->
                   <ion-textarea type="name" name="bio" placeholder="Bio" [value]="bio" class="contentflex__formcontent--input" id="input" ngModel
                       required></ion-textarea>
               </ion-item>
+
+            
           </div>
           <div class="contentflex__buttoncontent">
               <!-- creating the submission button for the form 

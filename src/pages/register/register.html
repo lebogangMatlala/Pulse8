@@ -5,9 +5,7 @@
     <div class="contentflex">
       <div class="contentflex__iconcontainer">
         <img src="../../assets/imgs/sound-wavesdard.png" alt="" class="contentflex__iconcontainer__icon">
-        <div class="contentflex__iconcontainer__heading">
-          <h1 class="contentflex__iconcontainer__heading--headingtext">Register</h1>
-        </div>
+        
       </div>
       <div class="contentflex__formcontent">
         <ion-item no-lines>
@@ -35,6 +33,18 @@
           </ion-label>
           <ion-input type="password" class="contentflex__formcontent--input" placeholder="Password" name="password" pattern=".{6,30}"
             id="input" ngModel required></ion-input>
+        </ion-item>
+
+        <ion-item no-lines>
+          <ion-label color="light">
+            <ion-icon name="contact"></ion-icon>
+            What would you like to be?
+        </ion-label>
+          <ion-select  name="role"[(ngModel)]="role" interface="popover">
+            <ion-option value="Audience">Audience</ion-option>
+            <ion-option value="Dj">Dj</ion-option>
+            
+          </ion-select>
         </ion-item>
       </div>
       <div class="contentflex__buttoncontent">

@@ -26,7 +26,8 @@ export class EditPage {
   genre;
   bio;
   stagename;
-  g
+  g;
+  role;
 
   profileObj = {};
   constructor(
@@ -199,7 +200,8 @@ export class EditPage {
       email: form.value.email,
       stagename:form.value.stagename,
       bio: form.value.bio,
-      genre: this.genre 
+      genre: this.genre,
+      role:this.role
     };
 
     this.arrProfile.push(obj);

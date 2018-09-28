@@ -25,8 +25,8 @@
   <ion-fab right bottom>
     <button ion-fab color="light"><ion-icon ios="ios-menu" md="md-menu"></ion-icon></button>
     <ion-fab-list side="left">
-      <button ion-fab  (click)="page()">  <ion-icon ios="ios-contact" md="md-contact"></ion-icon></button>
-      <button ion-fab  (click)="signout()">  <ion-icon ios="ios-log-out" md="md-log-out"></ion-icon></button>
+      <button ion-fab  (click)="profilePage()">  <ion-icon ios="ios-contact" md="md-contact"></ion-icon></button>
+      <button ion-fab  (click)="logout()">  <ion-icon ios="ios-log-out" md="md-log-out"></ion-icon></button>
     </ion-fab-list>
   </ion-fab>
 
@@ -35,7 +35,7 @@
      
  <ion-list no-lines>
   
-     <ion-item *ngFor="let x of  arrDj;let i = index" (click)="view(i)">
+     <ion-item *ngFor="let x of  arrDj;let i = index" (click)="viewProfile(i)">
         <ion-thumbnail item-start>
           <img src='{{x.url}}'>
         </ion-thumbnail>

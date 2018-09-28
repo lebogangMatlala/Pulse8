@@ -24,10 +24,13 @@ export class CatergoriesPage {
   }
   globalPic =[];
   globalDetails=[];
+  globalTrack=[];
   role;
   keysProfile:any;
   keysPic:any;
   pic;
+  track;
+  condition;
   globalarr=[];
   picarray = [];
   profilearray=[]
@@ -37,7 +40,7 @@ export class CatergoriesPage {
   arrSt=[];
   
 
-  //categoriesArr = ['Deep House', 'Kwaito', 'Afro-Pop', 'Dance Music', 'Commercial House', 'Kasi Rap', 'R&B', 'Commercial Hip Hop', 'Underground Hip Hop', 'Soul', 'Jazz', 'Neo Soul', 'Fusion'];
+  
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public db: DatabaseProvider,public toastCtrl: ToastController) {
     this.categoriesArr= this.db.categories();
@@ -62,8 +65,7 @@ export class CatergoriesPage {
       }
 
       this.globalPic[i] = infor[k].url
-                //  this.picarray.push(objpic);
-                 //console.log(this.globalPic);
+             
 
      } 
 
@@ -73,6 +75,10 @@ export class CatergoriesPage {
 
 
       });
+//tracks
+
+
+
 
 ///Djs details
     this.db.retrieveProfile().on("value", (data) => {
@@ -119,33 +125,42 @@ export class CatergoriesPage {
   
    });
 
+
+
   
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CategoriesPage');
 
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+     
+        console.log("user has signed in")
+
+        console.log(user.uid);
+        this.condition=true;
+
+        console.log(this.condition);
+        
+     } else {
+      console.log("User has Logged out");
+      this.condition=false;
+   
+      console.log(this.condition);
+     }
+
+
+  });
+
   }
 
  
  
   generateTopics() {
-    // this.topics = [
-    //   'Storage in Ionic 2',
-    //   'Ionic 2 - calendar',
-    //   'Creating a Android application using ionic framework.',
-    //   'Identifying app resume event in ionic - android',
-    //   'What is hybrid application and why.?',
-    //   'Procedure to remove back button text',
-    //   'How to reposition ionic tabs on top position.',
-    //   'Override Hardware back button in cordova based application - Ionic',
-    //   'Drupal 8: Enabling Facets for Restful web services',
-    //   'Drupal 8: Get current user session',
-    //   'Drupal 8: Programatically create Add another field - Example',  
-    // ];
-
+ 
     this.arrDj=this.arrDj;
-    //console.log(this.arrSt);
+   
   }
  
   getItems(searchbar) {
@@ -172,85 +187,76 @@ export class CatergoriesPage {
     
   }
 
-  signout()
+  viewProfile(i)
   {
-    firebase.auth().onAuthStateChanged((user)=> {
-
-   
-      if (user) {
+      console.log(i);
+      let keys  = this.arrDj[i].key;
+      
+      if(this.condition==true)
+      {
         console.log("user has signed in")
-
-        firebase.auth().signOut().then(() =>{
-          // Sign-out successful.
-          alert(" Sign-out successful");
-          this.navCtrl.setRoot(StartPage);
-        }).catch(function(error) {
-          // An error happened.
-          alert(error);
-        });
-
-      }else{
-
-        console.log("user has signed out")
+        this.navCtrl.setRoot(ViewProfilePage,{keyobj:keys});
+   
       }
-    });
+      else{
+        console.log("User has Logged out");
+        this.navCtrl.setRoot(LoginPage);
+      }
+  }
+
+
+  profilePage()
+  {
+    
+
+    if(this.condition==true)
+      {
+        console.log("user has signed in")
+        if(this.role=="Dj")
+        {
+          this.navCtrl.push(ProfilePage);
+        }
+         else{
+          alert("not a dj")
+            const toast = this.toastCtrl.create({
+                  message: 'You cannot view ur Profile for now',
+                  duration: 3000
+                });
+                toast.present();
+              }
+   
+      }
+      else{
+        console.log("User has Logged out");
+        this.navCtrl.setRoot(LoginPage);
+      }
+
+
      
   }
 
-  onCancel(searchbar)
+  logout()
   {
-      console.log(searchbar);
-  }
 
-view(i){
- let keys  = this.arrDj[i].key
-  console.log(i);
-  console.log("//// key")
-  console.log(keys)
 
-  firebase.auth().onAuthStateChanged(user => {
-    if (user) {
-      console.log("User has sign in");
-      this.navCtrl.push(ViewProfilePage,{keyobj:keys});
-      console.log(this.arrDj[i]);
-
-    } else {
-      console.log("User has not sign in");
-      this.navCtrl.setRoot(LoginPage);
-
+    if(this.condition==true)
+    {
+      firebase.auth().signOut().then(() =>{
+          // Sign-out successful.
+          console.log(" Sign-out successful");
+          this.navCtrl.setRoot(StartPage);
+          }).catch(function(error) {
+          // An error happened.
+          console.log(error);
+      });
+    }
+    else{
+      this.navCtrl.setRoot(StartPage);
     }
 
-
-    });
-
-}
-
-page() {
-  firebase.auth().onAuthStateChanged((user)=> {
-    if (user) {
-      console.log("user has signed in");
+ 
+   }
 
 
-      if(this.role=="Dj")
-      {
-        this.navCtrl.push(ProfilePage);
-      }
-      else{
-        alert("not a dj")
-        const toast = this.toastCtrl.create({
-          message: 'You cannot view ur Profile for now',
-          duration: 3000
-        });
-        toast.present();
-      }
-      
 
-    }else{
-    
-      console.log("user has signed out");
-      this.navCtrl.setRoot(LoginPage);
-    }
-  });
-   
-}
 }

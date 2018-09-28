@@ -27,6 +27,8 @@ export class UploadPage {
   surname;
   selectedfile;
   filename;
+  userID;
+  arr=[];
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public db:DatabaseProvider,public loadingCtrl: LoadingController) {
@@ -54,7 +56,14 @@ export class UploadPage {
           var userID =firebase.auth().currentUser.uid;
     
           console.log(userID);
- 
+
+          let stagename=userDetails.stagename;
+
+          console.log(stagename);
+
+          if(stagename!=null && stagename!="")
+          {
+              
           if(userDetails!=null && userDetails!='')
           {
             let obj = {
@@ -78,6 +87,11 @@ export class UploadPage {
           else if(userDetails===null && userDetails===''){
             console.log('User doesnt exist')
           }
+        }
+        else{
+          this.navCtrl.setRoot(ProfilePage);
+        }
+ 
          
      
         })
@@ -136,19 +150,21 @@ export class UploadPage {
         // Handle successful uploads on complete
         console.log("successful !!1");
 
+
         uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
           console.log('File available at', downloadURL);
  
           firebase.auth().onAuthStateChanged((user) => {
             if (user) {
               console.log('User has sign in');
-              var userID = firebase.auth().currentUser.uid;
+              let userID = firebase.auth().currentUser.uid;
             
               firebase.database().ref('track/' + userID).push({
                 url: downloadURL,
               });
- 
-              console.log(userID);
+              console.log(userID)
+
+      
  
             }
             else {
@@ -176,6 +192,42 @@ export class UploadPage {
 
         
       }, 10000);
+
+      let userID = firebase.auth().currentUser.uid;
+       
+      firebase
+      .database()
+      .ref("Registration/" + userID)
+      .on("value", (data: any) => {
+        let userDetails = data.val();
+
+        console.log(userDetails);
+
+      
+        console.log(userID);
+
+        if (userDetails != null && userDetails != "") {
+          let obj = {
+            id: userID,
+            fullname: userDetails.fullname,
+            email: userDetails.email,
+            bio: userDetails.bio,
+            stagename:userDetails.stagename,
+            genre:userDetails.genre,
+            role:"Dj"
+          };
+
+          this.arr.push(obj);
+
+          console.log(userID);
+          console.log(this.arr);
+          console.log(obj);
+
+          firebase.database().ref('Registration/' + userID).update(obj);
+        } else if (userDetails === null && userDetails === "") {
+          console.log("User doesnt exist");
+        }
+      });
      
       
   }
