@@ -26,6 +26,7 @@ export class ProfilePage {
   trackarray =[];
   arrayP =[];
   genreArr =[];
+  genre;
 
 
 
@@ -54,14 +55,14 @@ export class ProfilePage {
         firebase.database().ref('Registration/' + id).on('value', (data: any) => {
  
           let userDetails = data.val();
-          let genre =userDetails.genre;
+          this.genre =userDetails.genre;
 
-          if(genre!=null){       
+          if(this.genre!=null){       
 
             // console.log( userDetails.genre)
-             for (let a = 0; a < genre.length; a++){
+             for (let a = 0; a < this.genre.length; a++){
                let genreobj={
-                 genre:genre[a]
+                 genre:this.genre[a]
                }
           //  console.log(userDetails[a].Role)
             this. genreArr.push(genreobj);
@@ -108,8 +109,6 @@ export class ProfilePage {
                       this.arrayP=[];
                       for (var i = 0; i < keys.length; i++) {
                         var k = keys[i];
-                           
-                        
 
                       let objtrack = {
                           url: infor[k].url,
@@ -147,13 +146,9 @@ export class ProfilePage {
                   for (var i = 0; i < keys.length; i++) {
                     var k = keys[i];
             
-
                   let objart = {
                     artistName: inforArt[k].artistName,
                     trackName: inforArt[k].trackName,
-                 
-                      
-                  
                     key: k 
                     
                   }
@@ -165,7 +160,7 @@ export class ProfilePage {
                   }
                 }
                 else{
-                  this.massage="no data"
+                  this.massage="No Track Uploaded Yet"
                 }
               });
 

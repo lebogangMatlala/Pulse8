@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { IdentityPage } from '../identity/identity';
 import { CatergoriesPage } from '../catergories/catergories';
+import { RegisterPage } from '../register/register';
 
 /**
  * Generated class for the StartPage page.
@@ -28,7 +29,7 @@ export class StartPage {
 
   register()
   {
-    this.navCtrl.push(IdentityPage);
+    this.navCtrl.push(RegisterPage);
   }
 
   ionViewDidEnter() {

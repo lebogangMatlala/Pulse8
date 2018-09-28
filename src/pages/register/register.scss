@@ -26,7 +26,7 @@ page-register {
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        height: 100vh;
+        height: 80vh;
         &__iconcontainer{
             display: flex;
             flex-direction: column;
@@ -37,7 +37,7 @@ page-register {
               margin: 0 auto;
               display: block;
               margin-top: 1rem;
-              margin-bottom: 1rem;
+              margin-bottom: 3rem;
             }
             &__heading{
               color: white;

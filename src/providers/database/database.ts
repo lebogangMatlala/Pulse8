@@ -32,6 +32,11 @@ retrieveProfile(){
 
 }
 
+retrieveTracks()
+{
+  return firebase.database().ref('track/')
+}
+
   update(userID, obj) {
     firebase.database().ref('Registration/' + userID).update(obj);
 
