@@ -47,9 +47,9 @@
   
      <ion-item *ngFor="let x of  arrDj;let i = index" (click)="viewProfile(i)">
         <ion-thumbnail item-start>
-          <img src='{{x.url}}'>
+          <img class="machine" src='{{x.url}}'>
         </ion-thumbnail>
-        <h2 class='card-heading' >{{x.stagename}}</h2>
+        <h2 class="card-heading" >{{x.stagename}}</h2>
         <p>{{x.genre}}<i class="fas fa-star"></i>
 
         </p>

@@ -18,7 +18,7 @@
                 <div class="hero__herobanner__herotagcontainer__tagcontainer">
                     <ion-badge *ngFor="let i of genreArr" outline class="hero__herobanner__herotagcontainer--tag">{{i.genre}}</ion-badge>
                    
-                </div>
+                </div> 
             </div>
             <div class="hero__herobanner__herobuttoncontainer">
                 <button  ion-button block small round class="hero__herobanner__herobuttoncontainer--button">
@@ -40,6 +40,40 @@
                 <p>dope track here...</p>
             
         </ion-item> -->
+        <div padding class="segment">
+                <ion-segment [(ngModel)]="profile">
+                  <ion-segment-button value="Music">
+                    Music
+                  </ion-segment-button>
+                  <ion-segment-button value="kittens">
+                    Bio
+                  </ion-segment-button>
+                  <ion-segment-button value="ducklings">
+                    Edit
+                  </ion-segment-button>
+                </ion-segment>
+        </div>
+        <div [ngSwitch]="profile">
+                <ion-list *ngSwitchCase="'Music'">
+                  <ion-item>
+                    <ion-thumbnail item-start>
+                      <img src="img/thumbnail-puppy-1.jpg">
+                    </ion-thumbnail>
+                    <h2>Ruby</h2>
+                  </ion-item>
+                  ...
+                </ion-list>
+              
+                <ion-list *ngSwitchCase="'kittens'">
+                  <ion-item>
+                    <ion-thumbnail item-start>
+                      <img src="img/thumbnail-kitten-1.jpg">
+                    </ion-thumbnail>
+                    <h2>Luna</h2>
+                  </ion-item>
+                  ...
+                </ion-list>
+              </div>
        
         <ion-item no-lines *ngFor="let x of trackarray;let i=index;"(click)="click(i)" >
             <ion-thumbnail item-start>

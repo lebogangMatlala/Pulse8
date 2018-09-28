@@ -177,7 +177,9 @@ export class EditPage {
       //});
     }
   }
-
+back(){
+  this.navCtrl.push(ProfilePage);
+}
 
   input(event){
 
