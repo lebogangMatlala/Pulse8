@@ -7,8 +7,9 @@
 
 <ion-content>
   <div class="hero">
+      
 
-        <button ion-button clear class="bn" ><ion-icon (click)="back()" style="zoom: 2.5;" ios="ios-arrow-dropleft" md="md-arrow-dropleft"></ion-icon></button>
+        <button ion-button clear class="bn" ><ion-icon (click)="back()" style="zoom: 1.5;"  ios="ios-arrow-round-back" md="md-arrow-round-back"></ion-icon></button>
 
       <div class="hero__herobanner">
           <div class="hero__herobanner__heroimagecontainer">
@@ -44,7 +45,7 @@
               <p>dope track here...</p>
           
       </ion-item> -->
-      <div padding class="segment">
+      <!-- <div padding class="segment">
             <ion-segment [(ngModel)]="profile">
               <ion-segment-button value="music">
                 MUSIC
@@ -77,16 +78,16 @@
                   </ion-item>
                   ...
                 </ion-list>
-              </div>
+              </div> -->
      
-      <!-- <ion-item no-lines *ngFor="let x of trackarray;let i=index;"(click)="click(i)" >
+      <ion-item no-lines *ngFor="let x of trackarray;let i=index;"(click)="click(i)" >
           <ion-thumbnail item-start>
               <img [src]="pic" >
           </ion-thumbnail>
           <h2>{{x.artistName}}</h2>
           <h3>{{x.trackName}}</h3>
           <p>dope track here......</p>  
-      </ion-item> -->
+      </ion-item>
   </ion-list>
 </ion-content>
 <!-- <div class="musicplayer">

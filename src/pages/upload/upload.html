@@ -2,16 +2,16 @@
   <!-- creating the form  
   giving the form a template variable of f-->
 
-  <button ion-button clear class="bn" ><ion-icon (click)="back()" style="zoom: 2.5;" ios="ios-arrow-dropleft" md="md-arrow-dropleft"></ion-icon></button>
+  <button ion-button clear class="bn" ><ion-icon (click)="back()" style="zoom: 1.5;" ios="ios-arrow-round-back" md="md-arrow-round-back"></ion-icon></button>
 
   <form #f="ngForm" (ngSubmit)="saveArtist(f)">
     <div class="contentflex">
       <div class="contentflex__iconcontainer">
         <img src="../../assets/imgs/sound-wavesdard.png" alt="" class="contentflex__iconcontainer__icon">
-        <div class="contentflex__iconcontainer__heading">
+        <!-- <div class="contentflex__iconcontainer__heading">
           <h1 class="contentflex__iconcontainer__heading--headingtext">Upload Track
           </h1>
-        </div>
+        </div> -->
       </div>
       <div class="contentflex__formcontent">
         <ion-item no-lines>

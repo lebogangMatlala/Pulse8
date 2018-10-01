@@ -70,6 +70,15 @@ page-profile {
         top: 25vh;
     }
 
+    .section{
+        margin-top: 1vh;
+
+        .segment{
+            size: 5vh;
+        }
+
+    }
+
     .musicplayer{
         z-index: 9999;
         position: fixed;
@@ -103,4 +112,6 @@ page-profile {
             }
         }
     }
+
+   
 }
