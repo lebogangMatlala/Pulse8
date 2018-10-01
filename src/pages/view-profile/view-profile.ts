@@ -73,8 +73,7 @@ this.id = key;
             this. genreArr.push(genreobj);
                //console.log(this. genreArr);
               }
- 
-            
+  
           }else{
            // console.log("no")
           }

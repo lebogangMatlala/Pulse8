@@ -29,13 +29,14 @@
     </div>
  
     <ion-list class="section">
-        
+
       <h2 align="center">{{massage}} </h2>
       
         
  <ion-item no-lines *ngFor="let x of trackarray;let i=index;"(click)="click(i)" >
             <ion-thumbnail item-start>
-                <img [src]="pic">
+                
+                <h2>{{x.count}}</h2>
             </ion-thumbnail>
             <h2>{{x.artistName}}</h2>
             <h3>{{x.trackName}}</h3>
