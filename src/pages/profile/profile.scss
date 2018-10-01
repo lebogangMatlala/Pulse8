@@ -46,15 +46,15 @@ page-profile {
                 }
             }
             &__herobuttoncontainer{
-                // position: relative;
+                position: relative;
                 display: block;
                 height: 25vh;
                 flex-direction: column;
                 justify-content: flex-end;
                 &--button{
-                    font-size: 1.3rem;
-                    margin-right: -5.5rem;
-                    margin-top: -3.6em;
+                    font-size: 1.5rem;
+                    margin-right: -3.5em;
+                    margin-top: -3.5em;
                 } 
             }
         }
