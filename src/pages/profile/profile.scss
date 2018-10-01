@@ -13,7 +13,7 @@ page-profile {
         position: fixed;
         z-index: 9999;
         width: 100vw;
-        background: linear-gradient(rgba($color-dark, .6), rgba($color-dark, .6)),url('../../assets/imgs/decks.jpg');
+        background: linear-gradient(rgba($color-dark, .6), rgba($color-dark, .6)),url('../../assets/imgs/dj4.jpg');
         background-size: cover;
         background-position: bottom !important;
         &__herobanner{
@@ -43,6 +43,9 @@ page-profile {
                         text-transform: uppercase;
                         letter-spacing: .2rem;
                     }
+                    &--tag{
+                       margin-left: -5rem; 
+                    }
                 }
             }
             &__herobuttoncontainer{
@@ -53,8 +56,8 @@ page-profile {
                 justify-content: flex-end;
                 &--button{
                     font-size: 1.3rem;
-                    margin-right: -5.5rem;
-                    margin-top: -3.6em;
+                    margin-right: -1em;
+                    margin-top: -4.8em;
                 } 
             }
         }

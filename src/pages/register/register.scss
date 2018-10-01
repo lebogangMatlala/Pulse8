@@ -32,12 +32,13 @@ page-register {
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            margin-bottom: 8rem;
             &__icon{
-              width: 15rem;
+              width: 13rem;
               margin: 0 auto;
               display: block;
               margin-top: 1rem;
-              margin-bottom: 3rem;
+            //   margin-bottom: 6rem;
             }
             &__heading{
               color: white;
@@ -53,7 +54,8 @@ page-register {
 
         &__formcontent{
             width: 80%;
-        }
+            
+                 }
 
         &__buttoncontent{
             width: 80%;

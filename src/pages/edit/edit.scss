@@ -31,8 +31,10 @@ page-edit {
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            padding-bottom: 6em;
             &__icon{
-              width: 15rem;
+              width: 10rem;
+              height: 10rem;
               margin: 0 auto;
               display: block;
               margin-top: 1rem;

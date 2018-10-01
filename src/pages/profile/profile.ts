@@ -121,8 +121,12 @@ export class ProfilePage {
                        // console.log(this.arrayP);
                       }
                 }
-                else{
+                else if( infor==null && infor=="")
+                {
                   this.massage="No track uploaded Yet";
+                }
+                else{
+                  this.massage="Error";
                 }
               
               
