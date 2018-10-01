@@ -38,6 +38,8 @@ export class CatergoriesPage {
   categoriesArr;
   arrDj=[];
   arrSt=[];
+  arrayP=[];
+  infor;
   
 
   
@@ -80,6 +82,8 @@ export class CatergoriesPage {
 
 
 
+
+
 ///Djs details
     this.db.retrieveProfile().on("value", (data) => {
        let profile = data.val();
@@ -88,16 +92,33 @@ export class CatergoriesPage {
     
 
     console.log(key);
+    console.log(profile);
+    
 
     for(var i = 0; i <key.length; i++)
      {
         let k = key[i];
       let stagename = profile[k].stagename
-      this.role=profile[k].Role;
+      this.role=profile[k].role;
       let genre = profile[k].genre;
 
-      console.log(this.role + genre);
+      console.log(this.role +"  "+ genre);
       if(this.role=="Dj"){
+
+        ///track
+        firebase.database().ref('track/').on('value', (data) => {
+          this.infor = data.val();
+
+         
+      
+          
+          
+          console.log(this.infor);
+        }, (error) => {
+  
+          console.log(error.message);
+        });
+        
         if(genre!= null && stagename!=null){    
            console.log("dj" + k + stagename )
         let objDj ={
