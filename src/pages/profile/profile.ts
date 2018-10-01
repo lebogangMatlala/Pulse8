@@ -27,6 +27,7 @@ export class ProfilePage {
   arrayP =[];
   genreArr =[];
   genre;
+  count=1;
 
 
 
@@ -121,7 +122,7 @@ export class ProfilePage {
                       }
                 }
                 else{
-                  this.massage="no track uploaded";
+                  this.massage="No track uploaded Yet";
                 }
               
               
@@ -144,19 +145,22 @@ export class ProfilePage {
                 
                   this.trackarray=[];
                   for (var i = 0; i < keys.length; i++) {
+                    
                     var k = keys[i];
-            
+                    
                   let objart = {
                     artistName: inforArt[k].artistName,
                     trackName: inforArt[k].trackName,
-                    key: k 
+                    key: k,
+                    count:this.count++
                     
                   }
        
                    this.artistName=objart.artistName;
+
                     this.trackarray.push(objart);
 
-                  //  console.log(this.trackarray);
+                    console.log(this.trackarray);
                   }
                 }
                 else{

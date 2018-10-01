@@ -55,7 +55,7 @@ export class RegisterPage {
           fullname: form.value.fullname,
           password: form.value.password,
           email: form.value.email,
-          role:"Audience",
+          role:form.value.role,
           genre:"No Genre"
       
       }
