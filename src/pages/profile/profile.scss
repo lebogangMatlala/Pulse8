@@ -13,7 +13,7 @@ page-profile {
         position: fixed;
         z-index: 9999;
         width: 100vw;
-        background: linear-gradient(rgba($color-dark, .6), rgba($color-dark, .6)),url('../../assets/imgs/decks.jpg');
+        background: linear-gradient(rgba($color-dark, .6), rgba($color-dark, .6)),url('../../assets/imgs/dj4.jpg');
         background-size: cover;
         background-position: bottom !important;
         &__herobanner{
@@ -43,6 +43,9 @@ page-profile {
                         text-transform: uppercase;
                         letter-spacing: .2rem;
                     }
+                    &--tag{
+                       margin-left: -5rem; 
+                    }
                 }
             }
             &__herobuttoncontainer{
@@ -52,9 +55,15 @@ page-profile {
                 flex-direction: column;
                 justify-content: flex-end;
                 &--button{
+<<<<<<< HEAD
                     font-size: 1.5rem;
                     margin-right: -3.5em;
                     margin-top: -3.5em;
+=======
+                    font-size: 1.3rem;
+                    margin-right: -1em;
+                    margin-top: -4.8em;
+>>>>>>> 86dad5e07db2a8d29723700911efedbaf1e76420
                 } 
             }
         }

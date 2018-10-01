@@ -23,24 +23,24 @@
             <div class="hero__herobanner__herobuttoncontainer">
                 <button  ion-button clear class="hero__herobanner__herobuttoncontainer--button">
                     <!-- <ion-icon  name="ios-more" (click)="edit()"></ion-icon> -->
+                  
                     <ion-icon (click)="edit()" icon-right style="zoom: 1.8;" ios="ios-more" md="md-more"></ion-icon>
+
+                      
                 </button>
             </div>
         </div>
     </div>
  
     <ion-list class="section">
-        
+
       <h2 align="center">{{massage}} </h2>
       
         
  <ion-item no-lines *ngFor="let x of trackarray;let i=index;"(click)="click(i)" >
-            <ion-thumbnail item-start>
-                <img [src]="pic">
-            </ion-thumbnail>
-            <h2>{{x.artistName}}</h2>
-            <h3>{{x.trackName}}</h3>
-            <p>dope track here......</p> 
+            <h2>{{x.count}}.{{x.artistName}}</h2>
+            <h3 style="padding-left: 1em;">{{x.trackName}}</h3>
+            <p style="padding-left: 1em;">dope track here......</p> 
         </ion-item>
     </ion-list> 
 </ion-content>

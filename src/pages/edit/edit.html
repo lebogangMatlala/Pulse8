@@ -6,9 +6,7 @@ giving the form a template variable of f-->
   <form #f="ngForm" (ngSubmit)="submit(f)">
       <div class="contentflex">
           <div class="contentflex__iconcontainer">
-              <div class="contentflex__iconcontainer__heading">
-                  <h1 class="contentflex__iconcontainer__heading--headingtext">Edit Profile</h1>
-              </div>
+              
               <!-- <img src="../../assets/imgs/sound-wavesdard.png" alt="" class="contentflex__iconcontainer__icon"> -->
               <img [src]="pic" *ngIf="url != null" width="150" height="150" style="border:1px solid whitesmoke;border-radius: 50%;" alt=""
                   class="contentflex__iconcontainer__icon">

@@ -5,6 +5,7 @@ import { DatabaseProvider } from '../../providers/database/database';
 import firebase from "firebase";
 import { NgForm } from "@angular/forms";
 import { CatergoriesPage } from '../catergories/catergories';
+import { RegisterPage } from '../register/register';
 /**
  * Generated class for the LoginPage page.
  *
@@ -130,6 +131,6 @@ export class LoginPage {
   }
 
   signup() {
-    this.navCtrl.setRoot(IdentityPage);
+    this.navCtrl.setRoot(RegisterPage);
   }
 }
