@@ -234,7 +234,7 @@ export class ProfilePage {
   {
 
     const actionSheet = this.actionSheetCtrl.create({
-      title: 'Modify your album',
+     
       buttons: [
         {
           text: 'Edit Profile',
