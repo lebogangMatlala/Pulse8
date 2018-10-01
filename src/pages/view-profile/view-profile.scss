@@ -38,9 +38,10 @@ page-view-profile {
                 flex-flow: column nowrap;
                 justify-content: center;
                 &__headingcontainer{
-                    padding-left: 1rem; 
+                    padding-left: 1rem;
+                    margin-left: 5em
                     &--heading{
-                        font-weight: 290;
+                        font-weight: 300;
                         text-transform: uppercase;
                         letter-spacing: .2rem;
                     }
