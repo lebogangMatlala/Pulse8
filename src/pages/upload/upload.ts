@@ -33,13 +33,6 @@ export class UploadPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public db:DatabaseProvider,public loadingCtrl: LoadingController) {
 
-     
-  }
-
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad TrackUploadPage');
-
     firebase.auth().onAuthStateChanged((user)=> {
       if (user) {
         console.log('User has sign in');
@@ -105,7 +98,14 @@ export class UploadPage {
    
         
       }
-    });
+    }); 
+  }
+
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad TrackUploadPage');
+
+
   }
 
   url ='http://www.dealnetcapital.com/files/2014/10/blank-profile.png';
