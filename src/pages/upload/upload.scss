@@ -32,11 +32,12 @@ page-upload {
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            margin-bottom: 6em;
             &__icon{
               width: 15rem;
               margin: 0 auto;
               display: block;
-              margin-top: 1rem;
+              margin-top: -14rem;
               margin-bottom: 1rem;
             }
             &__heading{
