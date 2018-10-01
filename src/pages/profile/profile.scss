@@ -49,15 +49,21 @@ page-profile {
                 }
             }
             &__herobuttoncontainer{
-                // position: relative;
+                position: relative;
                 display: block;
                 height: 25vh;
                 flex-direction: column;
                 justify-content: flex-end;
                 &--button{
+<<<<<<< HEAD
+                    font-size: 1.5rem;
+                    margin-right: -3.5em;
+                    margin-top: -3.5em;
+=======
                     font-size: 1.3rem;
                     margin-right: -1em;
                     margin-top: -4.8em;
+>>>>>>> 86dad5e07db2a8d29723700911efedbaf1e76420
                 } 
             }
         }
