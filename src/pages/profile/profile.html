@@ -6,6 +6,12 @@
     <div class="hero">
 
             <button ion-button clear class="bn" ><ion-icon (click)="back()" style="zoom: 2.5;" ios="ios-arrow-dropleft" md="md-arrow-dropleft"></ion-icon></button>
+            
+            <div class="MoreButton">
+               <button ion-button clear>
+                    <ion-icon  icon-right style="zoom: 1.8;" ios="ios-more" md="md-more"></ion-icon>
+               </button>
+            </div>
 
         <div class="hero__herobanner">
             <div class="hero__herobanner__heroimagecontainer">
@@ -23,6 +29,7 @@
             <div class="hero__herobanner__herobuttoncontainer">
                 <button  ion-button block small round class="hero__herobanner__herobuttoncontainer--button">
                     <ion-icon  name="ios-more" (click)="edit()"></ion-icon>
+                    <ion-icon  icon-right style="zoom: 1.8;" ios="ios-more" md="md-more"></ion-icon>
                 </button>
             </div>
         </div>

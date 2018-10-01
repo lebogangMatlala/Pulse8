@@ -32,7 +32,6 @@ page-profile {
                     border-radius: 50%;
                 }
             }
-
             &__herotagcontainer{
                 display: flex;
                 flex-flow: column nowrap;
@@ -46,7 +45,6 @@ page-profile {
                     }
                 }
             }
-
             &__herobuttoncontainer{
                 display: flex;
                 height: 25vh;
@@ -101,6 +99,13 @@ page-profile {
             .audioplayer{
                 
             }
+            // .MoreButton{
+            //     position: relative;
+            //     top: 46px;
+            //     color: blue;
+            //     font-size: 30%;
+            //     margin-left: 360px;
+            // }
         }
     }
 }
