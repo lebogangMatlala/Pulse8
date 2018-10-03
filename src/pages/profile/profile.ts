@@ -155,6 +155,7 @@ export class ProfilePage {
                   let objart = {
                     artistName: inforArt[k].artistName,
                     trackName: inforArt[k].trackName,
+                    trackLink:inforArt[k].trackLink,
                     key: k,
                     count:this.count++
                     

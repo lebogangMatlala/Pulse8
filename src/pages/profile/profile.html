@@ -24,9 +24,13 @@
                 <button  ion-button clear class="hero__herobanner__herobuttoncontainer--button">
                     <!-- <ion-icon  name="ios-more" (click)="edit()"></ion-icon> -->
                   
-                    <ion-icon (click)="edit()" icon-right style="zoom: 1.8;" ios="ios-more" md="md-more"></ion-icon>
+                    <ion-icon icon-right style="zoom: 1.8;" ios="ios-more" md="md-more"></ion-icon>
+                    <ion-select  name="role"[(ngModel)]="role" interface="popover">
+                            <ion-option value="Audience">Edit Profile</ion-option>
+                            <ion-option value="Dj">Upload Track</ion-option> 
+                    </ion-select>
 
-                      
+ 
                 </button>
             </div>
         </div>
@@ -40,7 +44,9 @@
  <ion-item no-lines *ngFor="let x of trackarray;let i=index;"(click)="click(i)" >
             <h2>{{x.count}}.{{x.artistName}}</h2>
             <h3 style="padding-left: 1em;">{{x.trackName}}</h3>
-            <p style="padding-left: 1em;">dope track here......</p> 
+            <p style="padding-left: 1em;"> <a href="{{x.trackLink}}">Click here...</a></p> 
+        
+
         </ion-item>
     </ion-list> 
 </ion-content>

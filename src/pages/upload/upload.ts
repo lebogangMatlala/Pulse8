@@ -18,9 +18,9 @@ import { ProfilePage } from '../profile/profile';
 })
 export class UploadPage {
 
-  artistName;
-  albumName;
+  artName;
   trackName;
+  trackLink;
   arrProfile = new Array();
 
   name;
@@ -62,19 +62,16 @@ export class UploadPage {
             let obj = {
               id:userID,
               artistName: userDetails.stagename,
-            
-            
-           
             }
            
             this.arrProfile.push(obj);
 
-            this.artistName=obj.artistName;
+            this.artName=userDetails.stagename;
          
             //yes i did change
             //changes
 
-            console.log(this.artistName);
+            console.log(this.artName);
            console.log(obj);
           }
           else if(userDetails===null && userDetails===''){
@@ -144,50 +141,51 @@ back(){
 
   saveArtist(form: NgForm)
   {
-    console.log(this.artistName);
+    console.log(this.artName);
 
       let obj={
-        artistName:form.value.artistName,
-        trackName:form.value.trackName
+        artistName:form.value.artName,
+        trackName:form.value.trackName,
+        trackLink:form.value.trackLink
   
       }
       
-      var storageRef = firebase.storage().ref('tracks/' + this.filename);
+    //   var storageRef = firebase.storage().ref('tracks/' + this.filename);
  
-      var metadata = { contentType: 'audio/mp3', size: 0.75 }
-      var uploadTask = storageRef.put(this.selectedfile, metadata);
+    //   var metadata = { contentType: 'audio/mp3', size: 0.75 }
+    //   var uploadTask = storageRef.put(this.selectedfile, metadata);
  
-     uploadTask.on('state_changed', function (snapshot) {
+    //  uploadTask.on('state_changed', function (snapshot) {
  
-      }, function (error) {
-        // Handle unsuccessful uploads
-        console.log("error !!1");
-      }, function () {
-        // Handle successful uploads on complete
-        console.log("successful !!1");
+    //   }, function (error) {
+    //     // Handle unsuccessful uploads
+    //     console.log("error !!1");
+    //   }, function () {
+    //     // Handle successful uploads on complete
+    //     console.log("successful !!1");
 
 
-        uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
-          console.log('File available at', downloadURL);
+    //     uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
+    //       console.log('File available at', downloadURL);
  
-          firebase.auth().onAuthStateChanged((user) => {
-            if (user) {
-              console.log('User has sign in');
-              let userID = firebase.auth().currentUser.uid;
+    //       firebase.auth().onAuthStateChanged((user) => {
+    //         if (user) {
+    //           console.log('User has sign in');
+    //           let userID = firebase.auth().currentUser.uid;
             
-              firebase.database().ref('track/' + userID).push({
-                url: downloadURL,
-              });
-              console.log(userID)
+    //           firebase.database().ref('track/' + userID).push({
+    //             url: downloadURL,
+    //           });
+    //           console.log(userID)
  
-            }
-            else {
-              console.log('User has not sign in');
-            }
-          });
+    //         }
+    //         else {
+    //           console.log('User has not sign in');
+    //         }
+    //       });
  
-        });
-      });
+    //     });
+    //   });
 
       let loading = this.loadingCtrl.create({
         content: 'Please wait...',
