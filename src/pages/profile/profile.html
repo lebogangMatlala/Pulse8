@@ -31,19 +31,8 @@
             </div>
         </div>
     </div>
- 
-    <ion-list class="section">
-
-      <h2 align="center">{{massage}} </h2>
-      
-        
- <ion-item no-lines *ngFor="let x of trackarray;let i=index;"(click)="click(i)" >
-            <h2>{{x.count}}.{{x.artistName}}</h2>
-            <h3 style="padding-left: 1em;">{{x.trackName}}</h3>
-            <p style="padding-left: 1em;">dope track here......</p> 
-        </ion-item>
-    </ion-list> 
-</ion-content>
+  <!-- <h2 align="center">{{massage}} </h2> -->
+   
 <!-- <div class="musicplayer">
     <div class="musicplayer__songtitle">
         <p class="musicplayer__songtitle__scrollingtext">Master_Cheng_Fu
@@ -52,7 +41,7 @@
     <div class="audioplayer">
         <audio controls>
             <source src="../../assets/Master_Cheng_Fu_-_Umcimbi_ft_Lelo_Kamau.mp3" type="audio/mpeg">
-        </audio>
+        </audio  >
     </div>
 </div> -->
 <!--trcks display 
@@ -68,3 +57,40 @@
             </div>
         </ion-item> -->
 
+        <ion-segment [(ngModel)]="profile" class="killer">
+            <ion-segment-button value="music">
+              Music
+            </ion-segment-button>
+            <ion-segment-button value="infor">
+              Infor
+            </ion-segment-button>
+            <ion-segment-button value="bookings">
+              Bookings
+            </ion-segment-button>
+          </ion-segment>
+
+      <div [ngSwitch]="profile">
+        <ion-list *ngSwitchCase="'music'"  class="segs">
+            <ion-item no-lines *ngFor="let x of trackarray;let i=index;"(click)="click(i)" > 
+                <h2>{{x.count}}.{{x.artistName}}</h2>
+                <h3 style="padding-left: 1em;">{{x.trackName}}</h3>
+                <p style="padding-left: 1em;">dope track here......</p> 
+            </ion-item>
+        </ion-list>
+    
+        <ion-list *ngSwitchCase="'infor'" class="segs">
+            <ion-item no-lines *ngFor="let x of trackarray;let i=index;"(click)="click(i)" > 
+                <h2>{{x.count}}.{{x.artistName}}</h2>
+                <h3 style="padding-left: 1em;">{{x.trackName}}</h3>
+                <p style="padding-left: 1em;">dope track here......</p> 
+            </ion-item>
+        </ion-list>
+    
+        <ion-list *ngSwitchCase="'bookings'"  class="segs">
+            <ion-item no-lines *ngFor="let x of trackarray;let i=index;"(click)="click(i)" > 
+                <h2>{{x.count}}.{{x.artistName}}</h2>
+                <h3 style="padding-left: 1em;">{{x.trackName}}</h3>
+                <p style="padding-left: 1em;">dope track here......</p> 
+            </ion-item>
+        </ion-list>
+      </div>

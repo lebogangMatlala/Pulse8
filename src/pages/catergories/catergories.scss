@@ -20,8 +20,8 @@ page-catergories {
             }
             &__icon{
                 &--image{
-                    width: 6rem;
-                    height: 6rem;
+                    width: 1rem;
+                    height: 1rem;
                     display: block;
                     margin: 0 auto;
                     border-radius: 50%;
@@ -56,15 +56,23 @@ page-catergories {
     }
 
     ion-item{
+        height: 70px;
         &:nth-child(even){
             background: rgba($color-grey-light, .1) !important;    
         }
         background: transparent !important;
+        
+    }
+    .item-md ion-thumbnail ion-img, .item-md ion-thumbnail img {
+        padding-top:15px;
+        width: 50px;
+        height: 60px;
     }
 
     .list{
         overflow: scroll !important;
         height: 74vh;
+
     }
     
     .fab-md-light{
@@ -80,6 +88,11 @@ page-catergories {
             border: none;
             font-size: 3rem;
             margin-left: 1rem;
+        }
+     
+        img {
+          width: 10px;
+          height: 10px;
         }
         
         .input-wrapper{

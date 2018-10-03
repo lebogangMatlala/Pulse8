@@ -7,7 +7,12 @@ page-view-profile {
         padding: 0 !important;
         animation: 1s ease fadeIn;
     }
-
+    .segs{
+        margin-top: 10rem;
+    }
+    .killer{
+        margin-top: 21rem;
+    }
     .hero{
         opacity: .98;
         position: fixed;
@@ -17,7 +22,7 @@ page-view-profile {
         background-size: cover;
         background-position: bottom !important;
         &__herobanner{
-            height: 25vh;
+            height: 160px;
             display: flex;
             justify-content: space-evenly;
             flex-flow: row nowrap;
@@ -45,6 +50,10 @@ page-view-profile {
                         text-transform: uppercase;
                         letter-spacing: .2rem;
                     }
+                    &--tag{
+                        margin-left: -5rem;
+                        border-radius: 5em;
+                     }
                 }
             }
 

@@ -29,7 +29,7 @@ export class ProfilePage {
   genre;
   count=1;
 
-
+  profile ="music";
 
   artistName;
   
