@@ -1,71 +1,98 @@
 page-identity {
-    text-align: center;
     ion-content{
-        background: linear-gradient(rgba($color-dark, .7), rgba($color-dark, .7)),url('../../assets/imgs/7.jpg') !important;
+        background: linear-gradient(rgba($color-dark, .9), rgba($color-dark, .8)),url('../../assets/imgs/7.jpg') !important;
         background-size: cover !important;
+        animation: 1s ease fadeIn;
     }
-    .headerflex{
-        height: 20vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        &--heading{
-            color: $color-grey-light;
-            text-transform: capitalize;
-            font-size: 2.5rem;
-            font-weight: 300;
-            letter-spacing: .5rem;
+
+    .item-ios ,.item-md{
+        background: rgba($color-grey-light , .1);
+        border-radius: 10rem;
+        color: white;
+        &:not(:first-child){
+            margin-top: 1rem;
         }
-    }
-    .contentflex{
-        height: 65vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-evenly;
-        &__cardcontainer{
-            
-            border-radius: 1rem;
-            animation: pulseate 2s ease infinite;
-            background-size: cover;
-            color: white;
-            &__headingcontainer{
-                height: 30vh;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                &--heading{
-                    text-align: center;
-                    font-size: 2.5rem;
-                    text-transform: uppercase;
-                    font-weight: 400;
-                }
-                &--image{
-                    margin: 0 auto;
-                    display: block;
-                }
-            }
-            &:first-child{
-                background-image:linear-gradient(rgba($color-dark, .4), rgba($color-dark, .4)),  url('../../assets/imgs/Harry-tiits-walker-1-hea-face.jpg');
-            }
-            &:last-child{
-                background-image:linear-gradient(rgba($color-dark, .5), rgba($color-dark, .3)),  url('../../assets/imgs/trance.jpg');
-                animation-delay: 1s;
-            }
+        &:last-child{
+            margin-bottom: 1rem;
+        }
+        &:focus{
+            animation: pulseate 1s ease infinite;
         }
     }
 
-    .btn{
-        background: linear-gradient(rgba($color-primary-dark, .5), rgba($color-primary-light, .8));
-        border-radius: 10rem;
-        color: $color-grey-light;
-        text-transform: uppercase;
-        font-size: 1.5rem;
-        letter-spacing: .3rem;
-        font-weight: 400;
-        animation: infinite 1s pulseate;
-        &[disabled]{
-            animation: none;
+
+    .contentflex{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 100vh;
+        &__iconcontainer{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            &__icon{
+              width: 15rem;
+              margin: 0 auto;
+              display: block;
+              margin-top: 1rem;
+              margin-bottom: 8rem;
+            }
+            &__heading{
+              color: white;
+              text-align: center;
+              &--headingtext{
+                text-transform: uppercase;
+                
+                font-size: 5rem;
+                font-weight: 300;
+              }
+            }
+        }
+
+        &__formcontent{
+            width: 100%;
+        }
+
+        &__buttoncontent{
+            width: 100%;
+           
+            &--button{
+                background: linear-gradient(rgba($color-primary-dark, .5), rgba($color-primary-light, .8));
+                border-radius: 10rem;
+                color: $color-grey-light;
+                text-transform: uppercase;
+                font-size: 1.5rem;
+                letter-spacing: .3rem;
+                font-weight: 400;
+                animation: infinite 1s pulseate;
+                &[disabled]{
+                    animation: none;
+                }
+            }
+
+            &--button1{
+                background: linear-gradient(rgba($color-primary-dark, .5), rgba($color-primary-light, .8));
+                border-radius: 10rem;
+                -webkit-background-clip: text;
+                display: inline-block;
+                color: transparent;
+                padding-top: 1em;
+            }
+            &--button2{
+                background: linear-gradient(rgba($color-primary-dark, .5), rgba($color-primary-light, .8));
+                -webkit-background-clip: text;
+                display: inline-block;
+                color: transparent;
+                padding-top: 1em;
+            }
+            
         }
     }
+
+    .item-input-has-focus{
+        animation: pulseate 1s ease infinite, .3s ease grow;
+    }
+
 }

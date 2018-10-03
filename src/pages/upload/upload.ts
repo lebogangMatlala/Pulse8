@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, ToastController } from 'ionic-angular';
 import { NgForm } from '../../../node_modules/@angular/forms';
 import { DatabaseProvider } from '../../providers/database/database';
 import firebase from 'firebase';
@@ -31,7 +31,7 @@ export class UploadPage {
   arr=[];
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,public db:DatabaseProvider,public loadingCtrl: LoadingController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,public db:DatabaseProvider,public loadingCtrl: LoadingController,private toastCtrl: ToastController) {
 
     firebase.auth().onAuthStateChanged((user)=> {
       if (user) {
@@ -82,6 +82,19 @@ export class UploadPage {
           }
         }
         else{
+
+          let toast = this.toastCtrl.create({
+            message: 'User was added successfully',
+            duration: 3000,
+            position: 'top'
+          });
+        
+          toast.onDidDismiss(() => {
+            console.log('Dismissed toast');
+          });
+        
+          toast.present();
+
           this.navCtrl.setRoot(ProfilePage);
         }
  
@@ -138,7 +151,7 @@ back(){
         trackName:form.value.trackName
   
       }
-
+      
       var storageRef = firebase.storage().ref('tracks/' + this.filename);
  
       var metadata = { contentType: 'audio/mp3', size: 0.75 }
@@ -166,8 +179,6 @@ back(){
                 url: downloadURL,
               });
               console.log(userID)
-
-      
  
             }
             else {
