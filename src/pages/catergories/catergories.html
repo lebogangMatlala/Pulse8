@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <ion-content>
   <div class="navbar">
@@ -10,8 +11,9 @@
       <ion-input type="text" (ionInput)="getItems($event)"  class="navbar--input" placeholder="Search" name="search" id="input" ngModel required></ion-input> 
      
     </ion-item> -->
-    <ion-searchbar (ionInput)="getItems($event)" class="navbar--input"  (ionCancel)="onCancel($event)"></ion-searchbar>
+    <!-- <ion-searchbar (ionInput)="getItems($event)" class="navbar--input"  (ionCancel)="onCancel($event)"></ion-searchbar> -->
    
+
   </div>
   <!-- <div class="iconblock">
     <div class="iconblock__iconcontainer" *ngFor="let category of categoriesArr">
@@ -54,7 +56,7 @@
   
      <ion-item *ngFor="let x of  arrDj;let i = index" (click)="viewProfile(i)">
         <ion-thumbnail item-start>
-          <img class="machine" src='{{x.url}}'>
+          <img src='{{x.url}}' height="2px">
         </ion-thumbnail>
         <h2 class="card-heading" >{{x.stagename}}</h2>
         <p>{{x.genre}}<i class="fas fa-star"></i>

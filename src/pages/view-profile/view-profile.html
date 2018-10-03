@@ -25,74 +25,51 @@
               </div>
           </div>
           <div class="hero__herobanner__herobuttoncontainer">
-              <!-- <button ion-button block small round class="hero__herobanner__herobuttoncontainer--button">
-                  <ion-icon name="ios-more" (click)="edit()"></ion-icon>
-              </button> -->
           </div>
       </div>
-    
   </div>
+
+  <ion-segment [(ngModel)]="profile" class="killer">
+    <ion-segment-button value="music">
+      Music
+    </ion-segment-button>
+    <ion-segment-button value="infor">
+      Infor
+    </ion-segment-button>
+
+  </ion-segment>
+
+<div [ngSwitch]="profile">
+    <ion-list *ngSwitchCase="'music'"  class="segs">
+   
+        <h2 align="center">   {{massage}} </h2>
+
+         <ion-item no-lines *ngFor="let x of trackarray;let i=index;"(click)="click(i)" >
+           <ion-thumbnail item-start>
+                <img [src]="pic" >
+           </ion-thumbnail>
+                <h2>{{x.artistName}}</h2>
+                <h3>{{x.trackName}}</h3>
+                <p>dope track here......</p>  
+         </ion-item>
+       
+    </ion-list>
+
+<ion-list *ngSwitchCase="'infor'" class="segs">
+    
+    <ion-item no-lines *ngFor="let x of trackarray;let i=index;"(click)="click(i)" >
+     <ion-thumbnail item-start>
+           <img [src]="pic" >
+     </ion-thumbnail>
+       <h2>{{x.artistName}}</h2>
+       <h3>{{x.trackName}}</h3>
+       <p>dope track here......</p>  
+     </ion-item>
+
+    </ion-list>
+
+</div>
  
-  <ion-list style="margin-top: 2.5rem;">
-    <h2 align="center">   {{massage}} </h2>
-      <!-- <ion-item>
-          <ion-thumbnail item-start>
-              <img src="../../assets/imgs/dj2.jpg" alt="">
-          </ion-thumbnail>
-          
-              <h1>Dj Ntonton</h1>
-              <h3>Intwenjani</h3>
-              <p>dope track here...</p>
-          
-      </ion-item> -->
-      <!-- <div padding class="segment">
-            <ion-segment [(ngModel)]="profile">
-              <ion-segment-button value="music">
-                MUSIC
-              </ion-segment-button>
-              <ion-segment-button value="bio">
-                BIO
-              </ion-segment-button>
-            </ion-segment>
-        </div>
-
-          <div [ngSwitch]="profile">
-                <ion-list *ngSwitchCase="'music'">
-                     <ion-item no-lines *ngFor="let x of trackarray;let i=index;"(click)="click(i)" >
-                       <ion-thumbnail item-start>
-                              <img [src]="pic" >
-                             </ion-thumbnail>
-                         <h2>{{x.artistName}}</h2>
-                         <h3>{{x.trackName}}</h3>
-                         <p>dope track here......</p>  
-                    </ion-item>
-            
-                </ion-list>
-              
-                <ion-list *ngSwitchCase="'kittens'">
-                  <ion-item>
-                    <ion-thumbnail item-start>
-                      <img src="img/thumbnail-kitten-1.jpg">
-                    </ion-thumbnail>
-                    <h2>Luna</h2>
-                  </ion-item>
-                  ...
-                </ion-list>
-              </div> -->
-     
-      <ion-item no-lines *ngFor="let x of trackarray;let i=index;"(click)="click(i)" >
-        <h2>{{x.count}}.{{x.artistName}}</h2>
-        <h3 style="padding-left: 1em;">{{x.trackName}}</h3>
-        <p style="padding-left: 1em;">dope track here......</p>  
-      </ion-item>
-  </ion-list>
-</ion-content>
-
-<ion-footer>
-    <ion-toolbar (click)="Booking()">
-      <ion-title align="center">Request Bookings</ion-title>
-    </ion-toolbar>
-  </ion-footer>
 <!-- <div class="musicplayer">
   <div class="musicplayer__songtitle">
       <p class="musicplayer__songtitle__scrollingtext">Master_Cheng_Fu
