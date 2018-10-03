@@ -4,6 +4,7 @@ import { UploadPage } from '../upload/upload';
 import { EditPage } from '../edit/edit';
 import firebase from 'firebase';
 import { CatergoriesPage } from '../catergories/catergories';
+import { DatabaseProvider } from '../../providers/database/database';
 /**
  * Generated class for the ProfilePage page.
  *
@@ -26,6 +27,7 @@ export class ProfilePage {
   trackarray =[];
   arrayP =[];
   genreArr =[];
+  bookingArr =[];
   genre;
   count=1;
 
@@ -34,7 +36,7 @@ export class ProfilePage {
   artistName;
   
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,public actionSheetCtrl: ActionSheetController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,public actionSheetCtrl: ActionSheetController,public db:DatabaseProvider) {
 
 
   }
@@ -192,36 +194,62 @@ export class ProfilePage {
          
      
         })
-       
- 
+
+        //rettrive booking information
+
+        this.db.retrieveBooking(id).on('value', (data) => {
+              var bookingInfor = data.val();
+             
+              console.log(bookingInfor);
+
+
+            if( bookingInfor!=null && bookingInfor!="")
+            {
+              var keys: any = Object.keys(bookingInfor);
+
+              console.log(bookingInfor);
+            
+              this.bookingArr=[];
+              for (var i = 0; i < keys.length; i++) {
+                
+                var k = keys[i];
+                
+              let objBook = {
+                fanName: bookingInfor[k].name,
+                fanEmail: bookingInfor[k].email,
+                
+                key: k,
+                count:this.count++
+                
+              }
+   
+              
+
+                this.bookingArr.push(objBook);
+
+                console.log(this.bookingArr);
+              }
+              this.massage=""
+            }
+            else{
+              this.massage="No Track Uploaded Yet"
+            }
+
+
+
+      
+            }, (error) => {
+      
+              console.log(error.message);
+      
+      
+            });
+     
  
       }
       else{
         console.log('User has not sign in');
  
-        // let alert = this.alertCtrl.create({
-        //   title: 'User',
-        //   message: 'Sign in to view your profile ',
-        //   buttons: [
-        //     {
-        //       text: 'Cancel',
-        //       role: 'cancel',
-        //       handler: () => {
-        //         console.log('Cancel clicked');
-        //         this.navCtrl.setRoot(ViewPage);
-        //       }
-        //     },
-        //     {
-        //       text: 'Ok',
-        //       handler: () => {
-        //         console.log('Ok clicked');
-        //         this.navCtrl.setRoot(SigninPage);
- 
-        //       }
-        //     }
-        //   ]
-        // });
-        // alert.present();
         
       }
     });

@@ -95,6 +95,11 @@ retrieveTracks()
     return firebase.database().ref('artists/' + userID).push(obj);
   }
 
+  retrieveBooking(key)
+  {
+    return firebase.database().ref('Bookings/'+key);
+  }
+
 
   categories() {
 

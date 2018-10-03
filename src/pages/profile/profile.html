@@ -36,45 +36,7 @@
         </div>
     </div>
  
-    <ion-list class="section">
-
-      <h2 align="center">{{massage}} </h2>
-      
-        
- <!-- <ion-item no-lines *ngFor="let x of trackarray;let i=index;"(click)="click(i)" >
-            <h2>{{x.count}}.{{x.artistName}}</h2>
-            <h3 style="padding-left: 1em;">{{x.trackName}}</h3>
-            <p style="padding-left: 1em;"> <a href="{{x.trackLink}}">Click here...</a></p> 
-        
-
-        </ion-item> -->
-    </ion-list> 
-</ion-content>
-<!-- <div class="musicplayer">
-    <div class="musicplayer__songtitle">
-        <p class="musicplayer__songtitle__scrollingtext">Master_Cheng_Fu
-            <br> Umcimbi_ft_Lelo_Kamau</p>
-    </div>
-    <div class="audioplayer">
-        <audio controls>
-            <source src="../../assets/Master_Cheng_Fu_-_Umcimbi_ft_Lelo_Kamau.mp3" type="audio/mpeg">
-        </audio  >
-    </div>
-</div> -->
-<!--trcks display 
-            <ion-item class="track" *ngFor="let x of trackarray">
-            <ion-thumbnail item-start>
-                <img src="../../assets/imgs/dj.jpg">
-            </ion-thumbnail>
-
-            <div item-end>
-                <audio *ngIf="file !== null" controls class="audiox">
-                    <source src="{{x.url}}" type="audio/mpeg">
-                </audio>
-            </div>
-        </ion-item> -->
-
-        <ion-segment [(ngModel)]="profile" class="killer">
+    <ion-segment [(ngModel)]="profile" class="killer">
             <ion-segment-button value="music">
               Music
             </ion-segment-button>
@@ -102,12 +64,24 @@
                 <p style="padding-left: 1em;">dope track here......</p> 
             </ion-item>
         </ion-list>
-    
-        <ion-list *ngSwitchCase="'bookings'"  class="segs">
-            <ion-item no-lines *ngFor="let x of trackarray;let i=index;"(click)="click(i)" > 
-                <h2>{{x.count}}.{{x.artistName}}</h2>
-                <h3 style="padding-left: 1em;">{{x.trackName}}</h3>
-                <p style="padding-left: 1em;">dope track here......</p> 
-            </ion-item>
+
+        <ion-list *ngSwitchCase="'bookings'" class="segs">
+                <ion-item no-lines *ngFor="let i of bookingArr;let a=index;" > 
+                     
+                    
+                        <ion-card>
+
+                                <ion-card-content>
+                                        <h2>{{i.fanName}} </h2> 
+                                        <p>Has requested to Book you,Check your email</p>
+                                </ion-card-content>
+                              
+                              </ion-card>
+                </ion-item>
         </ion-list>
       </div>
+      
+</ion-content>
+
+
+      
