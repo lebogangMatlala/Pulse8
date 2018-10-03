@@ -29,50 +29,7 @@
       </div>
   </div>
 
-<<<<<<< HEAD
-  <ion-segment [(ngModel)]="profile" class="killer">
-    <ion-segment-button value="music">
-      Music
-    </ion-segment-button>
-    <ion-segment-button value="infor">
-      Infor
-    </ion-segment-button>
-
-  </ion-segment>
-
-<div [ngSwitch]="profile">
-    <ion-list *ngSwitchCase="'music'"  class="segs">
-   
-        <h2 align="center">   {{massage}} </h2>
-
-         <ion-item no-lines *ngFor="let x of trackarray;let i=index;"(click)="click(i)" >
-           <ion-thumbnail item-start>
-                <img [src]="pic" >
-           </ion-thumbnail>
-                <h2>{{x.artistName}}</h2>
-                <h3>{{x.trackName}}</h3>
-                <p>dope track here......</p>  
-         </ion-item>
-       
-    </ion-list>
-
-<ion-list *ngSwitchCase="'infor'" class="segs">
-    
-    <ion-item no-lines *ngFor="let x of trackarray;let i=index;"(click)="click(i)" >
-     <ion-thumbnail item-start>
-           <img [src]="pic" >
-     </ion-thumbnail>
-       <h2>{{x.artistName}}</h2>
-       <h3>{{x.trackName}}</h3>
-       <p>dope track here......</p>  
-     </ion-item>
-
-    </ion-list>
-
-</div>
- 
-=======
-          <div [ngSwitch]="profile">
+    <div [ngSwitch]="profile">
                 <ion-list *ngSwitchCase="'music'">
                      <ion-item no-lines *ngFor="let x of trackarray;let i=index;"(click)="click(i)" >
                        <ion-thumbnail item-start>
@@ -92,16 +49,16 @@
                     </ion-thumbnail>
                     <h2>Luna</h2>
                   </ion-item>
-                  ...
+                  
                 </ion-list>
-              </div> -->
+     </div> 
      
       <ion-item no-lines *ngFor="let x of trackarray;let i=index;"(click)="click(i)" >
         <h2>{{x.count}}.{{x.artistName}}</h2>
         <h3 style="padding-left: 1em;">{{x.trackName}}</h3>
         <p style="padding-left: 1em;">dope track here......</p>  
       </ion-item>
-  </ion-list>
+
 </ion-content>
 
 <ion-footer>
@@ -109,7 +66,6 @@
       <ion-title align="center">Request Bookings</ion-title>
     </ion-toolbar>
   </ion-footer>
->>>>>>> 308cb0f56ba050551653d814f241ea74ca9e69b2
 <!-- <div class="musicplayer">
   <div class="musicplayer__songtitle">
       <p class="musicplayer__songtitle__scrollingtext">Master_Cheng_Fu
