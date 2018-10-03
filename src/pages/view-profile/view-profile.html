@@ -81,15 +81,18 @@
               </div> -->
      
       <ion-item no-lines *ngFor="let x of trackarray;let i=index;"(click)="click(i)" >
-          <ion-thumbnail item-start>
-              <img [src]="pic" >
-          </ion-thumbnail>
-          <h2>{{x.artistName}}</h2>
-          <h3>{{x.trackName}}</h3>
-          <p>dope track here......</p>  
+        <h2>{{x.count}}.{{x.artistName}}</h2>
+        <h3 style="padding-left: 1em;">{{x.trackName}}</h3>
+        <p style="padding-left: 1em;">dope track here......</p>  
       </ion-item>
   </ion-list>
 </ion-content>
+
+<ion-footer>
+    <ion-toolbar (click)="Booking()">
+      <ion-title align="center">Request Bookings</ion-title>
+    </ion-toolbar>
+  </ion-footer>
 <!-- <div class="musicplayer">
   <div class="musicplayer__songtitle">
       <p class="musicplayer__songtitle__scrollingtext">Master_Cheng_Fu

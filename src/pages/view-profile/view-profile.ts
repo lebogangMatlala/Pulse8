@@ -4,6 +4,7 @@ import { EditPage } from '../edit/edit';
 import { UploadPage } from '../upload/upload';
 import firebase from 'firebase';
 import { CatergoriesPage } from '../catergories/catergories';
+import { BookingsPage } from '../bookings/bookings';
 /**
  * Generated class for the ViewProfilePage page.
  *
@@ -30,13 +31,15 @@ export class ViewProfilePage {
   artistName;
   id;
   profile ="music";
+  count=1;
+  key;
   constructor(public navCtrl: NavController, public navParams: NavParams,public actionSheetCtrl: ActionSheetController) {
   }
 
   ionViewDidLoad() {
 
     console.log('ionViewDidLoad ViewProfilePage');
-    let key = this.navParams.get("keyobj");
+    this.key = this.navParams.get("keyobj");
 
     
 
@@ -50,7 +53,7 @@ export class ViewProfilePage {
         //  var id =firebase.auth().currentUser.uid;
 
     
-this.id = key;
+        this.id = this.key;
     
         console.log(this.id);
  
@@ -122,12 +125,13 @@ this.id = key;
 
                       let objtrack = {
                           url: infor[k].url,
-                          key: k 
+                          key: k,
+                        
                         
                       }
                         this.arrayP.push(objtrack);
 
-                       // console.log(this.arrayP);
+                       console.log(this.count);
                       }
                 }
                 else{
@@ -160,10 +164,9 @@ this.id = key;
                   let objart = {
                     artistName: inforArt[k].artistName,
                     trackName: inforArt[k].trackName,
-                 
-                      
-                  
-                    key: k 
+                    
+                    key: k,
+                    count:this.count++
                     
                   }
        
@@ -271,5 +274,12 @@ this.id = key;
   // }
   back(){
     this.navCtrl.push(CatergoriesPage);
+  }
+
+  Booking()
+  {
+
+    let djKey=this.key;
+    this.navCtrl.push(BookingsPage,{objBooking:djKey});
   }
 }

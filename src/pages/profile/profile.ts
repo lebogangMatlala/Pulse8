@@ -166,6 +166,7 @@ export class ProfilePage {
 
                     console.log(this.trackarray);
                   }
+                  this.massage=""
                 }
                 else{
                   this.massage="No Track Uploaded Yet"

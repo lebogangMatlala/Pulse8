@@ -17,6 +17,8 @@ import { UploadPage } from '../pages/upload/upload';
 import { IdentityPage } from '../pages/identity/identity';
 import { CatergoriesPage } from '../pages/catergories/catergories';
 import { HttpClientModule } from '../../node_modules/@angular/common/http';
+import { BookingsPage } from '../pages/bookings/bookings';
+
 
 
 @NgModule({
@@ -31,7 +33,8 @@ StartPage,
 ViewProfilePage,
 UploadPage,
 IdentityPage,
-CatergoriesPage
+CatergoriesPage,
+BookingsPage
 
   ],
   imports: [
@@ -51,7 +54,8 @@ StartPage,
 ViewProfilePage,
 UploadPage,
 IdentityPage,
-CatergoriesPage
+CatergoriesPage,
+BookingsPage
 
   ],
   providers: [

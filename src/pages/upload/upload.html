@@ -18,7 +18,7 @@
           <ion-label color="light">
             <ion-icon name="contact"></ion-icon>
           </ion-label>
-          <ion-input type="text" class="contentflex__formcontent--input" [value]='artistName' placeholder="Artist/s" name="artistName" id="input" ngModel
+          <ion-input type="text" class="contentflex__formcontent--input" [value]="artistName" placeholder="Artist/s" name="artistName" id="input" ngModel
             required></ion-input>
         </ion-item>
 
@@ -32,7 +32,7 @@
 
         <div class="upload-btn-wrapper">
           <button class="btn">Upload Track</button>
-          <input type="file" accept="audio/mp3, audio/wav, audio/ogg" (change)="upload($event)" />
+          <input type="file" (change)="upload($event)" />
           <p style="color: white" *ngIf="filename != null">{{filename}}</p>
         </div>
 
