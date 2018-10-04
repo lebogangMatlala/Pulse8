@@ -37,48 +37,11 @@
 
     </ion-segment>
 
-  <ion-segment [(ngModel)]="profile" class="killer">
-    <ion-segment-button value="music">
-      Music
-    </ion-segment-button>
-    <ion-segment-button value="infor">
-      Infor
-    </ion-segment-button>
-    <div [ngSwitch]="profile">
-        <ion-list *ngSwitchCase="'music'" class="segs">
-
-            <ion-item no-lines *ngFor="let x of trackarray;let i=index;" (click)="click(i)">
-                <ion-thumbnail item-start>
-                    <img [src]="pic">
-                </ion-thumbnail>
-                <h2>{{x.artistName}}</h2>
-                <h3>{{x.trackName}}</h3>
-                <p>dope track here......</p>
-            </ion-item>
-
-        </ion-list>
-
-        <ion-list *ngSwitchCase="'infor'" class="segs">
-
-            <ion-item no-lines *ngFor="let x of trackarray;let i=index;" (click)="click(i)">
-                <ion-thumbnail item-start>
-                    <img [src]="pic">
-                </ion-thumbnail>
-                <h2>{{x.artistName}}</h2>
-                <h3>{{x.trackName}}</h3>
-                <p>dope track here......</p>
-            </ion-item>
-
-        </ion-list>
-
-    </div>
-
-  </ion-segment>
 
 <div [ngSwitch]="profile">
     <ion-list *ngSwitchCase="'music'"  class="segs">
    
-        <h2 align="center">   {{massage}} </h2>
+        <!-- <h2 align="center">   {{massage}} </h2> -->
 
          <ion-item no-lines *ngFor="let x of trackarray;let i=index;"(click)="click(i)" >
            <ion-thumbnail item-start>
@@ -116,9 +79,3 @@
       </audio>
   </div>
 </div> -->
-
-<ion-footer>
-    <ion-toolbar (click)="Booking()">
-        <ion-title align="center">Request Bookings</ion-title>
-    </ion-toolbar>
-</ion-footer>
