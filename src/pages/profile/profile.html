@@ -53,30 +53,32 @@
             <ion-item no-lines *ngFor="let x of trackarray;let i=index;"(click)="click(i)" > 
                 <h2>{{x.count}}.{{x.artistName}}</h2>
                 <h3 style="padding-left: 1em;">{{x.trackName}}</h3>
-                <p style="padding-left: 1em;">dope track here......</p> 
+                <p style="padding-left: 1em;">Click the link <a  href="{{x.trackLink}}">here......</a></p> 
             </ion-item>
         </ion-list>
     
         <ion-list *ngSwitchCase="'infor'" class="segs">
-            <ion-item no-lines *ngFor="let x of trackarray;let i=index;"(click)="click(i)" > 
-                <h2>{{x.count}}.{{x.artistName}}</h2>
-                <h3 style="padding-left: 1em;">{{x.trackName}}</h3>
-                <p style="padding-left: 1em;">dope track here......</p> 
+            <ion-item no-lines *ngFor="let z of inforArray;let a=index;"(click)="click(i)" > 
+                    <ion-card>
+                            <ion-card-content>
+                                       <h2> {{z.stagename}}</h2> 
+                                       <h2>{{z.email}}</h2> 
+                                       <h2>{{z.bio}}</h2>
+
+                                       <h2 *ngFor="let i of genreArr">{{i.genre}}</h2>
+                            </ion-card-content>
+                     </ion-card>
             </ion-item>
         </ion-list>
 
         <ion-list *ngSwitchCase="'bookings'" class="segs">
-                <ion-item no-lines *ngFor="let i of bookingArr;let a=index;" > 
-                     
-                    
+                <ion-item no-lines *ngFor="let i of bookingArr;let a=index;"> 
                         <ion-card>
-
-                                <ion-card-content>
+                             <ion-card-content>
                                         <h2>{{i.fanName}} </h2> 
                                         <p>Has requested to Book you,Check your email</p>
                                 </ion-card-content>
-                              
-                              </ion-card>
+                         </ion-card>
                 </ion-item>
         </ion-list>
       </div>

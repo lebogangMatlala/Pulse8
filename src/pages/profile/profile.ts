@@ -28,6 +28,7 @@ export class ProfilePage {
   arrayP =[];
   genreArr =[];
   bookingArr =[];
+  inforArray=[];
   genre;
   count=1;
 
@@ -68,7 +69,7 @@ export class ProfilePage {
                  genre:this.genre[a]
                }
           //  console.log(userDetails[a].Role)
-            this. genreArr.push(genreobj);
+            this.genreArr.push(genreobj);
                console.log(this. genreArr);}
  
             
@@ -195,7 +196,7 @@ export class ProfilePage {
      
         })
 
-        //rettrive booking information
+        //retrieve booking information
 
         this.db.retrieveBooking(id).on('value', (data) => {
               var bookingInfor = data.val();
@@ -222,8 +223,6 @@ export class ProfilePage {
                 count:this.count++
                 
               }
-   
-              
 
                 this.bookingArr.push(objBook);
 
@@ -233,6 +232,50 @@ export class ProfilePage {
             }
             else{
               this.massage="No Track Uploaded Yet"
+            }
+
+
+
+      
+            }, (error) => {
+      
+              console.log(error.message);
+      
+      
+            });
+
+            //retrieve profile information
+
+            this.db.retrieveInformation(id).on('value', (data) => {
+              var userInfor = data.val();
+              console.log("helo bbs");
+              console.log(userInfor);
+
+
+            if( userInfor!=null && userInfor!="")
+            {
+              var keys: any = Object.keys(userInfor);
+
+              console.log(userInfor);
+            
+              this.inforArray=[];
+            
+                
+              let objInfo= {
+                stagename: userInfor.stagename,
+                bio: userInfor.bio,
+                email: userInfor.email,
+                
+              }
+
+            this.inforArray.push(objInfo);
+
+            console.log("helo bbs");
+              console.log(this.inforArray);
+              this.massage=""
+            }
+            else{
+              this.massage="User information"
             }
 
 

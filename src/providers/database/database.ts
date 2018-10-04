@@ -32,6 +32,13 @@ retrieveProfile(){
 
 }
 
+retrieveInformation(key){
+
+  return firebase.database().ref('Registration/'+key);
+
+}
+
+
 retrieveTracks()
 {
   return firebase.database().ref('track/')
