@@ -8,21 +8,16 @@ page-view-profile {
         animation: 1s ease fadeIn;
     }
     .segs{
-        margin-top: 10rem;
-    }
-    .killer{
-        margin-top: 21rem;
+        margin-top: 6rem;
     }
     .hero{
         opacity: .98;
-        position: fixed;
-        z-index: 9999;
         width: 100vw;
         background: linear-gradient(rgba($color-dark, .6), rgba($color-dark, .6)),url('../../assets/imgs/dj4.jpg');
         background-size: cover;
         background-position: bottom !important;
         &__herobanner{
-            height: 23vh;
+            height: 20vh;
             display: flex;
             justify-content: space-evenly;
             flex-flow: row nowrap;
@@ -83,6 +78,6 @@ page-view-profile {
     }
 
     ion-segment{
-       margin-top: 5rem !important; 
+       margin-top: 1.5rem !important; 
     }
 }
