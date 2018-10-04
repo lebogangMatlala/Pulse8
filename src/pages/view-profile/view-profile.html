@@ -6,71 +6,69 @@
 -->
 
 <ion-content>
-  <div class="hero">
-      
+    <div class="hero">
+        <button ion-button clear class="bn"><ion-icon (click)="back()" style="zoom: 1.5;" ios="ios-arrow-round-back" md="md-arrow-round-back"></ion-icon></button>
 
-        <button ion-button clear class="bn" ><ion-icon (click)="back()" style="zoom: 1.5;"  ios="ios-arrow-round-back" md="md-arrow-round-back"></ion-icon></button>
+        <div class="hero__herobanner">
+            <div class="hero__herobanner__heroimagecontainer">
+                <img [src]="pic" alt="" class="hero__herobanner__heroimagecontainer--image">
+            </div>
+            <div class="hero__herobanner__herotagcontainer">
+                <div class="hero__herobanner__herotagcontainer__headingcontainer">
+                    <h1 class="hero__herobanner__herotagcontainer__headingcontainer--heading">{{fullname}}</h1>
+                </div>
+                <div class="hero__herobanner__herotagcontainer__tagcontainer">
+                    <ion-badge *ngFor="let i of  genreArr" outline class="hero__herobanner__herotagcontainer--tag">{{i.genre}}</ion-badge>
 
-      <div class="hero__herobanner">
-          <div class="hero__herobanner__heroimagecontainer">
-              <img [src]="pic" alt="" class="hero__herobanner__heroimagecontainer--image">
-          </div>
-          <div class="hero__herobanner__herotagcontainer">
-              <div class="hero__herobanner__herotagcontainer__headingcontainer">
-                  <h1 class="hero__herobanner__herotagcontainer__headingcontainer--heading">{{fullname}}</h1>
-              </div>
-              <div class="hero__herobanner__herotagcontainer__tagcontainer">
-                <ion-badge *ngFor="let i of  genreArr" outline class="hero__herobanner__herotagcontainer--tag">{{i.genre}}</ion-badge>
-               
-              </div>
-          </div>
-          <div class="hero__herobanner__herobuttoncontainer">
-          </div>
-      </div>
-  </div>
+                </div>
+            </div>
+            <div class="hero__herobanner__herobuttoncontainer">
+            </div>
+        </div>
+    </div>
 
-  <ion-segment [(ngModel)]="profile" class="killer">
-    <ion-segment-button value="music">
-      Music
-    </ion-segment-button>
-    <ion-segment-button value="infor">
-      Infor
-    </ion-segment-button>
+    <ion-segment [(ngModel)]="profile" class="killer">
+        <ion-segment-button value="music">
+            Music
+        </ion-segment-button>
+        <ion-segment-button value="infor">
+            Infor
+        </ion-segment-button>
 
-  </ion-segment>
+    </ion-segment>
 
-<div [ngSwitch]="profile">
-    <ion-list *ngSwitchCase="'music'"  class="segs">
-   
-        <h2 align="center">   {{massage}} </h2>
+    <div [ngSwitch]="profile">
+        <ion-list *ngSwitchCase="'music'" class="segs">
 
-         <ion-item no-lines *ngFor="let x of trackarray;let i=index;"(click)="click(i)" >
-           <ion-thumbnail item-start>
-                <img [src]="pic" >
-           </ion-thumbnail>
+            <h2 align="center"> {{massage}} </h2>
+
+            <ion-item no-lines *ngFor="let x of trackarray;let i=index;" (click)="click(i)">
+                <ion-thumbnail item-start>
+                    <img [src]="pic">
+                </ion-thumbnail>
                 <h2>{{x.artistName}}</h2>
                 <h3>{{x.trackName}}</h3>
-                <p>dope track here......</p>  
-         </ion-item>
-       
-    </ion-list>
+                <p>dope track here......</p>
+            </ion-item>
 
-<ion-list *ngSwitchCase="'infor'" class="segs">
-    
-    <ion-item no-lines *ngFor="let x of trackarray;let i=index;"(click)="click(i)" >
-     <ion-thumbnail item-start>
-           <img [src]="pic" >
-     </ion-thumbnail>
-       <h2>{{x.artistName}}</h2>
-       <h3>{{x.trackName}}</h3>
-       <p>dope track here......</p>  
-     </ion-item>
+        </ion-list>
 
-    </ion-list>
+        <ion-list *ngSwitchCase="'infor'" class="segs">
 
-</div>
- 
-<!-- <div class="musicplayer">
+            <ion-item no-lines *ngFor="let x of trackarray;let i=index;" (click)="click(i)">
+                <ion-thumbnail item-start>
+                    <img [src]="pic">
+                </ion-thumbnail>
+                <h2>{{x.artistName}}</h2>
+                <h3>{{x.trackName}}</h3>
+                <p>dope track here......</p>
+            </ion-item>
+
+        </ion-list>
+
+    </div>
+
+    <!-- <div class="musicplayer">
   <div class="musicplayer__songtitle">
       <p class="musicplayer__songtitle__scrollingtext">Master_Cheng_Fu
           <br> Umcimbi_ft_Lelo_Kamau</p>

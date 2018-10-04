@@ -1,11 +1,7 @@
-<ion-header>
-
-</ion-header>
-
 <ion-content>
     <div class="hero">
 
-            <button ion-button clear class="bn" ><ion-icon (click)="back()" style="zoom: 1.5;" ios="ios-arrow-round-back" md="md-arrow-round-back"></ion-icon></button>
+        <button ion-button clear class="bn"><ion-icon (click)="back()" style="zoom: 1.5;" ios="ios-arrow-round-back" md="md-arrow-round-back"></ion-icon></button>
 
         <div class="hero__herobanner">
             <div class="hero__herobanner__heroimagecontainer">
@@ -16,72 +12,67 @@
                     <h1 class="hero__herobanner__herotagcontainer__headingcontainer--heading">{{fullname}}</h1>
                 </div>
                 <div class="hero__herobanner__herotagcontainer__tagcontainer">
-                    <ion-badge *ngFor="let i of genreArr" outline class="hero__herobanner__herotagcontainer--tag">{{i.genre}}</ion-badge>
-                   
-                </div> 
+                    <!-- <ion-badge *ngFor="let i of genreArr" outline class="hero__herobanner__herotagcontainer--tag">{{i.genre}}</ion-badge> -->
+
+                </div>
             </div>
             <div class="hero__herobanner__herobuttoncontainer">
-                <button  ion-button clear class="hero__herobanner__herobuttoncontainer--button">
-                    <!-- <ion-icon  name="ios-more" (click)="edit()"></ion-icon> -->
-                  
-                    <ion-icon icon-right style="zoom: 1.8;" ios="ios-more" md="md-more"></ion-icon>
-                    <ion-select  name="role"[(ngModel)]="role" interface="popover">
-                            <ion-option value="Audience">Edit Profile</ion-option>
-                            <ion-option value="Dj">Upload Track</ion-option> 
-                    </ion-select>
-
- 
+                <button ion-button icon-only clear>
+                    <ion-icon name="home"></ion-icon>
+                </button>
+                <button ion-button icon-only clear>
+                    <ion-icon name="star"></ion-icon>
+                </button>
+                <button ion-button icon-only clear>
+                    <ion-icon name="list"></ion-icon>
                 </button>
             </div>
         </div>
     </div>
- 
-    <ion-segment [(ngModel)]="profile" class="killer">
-            <ion-segment-button value="music">
-              Music
-            </ion-segment-button>
-            <ion-segment-button value="infor">
-              Infor
-            </ion-segment-button>
-            <ion-segment-button value="bookings">
-              Bookings
-            </ion-segment-button>
-          </ion-segment>
 
-      <div [ngSwitch]="profile">
-        <ion-list *ngSwitchCase="'music'"  class="segs">
-            <ion-item no-lines *ngFor="let x of trackarray;let i=index;"(click)="click(i)" > 
+    <ion-segment [(ngModel)]="profile" class="killer">
+        <ion-segment-button value="music">
+            Music
+        </ion-segment-button>
+        <ion-segment-button value="infor">
+            Infor
+        </ion-segment-button>
+        <ion-segment-button value="bookings">
+            Bookings
+        </ion-segment-button>
+    </ion-segment>
+
+    <div [ngSwitch]="profile">
+        <ion-list *ngSwitchCase="'music'" class="segs">
+            <ion-item no-lines *ngFor="let x of trackarray;let i=index;" (click)="click(i)">
                 <h2>{{x.count}}.{{x.artistName}}</h2>
                 <h3 style="padding-left: 1em;">{{x.trackName}}</h3>
-                <p style="padding-left: 1em;">dope track here......</p> 
+                <p style="padding-left: 1em;">dope track here......</p>
             </ion-item>
         </ion-list>
-    
+
         <ion-list *ngSwitchCase="'infor'" class="segs">
-            <ion-item no-lines *ngFor="let x of trackarray;let i=index;"(click)="click(i)" > 
+            <ion-item no-lines *ngFor="let x of trackarray;let i=index;" (click)="click(i)">
                 <h2>{{x.count}}.{{x.artistName}}</h2>
                 <h3 style="padding-left: 1em;">{{x.trackName}}</h3>
-                <p style="padding-left: 1em;">dope track here......</p> 
+                <p style="padding-left: 1em;">dope track here......</p>
             </ion-item>
         </ion-list>
 
         <ion-list *ngSwitchCase="'bookings'" class="segs">
-                <ion-item no-lines *ngFor="let i of bookingArr;let a=index;" > 
-                     
-                    
-                        <ion-card>
+            <ion-item no-lines *ngFor="let i of bookingArr;let a=index;">
 
-                                <ion-card-content>
-                                        <h2>{{i.fanName}} </h2> 
-                                        <p>Has requested to Book you,Check your email</p>
-                                </ion-card-content>
-                              
-                              </ion-card>
-                </ion-item>
+
+                <ion-card>
+
+                    <ion-card-content>
+                        <h2>{{i.fanName}} </h2>
+                        <p>Has requested to Book you,Check your email</p>
+                    </ion-card-content>
+
+                </ion-card>
+            </ion-item>
         </ion-list>
-      </div>
-      
+    </div>
+
 </ion-content>
-
-
-      
