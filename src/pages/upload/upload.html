@@ -18,23 +18,31 @@
           <ion-label color="light">
             <ion-icon name="contact"></ion-icon>
           </ion-label>
-          <ion-input type="text" class="contentflex__formcontent--input" [value]="artistName" placeholder="Artist/s" name="artistName" id="input" ngModel
+          <ion-input type="text" class="contentflex__formcontent--input" name="artName" placeholder="Artists"  [value]="artName"   id="input" ngModel
             required></ion-input>
         </ion-item>
 
         <ion-item no-lines>
           <ion-label color="light">
-            <ion-icon name="contact"></ion-icon>
+            <ion-icon ios="ios-musical-notes" md="md-musical-notes"></ion-icon>
           </ion-label>
           <ion-input type="text" name="trackName" placeholder="Track Name" class="contentflex__formcontent--input" id="input" ngModel
             required></ion-input>
         </ion-item>
 
-        <div class="upload-btn-wrapper">
+        <ion-item no-lines>
+            <ion-label color="light">
+              <ion-icon ios="ios-link" md="md-link"></ion-icon>
+            </ion-label>
+            <ion-input type="text" name="trackLink" placeholder="Upload your link here" class="contentflex__formcontent--input" id="input" ngModel
+              required></ion-input>
+          </ion-item>
+
+        <!-- <div class="upload-btn-wrapper">
           <button class="btn">Upload Track</button>
           <input type="file" (change)="upload($event)" />
           <p style="color: white" *ngIf="filename != null">{{filename}}</p>
-        </div>
+        </div> -->
 
         
 

@@ -4,6 +4,7 @@ import { UploadPage } from '../upload/upload';
 import { EditPage } from '../edit/edit';
 import firebase from 'firebase';
 import { CatergoriesPage } from '../catergories/catergories';
+import { DatabaseProvider } from '../../providers/database/database';
 /**
  * Generated class for the ProfilePage page.
  *
@@ -26,6 +27,8 @@ export class ProfilePage {
   trackarray =[];
   arrayP =[];
   genreArr =[];
+  bookingArr =[];
+  inforArray=[];
   genre;
   count=1;
 
@@ -34,7 +37,7 @@ export class ProfilePage {
   artistName;
   
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,public actionSheetCtrl: ActionSheetController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,public actionSheetCtrl: ActionSheetController,public db:DatabaseProvider) {
 
 
   }
@@ -66,7 +69,7 @@ export class ProfilePage {
                  genre:this.genre[a]
                }
           //  console.log(userDetails[a].Role)
-            this. genreArr.push(genreobj);
+            this.genreArr.push(genreobj);
                console.log(this. genreArr);}
  
             
@@ -155,6 +158,7 @@ export class ProfilePage {
                   let objart = {
                     artistName: inforArt[k].artistName,
                     trackName: inforArt[k].trackName,
+                    trackLink:inforArt[k].trackLink,
                     key: k,
                     count:this.count++
                     
@@ -191,36 +195,104 @@ export class ProfilePage {
          
      
         })
-       
- 
+
+        //retrieve booking information
+
+        this.db.retrieveBooking(id).on('value', (data) => {
+              var bookingInfor = data.val();
+             
+              console.log(bookingInfor);
+
+
+            if( bookingInfor!=null && bookingInfor!="")
+            {
+              var keys: any = Object.keys(bookingInfor);
+
+              console.log(bookingInfor);
+            
+              this.bookingArr=[];
+              for (var i = 0; i < keys.length; i++) {
+                
+                var k = keys[i];
+                
+              let objBook = {
+                fanName: bookingInfor[k].name,
+                fanEmail: bookingInfor[k].email,
+                
+                key: k,
+                count:this.count++
+                
+              }
+
+                this.bookingArr.push(objBook);
+
+                console.log(this.bookingArr);
+              }
+              this.massage=""
+            }
+            else{
+              this.massage="No Track Uploaded Yet"
+            }
+
+
+
+      
+            }, (error) => {
+      
+              console.log(error.message);
+      
+      
+            });
+
+            //retrieve profile information
+
+            this.db.retrieveInformation(id).on('value', (data) => {
+              var userInfor = data.val();
+              console.log("helo bbs");
+              console.log(userInfor);
+
+
+            if( userInfor!=null && userInfor!="")
+            {
+              var keys: any = Object.keys(userInfor);
+
+              console.log(userInfor);
+            
+              this.inforArray=[];
+            
+                
+              let objInfo= {
+                stagename: userInfor.stagename,
+                bio: userInfor.bio,
+                email: userInfor.email,
+                
+              }
+
+            this.inforArray.push(objInfo);
+
+            console.log("helo bbs");
+              console.log(this.inforArray);
+              this.massage=""
+            }
+            else{
+              this.massage="User information"
+            }
+
+
+
+      
+            }, (error) => {
+      
+              console.log(error.message);
+      
+      
+            });
+     
  
       }
       else{
         console.log('User has not sign in');
  
-        // let alert = this.alertCtrl.create({
-        //   title: 'User',
-        //   message: 'Sign in to view your profile ',
-        //   buttons: [
-        //     {
-        //       text: 'Cancel',
-        //       role: 'cancel',
-        //       handler: () => {
-        //         console.log('Cancel clicked');
-        //         this.navCtrl.setRoot(ViewPage);
-        //       }
-        //     },
-        //     {
-        //       text: 'Ok',
-        //       handler: () => {
-        //         console.log('Ok clicked');
-        //         this.navCtrl.setRoot(SigninPage);
- 
-        //       }
-        //     }
-        //   ]
-        // });
-        // alert.present();
         
       }
     });

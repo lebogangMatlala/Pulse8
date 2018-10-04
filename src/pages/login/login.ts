@@ -45,21 +45,9 @@ export class LoginPage {
       .then(data => {
         let userID = firebase.auth().currentUser.uid;
         loading.dismiss();
-        const alert = this.alertCtrl.create({
-          title: "Success",
-          subTitle: "You have successfully logged in!!!",
-          buttons: [
-            {
-              text: "Ok",
-              handler: () => {
-                console.log(data);
+     
                 this.navCtrl.push(CatergoriesPage);
-                console.log("logged in");
-              }
-            }
-          ]
-        });
-        alert.present();
+          
       })
       .catch(error => {
         loading.dismiss();

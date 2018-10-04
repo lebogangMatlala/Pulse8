@@ -32,6 +32,13 @@ retrieveProfile(){
 
 }
 
+retrieveInformation(key){
+
+  return firebase.database().ref('Registration/'+key);
+
+}
+
+
 retrieveTracks()
 {
   return firebase.database().ref('track/')
@@ -93,6 +100,11 @@ retrieveTracks()
 
   saveArtists(userID, obj) {
     return firebase.database().ref('artists/' + userID).push(obj);
+  }
+
+  retrieveBooking(key)
+  {
+    return firebase.database().ref('Bookings/'+key);
   }
 
 

@@ -4,7 +4,7 @@ import { IdentityPage } from '../identity/identity';
 import { CatergoriesPage } from '../catergories/catergories';
 import { RegisterPage } from '../register/register';
 import { LoginPage } from '../login/login';
-
+import firebase from 'firebase';
 /**
  * Generated class for the StartPage page.
  *
@@ -26,7 +26,12 @@ export class StartPage {
 
   ionViewDidEnter() {
 
+    firebase.auth().onAuthStateChanged((user)=> {
+      if (user) {
+        this.navCtrl.setRoot(CatergoriesPage);
+      }
 
+    });
   }
 
   nextPage() {
