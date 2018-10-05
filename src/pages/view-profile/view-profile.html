@@ -38,7 +38,7 @@
     </ion-segment>
 
 
-<div [ngSwitch]="profile">
+<div [ngSwitch]="profile" class="profile">
     <ion-list *ngSwitchCase="'music'"  class="segs">
    
         <!-- <h2 align="center">   {{massage}} </h2> -->
@@ -55,16 +55,27 @@
     </ion-list>
 
 <ion-list *ngSwitchCase="'infor'" class="segs">
-    
-    <ion-item no-lines *ngFor="let x of trackarray;let i=index;"(click)="click(i)" >
-     <ion-thumbnail item-start>
-           <img [src]="pic" >
-     </ion-thumbnail>
-       <h2>{{x.artistName}}</h2>
-       <h3>{{x.trackName}}</h3>
-       <p>dope track here......</p> 
-     </ion-item>
-    </ion-list>
+   
+    <ion-card>
+        <ion-card-content>
+         
+            <ion-card-title class="title"><strong>Bio</strong><br>
+                <p>tttttttttttttttttttttttttttttttttttttttttttt
+                tttttttttttttttttttttttttttttttttttttttttttttttttt</p> 
+                <br><br>
+               <strong>City</strong><br>
+                Johanessburg<br><br>
+                <strong>Links</strong><br>
+                <ion-icon ios="logo-facebook" md="logo-facebook"></ion-icon>Facebook<br>
+                <ion-icon ios="logo-twitter" md="logo-twitter"></ion-icon>Twitter<br>
+                <ion-icon ios="logo-instagram" md="logo-instagram"></ion-icon>Instagram<br>
+               
+            </ion-card-title>
+            
+        </ion-card-content>
+    </ion-card>
+
+</ion-list>
 
 </div>
  
