@@ -9,6 +9,10 @@ page-view-profile {
     }
     .segs{
         margin-top: 6rem;
+<<<<<<< HEAD
+=======
+        flex: auto 0 0;
+>>>>>>> 13793424d8590c56107b46388abb5feaf81fd942
     }
     .hero{
         opacity: .98;
@@ -80,6 +84,7 @@ page-view-profile {
     ion-segment{
        margin-top: 1.5rem !important; 
     }
+<<<<<<< HEAD
 
     .userProfile{
         word-wrap: break-word;
@@ -115,5 +120,22 @@ page-view-profile {
         height: 60px;     
         border-radius: 5px;
         border: 1px solid rgb(34, 33, 33);
+=======
+    ion-card{
+        // position: relative;
+        // display: block;
+        // justify-content: center;
+        height: 30em;
+        top: 2em;
+        background-color: rgba(0, 0, 0, 0);
+        box-shadow: inset 0px 0px 20em black; 
+    }
+    on-card-title{
+        color: rgb(240, 248, 255);
+    }
+
+    .profile{
+        display: flex;
+>>>>>>> 13793424d8590c56107b46388abb5feaf81fd942
     }
 }
