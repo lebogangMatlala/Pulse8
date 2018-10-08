@@ -87,7 +87,6 @@ page-catergories {
         width: 5rem;
     }
     .drop-down{
-<<<<<<< HEAD
         height: 0.5em;
         margin-top: -3.5em;
         padding-right: 0em;
@@ -96,14 +95,6 @@ page-catergories {
         color: white;
         border-radius: 1em;
         width: 92%;
-=======
-        height: 1em;
-        margin-top: -3.7em;
-        padding-right: 0em;
-        padding-left: 3em;
-        right: 2.8em;
-        color: white;
->>>>>>> 13793424d8590c56107b46388abb5feaf81fd942
 }
     .navbar{
         height: 10vh;
@@ -111,16 +102,9 @@ page-catergories {
         justify-content: flex-end;
     }
     .search-box{
-<<<<<<< HEAD
         // position: relative;
         // top: 50%;
         // left: 50%;
-=======
-        position: relative;
-        // top: 50%;
-        // left: 50%;
-        bottom: 5rem;
->>>>>>> 13793424d8590c56107b46388abb5feaf81fd942
         // transform: translate(-50%, -50%);
         background:  $color-primary-dark;
         height: 40px;
@@ -133,11 +117,6 @@ page-catergories {
     }
     .search-box:hover > .search-btn{
         background: white;
-<<<<<<< HEAD
-=======
-        position: relative;
-        bottom: 2.8rem;
->>>>>>> 13793424d8590c56107b46388abb5feaf81fd942
     }
     .search-btn{
         color: #e84118;

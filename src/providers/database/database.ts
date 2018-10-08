@@ -42,11 +42,7 @@ createBookings(key){
    return this.emailComposer.isAvailable();
   }
 
-retrieveInformation(key){
 
-  return firebase.database().ref('Registration/'+key);
-
-}
 
 
 
