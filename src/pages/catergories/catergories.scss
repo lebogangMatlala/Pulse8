@@ -4,6 +4,14 @@ page-catergories {
         background-size: cover !important;
         animation: 1s ease fadeIn;
     }
+
+    .searchbar{
+        height:5vh;
+        margin-top: 6rem;
+        display: flex; 
+        justify-content: space-evenly;
+    }
+
     .iconblock{
         width: 100vw;
         display: flex;
@@ -38,7 +46,7 @@ page-catergories {
                 &--text1{
                     color: white;
                     padding-left: 1em;
-                    padding-top: 1em;
+                    // padding-top: 1em;
                     padding-bottom: 1em; 
                     margin: 0;
                     text-transform: capitalize;
@@ -80,10 +88,10 @@ page-catergories {
     }
     .drop-down{
         height: 1em;
-        margin-top: -3.9em;
+        margin-top: -3.7em;
         padding-right: 0em;
-        padding-left: 4em;
-        right: 3.7em;
+        padding-left: 3em;
+        right: 2.8em;
         color: white;
 }
     .navbar{
@@ -92,9 +100,10 @@ page-catergories {
         justify-content: flex-end;
     }
     .search-box{
-        // position: relative;
+        position: relative;
         // top: 50%;
         // left: 50%;
+        bottom: 5rem;
         // transform: translate(-50%, -50%);
         background:  $color-primary-dark;
         height: 40px;
@@ -107,6 +116,8 @@ page-catergories {
     }
     .search-box:hover > .search-btn{
         background: white;
+        position: relative;
+        bottom: 2.8rem;
     }
     .search-btn{
         color: #e84118;
