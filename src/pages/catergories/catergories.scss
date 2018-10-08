@@ -4,6 +4,14 @@ page-catergories {
         background-size: cover !important;
         animation: 1s ease fadeIn;
     }
+
+    .searchbar{
+        height:5vh;
+        margin-top: 6rem;
+        display: flex; 
+        justify-content: space-evenly;
+    }
+
     .iconblock{
         width: 100vw;
         display: flex;
@@ -38,7 +46,7 @@ page-catergories {
                 &--text1{
                     color: white;
                     padding-left: 1em;
-                    padding-top: 1em;
+                    // padding-top: 1em;
                     padding-bottom: 1em; 
                     margin: 0;
                     text-transform: capitalize;

@@ -84,7 +84,6 @@ export class CatergoriesPage {
 
 
 
-
 ///Djs details
     this.db.retrieveProfile().on("value", (data) => {
        let profile = data.val();
