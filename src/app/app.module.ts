@@ -19,6 +19,7 @@ import { CatergoriesPage } from '../pages/catergories/catergories';
 import { HttpClientModule } from '../../node_modules/@angular/common/http';
 import { BookingsPage } from '../pages/bookings/bookings';
 import { EmailComposer } from '@ionic-native/email-composer';
+import { SigninPage } from '../pages/signin/signin';
 
 
 
@@ -35,7 +36,8 @@ ViewProfilePage,
 UploadPage,
 IdentityPage,
 CatergoriesPage,
-BookingsPage
+BookingsPage,
+SigninPage
 
   ],
   imports: [
@@ -56,7 +58,7 @@ ViewProfilePage,
 UploadPage,
 IdentityPage,
 CatergoriesPage,
-BookingsPage
+BookingsPage,SigninPage
 
   ],
   providers: [

@@ -85,12 +85,12 @@
         </ion-list>
 
         <ion-list *ngSwitchCase="'bookings'" class="segs">
-                <div no-lines *ngFor="let i of bookingArr;let a=index;"> 
+                <div no-lines *ngFor="let i of bookingArr;let a=index;" (click)="viewBooking()"> 
                        
                            <div class="cards">
                                 <h6></h6> 
                                 <p><strong>{{i.fanName}}</strong>, Has requested to Book you,Check your email</p>
-               
+                                <p>{{i.date}} {{i.time}}</p>
                            </div>
                                         
                         </div>

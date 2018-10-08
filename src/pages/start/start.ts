@@ -21,17 +21,7 @@ export class StartPage {
 
   file: string = '../../assets/Master_Cheng_Fu_-_Umcimbi_ft_Lelo_Kamau.mp3';
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-  
-  }
-
-  ionViewDidEnter() {
-
-    firebase.auth().onAuthStateChanged((user)=> {
-      if (user) {
-        this.navCtrl.setRoot(CatergoriesPage);
-      }
-
-    });
+    
   }
 
   nextPage() {

@@ -6,6 +6,7 @@ import { ViewProfilePage } from '../view-profile/view-profile';
 import { LoginPage } from '../login/login';
 import { ProfilePage } from '../profile/profile';
 import { DatabaseProvider } from '../../providers/database/database';
+import { SigninPage } from '../signin/signin';
 /**
  * Generated class for the CatergoriesPage page.
  *
@@ -41,7 +42,7 @@ export class CatergoriesPage {
   arrayP=[];
   infor;
   genre;
-  
+  objDj;
 
   
 
@@ -121,7 +122,7 @@ export class CatergoriesPage {
         
         if(genre!= null && stagename!=null){    
            console.log("dj" + k + stagename )
-        let objDj ={
+         this.objDj ={
           role:this.role,
           stagename:stagename,
           genre:genre,
@@ -130,8 +131,8 @@ export class CatergoriesPage {
       }
       
 
-     console.log(objDj);
-    this.arrDj.push(objDj);
+     console.log(this.objDj);
+    this.arrDj.push(this.objDj);
   }
   else{
     console.log("no stage name or genre"+k)  
@@ -211,18 +212,11 @@ export class CatergoriesPage {
   viewProfile(i)
   {
       console.log(i);
-      let keys  = this.arrDj[i].key;
+       let keys  = this.arrDj[i].key;
       
-      if(this.condition==true)
-      {
-        console.log("user has signed in")
-        this.navCtrl.setRoot(ViewProfilePage,{keyobj:keys});
+        console.log(keys)
+         this.navCtrl.setRoot(ViewProfilePage,{keyobj:keys});
    
-      }
-      else{
-        console.log("User has Logged out");
-        this.navCtrl.setRoot(LoginPage);
-      }
   }
 
 
@@ -265,7 +259,7 @@ export class CatergoriesPage {
       firebase.auth().signOut().then(() =>{
           // Sign-out successful.
           console.log(" Sign-out successful");
-          this.navCtrl.setRoot(StartPage);
+          this.navCtrl.setRoot(LoginPage);
           }).catch(function(error) {
           // An error happened.
           console.log(error);
@@ -280,21 +274,47 @@ export class CatergoriesPage {
 
    input()
    {
-
-   
-
-    for(let i = 0; i < this.arrDj.length;++i)
+    // console.log(this.genre);
+ 
+    for(let i = 0; i < this.arrDj.length;i++)
     {
+     
+        // console.log("HELO guys");
+        // console.log(this.arrDj[i].genre[0]);
+       
+        if(this.genre==this.arrDj[i].genre[0]){
+          console.log("they are the same");
+          console.log(this.arrDj[i].stagename);
+        this.obj={
+         
+          stagename:this.arrDj[i].stagename,
+          genre:this.arrDj[i].genre,
+          url:this.globalPic[i],
+          // key:this.arrDj[i].k
+        }
 
-      if(this.genre==this.arrDj[i].genre)
-      {
-  this.arrDj.length=i;
+        console.log(this.arrDj);
 
-       }
+       //this.arrDj.push(this.obj)
+
+
+
+         
+        }
+        else{
+          console.log("no data");
+          console.log(this.arrDj[i].genre[0]);
+        }
+
+        
+      }
+
+      
+      
+      }
+      
+
     }
+    
   
-   }
-
-
-
-}
+  
