@@ -11,8 +11,6 @@ page-profile {
         margin: 0 !important;
         padding: 0 !important;
         animation: 1s ease fadeIn;
-
-       
     }
 
     .hero{
@@ -43,11 +41,17 @@ page-profile {
                 justify-content: center;
                 &__headingcontainer{
                     padding-left: 1rem; 
-                    margin-left: 5em  
+                    margin-left: 1em;
                     &--heading{
-                        font-weight: 300;
-                        text-transform: uppercase;
+                        // font-weight: 300;
+                        // text-transform: uppercase;
                         letter-spacing: .2rem;
+                        margin-top:-1em;
+                    }
+                    & button{
+                        border-radius: 3em;
+                        height: 1.8em;
+                        margin-top: 0.5em;
                     }
                 }
 
@@ -64,8 +68,6 @@ page-profile {
                 bottom: 15%;
             }
         }
-
-      
     }
     
     .segs{
@@ -82,8 +84,24 @@ page-profile {
     ion-list{
         position: absolute;
         top: 25vh;
+        & h2{
+            color: white;
+        }
         
+        & h3 {
+            color: aliceblue;
+        }
+        & a {
+            color: aliceblue;
+        }
 
+    }
+
+    .listitems{
+        &:nth-child(even){
+            width: 100vw;
+            background: rgba($color-grey-light, .1);
+        }
     }
 
     .section{
@@ -105,9 +123,29 @@ page-profile {
         background: rgba(255, 255, 255, 0.020);
         margin-bottom: -10%;
         color: rgba(245, 245, 245, 0.829);
-        width: 96%;
-        margin: 0 auto;        
+        width: 100%;
+        margin: 0 auto; 
+        & h2{
+            text-align: center;
+        }   
+        & p{
+            font-size: 0.9em;
+        }    
     }
+
+    .bioheading{
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: .3rem;
+        font-size: 3rem;
+        font-weight: 300;
+    }
+ 
+    .biotext{
+        text-align: center;
+        font-size: 1.4rem !important;
+    }
+
     .Profile{
         word-wrap: break-word;
         padding-left: 15px;
@@ -117,21 +155,70 @@ page-profile {
         background: rgba(255, 255, 255, 0);
         color: rgba(245, 245, 245, 0.829);
         width: 96%;
-        margin: 0 auto;        
+        margin: 0 auto; 
+        & p{
+            margin-left: 2.4em;
+            margin-top: -1.7em;
+        }  
+        & h2{
+            text-align: center;
+        }     
+    }
+
+    .cardcontainer{
+        .cards{
+            height: 15%;
+        }
+        &:not(:first-child){
+            margin-top: 1rem;
+        }
+
+        &:nth-child(odd){
+            .cards{
+                background: rgba($color-grey-light, .2);
+            }
+        }
+
+        &:nth-child(odd){
+            .cards{
+                background: rgba($color-grey-light, .2);
+            }
+        }
     }
     .cards{
         word-wrap: break-word;
-     padding-top: 2px;
-     padding-left: 8px;
-        background: rgba(253, 253, 253, 0.911);
-        color: rgb(17, 17, 17);
+        padding-top: 2px;
+        padding-left: 8px;
+        background: rgba(255, 255, 255, 0.020);
+        color: rgba(245, 245, 245, 0.829);
         width: 96%;
         margin: 0 auto;  
         height: 60px;     
         border-radius: 5px;
-        border: 1px solid rgb(34, 33, 33);
+        border: 1px solid rgb(34, 33, 33);   
+    }
+    
+    .cards:not(:last-child){
+        margin-top: 1rem;
+    }
+    .artistname , .artisttrack{
+        color: white;
     }
 
-    
-   
+    .artistname,{
+        text-transform: capitalize;
+        letter-spacing: .3rem;
+    }
+
+    .artisttrack{
+        text-transform: capitalize;
+        letter-spacing: .2rem;
+    }
+
+    .date{
+        margin-top: .5rem;
+        display: block;
+        font-size: 1.2rem;
+        font-style: italic;
+    }
 }

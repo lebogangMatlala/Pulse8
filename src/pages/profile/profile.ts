@@ -31,8 +31,8 @@ export class ProfilePage {
   inforArray=[];
   genre;
   count=1;
-
-  profile ="music";
+  date = new Date();
+  profile ="infor";
 
   artistName;
   
@@ -225,7 +225,9 @@ export class ProfilePage {
               }
 
                 this.bookingArr.push(objBook);
+                this.bookingArr.reverse();
 
+                
                 console.log(this.bookingArr);
               }
               this.massage=""
@@ -265,10 +267,6 @@ export class ProfilePage {
                 stagename: userInfor.stagename,
                 bio: userInfor.bio,
                 email: userInfor.email,
-<<<<<<< HEAD
-                city:userInfor.city
-=======
->>>>>>> 13793424d8590c56107b46388abb5feaf81fd942
                 
               }
 
@@ -281,21 +279,15 @@ export class ProfilePage {
             else{
               this.massage="User information"
             }
-<<<<<<< HEAD
-=======
 
 
 
->>>>>>> 13793424d8590c56107b46388abb5feaf81fd942
       
             }, (error) => {
       
               console.log(error.message);
       
-<<<<<<< HEAD
-=======
       
->>>>>>> 13793424d8590c56107b46388abb5feaf81fd942
             });
      
  
