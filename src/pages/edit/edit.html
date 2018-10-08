@@ -12,7 +12,7 @@ giving the form a template variable of f-->
                   class="contentflex__iconcontainer__icon">
               <!-- <input type="file" #image accept="image/png, image/jpeg" (change)="insertImage($event)"> -->
               <div class="upload-btn-wrapper">
-                  <button class="btn">Upload Image</button>
+                  <button class="btn">Edit Image</button>
                   <input type="file" #image accept="image/png, image/jpeg" (change)="insertImage($event)" />
               </div>
  
@@ -62,6 +62,15 @@ giving the form a template variable of f-->
                       <ion-option value="Soul">Soul</ion-option>
                     
                   </ion-select>
+              </ion-item>
+
+              
+                <ion-item no-lines>
+                <ion-label color="light">
+                    <ion-icon ios="ios-locate" md="md-locate"></ion-icon>
+                </ion-label>
+                <ion-input type="text" class="contentflex__formcontent--input"  [value]="city" placeholder="City" name="city" id="input" ngModel
+                  required></ion-input>
               </ion-item>
 
               <ion-item no-lines>

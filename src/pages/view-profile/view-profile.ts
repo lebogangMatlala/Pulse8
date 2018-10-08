@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ActionSheetController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ActionSheetController, ToastController } from 'ionic-angular';
 import { EditPage } from '../edit/edit';
 import { UploadPage } from '../upload/upload';
 import firebase from 'firebase';
@@ -33,7 +33,12 @@ export class ViewProfilePage {
   profile ="music";
   count=1;
   key;
-  constructor(public navCtrl: NavController, public navParams: NavParams,public actionSheetCtrl: ActionSheetController) {
+  city;
+  bio;
+  stagename;
+  userid;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams,public actionSheetCtrl: ActionSheetController, public toastCtrl: ToastController ) {
   }
 
   ionViewDidLoad() {
@@ -49,19 +54,25 @@ export class ViewProfilePage {
         console.log('User has sign in');
        
  
+        
           
-        //  var id =firebase.auth().currentUser.uid;
+        this.userid =firebase.auth().currentUser.uid;
 
     
         this.id = this.key;
     
         console.log(this.id);
  
-        firebase.database().ref('Registration/' +this. id).on('value', (data: any) => {
+        firebase.database().ref('Registration/' +this.id).on('value', (data: any) => {
  
           let userDetails = data.val();
           
           console.log(userDetails);
+
+          this.bio = userDetails.bio;
+          this.email=userDetails.email;
+          this.stagename=userDetails.stagename;
+          this.city=userDetails.city;
           
           let genre = userDetails.genre;
 
@@ -278,8 +289,20 @@ export class ViewProfilePage {
 
   Booking()
   {
+        if(this.userid == this.key){
+          const toast = this.toastCtrl.create({
+            message: 'You cannot Request Booking for yourself',
+            duration: 3000
+          });
+          toast.present();
+          this.navCtrl.push(CatergoriesPage);
 
-    let djKey=this.key;
-    this.navCtrl.push(BookingsPage,{objBooking:djKey});
+
+        }else{
+          let djKey=this.key;
+          this.navCtrl.push(BookingsPage,{objBooking:djKey});
+        }
+  
+
   }
 }

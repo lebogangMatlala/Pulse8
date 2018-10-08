@@ -40,6 +40,7 @@ export class CatergoriesPage {
   arrSt=[];
   arrayP=[];
   infor;
+  genre;
   
 
   
@@ -276,6 +277,23 @@ export class CatergoriesPage {
     }
 
  
+   }
+
+   input()
+   {
+
+   
+
+    for(let i = 0; i < this.arrDj.length;++i)
+    {
+
+      if(this.genre==this.arrDj[i].genre)
+      {
+  this.arrDj.length=i;
+
+       }
+    }
+  
    }
 
 

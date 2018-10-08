@@ -81,7 +81,7 @@ export class UploadPage {
         else{
 
           let toast = this.toastCtrl.create({
-            message: 'User was added successfully',
+            message: 'Edit your profile First',
             duration: 3000,
             position: 'top'
           });
@@ -144,7 +144,7 @@ back(){
     console.log(this.artName);
 
       let obj={
-        artistName:form.value.artName,
+        artistName:this.artName,
         trackName:form.value.trackName,
         trackLink:form.value.trackLink
   

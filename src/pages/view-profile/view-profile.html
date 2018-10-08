@@ -42,34 +42,45 @@
 <div [ngSwitch]="profile">
     <ion-list *ngSwitchCase="'music'"  class="segs">
    
-        <h2 align="center">   {{massage}} </h2>
+        <!-- <h2 align="center" style="font-weight: 50;font-size: 2em;margin-top: 7vh;margin-left: 7vh;color: gray;">{{massage}}</h2> -->
 
-         <ion-item no-lines *ngFor="let x of trackarray;let i=index;"(click)="click(i)" >
-           <ion-thumbnail item-start>
-                <img [src]="pic" >
-           </ion-thumbnail>
-                <h2>{{x.artistName}}</h2>
-                <h3>{{x.trackName}}</h3>
-                <p>dope track here......</p>  
+         <ion-item no-lines *ngFor="let x of trackarray;let i=index;" >
+                <h2>{{x.count}}.{{x.artistName}}</h2>
+                <h3 style="padding-left: 1em;">{{x.trackName}}</h3>
+                <p style="padding-left: 1em;">Click the link <a  href="{{x.trackLink}}">here......</a></p> 
          </ion-item>
        
     </ion-list>
 
 <ion-list *ngSwitchCase="'infor'" class="segs">
-    
-    <ion-item no-lines *ngFor="let x of trackarray;let i=index;"(click)="click(i)" >
-     <ion-thumbnail item-start>
-           <img [src]="pic" >
-     </ion-thumbnail>
-       <h2>{{x.artistName}}</h2>
-       <h3>{{x.trackName}}</h3>
-       <p>dope track here......</p>  
-     </ion-item>
 
-    </ion-list>
+
+        <div no-lines  > 
+                 
+                <div class="userProfile">
+                        <h2>Bio</h2>
+                           {{bio}}
+
+                </div>
+        </div>
+        <div no-lines  > 
+                    <div class="Profile">
+                        <h2>Profile</h2>
+                <p><ion-icon name="contact"></ion-icon>&nbsp;&nbsp;{{stagename}}</p> 
+                <p>  <ion-icon name="mail"></ion-icon>&nbsp;&nbsp;{{email}}</p> 
+                <p>  <ion-icon name="locate"></ion-icon>&nbsp;&nbsp;{{city}}</p>
+               
+                <!-- <p *ngFor="let i of genreArr">{{i.genre}}</p> -->
+
+     </div>
+  
+               
+        </div>
+        
+</ion-list>
 
 </div>
- 
+</ion-content>
 <!-- <div class="musicplayer">
   <div class="musicplayer__songtitle">
       <p class="musicplayer__songtitle__scrollingtext">Master_Cheng_Fu
@@ -81,3 +92,10 @@
       </audio>
   </div>
 </div> -->
+
+
+<ion-footer>
+        <ion-toolbar (click)="Booking()">
+          <ion-title align="center">Request Bookings</ion-title>
+        </ion-toolbar>
+</ion-footer>

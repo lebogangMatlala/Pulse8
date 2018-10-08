@@ -28,6 +28,7 @@ export class EditPage {
   stagename;
   g;
   role;
+  city;
 
   profileObj = {};
   constructor(
@@ -84,7 +85,8 @@ export class EditPage {
                 email: userDetails.email,
                 bio: userDetails.bio,
                 stagename:userDetails.stagename,
-                genre:userDetails.genre
+                genre:userDetails.genre,
+                city:userDetails.city
               };
 
               this.arrProfile.push(obj);
@@ -94,6 +96,7 @@ export class EditPage {
               this.bio=obj.bio;
               this.stagename=obj.stagename;
               this.genre=obj.genre;
+              this.city=obj.city
 
               console.log(this.fullname);
               console.log(obj);
@@ -146,7 +149,7 @@ export class EditPage {
         },
         function() {
           // Handle successful uploads on complete
-          alert("successful !!1");
+         
           uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
             console.log("File available at", downloadURL);
 
@@ -197,12 +200,31 @@ back(){
     console.log(form.value.fullname + " " +form.value.email);
     console.log(form.value.bio+" " + this.genre + " " +form.value.stagename);
 
+    this.fullname=form.value.fullname ;
+    this.email=form.value.email;
+    this.stagename=form.value.stagename;
+    this.bio=form.value.bio;
+    this.city=form.value.city;
+
+
+
+    if(this.fullname!=null && this.fullname!=""&& this.email!=null && this.email!="" && this.stagename!=null && this.stagename!="" &&this.bio!=null && this.bio!="" &&this.city!=null && this.city!="")
+    {
+          this.role="Dj"
+    }
+    else{
+      this.role="Audience"
+    }
+
+
     let obj = {
       fullname: form.value.fullname,
       email: form.value.email,
       stagename:form.value.stagename,
       bio: form.value.bio,
-      genre: this.genre
+      city:form.value.city,
+      genre: this.genre,
+      role:this.role
     };
 
     this.arrProfile.push(obj);

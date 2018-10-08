@@ -18,6 +18,7 @@ import { IdentityPage } from '../pages/identity/identity';
 import { CatergoriesPage } from '../pages/catergories/catergories';
 import { HttpClientModule } from '../../node_modules/@angular/common/http';
 import { BookingsPage } from '../pages/bookings/bookings';
+import { EmailComposer } from '@ionic-native/email-composer';
 
 
 
@@ -62,6 +63,7 @@ BookingsPage
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
+    EmailComposer,
     DatabaseProvider
   ]
 })

@@ -1,7 +1,9 @@
 page-profile {
-    .killer{
-        margin-top: 210px;
+    
+    .bn{
+        display: block;
     }
+
     ion-content{
         background: linear-gradient(rgba($color-dark, .9), rgba($color-dark, .8)),url('../../assets/imgs/7.jpg');
         background-size: cover;
@@ -9,18 +11,18 @@ page-profile {
         margin: 0 !important;
         padding: 0 !important;
         animation: 1s ease fadeIn;
+
+       
     }
 
     .hero{
         opacity: .98;
-        position: fixed;
-        z-index: 9999;
         width: 100vw;
         background: linear-gradient(rgba($color-dark, .6), rgba($color-dark, .6)),url('../../assets/imgs/dj4.jpg');
         background-size: cover;
         background-position: bottom !important;
         &__herobanner{
-            height: 160px;
+            height: 20vh;
             display: flex;
             justify-content: space-evenly;
             flex-flow: row nowrap;
@@ -47,31 +49,29 @@ page-profile {
                         text-transform: uppercase;
                         letter-spacing: .2rem;
                     }
-                    &--tag{
-                       margin-left: -5rem;
-                       padding-left: 4em; 
-                    }
+                }
+
+                &--tag{
+                    margin-left: .5rem;
                 }
             }
             &__herobuttoncontainer{
                 position: relative;
-                display: block;
-                height: 150px;
+                display: flex;
+                height: 100%;
                 flex-direction: column;
                 justify-content: flex-end;
-                &--button{
-                    font-size: 1.3rem;
-                    margin-right: -1em;
-                    margin-top: -4.8em;
-                } 
+                bottom: 15%;
             }
         }
+
+      
     }
+    
     .segs{
         margin-top: 89.8px;
     }
     
-
     .item-ios, .item-md{
         background: transparent;
         border: none !important;
@@ -79,10 +79,11 @@ page-profile {
        
     }
    
-
     ion-list{
         position: absolute;
         top: 25vh;
+        
+
     }
 
     .section{
@@ -90,40 +91,47 @@ page-profile {
 
     }
 
-    .musicplayer{
-        z-index: 9999;
-        position: fixed;
-        bottom: 0vh;
-        display: flex;
-        align-items: center;
-        justify-content: space-evenly;
-        flex-direction: column;
-        width: 100vw;
-        background: linear-gradient(rgba($color-dark, .5), rgba($color-dark, .5)),url('../../assets/imgs/dj2.jpg');
-        background-size: cover;
-        height:15vh;
-        &__songtitle{
-            height: 4vh;
-            padding: 0;
-            width: 100%;
-            overflow: scroll;
-            &__scrollingtext{
-                margin: 0;
-                font-size: 2.5rem;
-                text-transform: uppercase;
-                text-align: center;
-                color: white;
-                font-weight: 300;
-                margin-bottom: 2rem;
-                animation-direction: reverse;
-               
-            }
-            .padding{
-                width: 33.3%;
-                padding-right: 7em;
-            }
-        }
+    ion-segment{
+        margin-top: 1rem !important;
+       
     }
 
+    .userProfile{
+        word-wrap: break-word;
+        padding-left: 15px;
+        padding-right: 15px;
+        padding-top: -10px;
+        padding-bottom: 15px;
+        background: rgba(255, 255, 255, 0.020);
+        margin-bottom: -10%;
+        color: rgba(245, 245, 245, 0.829);
+        width: 96%;
+        margin: 0 auto;        
+    }
+    .Profile{
+        word-wrap: break-word;
+        padding-left: 15px;
+        padding-right: 15px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        background: rgba(255, 255, 255, 0);
+        color: rgba(245, 245, 245, 0.829);
+        width: 96%;
+        margin: 0 auto;        
+    }
+    .cards{
+        word-wrap: break-word;
+     padding-top: 2px;
+     padding-left: 8px;
+        background: rgba(253, 253, 253, 0.911);
+        color: rgb(17, 17, 17);
+        width: 96%;
+        margin: 0 auto;  
+        height: 60px;     
+        border-radius: 5px;
+        border: 1px solid rgb(34, 33, 33);
+    }
+
+    
    
 }

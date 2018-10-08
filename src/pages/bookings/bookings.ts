@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import firebase from 'firebase';
 import { DatabaseProvider } from '../../providers/database/database';
+import { EmailComposer } from '@ionic-native/email-composer';
 /**
  * Generated class for the BookingsPage page.
  *
@@ -30,7 +31,7 @@ export class BookingsPage {
 
   massage;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,public db:DatabaseProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,public db:DatabaseProvider,private emailComposer: EmailComposer) {
     this.djKey=this.navParams.get("objBooking");
     console.log(this.djKey);
   }
@@ -72,7 +73,7 @@ export class BookingsPage {
 
    //massage for the dj
 
-   this.massage="I would like to book you for an event.Please respond to my email";
+   this.massage="I would like to book you for an event.Please respond to my email as soon as possible.";
     
     ///Djs details
     firebase.database().ref('Registration/' +this.djKey).on('value', (data: any) => {
@@ -96,4 +97,37 @@ export class BookingsPage {
 
     } 
     
+    send(){
+         this.db.sendEmail().then((available: boolean) => {
+
+
+       let email = {
+         from:this.email,
+         to:this.djEmail,
+         attachments: [
+           'base64:icon.png//iVBORw0KGgoAAAANSUhEUg...',
+         '../../assets/imgs/7.jpg'
+
+         ],
+         subject: 'Booking Request',
+         body: this.massage,
+         isHtml: true
+       };
+       this.emailComposer.open(email);
+
+
+
+   }); 
+
+
+  this.db.createBookings(this.djKey).push({
+    name: this.name,
+    email:this.email,
+ 
+    });
+ 
+    console.log("booked")
+    this.navCtrl.pop();
+  
+    }
 }

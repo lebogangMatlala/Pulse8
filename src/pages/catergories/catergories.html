@@ -2,7 +2,14 @@
 
 <ion-content>
   <div class="navbar">
-      
+
+
+    <!-- <div class="search-box">
+      <input class="search-txt" type="text" placeholder="Type to search">
+      <a class="search-btn" href="#"></a>
+      <i class="fas fa-search"></i>
+    </div> -->
+
     <!-- <ion-item no-lines class="navbarinput">
       <ion-label color="light">
         <ion-icon name="search"></ion-icon>
@@ -12,9 +19,25 @@
      
     </ion-item> -->
     <!-- <ion-searchbar (ionInput)="getItems($event)" class="navbar--input"  (ionCancel)="onCancel($event)"></ion-searchbar> -->
-   
+
 
   </div>
+
+  <ion-item class="drop-down" no-lines style="margin-left: 15px;">
+    <ion-label class="iconblock__iconcontainer__icon--text">Genre</ion-label>
+    <ion-select name="genre" [(ngModel)]="genre" multiple="false"  (ionChange)="input()" interface="popover">
+      <ion-option value="House">House</ion-option>
+      <ion-option value="Hip-Hop">Hip-Hop</ion-option>
+      <ion-option value="Rap">Rap</ion-option>
+      <ion-option value="Commercial house">Commercial house</ion-option>
+      <ion-option value="RnB">R`nB</ion-option>
+      <ion-option value="Deep House">Deep House</ion-option>
+      <ion-option value="Kwaito">Kwaito</ion-option>
+      <ion-option value="Afro Pop">Afro Pop</ion-option>
+      <ion-option value="Soul">Soul</ion-option>
+
+    </ion-select>
+  </ion-item>
   <!-- <div class="iconblock">
     <div class="iconblock__iconcontainer" *ngFor="let category of categoriesArr">
       <div class="iconblock__iconcontainer__icon">
@@ -24,48 +47,45 @@
     </div>
   </div> -->
 
-  <ion-item class="drop-down">
-    <ion-label class="iconblock__iconcontainer__icon--text">Genre</ion-label>
-    <ion-select name="genre" [(ngModel)]="genre" multiple="true" interface="popover">
-      <ion-option value="House" (change)="input($event)">House</ion-option>
-      <ion-option value="Hip-Hop">Hip-Hop</ion-option>
-      <ion-option value="Rap">Rap</ion-option>
-      <ion-option value="Commercial house">Commercial house</ion-option>
-      <ion-option value="RnB">R`nB</ion-option>
-      <ion-option value="Deep House">Deep House</ion-option>
-      <ion-option value="Kwaito">Kwaito</ion-option>
-      <ion-option value="Afro Pop">Afro Pop</ion-option>
-      <ion-option value="Soul">Soul</ion-option>
-    
-    </ion-select>
-  </ion-item>
-  
+
+
   <ion-fab right bottom>
-    <button ion-fab color="light"><ion-icon ios="ios-menu" md="md-menu"></ion-icon></button>
+    <button ion-fab color="light">
+      <ion-icon ios="ios-menu" md="md-menu"></ion-icon>
+    </button>
     <ion-fab-list side="left">
-      <button ion-fab  (click)="profilePage()">  <ion-icon ios="ios-contact" md="md-contact"></ion-icon></button>
-      <button ion-fab  (click)="logout()">  <ion-icon ios="ios-log-out" md="md-log-out"></ion-icon></button>
+      <button ion-fab (click)="profilePage()">
+        <ion-icon ios="ios-contact" md="md-contact"></ion-icon>
+      </button>
+      <button ion-fab *ngIf="condition !== true" (click)="logout()">
+        <ion-icon ios="ios-log-out" md="md-log-out"></ion-icon>
+      </button>
+      <button ion-fab  (click)="logout()">
+          <ion-icon ios="ios-log-in" md="md-log-in"></ion-icon>
+        </button>
+
     </ion-fab-list>
   </ion-fab>
 
   <div class="list">
 
-      <h3 class="iconblock__iconcontainer__icon--text1">Top Chart</h3>  
+    <h3 class="iconblock__iconcontainer__icon--text1">Dj List</h3>
 
- <ion-list no-lines>
-  
-     <ion-item *ngFor="let x of  arrDj;let i = index" (click)="viewProfile(i)">
+    <ion-list no-lines>
+
+      <ion-item *ngFor="let x of  arrDj;let i = index" (click)="viewProfile(i)">
         <ion-thumbnail item-start>
           <img src='{{x.url}}' height="2px">
         </ion-thumbnail>
-        <h2 class="card-heading" >{{x.stagename}}</h2>
-        <p>{{x.genre}}<i class="fas fa-star"></i>
+        <h2 class="card-heading">{{x.stagename}}</h2>
+        <p>{{x.genre}}
+          <i class="fas fa-star"></i>
 
         </p>
         <button ion-button clear item-end>View</button>
       </ion-item>
-    
-    </ion-list> 
-  
+
+    </ion-list>
+
   </div>
 </ion-content>

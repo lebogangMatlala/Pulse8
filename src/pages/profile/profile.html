@@ -5,7 +5,7 @@
 <ion-content>
     <div class="hero">
 
-            <button ion-button clear class="bn" ><ion-icon (click)="back()" style="zoom: 1.5;" ios="ios-arrow-round-back" md="md-arrow-round-back"></ion-icon></button>
+    <button ion-button clear class="bn" ><ion-icon (click)="back()" style="zoom: 1.5;" ios="ios-arrow-round-back" md="md-arrow-round-back"></ion-icon></button>
 
         <div class="hero__herobanner">
             <div class="hero__herobanner__heroimagecontainer">
@@ -15,24 +15,22 @@
                 <div class="hero__herobanner__herotagcontainer__headingcontainer">
                     <h1 class="hero__herobanner__herotagcontainer__headingcontainer--heading">{{fullname}}</h1>
                 </div>
-                <div class="hero__herobanner__herotagcontainer__tagcontainer">
+                <!-- <div class="hero__herobanner__herotagcontainer__tagcontainer">
                     <ion-badge *ngFor="let i of genreArr" outline class="hero__herobanner__herotagcontainer--tag">{{i.genre}}</ion-badge>
                    
-                </div> 
+                </div>  -->
             </div>
             <div class="hero__herobanner__herobuttoncontainer">
-                <button  ion-button clear class="hero__herobanner__herobuttoncontainer--button">
-                    <!-- <ion-icon  name="ios-more" (click)="edit()"></ion-icon> -->
-                  
-                    <ion-icon icon-right style="zoom: 1.8;" ios="ios-more" md="md-more"></ion-icon>
-                    <ion-select  name="role"[(ngModel)]="role" interface="popover">
-                            <ion-option value="Audience">Edit Profile</ion-option>
-                            <ion-option value="Dj">Upload Track</ion-option> 
-                    </ion-select>
-
- 
-                </button>
-            </div>
+                    <button ion-button icon-only clear (click)="edit()">
+                        <ion-icon ios="ios-create" md="md-create"></ion-icon>
+                    </button>
+                    <!-- <button ion-button icon-only clear>
+                        <ion-icon name="star"></ion-icon>
+                    </button> -->
+                    <button ion-button icon-only clear (click)="upload()">
+                        <ion-icon ios="ios-cloud-upload" md="md-cloud-upload"></ion-icon>
+                    </button>
+                </div>
         </div>
     </div>
  
@@ -50,38 +48,58 @@
 
       <div [ngSwitch]="profile">
         <ion-list *ngSwitchCase="'music'"  class="segs">
-            <ion-item no-lines *ngFor="let x of trackarray;let i=index;"(click)="click(i)" > 
+            <ion-item no-lines *ngFor="let x of trackarray;let i=index;" > 
                 <h2>{{x.count}}.{{x.artistName}}</h2>
                 <h3 style="padding-left: 1em;">{{x.trackName}}</h3>
-                <p style="padding-left: 1em;">dope track here......</p> 
+                <p style="padding-left: 1em;">Click the link <a href="{{x.trackLink}}">here......</a></p> 
             </ion-item>
         </ion-list>
     
         <ion-list *ngSwitchCase="'infor'" class="segs">
-            <ion-item no-lines *ngFor="let x of trackarray;let i=index;"(click)="click(i)" > 
-                <h2>{{x.count}}.{{x.artistName}}</h2>
-                <h3 style="padding-left: 1em;">{{x.trackName}}</h3>
-                <p style="padding-left: 1em;">dope track here......</p> 
-            </ion-item>
+            <div no-lines *ngFor="let z of inforArray;let a=index;" > 
+                 
+                            <div class="userProfile">
+                                    <h2>Bio</h2>
+                                       {{z.bio}}
+
+                            </div>
+                    </div>
+                    <div no-lines *ngFor="let z of inforArray;let a=index;" > 
+                                <div class="Profile">
+                                    <h2>Profile</h2>
+                            <p><ion-icon name="contact"></ion-icon>&nbsp;&nbsp;{{z.stagename}}</p> 
+                            <p>  <ion-icon name="mail"></ion-icon>&nbsp;&nbsp;{{z.email}}</p> 
+                            <p>  <ion-icon name="locate"></ion-icon>&nbsp;&nbsp;{{z.city}}</p>
+                            <!-- <p *ngFor="let i of genreArr">{{i.genre}}</p> -->
+
+                 </div>
+                 <!-- <div class="Profile">
+                        <h2>Social Media</h2>
+                <p>f </p> 
+                <p>t</p> 
+                <p>i</p>
+              
+
+     </div> -->
+                           
+                    </div>
+
+                
+          
         </ion-list>
 
         <ion-list *ngSwitchCase="'bookings'" class="segs">
-                <ion-item no-lines *ngFor="let i of bookingArr;let a=index;" > 
-                     
-                    
-                        <ion-card>
+                <div no-lines *ngFor="let i of bookingArr;let a=index;"> 
+                       
+                           <div class="cards">
+                                <h6></h6> 
+                                <p><strong>{{i.fanName}}</strong>, Has requested to Book you,Check your email</p>
+               
+                           </div>
+                                        
+                        </div>
 
-                                <ion-card-content>
-                                        <h2>{{i.fanName}} </h2> 
-                                        <p>Has requested to Book you,Check your email</p>
-                                </ion-card-content>
-                              
-                              </ion-card>
-                </ion-item>
+                        
         </ion-list>
       </div>
-      
-</ion-content>
-
-
       

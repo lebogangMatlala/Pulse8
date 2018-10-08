@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { EmailComposer } from '@ionic-native/email-composer';
 
 import firebase from 'firebase';
 /*
@@ -16,7 +17,7 @@ export class DatabaseProvider {
 
 
 
-  constructor(public http: HttpClient) {
+  constructor(public http: HttpClient,private emailComposer: EmailComposer) {
     console.log('Hello DatabaseProvider Provider');
     
   }
@@ -31,6 +32,22 @@ retrieveProfile(){
 
 
 }
+createBookings(key){
+
+  return firebase.database().ref('Bookings/' + key);
+  }
+  
+  sendEmail(){
+  
+   return this.emailComposer.isAvailable();
+  }
+
+retrieveInformation(key){
+
+  return firebase.database().ref('Registration/'+key);
+
+}
+
 
 retrieveTracks()
 {
