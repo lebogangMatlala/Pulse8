@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, LoadingController, ToastController } from 'ionic-angular';
 import { LoginPage } from '../login/login';
 import { DatabaseProvider } from '../../providers/database/database';
 import firebase from "firebase";
 import { NgForm } from '../../../node_modules/@angular/forms';
 import { BookingsPage } from '../bookings/bookings';
 import { RegisterPage } from '../register/register';
+import { CatergoriesPage } from '../catergories/catergories';
 /**
  * Generated class for the SigninPage page.
  *
@@ -24,6 +25,7 @@ export class SigninPage {
   password;
   userID;
   key;
+  djKey;
   
 
 
@@ -32,10 +34,11 @@ export class SigninPage {
     public navParams: NavParams,
     private alertCtrl: AlertController,
     private db: DatabaseProvider,
-    public loadingCtrl: LoadingController
+    public loadingCtrl: LoadingController,
+    public toastCtrl: ToastController
   ) {
 
-    this.userID=this.navParams.get("objBooking");
+    this.djKey=this.navParams.get("objBooking");
     console.log(this.userID);
   }
 
@@ -58,7 +61,21 @@ export class SigninPage {
         loading.dismiss();
      
         let djKey=this.key;
-        this.navCtrl.push(BookingsPage,{objBooking:this.userID});    
+
+        if(userID == this.djKey){
+          const toast = this.toastCtrl.create({
+            message: 'You cannot Request Booking for yourself',
+            duration: 3000
+          });
+          toast.present();
+          this.navCtrl.push(CatergoriesPage);
+  
+  
+        }else{
+          let djKey=this.key;
+          this.navCtrl.push(BookingsPage,{objBooking:this.userID});
+        }
+            
           
       })
       .catch(error => {

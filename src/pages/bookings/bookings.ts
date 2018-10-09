@@ -106,7 +106,8 @@ condition;
     send(){
 
      
-         this.db.sendEmail().then((available: boolean) => {
+         
+      this.db.sendEmail().then((available: boolean) => {
 
 
        let email = {
