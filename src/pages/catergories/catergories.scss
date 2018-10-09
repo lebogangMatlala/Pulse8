@@ -26,9 +26,13 @@ page-catergories {
     }
  
     ion-item{
-        height: 70px;
+        height:7rem;
         &:nth-child(even){
             background: rgba($color-grey-light, .1) !important;
+            animation: moveInLeft .8s ease;
+        }
+        &:nth-child(odd){
+            animation: moveInRight .5s ease;
         }
         background: transparent !important;
     }

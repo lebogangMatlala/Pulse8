@@ -31,7 +31,7 @@ page-edit {
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding-bottom: 6em;
+            padding-bottom: 6rem;
             &__icon{
               width: 10rem;
               height: 10rem;
@@ -45,7 +45,6 @@ page-edit {
               text-align: center;
               &--headingtext{
                 text-transform: uppercase;
-                
                 font-size: 2rem;
                 font-weight: 300;
               }

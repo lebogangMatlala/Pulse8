@@ -12,49 +12,30 @@
             <div class="hero__herobanner__herotagcontainer">
                 <div class="hero__herobanner__herotagcontainer__headingcontainer">
                     <h1 class="hero__herobanner__herotagcontainer__headingcontainer--heading">{{fullname}}</h1>
+                    <span class="buttoncontainer">
+                        <button ion-button icon-only (click)="edit()">
+                            <ion-icon ios="ios-create" md="md-create"></ion-icon>
+                        </button>
 
-                    <button ion-button icon-only (click)="edit()">
-                        <ion-icon ios="ios-create" md="md-create"></ion-icon>
-                    </button>
-
-                    <button ion-button icon-only (click)="upload()">
-                        <ion-icon ios="ios-cloud-upload" md="md-cloud-upload"></ion-icon>
-                    </button>
-
+                        <button ion-button icon-only (click)="upload()">
+                            <ion-icon ios="ios-cloud-upload" md="md-cloud-upload"></ion-icon>
+                        </button>
+                    </span>
                 </div>
-                <!-- <div class="hero__herobanner__herotagcontainer__tagcontainer">
-                    <ion-badge *ngFor="let i of genreArr" outline class="hero__herobanner__herotagcontainer--tag">{{i.genre}}</ion-badge>
-                   
-                </div>  -->
             </div>
-            <!-- <div class="hero__herobanner__herobuttoncontainer">
-                    <button ion-button icon-only clear (click)="edit()">
-                        <ion-icon ios="ios-create" md="md-create"></ion-icon>
-                    </button>
-                    <!-- <button ion-button icon-only clear>
-                        <ion-icon name="star"></ion-icon>
-                    </button> -->
-            <!-- <button ion-button icon-only clear (click)="upload()">
-                        <ion-icon ios="ios-cloud-upload" md="md-cloud-upload"></ion-icon>
-                    </button> -->
-            <!-- </div> -->
         </div>
     </div>
 
     <ion-segment [(ngModel)]="profile" class="killer">
-
         <ion-segment-button value="infor">
             Infor
         </ion-segment-button>
-
         <ion-segment-button value="music">
             Music
         </ion-segment-button>
-
         <ion-segment-button value="bookings">
             Bookings
         </ion-segment-button>
-
     </ion-segment>
 
     <div [ngSwitch]="profile">
@@ -66,6 +47,11 @@
                     <a href="{{x.trackLink}}">here......</a>
                 </p>
             </ion-item>
+
+            <div *ngIf="trackarray == null || trackarray == undefined">
+                <img src="../../assets/imgs/sound-wavesgrey.png" alt="">
+                <p class="emptytext" style="color: white">No Content Here...</p>
+            </div>
         </ion-list>
 
         <ion-list *ngSwitchCase="'infor'" class="segs">
@@ -103,9 +89,21 @@
             <div class="cardcontainer" no-lines *ngFor="let i of bookingArr;let a=index;">
                 <div class="cards">
                     <h6></h6>
-                    <p>
-                        <strong>{{i.fanName}}</strong>, Has requested to Book you,Check your email <span class="date">{{date}}</span></p>
+                    <p><strong>{{i.fanName}}</strong>, Has requested to Book you,Check your email <span class="date">{{date}}</span></p>
+                </div>
+            </div>
+
+            <div class="nocontent" *ngIf="bookingArr.length == 0 || bookingArr.length == undefined">
+                <div class="nocontent__contents">
+                    <img class="nocontent__contents--image" src="../../assets/imgs/sound-wavesgrey.png" alt="">
+                    <p class="nocontent__contents--text" style="color: white">Its lonely here...</p>
                 </div>
             </div>
         </ion-list>
+
+        <ion-fab right bottom>
+            <button ion-fab color="primary" (click)="logout()">
+                <ion-icon name="log-out"></ion-icon>
+            </button>
+        </ion-fab>
     </div>

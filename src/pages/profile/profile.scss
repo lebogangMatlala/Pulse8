@@ -14,7 +14,6 @@ page-profile {
     }
 
     .hero{
-        opacity: .98;
         width: 100vw;
         background: linear-gradient(rgba($color-dark, .6), rgba($color-dark, .6)),url('../../assets/imgs/dj4.jpg');
         background-size: cover;
@@ -40,18 +39,14 @@ page-profile {
                 flex-flow: column nowrap;
                 justify-content: center;
                 &__headingcontainer{
-                    padding-left: 1rem; 
-                    margin-left: 1em;
+                    margin-left: 1rem;
                     &--heading{
-                        // font-weight: 300;
-                        // text-transform: uppercase;
                         letter-spacing: .2rem;
-                        margin-top:-1em;
                     }
-                    & button{
+                    button{
                         border-radius: 3em;
-                        height: 1.8em;
-                        margin-top: 0.5em;
+                        height: 3rem;
+                        margin-bottom: 2rem;
                     }
                 }
 
@@ -84,17 +79,6 @@ page-profile {
     ion-list{
         position: absolute;
         top: 25vh;
-        & h2{
-            color: white;
-        }
-        
-        & h3 {
-            color: aliceblue;
-        }
-        & a {
-            color: aliceblue;
-        }
-
     }
 
     .listitems{
@@ -125,12 +109,6 @@ page-profile {
         color: rgba(245, 245, 245, 0.829);
         width: 100%;
         margin: 0 auto; 
-        & h2{
-            text-align: center;
-        }   
-        & p{
-            font-size: 0.9em;
-        }    
     }
 
     .bioheading{
@@ -156,12 +134,16 @@ page-profile {
         color: rgba(245, 245, 245, 0.829);
         width: 96%;
         margin: 0 auto; 
-        & p{
+        p{
             margin-left: 2.4em;
             margin-top: -1.7em;
         }  
-        & h2{
+        h2{
             text-align: center;
+            font-weight: 300;
+            font-size: 3rem;
+            letter-spacing: .3rem;
+            text-transform: uppercase;
         }     
     }
 
@@ -175,13 +157,14 @@ page-profile {
 
         &:nth-child(odd){
             .cards{
+                animation: moveInLeft .8s ease;
                 background: rgba($color-grey-light, .2);
             }
         }
 
-        &:nth-child(odd){
+        &:nth-child(even){
             .cards{
-                background: rgba($color-grey-light, .2);
+                animation: moveInRight .5s ease;
             }
         }
     }
@@ -221,4 +204,32 @@ page-profile {
         font-size: 1.2rem;
         font-style: italic;
     }
+
+    .nocontent{
+        animation: fade .6s;
+        display: flex;
+        justify-content: center;
+        width: 100vw;
+        height: 100%;
+        align-items: center;
+        opacity: .5;
+        &__contents{
+            &--image{
+                width: 15rem;
+                height: 15rem;
+                margin: 0 auto;
+                display: block;
+            }
+            &--text{
+                font-size: 2.5rem;
+            }
+        }
+    }
+
+    ion-fab{
+        position: fixed;
+        z-index: 999;
+    }
+
+    @keyframes fade {0%{opacity: .1;}100%{opacity: .5;};}
 }
