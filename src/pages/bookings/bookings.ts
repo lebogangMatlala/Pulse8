@@ -113,8 +113,7 @@ condition;
          from:this.email,
          to:this.djEmail,
          attachments: [
-           'base64:icon.png//iVBORw0KGgoAAAANSUhEUg...',
-         '../../assets/imgs/7.jpg'
+        
 
          ],
          subject: 'Booking Request',
