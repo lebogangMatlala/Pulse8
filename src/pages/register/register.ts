@@ -46,11 +46,7 @@ export class RegisterPage {
     loading.present();
 
     this.db.registerUser(form.value.email, form.value.password).then(data => {
-      
-      
       let userID = firebase.auth().currentUser.uid;
-      
-      
         this.registrationObj = {
           fullname: form.value.fullname,
           password: form.value.password,
@@ -58,8 +54,6 @@ export class RegisterPage {
           genre:"No Genre"
       
       }
-    
-
       firebase
       .database()
       .ref("Pic/" + userID)
@@ -68,24 +62,7 @@ export class RegisterPage {
       });
       firebase.database().ref("Registration/" + userID).set(this.registrationObj);
       loading.dismiss();
-      const alert = this.alertCtrl.create({
-        title: 'Success!',
-        subTitle: `${form.value.email} has successfully been registered!`,
-        buttons: [{
-          text: 'Okay',
-          handler: ()=>{
-            if(this.role=="Dj")
-              //where we are navigating to
-            {  this.navCtrl.push(ProfilePage);
-
-          }else{
-            this.navCtrl.push(CatergoriesPage)
-          }
-        
-          }
-        }]
-      })
-      alert.present();
+      this.navCtrl.setRoot(ProfilePage);
     }).catch((error)=>{
       console.log(error);
       loading.dismiss();
@@ -93,16 +70,6 @@ export class RegisterPage {
       if(error.code == 'auth/email-already-in-use'){
         this.navCtrl.push(LoginPage);
       }
-      const alert = this.alertCtrl.create({
-        title: error.code,
-        subTitle: error.message,
-        buttons: [{
-          text: 'Okay',
-          handler: ()=>{
-          }
-        }]
-      })
-      alert.present();
     })
   }
 }

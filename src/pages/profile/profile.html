@@ -41,16 +41,18 @@
     <div [ngSwitch]="profile">
         <ion-list *ngSwitchCase="'music'" class="segs">
             <ion-item no-lines *ngFor="let x of trackarray;let i=index;" class="listitems">
-                <h2 class="artistname">{{x.count}}.{{x.artistName}}</h2>
+                <h2 class="artistname" (click)="deleteTrack(i)">{{x.count}}.{{x.artistName}}</h2>
                 <h3 class="artisttrack" style="padding-left: 1em;">{{x.trackName}}</h3>
                 <p class="artistlink" style="padding-left: 1em;">Listen to the song
                     <a href="{{x.trackLink}}">here......</a>
                 </p>
             </ion-item>
 
-            <div *ngIf="trackarray == null || trackarray == undefined">
-                <img src="../../assets/imgs/sound-wavesgrey.png" alt="">
-                <p class="emptytext" style="color: white">No Content Here...</p>
+            <div class="nocontent" *ngIf="trackarray.length == 0 || trackarray.length == undefined">
+                <div class="nocontent__contents">
+                    <img class="nocontent__contents--image" src="../../assets/imgs/sound-wavesgrey.png" alt="">
+                    <p class="nocontent__contents--text" style="color: white">Its lonely here...</p>
+                </div>
             </div>
         </ion-list>
 
@@ -69,7 +71,7 @@
 
                     <p>&nbsp;&nbsp;{{z.stagename}}</p>
                     <!-- <i style="zoom:1.9" class="fas fa-mail-bulk"></i> -->
-                    <i style="zoom:1.9" class="fas fa-at"></i>
+                    <ion-icon style="zoom:1.9" name="mail"></ion-icon>
                     <p>&nbsp;&nbsp;{{z.email}}</p>
                     <ion-icon style="zoom:1.9" name="locate"></ion-icon>
                     <p> &nbsp;&nbsp;{{z.city}}</p>
@@ -86,19 +88,20 @@
         </ion-list>
 
         <ion-list *ngSwitchCase="'bookings'" class="segs">
-            <div class="cardcontainer" no-lines *ngFor="let i of bookingArr;let a=index;">
+            <div no-lines class="cardcontainer" *ngFor="let i of bookingArr;let a=index;" (click)="viewBooking(a)">
+
                 <div class="cards">
-                    <h6></h6>
-                    <p><strong>{{i.fanName}}</strong>, Has requested to Book you,Check your email <span class="date">{{date}}</span></p>
+                    <p><strong>{{i.fanName}}</strong>, Has requested to Book you,Check your email.</p>
+                    <p class="text">{{i.date}} {{i.time}}</p>
                 </div>
             </div>
 
             <div class="nocontent" *ngIf="bookingArr.length == 0 || bookingArr.length == undefined">
-                <div class="nocontent__contents">
-                    <img class="nocontent__contents--image" src="../../assets/imgs/sound-wavesgrey.png" alt="">
-                    <p class="nocontent__contents--text" style="color: white">Its lonely here...</p>
+                    <div class="nocontent__contents">
+                        <img class="nocontent__contents--image" src="../../assets/imgs/sound-wavesgrey.png" alt="">
+                        <p class="nocontent__contents--text" style="color: white">Its lonely here...</p>
+                    </div>
                 </div>
-            </div>
         </ion-list>
 
         <ion-fab right bottom>

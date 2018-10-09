@@ -167,4 +167,26 @@ page-view-profile {
         }
     }
 
+    
+    .nocontent{
+        animation: fade .6s;
+        display: flex;
+        justify-content: center;
+        width: 100vw;
+        height: 100%;
+        align-items: center;
+        opacity: .5;
+        &__contents{
+            &--image{
+                width: 15rem;
+                height: 15rem;
+                margin: 0 auto;
+                display: block;
+            }
+            &--text{
+                font-size: 2.5rem;
+            }
+        }
+    }
+
  }

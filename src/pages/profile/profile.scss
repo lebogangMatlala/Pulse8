@@ -180,6 +180,11 @@ page-profile {
         border-radius: 5px;
         border: 1px solid rgb(34, 33, 33);   
     }
+    .text{
+        margin-top: -1em;
+        font-size: 1rem;
+        font-weight: 100;
+    }
     
     .cards:not(:last-child){
         margin-top: 1rem;
