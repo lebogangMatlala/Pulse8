@@ -32,7 +32,7 @@ export class ViewProfilePage {
   genreArr =[];
   artistName;
   id;
-  profile ="music";
+  profile ="infor";
   count=1;
   key;
   city;

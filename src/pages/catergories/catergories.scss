@@ -4,143 +4,52 @@ page-catergories {
         background-size: cover !important;
         animation: 1s ease fadeIn;
     }
-
+ 
     .searchbar{
         height:5vh;
         margin-top: 6rem;
-        display: flex; 
+        display: flex;
         justify-content: space-evenly;
     }
-
-    .iconblock{
-        width: 100vw;
-        display: flex;
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        margin-top: .5rem;
-        &__iconcontainer{
-            flex: 0 0 auto;
-            &:not(:last-child){
-                margin-right: 1rem;
-            }
-            &:first-child{
-                margin-left: 1rem;
-            }
-            &__icon{
-                &--image{
-                    width: 1rem;
-                    height: 1rem;
-                    display: block;
-                    margin: 0 auto;
-                    border-radius: 50%;
-                }
-                &--text{
-                    color: $color-primary-light;
-                    // text-align: center;
-                    padding: 0; 
-                    margin: 0;
-                    text-transform: capitalize;
-                    padding-right: 1em;
-
-                }
-                &--text1{
-                    color: white;
-                    padding-left: 1em;
-                    // padding-top: 1em;
-                    padding-bottom: 1em; 
-                    margin: 0;
-                    text-transform: capitalize;
-
-                }
-                &:nth-child(even){
-                    background: linear-gradient(rgba($color-primary-dark, .9), rgba($color-primary-dark, .9))
-                }
-            }
-        }
+ 
+    .dropdown{
+        background: rgba($color-grey-light, .1) !important;
+        border-radius: 5rem;
+        height: 2rem;
+        color: $color-primary-light;
+        width: 95%;
+        margin: .5rem auto;
     }
-
+ 
     .card-heading{
         color: $color-primary-light;
     }
-
+ 
     ion-item{
         height: 70px;
         &:nth-child(even){
-            background: rgba($color-grey-light, .1) !important;    
+            background: rgba($color-grey-light, .1) !important;
         }
         background: transparent !important;
-        
     }
     .item-md ion-thumbnail ion-img, .item-md ion-thumbnail img {
         padding-top:15px;
         width: 50px;
         height: 60px;
     }
-
+ 
     .list{
         overflow: scroll !important;
         height: 80vh;
     }
-    
-    .fab-md-light{
-        height: 5rem;
-        width: 5rem;
-    }
-    .drop-down{
-        height: 0.5em;
-        margin-top: -3.5em;
-        padding-right: 0em;
-        padding-left: 3em;
-        // right: 2.8em;
-        color: white;
-        border-radius: 1em;
-        width: 92%;
-}
-    .navbar{
-        height: 10vh;
-        display: flex;
-        justify-content: flex-end;
-    }
-    .search-box{
-        // position: relative;
-        // top: 50%;
-        // left: 50%;
-        // transform: translate(-50%, -50%);
-        background:  $color-primary-dark;
-        height: 40px;
-        border-radius: 40px;
-        padding: 10px 0 1px 4px;
-    }
-    .search-box:hover > .search-txt{
-        width: 240px;
-        padding: 0 6px;
-    }
-    .search-box:hover > .search-btn{
-        background: white;
-    }
-    .search-btn{
-        color: #e84118;
-        float: right;
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        background: #2f3640;
-        display: flex;
-        margin-top: -10px;
-        justify-content: center;
-        align-items: center;
-        transition: 0.4s;
-    }
-    .search-txt{
-        border: none;
-        background: none;
-        outline: none;
-        float: left;
-        padding: 0;
-        color: black;
-        font-size: 16px;
-        transition: 0.4s;
-        line-height: 28px;
-        width: 0px;
+ 
+    .heading{
+        font-size: 3rem;
+        letter-spacing: .2rem;
+        color: $color-grey-light;
+        text-transform: uppercase;
+        font-weight: 300;
+        text-align: center;
+        text-shadow: .2rem .3rem .5rem rgba($color-grey-light,.4)
     }
 }

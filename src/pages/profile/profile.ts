@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ActionSheetController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ActionSheetController, AlertController } from 'ionic-angular';
 import { UploadPage } from '../upload/upload';
 import { EditPage } from '../edit/edit';
 import firebase from 'firebase';
 import { CatergoriesPage } from '../catergories/catergories';
 import { DatabaseProvider } from '../../providers/database/database';
+import { LoginPage } from '../login/login';
 /**
  * Generated class for the ProfilePage page.
  *
@@ -31,13 +32,18 @@ export class ProfilePage {
   inforArray=[];
   genre;
   count=1;
-
-  profile ="music";
-
+  date = new Date();
+  profile ="infor";
+    id;
   artistName;
+
+  condition;
+
+
+  displayMsg=" would like to book you for an event.Please respond to the email sent on ";
   
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,public actionSheetCtrl: ActionSheetController,public db:DatabaseProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,public alertCtrl: AlertController,public db:DatabaseProvider) {
 
 
   }
@@ -51,12 +57,13 @@ export class ProfilePage {
     firebase.auth().onAuthStateChanged((user)=> {
       if (user) {
         console.log('User has sign in');   
-         
-        var id =firebase.auth().currentUser.uid;
+        this.condition=true;
+        
+        this.id =firebase.auth().currentUser.uid;
 
-        console.log(id);
+        console.log(this.id);
  
-        firebase.database().ref('Registration/' + id).on('value', (data: any) => {
+        firebase.database().ref('Registration/' + this.id).on('value', (data: any) => {
  
           let userDetails = data.val();
           this.genre =userDetails.genre;
@@ -83,7 +90,7 @@ export class ProfilePage {
  
           if(userDetails!=null && userDetails!='')
           {
-            firebase.database().ref('Pic/' + id).on('value', (data) => {
+            firebase.database().ref('Pic/' + this.id).on('value', (data) => {
               var infor = data.val();
               this.pic = infor.url;
             //  console.log("pciture"+infor);
@@ -96,7 +103,7 @@ export class ProfilePage {
             });
       
 ///track
-            firebase.database().ref('track/' + id).on('value', (data) => {
+            firebase.database().ref('track/' + this.id).on('value', (data) => {
               var infor = data.val();
 
              
@@ -141,7 +148,7 @@ export class ProfilePage {
 
              //artist
 
-              firebase.database().ref('artists/' + id).on('value', (data)=>{
+              firebase.database().ref('artists/' + this.id).on('value', (data)=>{
                 var inforArt = data.val();
 
                 if( inforArt!=null && inforArt!="")
@@ -179,7 +186,7 @@ export class ProfilePage {
 
 /////
             let obj = {
-              id:id,
+              id:this.id,
               fullname: userDetails.fullname,
               email:userDetails.email,
               surname:userDetails.surname
@@ -198,7 +205,7 @@ export class ProfilePage {
 
         //retrieve booking information
 
-        this.db.retrieveBooking(id).on('value', (data) => {
+        this.db.retrieveBooking(this.id).on('value', (data) => {
               var bookingInfor = data.val();
              
               console.log(bookingInfor);
@@ -220,6 +227,7 @@ export class ProfilePage {
                 fanEmail: bookingInfor[k].email,
                time: bookingInfor[k].time,
                date: bookingInfor[k].date,
+               msg:this.displayMsg,
                 
                 key: k,
                 count:this.count++
@@ -231,6 +239,7 @@ export class ProfilePage {
 
                 
 
+                
                 console.log(this.bookingArr);
               }
               this.massage=""
@@ -251,7 +260,7 @@ export class ProfilePage {
 
             //retrieve profile information
 
-            this.db.retrieveInformation(id).on('value', (data) => {
+            this.db.retrieveInformation(this.id).on('value', (data) => {
               var userInfor = data.val();
               console.log("helo bbs");
               console.log(userInfor);
@@ -293,6 +302,7 @@ export class ProfilePage {
  
       }
       else{
+        this.condition=false;
         console.log('User has not sign in');
  
         
@@ -304,7 +314,79 @@ export class ProfilePage {
     this.navCtrl.push(CatergoriesPage);
   }
 
+  viewBooking(a)
+  {
+     let fanName=this.bookingArr[a].fanName;
+     let fanEmail=this.bookingArr[a].fanEmail;
+     let fanMsg=this.bookingArr[a].msg;
+     let fanDate=this.bookingArr[a].date;
+     let fanTime=this.bookingArr[a].time;
+     let key =this.bookingArr[a].key;
+     console.log(key);
+    console.log("array");
+    console.log(this.bookingArr);
 
+
+    const alert = this.alertCtrl.create({
+      subTitle: fanName +''+fanMsg+" "+fanDate+" "+ fanTime +" Email :"+fanEmail,
+      buttons: [
+        {
+          text: 'Cancel',
+          handler: data => {
+            console.log('Cancel clicked');
+
+          }
+        },
+        {
+          text: 'Delete',
+          handler: data => {
+            console.log('Delete clicked');
+            firebase.database().ref('Bookings/'+this.id).child(key).remove().then(()=>{
+              this.navCtrl.push(ProfilePage);
+            });
+          }
+        }
+      ]
+    });
+    alert.present();
+
+  
+  }
+
+  deleteTrack(i)
+  {
+        
+      
+        let key=this.trackarray[i].key;
+
+        console.log(key);
+
+        const alert = this.alertCtrl.create({
+          subTitle: " Do you really want to delete your track",
+          buttons: [
+            {
+              text: 'No',
+              handler: data => {
+                console.log('No clicked');
+    
+               
+    
+    
+              }
+            },
+            {
+              text: 'Yes',
+              handler: data => {
+                console.log('Yes clicked');
+                firebase.database().ref('artists/'+this.id).child(key).remove();
+              }
+            }
+          ]
+        });
+        alert.present();
+
+
+  }
   
 
   edit()
@@ -320,4 +402,26 @@ export class ProfilePage {
   // {
   //   this.navCtrl.push('PlayerPage',{obj:i});
   // }
+
+  logout()
+  {
+
+
+    if(this.condition==true)
+    {
+      firebase.auth().signOut().then(() =>{
+          // Sign-out successful.
+          console.log(" Sign-out successful");
+          this.navCtrl.setRoot(LoginPage);
+          }).catch(function(error) {
+          // An error happened.
+          console.log(error);
+      });
+    }
+    else{
+      this.navCtrl.setRoot(CatergoriesPage);
+    }
+
+ 
+   }
 }

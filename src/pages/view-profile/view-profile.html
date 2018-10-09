@@ -7,7 +7,9 @@
 
 <ion-content>
     <div class="hero">
-        <button ion-button clear class="bn"><ion-icon (click)="back()" style="zoom: 1.5;" ios="ios-arrow-round-back" md="md-arrow-round-back"></ion-icon></button>
+        <button ion-button clear class="bn">
+            <ion-icon (click)="back()" style="zoom: 1.5;" ios="ios-arrow-round-back" md="md-arrow-round-back"></ion-icon>
+        </button>
 
         <div class="hero__herobanner">
             <div class="hero__herobanner__heroimagecontainer">
@@ -28,73 +30,69 @@
     </div>
 
     <ion-segment [(ngModel)]="profile" class="killer">
-        <ion-segment-button value="music">
-            Music
-        </ion-segment-button>
         <ion-segment-button value="infor">
             Infor
         </ion-segment-button>
-
+        <ion-segment-button value="music">
+            Music
+        </ion-segment-button>
     </ion-segment>
 
+    <div [ngSwitch]="profile" class="profile">
+        <ion-list *ngSwitchCase="'music'" class="segs">
+            <ion-item class="listitems" no-lines *ngFor="let x of trackarray;let i=index;">
+                <h2 class="artistname">{{x.count}}.{{x.artistName}}</h2>
+                <h3 class="artisttrack" style="padding-left: 1em;">{{x.trackName}}</h3>
+                <p class="artistlink" style="padding-left: 1em;">Listen to the song
+                    <a href="{{x.trackLink}}">here......</a>
+                </p>
+            </ion-item>
+        </ion-list>
 
-<div [ngSwitch]="profile" class="profile">
-    <ion-list *ngSwitchCase="'music'"  class="segs">
-   
-        <!-- <h2 align="center" style="font-weight: 50;font-size: 2em;margin-top: 7vh;margin-left: 7vh;color: gray;">{{massage}}</h2> -->
-
-         <ion-item no-lines *ngFor="let x of trackarray;let i=index;" >
-                <h2>{{x.count}}.{{x.artistName}}</h2>
-                <h3 style="padding-left: 1em;">{{x.trackName}}</h3>
-                <p style="padding-left: 1em;">Click the link <a  href="{{x.trackLink}}">here......</a></p> 
-         </ion-item>
-       
-    </ion-list>
-
-<ion-list *ngSwitchCase="'infor'" class="segs">
-
-
-        <div no-lines  > 
-                 
+        <ion-list *ngSwitchCase="'infor'" class="segs">
+            <div no-lines class="container">
                 <div class="userProfile">
-                        <h2>Bio</h2>
-                           {{bio}}
-
+                    <h2 class="bioheading">Bio</h2>
+                    <p class="biotext">{{bio}}</p>
                 </div>
-        </div>
-        <div no-lines  > 
-                    <div class="Profile">
-                        <h2>Profile</h2>
-                <p><ion-icon name="contact"></ion-icon>&nbsp;&nbsp;{{stagename}}</p> 
-                <p>  <ion-icon name="mail"></ion-icon>&nbsp;&nbsp;{{email}}</p> 
-                <p>  <ion-icon name="locate"></ion-icon>&nbsp;&nbsp;{{city}}</p>
-               
-                <!-- <p *ngFor="let i of genreArr">{{i.genre}}</p> -->
+            </div>
+            <div no-lines>
+                <div class="profile">
+                    <h2 class="bioheading">Profile</h2>
+                    <ion-icon style="zoom: 1.5" name="contact" id="icons"></ion-icon>
+                    <p class="p">
+                        &nbsp;&nbsp;{{stagename}}
+                    </p>
 
-     </div>
-  
-               
-        </div>
-        
-</ion-list>
+                    <ion-icon style="zoom: 1.5" name="mail" id="icons"></ion-icon>
+                    <p class="p">
+                        &nbsp;&nbsp;{{email}}
+                    </p>
 
-</div>
+                    <ion-icon style="zoom: 1.5" name="locate" id="icons"></ion-icon>
+                    <p class="p">
+                        &nbsp;&nbsp;{{city}}
+                    </p>
+                </div>
+            </div>
+        </ion-list>
+
+    </div>
 </ion-content>
 <!-- <div class="musicplayer">
-  <div class="musicplayer__songtitle">
-      <p class="musicplayer__songtitle__scrollingtext">Master_Cheng_Fu
-          <br> Umcimbi_ft_Lelo_Kamau</p>
-  </div>
-  <div class="audioplayer">
-      <audio controls>
-          <source src="../../assets/Master_Cheng_Fu_-_Umcimbi_ft_Lelo_Kamau.mp3" type="audio/mpeg">
-      </audio>
-  </div>
-</div> -->
-
+      <div class="musicplayer__songtitle">
+          <p class="musicplayer__songtitle__scrollingtext">Master_Cheng_Fu
+              <br> Umcimbi_ft_Lelo_Kamau</p>
+      </div>
+      <div class="audioplayer">
+          <audio controls>
+              <source src="../../assets/Master_Cheng_Fu_-_Umcimbi_ft_Lelo_Kamau.mp3" type="audio/mpeg">
+          </audio>
+      </div>
+     </div> -->
 
 <ion-footer>
-        <ion-toolbar (click)="Booking()">
-          <ion-title align="center">Request Bookings</ion-title>
-        </ion-toolbar>
+    <ion-toolbar color="primary" (click)="Booking()">
+        <ion-title align="center">Request Bookings</ion-title>
+    </ion-toolbar>
 </ion-footer>

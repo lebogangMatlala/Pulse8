@@ -27,12 +27,12 @@ page-view-profile {
                 display: flex;
                 align-items: center;
                 &--image{
-                    width: 10rem; 
+                    width: 10rem;
                     height: 10rem;
                     border-radius: 50%;
                 }
             }
-
+ 
             &__herotagcontainer{
                 display: flex;
                 flex-flow: column nowrap;
@@ -46,13 +46,13 @@ page-view-profile {
                         letter-spacing: .2rem;
                     }
                 }
-
+ 
                 &--tag{
                     margin-left: .5rem;
                     border-radius: 5rem;
                 }
             }
-
+ 
             &__herobuttoncontainer{
                 display: flex;
                 height: 25vh;
@@ -61,26 +61,26 @@ page-view-profile {
                 &--button{
                     animation: pulseate 1s ease infinite;
                     font-size: 1rem;
-                } 
+                }
             }
         }
     }
-
+ 
     .item-ios, .item-md{
         background: transparent;
         border: none !important;
         color: $color-primary-light !important;
     }
-
+ 
     ion-list{
         position: absolute;
         top: 25vh;
     }
-
+ 
     ion-segment{
-       margin-top: 1.5rem !important; 
+       margin-top: 1.5rem !important;
     }
-
+ 
     .userProfile{
         word-wrap: break-word;
         padding-left: 15px;
@@ -90,8 +90,8 @@ page-view-profile {
         background: rgba(255, 255, 255, 0.020);
         margin-bottom: -10%;
         color: rgba(245, 245, 245, 0.829);
-        width: 96%;
-        margin: 0 auto;        
+        width: 100vw;
+        margin: 0 auto;
     }
     .Profile{
         word-wrap: break-word;
@@ -102,7 +102,7 @@ page-view-profile {
         background: rgba(255, 255, 255, 0);
         color: rgba(245, 245, 245, 0.829);
         width: 96%;
-        margin: 0 auto;        
+        margin: 0 auto; 
     }
     .cards{
         word-wrap: break-word;
@@ -111,9 +111,59 @@ page-view-profile {
         background: rgba(253, 253, 253, 0.911);
         color: rgb(17, 17, 17);
         width: 96%;
-        margin: 0 auto;  
-        height: 60px;     
+        margin: 0 auto;
+        height: 60px;
         border-radius: 5px;
         border: 1px solid rgb(34, 33, 33);
     }
-}
+    .bioheading{
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: .3rem;
+        font-size: 3rem;
+        font-weight: 300;
+    }
+ 
+    .biotext{
+        text-align: center;
+    }
+ 
+    #icons{
+        // transform: scale(1.5);
+        margin-left: 0.5em;
+    }
+    h2{
+        // text-align: center;
+    }
+    
+    .p{
+        margin-left: 3.5em;
+        margin-top: -1.5em;
+    }
+    ion-badge{
+        background: rgba($color-grey-light, .1) !important;
+        color: $color-grey-light !important;
+        border: 1px solid $color-primary-light;
+    }
+
+    .artistname , .artisttrack{
+        color: white;
+    }
+
+    .artistname,{
+        text-transform: capitalize;
+        letter-spacing: .3rem;
+    }
+
+    .artisttrack{
+        text-transform: capitalize;
+        letter-spacing: .2rem;
+    }
+
+    .listitems{
+        width: 100vw;
+        &:nth-child(even){
+            background: rgba($color-grey-light, .1);
+        }
+    }
+ }

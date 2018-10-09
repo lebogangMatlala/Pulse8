@@ -68,6 +68,7 @@ export class LoginPage {
             {
               text: "Ok",
               handler: () => {
+                this.navCtrl.push(RegisterPage);
               }
             }
           ]

@@ -95,7 +95,7 @@ export class CatergoriesPage {
     console.log(key);
     console.log(profile);
     
-
+    this.arrDj=[];
     for(var i = 0; i <key.length; i++)
      {
         let k = key[i];
@@ -154,6 +154,7 @@ export class CatergoriesPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CategoriesPage');
+    
 
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
@@ -227,18 +228,9 @@ export class CatergoriesPage {
     if(this.condition==true)
       {
         console.log("user has signed in")
-        if(this.role=="Dj")
-        {
+       
           this.navCtrl.push(ProfilePage);
-        }
-         else{
-          alert("not a dj")
-            const toast = this.toastCtrl.create({
-                  message: 'You cannot view ur Profile for now',
-                  duration: 3000
-                });
-                toast.present();
-              }
+     
    
       }
       else{
@@ -274,47 +266,58 @@ export class CatergoriesPage {
 
    input()
    {
-    // console.log(this.genre);
- 
-    for(let i = 0; i < this.arrDj.length;i++)
-    {
-     
-        // console.log("HELO guys");
-        // console.log(this.arrDj[i].genre[0]);
-       
-        if(this.genre==this.arrDj[i].genre[0]){
-          console.log("they are the same");
-          console.log(this.arrDj[i].stagename);
-        this.obj={
-         
-          stagename:this.arrDj[i].stagename,
-          genre:this.arrDj[i].genre,
-          url:this.globalPic[i],
-          // key:this.arrDj[i].k
-        }
+    this.arrDj.length=0;
 
-        console.log(this.arrDj);
+    this.db.retrieveProfile().on("value", (data) => {
+             let profile = data.val();
+              let key = Object.keys(profile);
+             console.log(key);
+             console.log(profile);
 
-       //this.arrDj.push(this.obj)
+     for(var i = 0; i <key.length; i++)
+         {
+              let k = key[i];
+              let stagename = profile[k].stagename
+              this.role=profile[k].role;
+               let genre = profile[k].genre;
 
+            console.log(this.role +"  "+ genre);
+      if(this.role=="Dj"){
+             if(genre!= null && stagename!=null){
+                console.log("dj" + k + stagename )
+               let objDj ={
+               role:this.role,
+               stagename:stagename,
+                genre:genre,
+                url:this.globalPic[i],
+                key:k
+  }
+      console.log(objDj);
+      this.arrDj.push(objDj);
+      this.arrDj = this.arrDj.filter(x => x.genre[0] === this.genre);
 
+   }
+         else{
+               console.log("no stage name or genre"+k)
+             }
 
-         
-        }
-        else{
-          console.log("no data");
-          console.log(this.arrDj[i].genre[0]);
-        }
+             }
 
-        
-      }
+          else{
+                console.log("audience"+k)
+             }
+
+             }
+     });
+
+       console.log(this.arrDj);
+       }
 
       
       
       }
       
 
-    }
     
   
   
