@@ -73,7 +73,7 @@ export class SigninPage {
   
         }else{
           let djKey=this.key;
-          this.navCtrl.push(BookingsPage,{objBooking:this.userID});
+          this.navCtrl.push(BookingsPage,{objBooking:this.djKey});
         }
             
           

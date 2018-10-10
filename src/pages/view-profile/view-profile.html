@@ -64,24 +64,11 @@
                     <p class="biotext">{{bio}}</p>
                 </div>
             </div>
-            <div no-lines>
-                <div class="profile">
-                    <h2 class="bioheading">Profile</h2>
-                    <ion-icon style="zoom: 1.5" name="contact" id="icons"></ion-icon>
-                    <p class="p">
-                        &nbsp;&nbsp;{{stagename}}
-                    </p>
-
-                    <ion-icon style="zoom: 1.5" name="mail" id="icons"></ion-icon>
-                    <p class="p">
-                        &nbsp;&nbsp;{{email}}
-                    </p>
-
-                    <ion-icon style="zoom: 1.5" name="locate" id="icons"></ion-icon>
-                    <p class="p">
-                        &nbsp;&nbsp;{{city}}
-                    </p>
-                </div>
+            <div class="profile">
+                <h2 class="bioheading">Profile</h2>
+                <p class="information"><ion-icon name="contact"></ion-icon> <span class="infotext">{{stagename}}</span></p>
+                <p class="information"><ion-icon name="mail"></ion-icon> <span class="infotext">{{email}}</span></p>
+                <p class="information"><ion-icon name="locate"></ion-icon> <span class="infotext">{{city}}</span></p>
             </div>
         </ion-list>
 

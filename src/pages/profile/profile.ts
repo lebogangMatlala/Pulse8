@@ -247,7 +247,7 @@ export class ProfilePage {
               email: userInfor.email,
               city: userInfor.city
             }
-
+            console.log(`this is the empty stage name: ${objInfo.stagename}`);
             this.inforArray.push(objInfo);
 
             console.log("helo bbs");

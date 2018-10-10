@@ -167,7 +167,15 @@ page-view-profile {
         }
     }
 
-    
+        .information{
+        margin-left: 1rem;
+        .infotext{
+            margin-left: .5rem;
+            font-size: 1.6rem;
+            font-weight: 300;
+        }
+    }
+
     .nocontent{
         animation: fade 1s ease;
         display: flex;

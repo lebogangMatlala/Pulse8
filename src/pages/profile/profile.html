@@ -57,33 +57,31 @@
         </ion-list>
 
         <ion-list *ngSwitchCase="'infor'" class="segs">
-            <div no-lines *ngFor="let z of inforArray;let a=index;">
-
+            <div no-lines *ngFor="let z of inforArray;let a=index;" class="container">
                 <div class="userProfile">
                     <h2 class="bioheading">Bio</h2>
                     <p class="biotext">{{z.bio}}</p>
                 </div>
+                <div class="nocontent1" *ngIf="z.bio == '' || z.bio == undefined">
+                    <div class="nocontent1__contents">
+                        <img class="nocontent1__contents--image" src="../../assets/imgs/sound-wavesgrey.png" alt="">
+                        <p class="nocontent1__contents--text" style="color: white">Its lonely here...</p>
+                    </div>
+                </div>
             </div>
             <div no-lines *ngFor="let z of inforArray;let a=index;">
-                <div class="Profile">
+                <div class="profile">
                     <h2 class="bioheading">Profile</h2>
-                    <ion-icon style="zoom:1.9" name="contact"></ion-icon>
-
-                    <p>&nbsp;&nbsp;{{z.stagename}}</p>
-                    <!-- <i style="zoom:1.9" class="fas fa-mail-bulk"></i> -->
-                    <ion-icon style="zoom:1.9" name="mail"></ion-icon>
-                    <p>&nbsp;&nbsp;{{z.email}}</p>
-                    <ion-icon style="zoom:1.9" name="locate"></ion-icon>
-                    <p> &nbsp;&nbsp;{{z.city}}</p>
-                    <!-- <p *ngFor="let i of genreArr">{{i.genre}}</p> -->
-
+                    <p *ngIf="z.stagename != undefined || z.stagename != z.stagename" class="information">
+                        <ion-icon name="contact"></ion-icon> <span class="infotext">{{z.stagename}}</span>
+                    </p>
+                    <p class="information">
+                        <ion-icon name="mail"></ion-icon> <span class="infotext">{{z.email}}</span>
+                    </p>
+                    <p *ngIf="z.city != undefined || z.city != z.city" class="information">
+                        <ion-icon name="locate"></ion-icon> <span class="infotext">{{z.city}}</span>
+                    </p>
                 </div>
-                <!-- <div class="Profile">
-                        <h2>Social Media</h2>
-                <p>f </p> 
-                <p>t</p> 
-                <p>i</p>
-     </div> -->
             </div>
         </ion-list>
 
@@ -97,11 +95,11 @@
             </div>
 
             <div class="nocontent" *ngIf="bookingArr.length == 0 || bookingArr.length == undefined">
-                    <div class="nocontent__contents">
-                        <img class="nocontent__contents--image" src="../../assets/imgs/sound-wavesgrey.png" alt="">
-                        <p class="nocontent__contents--text" style="color: white">Its lonely here...</p>
-                    </div>
+                <div class="nocontent__contents">
+                    <img class="nocontent__contents--image" src="../../assets/imgs/sound-wavesgrey.png" alt="">
+                    <p class="nocontent__contents--text" style="color: white">Its lonely here...</p>
                 </div>
+            </div>
         </ion-list>
 
         <ion-fab right bottom>

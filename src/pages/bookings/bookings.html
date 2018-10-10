@@ -19,25 +19,14 @@
 
     <p>You are about to book this DJ for an event,Please make sure the details of the DJ are correct.</p>
 
-    <ion-grid>
-      <ion-row>
-        <ion-col col-4>
-          <h5>To</h5>
-          <h5>Receiver</h5>
-          <h5>Sender</h5>
-          <h5>From</h5>
-          <h5>Massage</h5>
-        </ion-col>
-
-        <ion-col col-8>
-          <p>: {{djEmail}}</p>
-          <p>: {{djName}}</p>
-          <p>: {{name}}</p>
-          <p>: {{email}}</p>
-          <p>: {{massage}}</p>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+    <div class="messagecontainer">
+      <div class="messages">
+        <p><span class="title">To:</span> <span class="text">{{djName}}</span></p>
+        <p><span class="title">Receiver:</span> <span class="text">{{name}}</span> </p>
+        <p><span class="title">Sender:</span> <span class="text">{{email}}</span> </p>
+        <p><span class="title">Message:</span> <span class="text">{{massage}}</span> </p>
+      </div>
+    </div>
 
     <button class="contentflex__buttoncontent--button" type="submit" ion-button block (click)="send()">Request</button>
   </div>
