@@ -1,6 +1,3 @@
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-
 <ion-content>
     <ion-item class="dropdown" no-lines>
       <ion-label class="dropdown--text">Genre</ion-label>
@@ -20,7 +17,6 @@
     <h3 class="heading">Pulse List</h3>
     <div class="list">
       <ion-list no-lines>
-   
         <ion-item *ngFor="let x of  arrDj;let i = index" (click)="viewProfile(i)">
           <ion-thumbnail item-start>
             <img src='{{x.url}}' height="2px">
@@ -28,13 +24,10 @@
           <h2 class="card-heading">{{x.stagename}}</h2>
           <p>{{x.genre}}
             <i class="fas fa-star"></i>
-   
           </p>
           <button ion-button clear item-end>View</button>
         </ion-item>
-   
       </ion-list>
-   
     </div>
    
     <ion-fab right bottom>

@@ -44,7 +44,7 @@
                 <h2 class="artistname">{{x.count}}.{{x.artistName}}</h2>
                 <h3 class="artisttrack" style="padding-left: 1em;">{{x.trackName}}</h3>
                 <p class="artistlink" style="padding-left: 1em;">Listen to the song
-                    <a href="{{x.trackLink}}">here......</a>
+                    <a (click)="openLink(x.trackLink)">here......</a>
                 </p>
             </ion-item>
 

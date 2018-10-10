@@ -450,8 +450,10 @@ export class ViewProfilePage {
 
     }
     
-        
-  
+  }
 
+  openLink(link){
+    window.open(link);
+    console.log(link);
   }
 }

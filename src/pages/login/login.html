@@ -1,7 +1,4 @@
 <ion-content>
-    <!-- creating the form  
-giving the form a template variable of f-->
-
     <div class="contentflex">
         <form #f="ngForm" (ngSubmit)="login(f)">
             <div class="contentflex__iconcontainer">
@@ -26,18 +23,10 @@ giving the form a template variable of f-->
             </div>
 
             <div class="contentflex__buttoncontent">
-
-                <!-- creating the submission button for the form 
-                  -[disabled]="!f.valid" will make the button not work unless valid data is entered
-                  -type="submit" triggers the ngsubmit method-->
-                <button class="contentflex__buttoncontent--button" type="submit" ion-button block [disabled]="!f.valid">Sign
-                    In</button>
-
+                <button class="contentflex__buttoncontent--button" type="submit" ion-button block [disabled]="!f.valid">Sign In</button>
                 <button class="contentflex__buttoncontent--button2">Create An Account</button>
                 <button class="contentflex__buttoncontent--button2">Forgot Password</button>
             </div>
         </form>
-
     </div>
-
 </ion-content>
