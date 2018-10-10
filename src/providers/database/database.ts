@@ -15,7 +15,7 @@ import firebase from 'firebase';
 export class DatabaseProvider {
 
 
-
+  arr=[];
 
   constructor(public http: HttpClient,private emailComposer: EmailComposer) {
     console.log('Hello DatabaseProvider Provider');
@@ -155,6 +155,33 @@ retrieveTracks()
         picture: '../../assets/imgs/various.jpg'
       }
     ];
+  }
+
+  selectGenre(genre) {
+    return new Promise((pass, fail) => {
+      this.arr.length = 0;
+      firebase.database().ref("Registration").on('value', (data: any) => {
+        let register = data.val();
+        console.log(register);
+        var keys2: any = Object.keys(register);
+        for (var i = 0; i < keys2.length; i++) {
+          var k = keys2[i];
+          if (genre == register[k].genre) {
+            let obj = {
+              name: register[k].fullname,
+              genre: register[k].genre,
+              key:k
+            }
+            this.arr.push(obj);
+            console.log(this.arr);
+          }
+
+
+        }
+      }), pass(this.arr);
+
+
+    })
   }
 
 

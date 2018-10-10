@@ -12,60 +12,48 @@
             <div class="hero__herobanner__herotagcontainer">
                 <div class="hero__herobanner__herotagcontainer__headingcontainer">
                     <h1 class="hero__herobanner__herotagcontainer__headingcontainer--heading">{{fullname}}</h1>
+                    <span class="buttoncontainer">
+                        <button ion-button icon-only (click)="edit()">
+                            <ion-icon ios="ios-create" md="md-create"></ion-icon>
+                        </button>
 
-                    <button ion-button icon-only (click)="edit()">
-                        <ion-icon ios="ios-create" md="md-create"></ion-icon>
-                    </button>
-
-                    <button ion-button icon-only (click)="upload()">
-                        <ion-icon ios="ios-cloud-upload" md="md-cloud-upload"></ion-icon>
-                    </button>
-
+                        <button ion-button icon-only (click)="upload()">
+                            <ion-icon ios="ios-cloud-upload" md="md-cloud-upload"></ion-icon>
+                        </button>
+                    </span>
                 </div>
-                <!-- <div class="hero__herobanner__herotagcontainer__tagcontainer">
-                    <ion-badge *ngFor="let i of genreArr" outline class="hero__herobanner__herotagcontainer--tag">{{i.genre}}</ion-badge>
-                   
-                </div>  -->
             </div>
-            <!-- <div class="hero__herobanner__herobuttoncontainer">
-                    <button ion-button icon-only clear (click)="edit()">
-                        <ion-icon ios="ios-create" md="md-create"></ion-icon>
-                    </button>
-                    <!-- <button ion-button icon-only clear>
-                        <ion-icon name="star"></ion-icon>
-                    </button> -->
-            <!-- <button ion-button icon-only clear (click)="upload()">
-                        <ion-icon ios="ios-cloud-upload" md="md-cloud-upload"></ion-icon>
-                    </button> -->
-            <!-- </div> -->
         </div>
     </div>
 
     <ion-segment [(ngModel)]="profile" class="killer">
-
         <ion-segment-button value="infor">
             Infor
         </ion-segment-button>
-
         <ion-segment-button value="music">
             Music
         </ion-segment-button>
-
         <ion-segment-button value="bookings">
             Bookings
         </ion-segment-button>
-
     </ion-segment>
 
     <div [ngSwitch]="profile">
         <ion-list *ngSwitchCase="'music'" class="segs">
             <ion-item no-lines *ngFor="let x of trackarray;let i=index;" class="listitems">
-                <h2 class="artistname">{{x.count}}.{{x.artistName}}</h2>
+                <h2 class="artistname" (click)="deleteTrack(i)">{{x.count}}.{{x.artistName}}</h2>
                 <h3 class="artisttrack" style="padding-left: 1em;">{{x.trackName}}</h3>
                 <p class="artistlink" style="padding-left: 1em;">Listen to the song
-                    <a href="{{x.trackLink}}">here......</a>
+                    <a (click)="openLink(x.trackLink)">here......</a>
                 </p>
             </ion-item>
+
+            <div class="nocontent" *ngIf="trackarray.length == 0 || trackarray.length == undefined">
+                <div class="nocontent__contents">
+                    <img class="nocontent__contents--image" src="../../assets/imgs/sound-wavesgrey.png" alt="">
+                    <p class="nocontent__contents--text" style="color: white">Its lonely here...</p>
+                </div>
+            </div>
         </ion-list>
 
         <ion-list *ngSwitchCase="'infor'" class="segs">
@@ -83,7 +71,7 @@
 
                     <p>&nbsp;&nbsp;{{z.stagename}}</p>
                     <!-- <i style="zoom:1.9" class="fas fa-mail-bulk"></i> -->
-                    <i style="zoom:1.9" class="fas fa-at"></i>
+                    <ion-icon style="zoom:1.9" name="mail"></ion-icon>
                     <p>&nbsp;&nbsp;{{z.email}}</p>
                     <ion-icon style="zoom:1.9" name="locate"></ion-icon>
                     <p> &nbsp;&nbsp;{{z.city}}</p>
@@ -100,12 +88,25 @@
         </ion-list>
 
         <ion-list *ngSwitchCase="'bookings'" class="segs">
-            <div class="cardcontainer" no-lines *ngFor="let i of bookingArr;let a=index;">
+            <div no-lines class="cardcontainer" *ngFor="let i of bookingArr;let a=index;" (click)="viewBooking(a)">
+
                 <div class="cards">
-                    <h6></h6>
-                    <p>
-                        <strong>{{i.fanName}}</strong>, Has requested to Book you,Check your email <span class="date">{{date}}</span></p>
+                    <p><strong>{{i.fanName}}</strong>, Has requested to Book you,Check your email.</p>
+                    <p class="text">{{i.date}} {{i.time}}</p>
                 </div>
             </div>
+
+            <div class="nocontent" *ngIf="bookingArr.length == 0 || bookingArr.length == undefined">
+                    <div class="nocontent__contents">
+                        <img class="nocontent__contents--image" src="../../assets/imgs/sound-wavesgrey.png" alt="">
+                        <p class="nocontent__contents--text" style="color: white">Its lonely here...</p>
+                    </div>
+                </div>
         </ion-list>
+
+        <ion-fab right bottom>
+            <button ion-fab color="primary" (click)="logout()">
+                <ion-icon name="log-out"></ion-icon>
+            </button>
+        </ion-fab>
     </div>

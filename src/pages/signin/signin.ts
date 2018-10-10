@@ -1,15 +1,14 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
-import { IdentityPage } from '../identity/identity';
+import { IonicPage, NavController, NavParams, AlertController, LoadingController, ToastController } from 'ionic-angular';
+import { LoginPage } from '../login/login';
 import { DatabaseProvider } from '../../providers/database/database';
 import firebase from "firebase";
-import { NgForm } from "@angular/forms";
-import { CatergoriesPage } from '../catergories/catergories';
-import { RegisterPage } from '../register/register';
-import { IfObservable } from '../../../node_modules/rxjs/observable/IfObservable';
+import { NgForm } from '../../../node_modules/@angular/forms';
 import { BookingsPage } from '../bookings/bookings';
+import { RegisterPage } from '../register/register';
+import { CatergoriesPage } from '../catergories/catergories';
 /**
- * Generated class for the LoginPage page.
+ * Generated class for the SigninPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -17,36 +16,41 @@ import { BookingsPage } from '../bookings/bookings';
 
 @IonicPage()
 @Component({
-  selector: 'page-login',
-  templateUrl: 'login.html',
+  selector: 'page-signin',
+  templateUrl: 'signin.html',
 })
-export class LoginPage {
+export class SigninPage {
 
   email;
   password;
   userID;
+  key;
+  djKey;
+  
+
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     private alertCtrl: AlertController,
     private db: DatabaseProvider,
-    public loadingCtrl: LoadingController
+    public loadingCtrl: LoadingController,
+    public toastCtrl: ToastController
   ) {
 
-    this.userID=this.navParams.get("objBooking");
+    this.djKey=this.navParams.get("objBooking");
     console.log(this.userID);
   }
 
   ionViewDidLoad() {
-    console.log("ionViewDidLoad LoginPage");
+    console.log("ionViewDidLoad SignIn");
 
-    
   }
 
   login(form: NgForm) {
 
-   const loading = this.loadingCtrl.create({
+
+      const loading = this.loadingCtrl.create({
       content: `Logging in ${form.value.email}...`
     });
     loading.present();
@@ -56,7 +60,22 @@ export class LoginPage {
         let userID = firebase.auth().currentUser.uid;
         loading.dismiss();
      
-                this.navCtrl.push(CatergoriesPage);
+        let djKey=this.key;
+
+        if(userID == this.djKey){
+          const toast = this.toastCtrl.create({
+            message: 'You cannot Request Booking for yourself',
+            duration: 3000
+          });
+          toast.present();
+          this.navCtrl.push(CatergoriesPage);
+  
+  
+        }else{
+          let djKey=this.key;
+          this.navCtrl.push(BookingsPage,{objBooking:this.userID});
+        }
+            
           
       })
       .catch(error => {
@@ -68,7 +87,6 @@ export class LoginPage {
             {
               text: "Ok",
               handler: () => {
-                this.navCtrl.push(RegisterPage);
               }
             }
           ]
@@ -76,6 +94,9 @@ export class LoginPage {
         alert.present();
       });
    
+    
+
+    
    
   }
 

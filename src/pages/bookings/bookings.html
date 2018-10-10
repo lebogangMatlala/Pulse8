@@ -12,15 +12,14 @@
 
 </ion-header>
 
-
 <ion-content padding>
   <div class="mainContent">
 
-  <h1>Confirm Your Booking</h1>
+    <h1>Confirm Your Booking</h1>
 
-  <p>You are about to book this DJ for an event,Please make sure the details of the DJ are correct.</p>
+    <p>You are about to book this DJ for an event,Please make sure the details of the DJ are correct.</p>
 
-  <ion-grid>
+    <ion-grid>
       <ion-row>
         <ion-col col-4>
           <h5>To</h5>
@@ -29,20 +28,17 @@
           <h5>From</h5>
           <h5>Massage</h5>
         </ion-col>
-      
+
         <ion-col col-8>
-            <p>: {{djEmail}}</p>
-            <p>: {{djName}}</p>
-            <p>: {{name}}</p>
-            <p>: {{email}}</p>
-            <p>: {{massage}}</p>
+          <p>: {{djEmail}}</p>
+          <p>: {{djName}}</p>
+          <p>: {{name}}</p>
+          <p>: {{email}}</p>
+          <p>: {{massage}}</p>
         </ion-col>
-      
-       
       </ion-row>
     </ion-grid>
 
     <button class="contentflex__buttoncontent--button" type="submit" ion-button block (click)="send()">Request</button>
-    </div>
+  </div>
 </ion-content>
-

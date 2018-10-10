@@ -6,6 +6,7 @@ import { ViewProfilePage } from '../view-profile/view-profile';
 import { LoginPage } from '../login/login';
 import { ProfilePage } from '../profile/profile';
 import { DatabaseProvider } from '../../providers/database/database';
+import { SigninPage } from '../signin/signin';
 /**
  * Generated class for the CatergoriesPage page.
  *
@@ -41,7 +42,7 @@ export class CatergoriesPage {
   arrayP=[];
   infor;
   genre;
-  
+  objDj;
 
   
 
@@ -94,7 +95,7 @@ export class CatergoriesPage {
     console.log(key);
     console.log(profile);
     
-
+    this.arrDj=[];
     for(var i = 0; i <key.length; i++)
      {
         let k = key[i];
@@ -121,7 +122,7 @@ export class CatergoriesPage {
         
         if(genre!= null && stagename!=null){    
            console.log("dj" + k + stagename )
-        let objDj ={
+         this.objDj ={
           role:this.role,
           stagename:stagename,
           genre:genre,
@@ -130,8 +131,8 @@ export class CatergoriesPage {
       }
       
 
-     console.log(objDj);
-    this.arrDj.push(objDj);
+     console.log(this.objDj);
+    this.arrDj.push(this.objDj);
   }
   else{
     console.log("no stage name or genre"+k)  
@@ -153,6 +154,7 @@ export class CatergoriesPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CategoriesPage');
+    
 
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
@@ -211,18 +213,11 @@ export class CatergoriesPage {
   viewProfile(i)
   {
       console.log(i);
-      let keys  = this.arrDj[i].key;
+       let keys  = this.arrDj[i].key;
       
-      if(this.condition==true)
-      {
-        console.log("user has signed in")
-        this.navCtrl.setRoot(ViewProfilePage,{keyobj:keys});
+        console.log(keys)
+         this.navCtrl.setRoot(ViewProfilePage,{keyobj:keys});
    
-      }
-      else{
-        console.log("User has Logged out");
-        this.navCtrl.setRoot(LoginPage);
-      }
   }
 
 
@@ -233,18 +228,9 @@ export class CatergoriesPage {
     if(this.condition==true)
       {
         console.log("user has signed in")
-        if(this.role=="Dj")
-        {
+       
           this.navCtrl.push(ProfilePage);
-        }
-         else{
-          alert("not a dj")
-            const toast = this.toastCtrl.create({
-                  message: 'You cannot view ur Profile for now',
-                  duration: 3000
-                });
-                toast.present();
-              }
+     
    
       }
       else{
@@ -265,7 +251,7 @@ export class CatergoriesPage {
       firebase.auth().signOut().then(() =>{
           // Sign-out successful.
           console.log(" Sign-out successful");
-          this.navCtrl.setRoot(StartPage);
+          this.navCtrl.setRoot(LoginPage);
           }).catch(function(error) {
           // An error happened.
           console.log(error);
@@ -280,21 +266,58 @@ export class CatergoriesPage {
 
    input()
    {
+    this.arrDj.length=0;
 
-   
+    this.db.retrieveProfile().on("value", (data) => {
+             let profile = data.val();
+              let key = Object.keys(profile);
+             console.log(key);
+             console.log(profile);
 
-    for(let i = 0; i < this.arrDj.length;++i)
-    {
+     for(var i = 0; i <key.length; i++)
+         {
+              let k = key[i];
+              let stagename = profile[k].stagename
+              this.role=profile[k].role;
+               let genre = profile[k].genre;
 
-      if(this.genre==this.arrDj[i].genre)
-      {
-  this.arrDj.length=i;
+            console.log(this.role +"  "+ genre);
+      if(this.role=="Dj"){
+             if(genre!= null && stagename!=null){
+                console.log("dj" + k + stagename )
+               let objDj ={
+               role:this.role,
+               stagename:stagename,
+                genre:genre,
+                url:this.globalPic[i],
+                key:k
+  }
+      console.log(objDj);
+      this.arrDj.push(objDj);
+      this.arrDj = this.arrDj.filter(x => x.genre[0] === this.genre);
 
-       }
-    }
-  
    }
+         else{
+               console.log("no stage name or genre"+k)
+             }
 
+             }
 
+          else{
+                console.log("audience"+k)
+             }
 
-}
+             }
+     });
+
+       console.log(this.arrDj);
+       }
+
+      
+      
+      }
+      
+
+    
+  
+  

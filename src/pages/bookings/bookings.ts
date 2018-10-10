@@ -22,7 +22,7 @@ export class BookingsPage {
   name;
   email;
 
-
+condition;
   djName;
   djEmail;
   djBio;
@@ -44,6 +44,7 @@ export class BookingsPage {
  firebase.auth().onAuthStateChanged((user)=> {
       if (user) {
         console.log("User has signed in");
+        this.condition=true;
         let userKey=firebase.auth().currentUser.uid;
         console.log(userKey);
         
@@ -68,6 +69,8 @@ export class BookingsPage {
       }
       else{
         console.log("User has signed out");
+
+        this.condition=true;
       }
     });
 
@@ -95,18 +98,23 @@ export class BookingsPage {
  
     });
 
+
+    console.log(this.condition);
+    
     } 
     
     send(){
-         this.db.sendEmail().then((available: boolean) => {
+
+     
+         
+      this.db.sendEmail().then((available: boolean) => {
 
 
        let email = {
          from:this.email,
          to:this.djEmail,
          attachments: [
-           'base64:icon.png//iVBORw0KGgoAAAANSUhEUg...',
-         '../../assets/imgs/7.jpg'
+        
 
          ],
          subject: 'Booking Request',
@@ -119,15 +127,20 @@ export class BookingsPage {
 
    }); 
 
-
+   let dateObj = new Date
+   let time = dateObj.toTimeString().replace(/.*(\d{2}:\d{2}:\d{2}).*/, "$1")
+   let date =dateObj.toDateString();
+ 
   this.db.createBookings(this.djKey).push({
     name: this.name,
     email:this.email,
+    date:date,
+    time:time
  
     });
  
     console.log("booked")
-    this.navCtrl.pop();
+    
   
     }
 }

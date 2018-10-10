@@ -44,9 +44,17 @@
                 <h2 class="artistname">{{x.count}}.{{x.artistName}}</h2>
                 <h3 class="artisttrack" style="padding-left: 1em;">{{x.trackName}}</h3>
                 <p class="artistlink" style="padding-left: 1em;">Listen to the song
-                    <a href="{{x.trackLink}}">here......</a>
+                    <a (click)="openLink(x.trackLink)">here......</a>
                 </p>
             </ion-item>
+
+
+            <div style="margin-top: 5rem;" class="nocontent" *ngIf="trackarray.length == 0 || trackarray.length == undefined">
+                <div class="nocontent__contents">
+                    <img class="nocontent__contents--image" src="../../assets/imgs/sound-wavesgrey.png" alt="">
+                    <p class="nocontent__contents--text" style="color: white">Its lonely here...</p>
+                </div>
+            </div>
         </ion-list>
 
         <ion-list *ngSwitchCase="'infor'" class="segs">
