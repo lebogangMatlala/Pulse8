@@ -105,20 +105,6 @@ export class CatergoriesPage {
 
       console.log(this.role +"  "+ genre);
       if(this.role=="Dj"){
-
-        ///track
-        firebase.database().ref('track/').on('value', (data) => {
-          this.infor = data.val();
-
-         
-      
-          
-          
-          console.log(this.infor);
-        }, (error) => {
-  
-          console.log(error.message);
-        });
         
         if(genre!= null && stagename!=null){    
            console.log("dj" + k + stagename )

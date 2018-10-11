@@ -30,6 +30,7 @@ condition;
   djStagename;
 
   massage;
+  userKey;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public db:DatabaseProvider,private emailComposer: EmailComposer) {
     this.djKey=this.navParams.get("objBooking");
@@ -57,6 +58,8 @@ condition;
           {
             this.name=userDetails.fullname;
             this.email=userDetails.email;
+            this.userKey=userKey;
+
           }
           else{
             console.log("user not found")
@@ -135,7 +138,10 @@ condition;
     name: this.name,
     email:this.email,
     date:date,
-    time:time
+    time:time,
+    key:this.userKey
+    
+
  
     });
  

@@ -197,4 +197,43 @@ page-view-profile {
         }
     }
 
+
+    .nocontent1{
+        background: rgba($color-grey-light, 0.05);
+        animation: fade 1s ease;
+        display: flex;
+        justify-content: center;
+        width: 100vw;
+        height: 100%;
+        align-items: center;
+        opacity: .5;
+        &__contents{
+            &--image{
+                width: 15rem;
+                height: 15rem;
+                margin: 0 auto;
+                display: block;
+            }
+            &--text{
+                font-size: 2.5rem;
+            }
+        }
+    }
+
+    .information{
+        margin-left: 1rem;
+        .infotext{
+            margin-left: .5rem;
+            font-size: 1.6rem;
+            font-weight: 300;
+        }
+    }
+
+    ion-fab{
+        position: fixed;
+        z-index: 999;
+    }
+
+    @keyframes fade {0%{opacity: .1;}100%{opacity: .5;};}
+
  }

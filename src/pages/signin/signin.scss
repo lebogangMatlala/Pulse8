@@ -23,7 +23,7 @@ page-signin {
 
     .contentflex{
         display: flex;
-        justify-content: center;
+        justify-content: center; 
         align-items: center;
         flex-direction: column;
         height: 100vh;
@@ -86,11 +86,29 @@ page-signin {
                 display: inline-block;
                 color: transparent;
                 padding-top: 1em;
+              margin-right: 5em;
             }
             
         }
-    }
 
+        &__buttoncontent2{
+            width: 90%;
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1rem;
+            box-shadow: none;
+            &--button{
+                background: linear-gradient(rgba($color-primary-dark, .5), rgba($color-primary-light, .8));
+                -webkit-background-clip: text;
+                color: transparent;
+                font-size: 1.4rem;
+                text-transform: capitalize;
+                word-wrap: break-word;
+                text-align: center;
+                box-shadow: none;
+            }
+        }
+    }
     .item-input-has-focus{
         animation: pulseate 1s ease infinite, .3s ease grow;
     }

@@ -49,7 +49,7 @@
             </ion-item>
 
 
-            <div style="margin-top: 5rem;" class="nocontent" *ngIf="trackarray.length == 0 || trackarray.length == undefined">
+            <div style="margin-top: 5rem;" class="nocontent" *ngIf="trackarray.length == 0 || trackarray.length == undefined ">
                 <div class="nocontent__contents">
                     <img class="nocontent__contents--image" src="../../assets/imgs/sound-wavesgrey.png" alt="">
                     <p class="nocontent__contents--text" style="color: white">Its lonely here...</p>
@@ -63,12 +63,19 @@
                     <h2 class="bioheading">Bio</h2>
                     <p class="biotext">{{bio}}</p>
                 </div>
+
+                <div class="nocontent1" *ngIf="bio == '' || bio == undefined">
+                    <div class="nocontent1__contents">
+                        <img class="nocontent1__contents--image" src="../../assets/imgs/sound-wavesgrey.png" alt="">
+                        <p class="nocontent1__contents--text" style="color: white">Its lonely here...</p>
+                    </div>
+                </div>
             </div>
             <div class="profile">
                 <h2 class="bioheading">Profile</h2>
                 <p class="information"><ion-icon name="contact"></ion-icon> <span class="infotext">{{stagename}}</span></p>
                 <p class="information"><ion-icon name="mail"></ion-icon> <span class="infotext">{{email}}</span></p>
-                <p class="information"><ion-icon name="locate"></ion-icon> <span class="infotext">{{city}}</span></p>
+                <p class="information" ><ion-icon name="locate"></ion-icon> <span class="infotext">{{city}}</span></p>
             </div>
         </ion-list>
 
@@ -87,7 +94,7 @@
      </div> -->
 
 <ion-footer>
-    <ion-toolbar color="primary" (click)="Booking()">
+    <ion-toolbar color="primary" (click)="Booking()"  *ngIf="obj == null || obj == undefined">
         <ion-title align="center">Request Bookings</ion-title>
     </ion-toolbar>
 </ion-footer>

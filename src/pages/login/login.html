@@ -21,12 +21,13 @@
                         id="input" ngModel required></ion-input>
                 </ion-item>
             </div>
-
             <div class="contentflex__buttoncontent">
                 <button class="contentflex__buttoncontent--button" type="submit" ion-button block [disabled]="!f.valid">Sign In</button>
-                <button class="contentflex__buttoncontent--button2">Create An Account</button>
-                <button class="contentflex__buttoncontent--button2">Forgot Password</button>
             </div>
         </form>
+        <div class="contentflex__buttoncontent2">
+            <p class="contentflex__buttoncontent2--button" type="submit" ion-button block (click)="signup()">Create Account</p>
+            <p class="contentflex__buttoncontent2--button" type="submit" ion-button block (click)="resetPassword()">Forgot Password?</p>
+        </div>
     </div>
 </ion-content>

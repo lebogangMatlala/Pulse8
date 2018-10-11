@@ -23,13 +23,14 @@
             </div>
 
             <div class="contentflex__buttoncontent">
-                <button class="contentflex__buttoncontent--button" type="submit" ion-button block [disabled]="!f.valid">Sign
-                    In
+                <button class="contentflex__buttoncontent--button" type="submit" ion-button block [disabled]="!f.valid">Sign In
                 </button>
-
-                <button class="contentflex__buttoncontent--button2" (click)="signUp()">Create An Account</button>
-                <button class="contentflex__buttoncontent--button2" (click)="resetPassword()">Forgot Password</button>
             </div>
         </form>
+
+        <div class="contentflex__buttoncontent2">
+            <p class="contentflex__buttoncontent2--button" type="submit" ion-button block (click)="signup()">Create Account</p>
+            <p class="contentflex__buttoncontent2--button" type="submit" ion-button block (click)="resetPassword()">Forgot Password?</p>
+        </div>
     </div>
 </ion-content>

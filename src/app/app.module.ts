@@ -20,6 +20,7 @@ import { HttpClientModule } from '../../node_modules/@angular/common/http';
 import { BookingsPage } from '../pages/bookings/bookings';
 import { EmailComposer } from '@ionic-native/email-composer';
 import { SigninPage } from '../pages/signin/signin';
+import { ViewBookingPage } from '../pages/view-booking/view-booking';
 
 
 
@@ -37,8 +38,8 @@ UploadPage,
 IdentityPage,
 CatergoriesPage,
 BookingsPage,
-SigninPage
-
+SigninPage,
+ViewBookingPage
   ],
   imports: [
     BrowserModule,
@@ -58,8 +59,8 @@ ViewProfilePage,
 UploadPage,
 IdentityPage,
 CatergoriesPage,
-BookingsPage,SigninPage
-
+BookingsPage,SigninPage,
+ViewBookingPage
   ],
   providers: [
     StatusBar,

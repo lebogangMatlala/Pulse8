@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ActionSheetController, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ActionSheetController, AlertController, ModalController } from 'ionic-angular';
 import { UploadPage } from '../upload/upload';
 import { EditPage } from '../edit/edit';
 import firebase from 'firebase';
 import { CatergoriesPage } from '../catergories/catergories';
 import { DatabaseProvider } from '../../providers/database/database';
 import { LoginPage } from '../login/login';
+import { ViewProfilePage } from '../view-profile/view-profile';
+import { ViewBookingPage } from '../view-booking/view-booking';
 /**
  * Generated class for the ProfilePage page.
  *
@@ -43,7 +45,7 @@ export class ProfilePage {
   displayMsg = " would like to book you for an event.Please respond to the email sent on ";
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public db: DatabaseProvider) {
+  constructor(private modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public db: DatabaseProvider) {
 
 
   }
@@ -190,14 +192,15 @@ export class ProfilePage {
 
         this.db.retrieveBooking(this.id).on('value', (data) => {
           var bookingInfor = data.val();
+          
 
           console.log(bookingInfor);
 
 
           if (bookingInfor != null && bookingInfor != "") {
             var keys: any = Object.keys(bookingInfor);
-
-            console.log(bookingInfor);
+            console.log("helo killer man");
+            console.log(this.id);
 
             this.bookingArr = [];
             for (var i = 0; i < keys.length; i++) {
@@ -209,6 +212,7 @@ export class ProfilePage {
                 fanEmail: bookingInfor[k].email,
                 time: bookingInfor[k].time,
                 date: bookingInfor[k].date,
+                userKey:bookingInfor[k].key,
                 msg: this.displayMsg,
 
                 key: k,
@@ -279,7 +283,9 @@ export class ProfilePage {
     let fanMsg = this.bookingArr[a].msg;
     let fanDate = this.bookingArr[a].date;
     let fanTime = this.bookingArr[a].time;
-    let key = this.bookingArr[a].key;
+    let key = this.bookingArr[a].userKey;
+    let keyid =this.bookingArr[a].key;
+
     console.log(key);
     console.log("array");
     console.log(this.bookingArr);
@@ -289,9 +295,15 @@ export class ProfilePage {
       subTitle: fanName + '' + fanMsg + " " + fanDate + " " + fanTime + " Email :" + fanEmail,
       buttons: [
         {
-          text: 'Cancel',
+          text: 'View',
           handler: data => {
             console.log('Cancel clicked');
+
+           let obj={
+              userskey:key,
+              condition:true
+            }
+            this.navCtrl.push(ViewProfilePage,{objKey:obj});
 
           }
         },
@@ -299,7 +311,7 @@ export class ProfilePage {
           text: 'Delete',
           handler: data => {
             console.log('Delete clicked');
-            firebase.database().ref('Bookings/' + this.id).child(key).remove().then(() => {
+            firebase.database().ref('Bookings/' + this.id).child(keyid).remove().then(() => {
               this.navCtrl.push(ProfilePage);
             });
           }
@@ -308,7 +320,9 @@ export class ProfilePage {
     });
     alert.present();
 
-
+    const modal = this.modalCtrl.create(ViewBookingPage, { stuff: 'passing stuff here'
+    });
+    modal.present();
   }
 
   deleteTrack(i) {
@@ -336,6 +350,7 @@ export class ProfilePage {
           handler: data => {
             console.log('Yes clicked');
             firebase.database().ref('artists/' + this.id).child(key).remove();
+            this.navCtrl.push(ProfilePage);
           }
         }
       ]
