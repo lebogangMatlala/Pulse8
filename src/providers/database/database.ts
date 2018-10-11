@@ -26,6 +26,12 @@ export class DatabaseProvider {
 retriveProfilePic(){
   return firebase.database().ref('Pic/');
 }  
+
+retriveProfilePicture(userId){
+  return firebase.database().ref('Pic/'+ userId);
+}
+
+
 retrieveProfile(){
 
   return firebase.database().ref('Registration/');

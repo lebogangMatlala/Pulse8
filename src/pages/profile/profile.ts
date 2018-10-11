@@ -6,7 +6,6 @@ import firebase from 'firebase';
 import { CatergoriesPage } from '../catergories/catergories';
 import { DatabaseProvider } from '../../providers/database/database';
 import { LoginPage } from '../login/login';
-import { ViewProfilePage } from '../view-profile/view-profile';
 import { ViewBookingPage } from '../view-booking/view-booking';
 /**
  * Generated class for the ProfilePage page.
@@ -40,7 +39,7 @@ export class ProfilePage {
   artistName;
 
   condition;
-
+  picture;
 
   displayMsg = " would like to book you for an event.Please respond to the email sent on ";
 
@@ -290,38 +289,40 @@ export class ProfilePage {
     console.log("array");
     console.log(this.bookingArr);
 
+    this.db.retriveProfilePicture(key).on('value', (data) => {
+      var infor = data.val();
+      this.picture = infor.url;
+    
+      console.log("picture");
+      console.log(this.picture);
 
-    const alert = this.alertCtrl.create({
-      subTitle: fanName + '' + fanMsg + " " + fanDate + " " + fanTime + " Email :" + fanEmail,
-      buttons: [
-        {
-          text: 'View',
-          handler: data => {
-            console.log('Cancel clicked');
+      }, (error) => {
+
+        console.log(error.message);
+
+
+      });
+
+     
+
+
 
            let obj={
               userskey:key,
-              condition:true
+               fanName : this.bookingArr[a].fanName,
+               fanEmail : this.bookingArr[a].fanEmail,
+               fanMsg : this.bookingArr[a].msg,
+               fanDate : this.bookingArr[a].date,
+               fanTime : this.bookingArr[a].time,
+               picture:this.picture,
+               keyid:this.bookingArr[a].key,
+               id:this.id
+
             }
-            this.navCtrl.push(ViewProfilePage,{objKey:obj});
+          
 
-          }
-        },
-        {
-          text: 'Delete',
-          handler: data => {
-            console.log('Delete clicked');
-            firebase.database().ref('Bookings/' + this.id).child(keyid).remove().then(() => {
-              this.navCtrl.push(ProfilePage);
-            });
-          }
-        }
-      ]
-    });
-    alert.present();
 
-    const modal = this.modalCtrl.create(ViewBookingPage, { stuff: 'passing stuff here'
-    });
+    const modal = this.modalCtrl.create(ViewBookingPage,{bookingDetails:obj});
     modal.present();
   }
 

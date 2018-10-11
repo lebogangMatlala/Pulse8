@@ -47,17 +47,17 @@ giving the form a template variable of f-->
                   <ion-label color="light">
                       <ion-icon name="cash"></ion-icon>
                   </ion-label>
-                  <ion-input type="number" name="Price" [value]="Price" placeholder="Price" class="Price"
+                  <ion-input type="number" name="price" [value]="price" placeholder="Price" class="Price"
                       id="price" ngModel required></ion-input>
               </ion-item>
 
               <ion-item class="payment" no-lines>
                     <ion-label color="light">
                         <ion-icon name="contact"></ion-icon>
-                        Payment Type
+                        Rate
                     </ion-label>
   
-                    <ion-select name="payment" [(ngModel)]="payment" multiple="false" interface="popover">
+                    <ion-select name="payment"  [(ngModel)]="payment" multiple="false" interface="popover">
                         <ion-option value="Hour" (change)="input($event)">Hour</ion-option>
                         <ion-option value="Day">Day</ion-option>
   

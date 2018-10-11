@@ -29,6 +29,10 @@ export class EditPage {
   g;
   role;
   city;
+  payment;
+  price;
+rate;
+
 
   profileObj = {};
   constructor(
@@ -86,7 +90,11 @@ export class EditPage {
                 bio: userDetails.bio,
                 stagename:userDetails.stagename,
                 genre:userDetails.genre,
-                city:userDetails.city
+                city:userDetails.city,
+                price:userDetails.price,
+                payment:userDetails.payment
+
+
               };
 
               this.arrProfile.push(obj);
@@ -96,7 +104,9 @@ export class EditPage {
               this.bio=obj.bio;
               this.stagename=obj.stagename;
               this.genre=obj.genre;
-              this.city=obj.city
+              this.city=obj.city;
+              this.price=obj.price;
+              this.payment=obj.payment;
 
               console.log(this.fullname);
               console.log(obj);
@@ -189,6 +199,13 @@ back(){
     this.genre=event.target.value
   }
   submit(form: NgForm) {
+    form.value.price;
+    
+    form.value.payment;
+
+
+
+    console.log(this.rate);
 
     const loader = this.loadingCtrl.create({
       content: "Please wait...",
@@ -205,6 +222,9 @@ back(){
     this.stagename=form.value.stagename;
     this.bio=form.value.bio;
     this.city=form.value.city;
+    this.price=form.value.price;
+    this.payment=form.value.payment;
+    
 
 
 
@@ -224,7 +244,10 @@ back(){
       bio: form.value.bio,
       city:form.value.city,
       genre: this.genre,
-      role:this.role
+      role:this.role,
+      price: this.price,
+      payment: this.payment
+
     };
 
     this.arrProfile.push(obj);

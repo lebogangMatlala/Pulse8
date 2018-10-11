@@ -102,6 +102,8 @@ export class CatergoriesPage {
       let stagename = profile[k].stagename
       this.role=profile[k].role;
       let genre = profile[k].genre;
+      let price = profile[k].price;
+      let payment = profile[k].payment;
 
       console.log(this.role +"  "+ genre);
       if(this.role=="Dj"){
@@ -113,7 +115,9 @@ export class CatergoriesPage {
           stagename:stagename,
           genre:genre,
           url:this.globalPic[i],
-          key:k
+          key:k,
+          price:price,
+          payment:payment
       }
       
 
