@@ -1,18 +1,25 @@
-<!--
-  Generated template for the ViewBookingPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<ion-header>
-
-  <ion-navbar>
-    <ion-title>ViewBooking</ion-title>
-  </ion-navbar>
-
-</ion-header>
-
-
-<ion-content padding>
-  {{stuff}}
+<ion-content>
+  <div class="content">
+    <div class="content__hero">
+      <img class="content__hero--image" src="../../assets/imgs/27540814_10215734287658365_2735885339560353644_n.jpg">
+    </div>
+    <div class="content__maincontent">
+      <h1 class="content__maincontent--name">Karabo Maimane</h1>
+      <p class="content__maincontent--email">maimane23@hotmail.com</p>
+      <p class="content__maincontent--message">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut qui itaque
+        unde obcaecati libero error voluptates sequi debitis vero? Veniam natus excepturi optio earum neque sapiente
+        cumque tempore corporis quae?</p>
+      <p class="content__maincontent--time">time goes here</p>
+    </div>
+    <div class="content__buttons">
+      <button class="content__buttons--button" dark outline ion-button icon-only>
+        <ion-icon name="trash"></ion-icon>
+      </button>
+    </div>
+    <div class="content__back">
+      <button class="content__back--button" dark outline ion-button icon-only (click)="back()">
+        <ion-icon name="arrow-round-back"></ion-icon>
+      </button>
+    </div>
+  </div>
 </ion-content>
