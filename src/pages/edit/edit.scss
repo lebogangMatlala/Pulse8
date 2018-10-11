@@ -52,7 +52,7 @@ page-edit {
         }
 
         &__formcontent{
-            width: 80%;
+            width: 80%; 
         }
 
         &__buttoncontent{
@@ -85,6 +85,13 @@ page-edit {
                 color: transparent;
             }
         }
+    }
+    .Price{
+        width: 55%;
+    }
+    .payment{
+        width: 45%;
+        
     }
 
     .item-input-has-focus{
