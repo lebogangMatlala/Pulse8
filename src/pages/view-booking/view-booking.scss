@@ -52,6 +52,7 @@ page-view-booking {
                 font-size: 2rem;
                 color: $color-danger;
                 margin: 3rem auto;
+                animation: fade 2s ease;
             }
         }
 
@@ -63,4 +64,6 @@ page-view-booking {
             }
         }
     }
+
+    @keyframes fade {0%{opacity: 0} 100%{opacity: 1;}}
 }

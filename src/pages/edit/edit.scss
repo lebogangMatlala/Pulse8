@@ -25,13 +25,11 @@ page-edit {
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        height: 100vh;
         &__iconcontainer{
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding-bottom: 6rem;
             &__icon{
               width: 10rem;
               height: 10rem;
@@ -52,7 +50,13 @@ page-edit {
         }
 
         &__formcontent{
-            width: 80%; 
+            width: 80%;
+            .prices{
+                display: flex;
+                flex-flow: row nowrap;
+                height: 6rem;
+                margin-top: 1rem;
+            }
         }
 
         &__buttoncontent{

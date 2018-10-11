@@ -1,5 +1,5 @@
 <ion-content>
-  <!-- creating the form  
+    <!-- creating the form  
 giving the form a template variable of f-->
 <button ion-button clear class="bn" ><ion-icon (click)="back()" style="zoom: 1.5;" ios="ios-arrow-round-back" md="md-arrow-round-back"></ion-icon></button>
 
@@ -65,53 +65,33 @@ giving the form a template variable of f-->
                     </ion-select>
                 </ion-item>
 
-              <ion-item no-lines>
-                  <ion-label color="light">
-                      <ion-icon name="cash"></ion-icon>
-                      Genre
-                  </ion-label>
 
-                  <ion-select name="genre" [(ngModel)]="genre" multiple="true" interface="popover">
-                      <ion-option value="House" (change)="input($event)">House</ion-option>
-                      <ion-option value="Hip-Hop">Hip-Hop</ion-option>
-                      <ion-option value="Rap">Rap</ion-option>
-                      <ion-option value="Commercial house">Commercial house</ion-option>
-                      <ion-option value="RnB">R`nB</ion-option>
-                      <ion-option value="Deep House">Deep House</ion-option>
-                      <ion-option value="Kwaito">Kwaito</ion-option>
-                      <ion-option value="Afro Pop">Afro Pop</ion-option>
-                      <ion-option value="Soul">Soul</ion-option>
-                    
-                  </ion-select>
-              </ion-item>
-
-              
                 <ion-item no-lines>
-                <ion-label color="light">
-                    <ion-icon ios="ios-locate" md="md-locate"></ion-icon>
-                </ion-label>
-                <ion-input type="text" class="contentflex__formcontent--input"  [value]="city" placeholder="City" name="city" id="input" ngModel
-                  required></ion-input>
-              </ion-item>
+                    <ion-label color="light">
+                        <ion-icon ios="ios-locate" md="md-locate"></ion-icon>
+                    </ion-label>
+                    <ion-input type="text" class="contentflex__formcontent--input" [value]="city" placeholder="City"
+                        name="city" id="input" ngModel required></ion-input>
+                </ion-item>
 
-              <ion-item no-lines>
-                  <ion-label color="light">
-                      <ion-icon name="contact"></ion-icon>
-                  </ion-label>
-                  <ion-textarea type="name" name="bio" placeholder="Bio" [value]="bio" class="contentflex__formcontent--input" id="input" ngModel
-                      required></ion-textarea>
-              </ion-item>
+                <ion-item no-lines>
+                    <ion-label color="light">
+                        <ion-icon name="contact"></ion-icon>
+                    </ion-label>
+                    <ion-textarea type="name" name="bio" placeholder="Bio" [value]="bio" class="contentflex__formcontent--input"
+                        id="input" ngModel required></ion-textarea>
+                </ion-item>
 
-            
-          </div>
-          <div class="contentflex__buttoncontent">
-              <!-- creating the submission button for the form 
+
+            </div>
+            <div class="contentflex__buttoncontent">
+                <!-- creating the submission button for the form 
       -[disabled]="!f.valid" will make the button not work unless valid data is entered
       -type="submit" triggers the ngsubmit method-->
-              <button class="contentflex__buttoncontent--button" type="submit" ion-button block [disabled]="!f.valid">Save</button>
+                <button class="contentflex__buttoncontent--button" type="submit" ion-button block [disabled]="!f.valid">Save</button>
 
-          </div>
-      </div>
-  </form>
+            </div>
+        </div>
+    </form>
 
 </ion-content>
