@@ -62,7 +62,7 @@ export class LoginPage {
       .catch(error => {
         loading.dismiss();
         const alert = this.alertCtrl.create({
-          title: error.code,
+          title: 'Caution',
           subTitle: error.message,
           buttons: [
             {
@@ -81,7 +81,7 @@ export class LoginPage {
 
   resetPassword() {
     const prompt = this.alertCtrl.create({
-      title: "Auth",
+      title: "Reser Password",
       message: "Enter your email to reset your password",
       inputs: [
         {
@@ -94,12 +94,8 @@ export class LoginPage {
           text: "Cancel",
           handler: data => {
             console.log("Cancel clicked");
-            const loader = this.loadingCtrl.create({
-              content: "Please wait...",
-              duration: 5000
-            });
-            loader.present();
-            this.navCtrl.setRoot(LoginPage);
+           
+            this.navCtrl.push(LoginPage);
           }
         },
         {
@@ -132,6 +128,6 @@ export class LoginPage {
   }
 
   signup() {
-    this.navCtrl.setRoot(RegisterPage);
+    this.navCtrl.push(RegisterPage);
   }
 }

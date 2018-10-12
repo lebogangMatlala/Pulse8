@@ -3,7 +3,6 @@ import { IonicPage, NavController, NavParams, AlertController, LoadingController
 import { NgForm } from "@angular/forms";
 import firebase from "firebase";
 import { CatergoriesPage } from '../catergories/catergories';
-import { ProfilePage } from '../profile/profile';
 import { DatabaseProvider } from '../../providers/database/database';
 import { LoginPage } from '../login/login';
 /**
@@ -22,6 +21,8 @@ export class RegisterPage {
 
   role: any;
   registrationObj;
+
+  url= "http://www.dealnetcapital.com/files/2014/10/blank-profile.png";
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -41,7 +42,9 @@ export class RegisterPage {
 
   register(form: NgForm) {
     const loading = this.loadingCtrl.create({
-      content: `Registering ${form.value.email}...`
+      content: `Registering ${form.value.email}...`,
+      duration: 3000
+
     });
     loading.present();
 
@@ -54,15 +57,21 @@ export class RegisterPage {
           genre:"No Genre"
       
       }
-      firebase
-      .database()
-      .ref("Pic/" + userID)
-      .set({
-        url: "http://www.dealnetcapital.com/files/2014/10/blank-profile.png"
+    
+      firebase.database().ref("Registration/" + userID).set(this.registrationObj).then(()=>{
+        
+        firebase
+        .database()
+        .ref("Pic/" + userID)
+        .set({
+          url: this.url
+        }).then(()=>{
+          this.navCtrl.setRoot(CatergoriesPage);
+        })
+        
       });
-      firebase.database().ref("Registration/" + userID).set(this.registrationObj);
       loading.dismiss();
-      this.navCtrl.setRoot(ProfilePage);
+      
     }).catch((error)=>{
       console.log(error);
       loading.dismiss();

@@ -60,8 +60,12 @@ rate;
             "value",
             data => {
               let infor = data.val();
-              this.pic = infor.url;
-              console.log(this.pic);
+              if(infor != null && infor != ""){
+                this.pic = infor.url;
+              }else{
+                console.log("no picture");
+                
+              }
             },
             error => {
               console.log(error.message);
@@ -188,6 +192,8 @@ rate;
       );
 
       //});
+
+
     }
   }
 back(){

@@ -9,7 +9,7 @@ export class HomePage {
 
   constructor(public navCtrl: NavController, ) {
     let timer = setInterval(() => {
-      this.navCtrl.setRoot(CatergoriesPage); clearInterval(timer)
+      this.navCtrl.push(CatergoriesPage); clearInterval(timer)
     }, 5000);
   }
 

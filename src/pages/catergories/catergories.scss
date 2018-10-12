@@ -57,4 +57,26 @@ page-catergories {
         text-align: center;
         text-shadow: .2rem .3rem .5rem rgba($color-grey-light,.4)
     }
+
+    .nocontent{
+        animation: fade 1s ease;
+        display: flex;
+        justify-content: center;
+        width: 100vw;
+        height: 100%;
+        align-items: center;
+        opacity: .5;
+        margin-top: -10rem;
+        &__contents{
+            &--image{
+                width: 15rem;
+                height: 15rem;
+                margin: 0 auto;
+                display: block;
+            }
+            &--text{
+                font-size: 2.5rem;
+            }
+        }
+    }
 }

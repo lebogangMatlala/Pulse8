@@ -43,25 +43,48 @@ giving the form a template variable of f-->
                       id="input" ngModel required></ion-input>
               </ion-item>
 
-             <ion-item class="Price" no-lines>
-                  <ion-label color="light">
-                      <ion-icon name="cash"></ion-icon>
-                  </ion-label>
-                  <ion-input type="number" name="price" [value]="price" placeholder="Price" class="Price"
-                      id="price" ngModel required></ion-input>
-              </ion-item>
+              <ion-item no-lines>
+                <ion-label color="light">
+                    <ion-icon name="contact"></ion-icon>
+                    Genre
+                </ion-label>
 
-              <ion-item class="payment" no-lines>
+                <ion-select name="genre" [(ngModel)]="genre" multiple="true" interface="popover">
+                    <ion-option value="House" (change)="input($event)">House</ion-option>
+                    <ion-option value="Hip-Hop">Hip-Hop</ion-option>
+                    <ion-option value="Rap">Rap</ion-option>
+                    <ion-option value="Commercial house">Commercial house</ion-option>
+                    <ion-option value="RnB">R`nB</ion-option>
+                    <ion-option value="Deep House">Deep House</ion-option>
+                    <ion-option value="Kwaito">Kwaito</ion-option>
+                    <ion-option value="Afro Pop">Afro Pop</ion-option>
+                    <ion-option value="Soul">Soul</ion-option>
+
+                </ion-select>
+            </ion-item>
+
+            
+
+              <ion-item no-lines>
+                <ion-label color="light">
+                    <ion-icon name="cash"></ion-icon>
+                </ion-label>
+                <ion-input type="number" name="price" [value]="price" placeholder="price" class="contentflex__formcontent--input"
+                    id="price" ngModel required></ion-input>
+            </ion-item>
+
+             
+                <ion-item no-lines>
                     <ion-label color="light">
-                        <ion-icon name="contact"></ion-icon>
-                        Rate
+                        <ion-icon name="cash"></ion-icon>
+                        Rate Per
                     </ion-label>
-  
-                    <ion-select name="payment"  [(ngModel)]="payment" multiple="false" interface="popover">
+    
+                    <ion-select name="payment" [(ngModel)]="payment" multiple="false" >
                         <ion-option value="Hour" (change)="input($event)">Hour</ion-option>
                         <ion-option value="Day">Day</ion-option>
-  
-                      
+                        <ion-option value="Half Hour">Half Hour</ion-option>
+    
                     </ion-select>
                 </ion-item>
 

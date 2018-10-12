@@ -189,7 +189,7 @@ back(){
 
       let loading = this.loadingCtrl.create({
         content: 'Please wait...',
-        duration: 10000
+        duration: 5000
         
       });
     
@@ -203,7 +203,7 @@ back(){
        this.navCtrl.setRoot(ProfilePage);
 
         
-      }, 10000);
+      }, 5000);
 
       let userID = firebase.auth().currentUser.uid;
        

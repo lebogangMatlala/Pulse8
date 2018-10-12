@@ -3,6 +3,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import firebase from 'firebase';
 import { DatabaseProvider } from '../../providers/database/database';
 import { EmailComposer } from '@ionic-native/email-composer';
+import { ToastController } from 'ionic-angular';
+import { ViewBookingPage } from '../view-booking/view-booking';
+import { ViewProfilePage } from '../view-profile/view-profile';
+import { CatergoriesPage } from '../catergories/catergories';
 /**
  * Generated class for the BookingsPage page.
  *
@@ -32,7 +36,7 @@ condition;
   massage;
   userKey;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,public db:DatabaseProvider,private emailComposer: EmailComposer) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,public db:DatabaseProvider,private emailComposer: EmailComposer,private toastCtrl: ToastController) {
     this.djKey=this.navParams.get("objBooking");
     console.log(this.djKey);
   }
@@ -143,7 +147,20 @@ condition;
     
 
  
+    }).then(()=>{
+
+      this.navCtrl.push(CatergoriesPage);
+
+      const toast = this.toastCtrl.create({
+        message: 'Your request was sent',
+        duration: 10000
+      });
+      toast.present();
+   
+
     });
+     
+  
  
     console.log("booked")
     

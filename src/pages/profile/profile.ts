@@ -41,19 +41,28 @@ export class ProfilePage {
   condition;
   picture;
 
-  displayMsg = " would like to book you for an event.Please respond to the email sent on ";
+  displayMsg = " Would like to book you for an event,please respond to the email sent. ";
 
 
   constructor(private modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public db: DatabaseProvider) {
 
+  
 
   }
+
+  ngOnInit() {
+
+    this.pic="http://www.dealnetcapital.com/files/2014/10/blank-profile.png";
+  }
+
+
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProfilePage');
 
     //let key = this.navParams.get("keyobj");
 
+    
 
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
@@ -88,7 +97,13 @@ export class ProfilePage {
           if (userDetails != null && userDetails != '') {
             firebase.database().ref('Pic/' + this.id).on('value', (data) => {
               var infor = data.val();
-              this.pic = infor.url;
+              if(infor != null && infor != ""){
+                this.pic = infor.url;
+              }else{
+                console.log("no picture");
+                
+              }
+              
               //  console.log("pciture"+infor);
 
             }, (error) => {
@@ -315,7 +330,8 @@ export class ProfilePage {
                fanDate : this.bookingArr[a].date,
                fanTime : this.bookingArr[a].time,
                picture:this.picture,
-               keyid:this.bookingArr[a].key,
+               keyid:this.bookingArr[a].userKey,
+               key:this.bookingArr[a].key,
                id:this.id
 
             }
@@ -340,9 +356,6 @@ export class ProfilePage {
           text: 'No',
           handler: data => {
             console.log('No clicked');
-
-
-
 
           }
         },
@@ -381,14 +394,14 @@ export class ProfilePage {
       firebase.auth().signOut().then(() => {
         // Sign-out successful.
         console.log(" Sign-out successful");
-        this.navCtrl.setRoot(LoginPage);
+        this.navCtrl.push(LoginPage);
       }).catch(function (error) {
         // An error happened.
         console.log(error);
       });
     }
     else {
-      this.navCtrl.setRoot(CatergoriesPage);
+      this.navCtrl.push(CatergoriesPage);
     }
 
 

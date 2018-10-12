@@ -29,9 +29,9 @@ export class IdentityPage {
   nextPage() {
 
     if (this.role == 'Dj') {
-      this.navCtrl.setRoot(RegisterPage, { role: this.role });
+      this.navCtrl.push(RegisterPage, { role: this.role });
     } else if (this.role == 'Audience') {
-      this.navCtrl.setRoot(RegisterPage, { role: this.role });
+      this.navCtrl.push(RegisterPage, { role: this.role });
     }
 
   }

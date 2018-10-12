@@ -42,16 +42,16 @@ export class ViewBookingPage implements OnInit{
     console.log('ionViewDidLoad ViewBookingPage');
 
     this.bookings = this.navParams.get('bookingDetails');
-    console.log(this.bookings);
+   console.log(this.bookings);
 
-    this.fanName=this.bookings.fanName;
-    this.fanEmail=this.bookings.fanEmail;
-    this.fanPic=this.bookings.picture;
-   this.fanMsg=this.bookings.fanMsg;
-   this.fanDate=this.bookings.fanDate;
-   this.fanTime=this.bookings.fanTime;
-   this.id=this.bookings.id;
-   this.key=this.bookings.keyid;
+   this.fanName=this.bookings.fanName;
+   this.fanEmail=this.bookings.fanEmail;
+   this.fanPic=this.bookings.picture;
+  this.fanMsg=this.bookings.fanMsg;
+  this.fanDate=this.bookings.fanDate;
+  this.fanTime=this.bookings.fanTime;
+  this.id=this.bookings.id;
+  this.key=this.bookings.keyid;
 
 
 
@@ -66,10 +66,10 @@ export class ViewBookingPage implements OnInit{
   }
 
   delete()
-  {
-    firebase.database().ref('Bookings/' + this.id).child(this.key).remove().then(()=>{
-      this.navCtrl.push(ProfilePage);
-    });
-            
-  }
+ {
+   firebase.database().ref('Bookings/' + this.id).child(this.key).remove().then(()=>{
+     this.navCtrl.push(ProfilePage);
+   });
+
+ }
 }

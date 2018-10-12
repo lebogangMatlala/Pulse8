@@ -202,7 +202,7 @@ export class ViewProfilePage {
                   let objart = {
                     artistName: inforArt[k].artistName,
                     trackName: inforArt[k].trackName,
-                    
+                    trackLink: inforArt[k].trackLink,
                     key: k,
                     count:this.count++
                     
@@ -210,8 +210,9 @@ export class ViewProfilePage {
        
                    this.artistName=objart.artistName;
                     this.trackarray.push(objart);
+                    console.log("link");
 
-                  //  console.log(this.trackarray);
+                  console.log(objart.trackLink);
                   }
                 }
                 else{
@@ -360,7 +361,7 @@ export class ViewProfilePage {
                   let objart = {
                     artistName: inforArt[k].artistName,
                     trackName: inforArt[k].trackName,
-                    
+                    trackLink: inforArt[k].trackLink,
                     key: k,
                     count:this.count++
                     
@@ -368,8 +369,9 @@ export class ViewProfilePage {
        
                    this.artistName=objart.artistName;
                     this.trackarray.push(objart);
+                    console.log("link");
 
-                  //  console.log(this.trackarray);
+                    console.log(objart.trackLink);
                   }
                 }
                 else{
