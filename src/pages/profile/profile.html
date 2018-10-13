@@ -26,9 +26,9 @@
         </div>
     </div>
 
-    <ion-segment [(ngModel)]="profile" class="killer">
+    <ion-segment [(ngModel)]="profile" class="segbtns">
         <ion-segment-button value="infor">
-            Infor
+            Info
         </ion-segment-button>
         <ion-segment-button value="music">
             Music
@@ -38,12 +38,12 @@
         </ion-segment-button>
     </ion-segment>
 
-    <div [ngSwitch]="profile">
-        <ion-list *ngSwitchCase="'music'" class="segs">
-            <ion-item no-lines *ngFor="let x of trackarray;let i=index;" class="listitems">
-                <h2 class="artistname" (click)="deleteTrack(i)">{{x.count}}.{{x.artistName}}</h2>
-                <h3 class="artisttrack" style="padding-left: 1em;">{{x.trackName}}</h3>
-                <p class="artistlink" style="padding-left: 1em;">Listen to the song
+    <div [ngSwitch]="profile" class="segcontainer">
+        <ion-list *ngSwitchCase="'music'" class="segcontainer__seg">
+            <ion-item no-lines *ngFor="let x of trackarray;let i=index;" class="segcontainer__seg__listitems">
+                <h2 class="segcontainer__seg__listitems--artistname" (click)="deleteTrack(i)">{{x.count}}.{{x.artistName}}</h2>
+                <h3 class="segcontainer__seg__listitems--artisttrack">{{x.trackName}}</h3>
+                <p class="segcontainer__seg__listitems--artistlink">Listen to the song
                     <a (click)="openLink(x.trackLink)">here......</a>
                 </p>
             </ion-item>
@@ -56,11 +56,11 @@
             </div>
         </ion-list>
 
-        <ion-list *ngSwitchCase="'infor'" class="segs">
-            <div no-lines *ngFor="let z of inforArray;let a=index;" class="container">
-                <div class="userProfile">
-                    <h2 class="bioheading">Bio</h2>
-                    <p class="biotext">{{z.bio}}</p>
+        <ion-list *ngSwitchCase="'infor'" class="segcontainer__seg">
+            <div no-lines *ngFor="let z of inforArray;let a=index;" class="segcontainer__seg__bio">
+                <div class="segcontainer__seg__bio__userProfile">
+                    <h2 class="segcontainer__seg__bio__userProfile--bioheading">Bio</h2>
+                    <p class="segcontainer__seg__bio__userProfile--biotext">{{z.bio}}</p>
                 </div>
                 <div class="nocontent1" *ngIf="z.bio == '' || z.bio == undefined">
                     <div class="nocontent1__contents">
@@ -85,11 +85,11 @@
             </div>
         </ion-list>
 
-        <ion-list *ngSwitchCase="'bookings'" class="segs">
+        <ion-list *ngSwitchCase="'bookings'" class="segcontainer__seg">
             <div no-lines class="cardcontainer" *ngFor="let i of bookingArr;let a=index;" (click)="viewBooking(a)">
 
                 <div class="cards">
-                    <p><strong>{{i.fanName}}</strong>, Has requested to Book you,Check your email.</p>
+                    <p><strong>{{i.fanName}}</strong>, has requested to book you, check your email.</p>
                     <p class="text">{{i.date}} {{i.time}}</p>
                 </div>
             </div>
@@ -108,3 +108,4 @@
             </button>
         </ion-fab>
     </div>
+</ion-content>

@@ -5,13 +5,6 @@ page-catergories {
         animation: 1s ease fadeIn;
     }
  
-    .searchbar{
-        height:5vh;
-        margin-top: 6rem;
-        display: flex;
-        justify-content: space-evenly;
-    }
- 
     .dropdown{
         background: rgba($color-grey-light, .1) !important;
         border-radius: 5rem;
@@ -37,15 +30,20 @@ page-catergories {
         }
         background: transparent !important;
     }
-    .item-md ion-thumbnail ion-img, .item-md ion-thumbnail img {
-        padding-top:15px;
-        width: 50px;
-        height: 60px;
+
+    ion-thumbnail{
+        margin-right: 0 !important;
+        img{
+            border-radius: 50% !important;
+            width: 6rem !important;
+            height: 6rem !important;
+            margin-top: 1rem;
+        }
     }
  
     .list{
         overflow: scroll !important;
-        height: 80vh;
+        height: 85vh;
     }
  
     .heading{
@@ -55,7 +53,7 @@ page-catergories {
         text-transform: uppercase;
         font-weight: 300;
         text-align: center;
-        text-shadow: .2rem .3rem .5rem rgba($color-grey-light,.4)
+        text-shadow: .2rem .3rem .5rem rgba($color-grey-light,.4);
     }
 
     .nocontent{
