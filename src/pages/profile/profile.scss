@@ -14,12 +14,12 @@ page-profile {
     }
 
     .hero{
-        width: 100vw;
+        width: 100%;
         background: linear-gradient(rgba($color-dark, .6), rgba($color-dark, .6)),url('../../assets/imgs/dj4.jpg');
         background-size: cover;
         background-position: bottom !important;
         &__herobanner{
-            height: 20vh;
+            height: 12.5rem;
             display: flex;
             justify-content: space-evenly;
             flex-flow: row nowrap;
@@ -64,77 +64,57 @@ page-profile {
             }
         }
     }
-    
-    .segs{
-        margin-top: 6rem;
-    }
-    
-    .item-ios, .item-md{
-        background: transparent;
-        border: none !important;
-        color: $color-primary-light !important;
-       
-    }
-   
-    ion-list{
-        position: absolute;
-        top: 25vh;
-    }
 
-    .listitems{
-        &:nth-child(even){
-            width: 100vw;
-            background: rgba($color-grey-light, .1);
+    .segcontainer{
+        &__seg{
+            margin: 0;
+            &__listitems{
+                background: transparent;
+                color: $color-primary-light !important;
+                &:nth-child(even){
+                    width: 100vw;
+                    background: rgba($color-grey-light, .1);
+                }
+
+                &--artistname, &--artisttrack{
+                    color: white;
+                    text-transform: capitalize;
+                }
+
+                &--artistname{
+                    letter-spacing: .3rem;
+                }
+
+                &--artisttrack{
+                    letter-spacing: .2rem;
+                }
+                
+                &--artistlink{
+                    a{
+                        color: white;
+                    }
+                }
+            }
+            &__bio{
+                &__userProfile{
+                    background: rgba(255, 255, 255, 0.020);
+                    color: rgba(245, 245, 245, 0.829);
+                    width: 100%;
+                    margin: 0 auto;
+                    padding: 1rem;
+                    text-align: center;
+                    &--bioheading{
+                        text-transform: uppercase;
+                        letter-spacing: .3rem;
+                        font-size: 3rem;
+                        font-weight: 300;
+                    }
+                    &--biotext{
+                        font-size: 1.5rem;
+                    }
+                }
+            }
         }
-    }
-
-    .section{
-        margin-top: 5vh;
-
-    }
-
-    ion-segment{
-        margin-top: 1rem !important;
-       
-    }
-
-    .userProfile{
-        word-wrap: break-word;
-        padding-left: 15px;
-        padding-right: 15px;
-        padding-top: -10px;
-        padding-bottom: 15px;
-        background: rgba(255, 255, 255, 0.020);
-        margin-bottom: -10%;
-        color: rgba(245, 245, 245, 0.829);
-        width: 100%;
-        margin: 0 auto; 
-    }
-
-    .bioheading{
-        text-align: center;
-        text-transform: uppercase;
-        letter-spacing: .3rem;
-        font-size: 3rem;
-        font-weight: 300;
-    }
- 
-    .biotext{
-        text-align: center;
-        font-size: 1.4rem !important;
-    }
-
-    .userProfile{
-        word-wrap: break-word;
-        padding-left: 15px;
-        padding-right: 15px;
-        padding-top: -10px;
-        padding-bottom: 15px;
-        background: rgba(255, 255, 255, 0.020);
-        margin-bottom: -10%;
-        color: rgba(245, 245, 245, 0.829);
-        width: 100vw;
-        margin: 0 auto;
     }
 
     .cont{
@@ -166,8 +146,7 @@ page-profile {
     }
     .cards{
         word-wrap: break-word;
-        padding-top: 2px;
-        padding-left: 8px;
+        padding: .5rem;
         background: rgba(255, 255, 255, 0.020);
         color: rgba(245, 245, 245, 0.829);
         width: 96%;
@@ -184,19 +163,6 @@ page-profile {
     
     .cards:not(:last-child){
         margin-top: 1rem;
-    }
-    .artistname , .artisttrack{
-        color: white;
-    }
-
-    .artistname,{
-        text-transform: capitalize;
-        letter-spacing: .3rem;
-    }
-
-    .artisttrack{
-        text-transform: capitalize;
-        letter-spacing: .2rem;
     }
 
     .date{
