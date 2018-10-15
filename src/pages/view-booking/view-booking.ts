@@ -15,7 +15,7 @@ import firebase from 'firebase';
   selector: 'page-view-booking',
   templateUrl: 'view-booking.html',
 })
-export class ViewBookingPage implements OnInit{
+export class ViewBookingPage{
   bookings;
   fanName;
   fanEmail;
@@ -30,13 +30,7 @@ export class ViewBookingPage implements OnInit{
   
   }
 
-  ngOnInit(){
-
-  // this.fanPic=this.bookingDetails.fanName;
-  // this.fanMsg=this.bookingDetails.fanName;
-  // this.fanDate=this.bookingDetails.fanName;
-  // this.fanTime=this.bookingDetails.fanName;
-  }
+  
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ViewBookingPage');
@@ -65,12 +59,5 @@ export class ViewBookingPage implements OnInit{
     this.view.dismiss();
   }
 
-  delete()
- {
-   firebase.database().ref("Bookings/"+ this.id).child(this.key).remove().then(()=>{
-     this.navCtrl.push(ProfilePage);
-   });
-  alert("working current user" + this.id + " bookingID"+this.key);
 
- }
 }

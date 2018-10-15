@@ -91,16 +91,16 @@
                 <p class="segcontainer__seg__cards--datetext">{{i.date}} {{i.time}}</p>
             </div> -->
 
-            <ion-item-sliding *ngFor="let i of bookingArr;let a=index;" (click)="viewBooking(a)" class="segcontainer__seg__cardcontainer">
-                <ion-item no-lines class="segcontainer__seg__cardcontainer__cards">
+            <ion-item-sliding *ngFor="let i of bookingArr;let a=index;" class="segcontainer__seg__cardcontainer">
+                <ion-item no-lines class="segcontainer__seg__cardcontainer__cards" (click)="viewBooking(a)">
                     <ion-avatar item-start>
-                        <img src="../../assets/imgs/27540814_10215734287658365_2735885339560353644_n.jpg">
+                        <img [src]="i.image">
                     </ion-avatar>
                     <p class="segcontainer__seg__cardcontainer__cards--text"><strong>{{i.fanName}}</strong>, has requested
                         to book you, check your email.</p>
                     <p class="segcontainer__seg__cardcontainer__cards--datetext">{{i.date}} {{i.time}}</p>
                 </ion-item>
-                <ion-item-options side="right">
+                <ion-item-options side="right" (click)="delete(a)">
                     <button ion-button color="danger">
                         <ion-icon name="trash"></ion-icon>
                         Delete

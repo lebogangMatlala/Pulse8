@@ -37,9 +37,12 @@ export class ProfilePage {
   profile = "infor";
   id;
   artistName;
+  keyid;
+  key;
 
   condition;
   picture;
+  globalPic=[];
 
   displayMsg = " Would like to book you for an event,please respond to the email sent. ";
 
@@ -185,6 +188,8 @@ export class ProfilePage {
                   console.log(this.trackarray);
                 }
                 this.massage = ""
+
+                
               }
               else {
                 this.massage = "No Track Uploaded Yet"
@@ -204,11 +209,22 @@ export class ProfilePage {
 
         })
 
+        //picture for the profile of the booked user
+        
+
+          console.log("lebo");
+
+          console.log(this.globalPic);
+          
+
         this.db.retrieveBooking(this.id).on('value', (data) => {
           var bookingInfor = data.val();
           
-
+          
           console.log(bookingInfor);
+
+
+
 
 
           if (bookingInfor != null && bookingInfor != "") {
@@ -219,7 +235,33 @@ export class ProfilePage {
             this.bookingArr = [];
             for (var i = 0; i < keys.length; i++) {
 
+              // let picId= bookingInfor[k].userKey;
+              // console.log("Lebogang")
+              // console.log(picId);
+              
+
               var k = keys[i];
+              console.log("Lebogang");
+
+              let key=bookingInfor[k].key;
+              
+              console.log(bookingInfor[k].key);
+
+              
+            this.db.retriveProfilePicture(key).on('value', (data) => {
+              var infor = data.val();
+              this.picture = infor.url;
+            
+              console.log("picture");
+              console.log(this.picture);
+
+              }, (error) => {
+
+                console.log(error.message);
+
+
+              });
+
 
               let objBook = {
                 fanName: bookingInfor[k].name,
@@ -228,11 +270,13 @@ export class ProfilePage {
                 date: bookingInfor[k].date,
                 userKey:bookingInfor[k].key,
                 msg: this.displayMsg,
+               image:this.picture,
 
                 key: k,
                 count: this.count++
 
               }
+
               this.bookingArr.reverse();
               this.bookingArr.push(objBook);
               this.bookingArr.reverse();
@@ -411,4 +455,17 @@ export class ProfilePage {
     window.open(link);
     console.log(link);
   }
+
+  delete(a)
+  {
+    this.keyid=this.id,
+    this.key=this.bookingArr[a].key,
+
+    firebase.database().ref("Bookings/"+ this.keyid).child(this.key).remove().then(()=>{
+      //this.navCtrl.push(ProfilePage);
+    });
+   console.log("working current user " + this.keyid + " bookingID "+this.key);
+ 
+  }
+  
 }
