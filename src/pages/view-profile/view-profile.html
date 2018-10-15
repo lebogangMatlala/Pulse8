@@ -68,7 +68,7 @@
                     <p *ngIf="stagename != undefined || stagename != stagename" class="segcontainer__seg__profilecontainer__profile--information">
                         <ion-icon name="contact"></ion-icon> <span class="infotext">{{stagename}}</span>
                     </p>
-                    <p class="segcontainer__seg__profilecontainer__profile--information">
+                    <p *ngIf="condition != false  "class="segcontainer__seg__profilecontainer__profile--information">
                         <ion-icon name="mail"></ion-icon> <span class="infotext">{{email}}</span>
                     </p>
                     <p *ngIf="city != undefined || city != city" class="segcontainer__seg__profilecontainer__profile--information">
