@@ -51,7 +51,7 @@ export class ViewBookingPage implements OnInit{
   this.fanDate=this.bookings.fanDate;
   this.fanTime=this.bookings.fanTime;
   this.id=this.bookings.id;
-  this.key=this.bookings.keyid;
+  this.key=this.bookings.key;
 
 
 
@@ -67,9 +67,10 @@ export class ViewBookingPage implements OnInit{
 
   delete()
  {
-   firebase.database().ref('Bookings/' + this.id).child(this.key).remove().then(()=>{
+   firebase.database().ref("Bookings/"+ this.id).child(this.key).remove().then(()=>{
      this.navCtrl.push(ProfilePage);
    });
+  alert("working current user" + this.id + " bookingID"+this.key);
 
  }
 }
