@@ -1,9 +1,4 @@
 page-profile {
-    
-    .bn{
-        display: block;
-    }
-
     ion-content{
         background: linear-gradient(rgba($color-dark, .9), rgba($color-dark, .8)),url('../../assets/imgs/7.jpg');
         background-size: cover;
@@ -18,8 +13,12 @@ page-profile {
         background: linear-gradient(rgba($color-dark, .6), rgba($color-dark, .6)),url('../../assets/imgs/dj4.jpg');
         background-size: cover;
         background-position: bottom !important;
+        &--back{
+            display: inline-block;
+            zoom: 1.5;
+        }
         &__herobanner{
-            height: 12.5rem;
+            height: 12rem;
             display: flex;
             justify-content: space-evenly;
             flex-flow: row nowrap;
@@ -101,7 +100,7 @@ page-profile {
                     color: rgba(245, 245, 245, 0.829);
                     width: 100%;
                     margin: 0 auto;
-                    padding: 1rem;
+                    padding: .5rem;
                     text-align: center;
                     &--bioheading{
                         text-transform: uppercase;
@@ -114,62 +113,78 @@ page-profile {
                     }
                 }
             }
-        }
-    }
 
-    .cont{
-        padding: 0 !important;
-    }
+            &__profilecontainer{
+                padding: 1rem;
+                &__profile{
+                    &--bioheading{
+                        padding: 0;
+                        margin: 0;
+                        text-align: center;
+                        font-weight: 300;
+                        font-size: 3rem;
+                    }
+                    &--information{
+                        font-size: 1.6rem;
+                        ion-icon{
+                            position: relative;
+                            top: .2rem;
+                            margin-right: .5rem;
+                        }
+                    }
+                }
+            }
+            &__cardcontainer{
+                background: transparent !important;
+                border-radius: .5rem;
+                width: 95vw;
+                margin: 0 auto;
+                &:nth-child(even){
+                    background: rgba($color-grey-light, .2) !important;
+                }
+                &:nth-child(odd){
+                    background: rgba($color-grey-light, .2);
+                    border: 1px solid rgba($color-grey-light,.2);
+                }
+                &:not(:first-child){
+                    margin-top: 1rem;
+                }
+                &:first-child{
+                    margin-top: .5rem;
+                }
 
-    .cardcontainer{
-        margin-top: 1rem;
-        width: 100vw;
-        .cards{
-            height: 15%;
-        }
-        &:not(:first-child){
-            margin-top: 1rem;
-        }
-
-        &:nth-child(odd){
-            .cards{
-                animation: moveInLeft .8s ease;
-                background: rgba($color-grey-light, .2);
+                ion-item-options{
+                    border: none !important;
+                    animation: scale .5s ease;
+                }
+                p{
+                    color: $color-grey-light;
+                }
+                ion-avatar{
+                    margin: 0 1rem 0 0 !important;
+                    img{
+                        // width: 4rem;
+                        // height: 4rem;
+                    }
+                }
+                &__cards{
+                    &--datetext{
+                        margin-top: .5rem;
+                        display: block;
+                        font-size: 1.2rem;
+                        font-style: italic;
+                    }
+                }
             }
         }
-
-        &:nth-child(even){
-            .cards{
-                animation: moveInRight .5s ease;
-            }
-        }
-    }
-    .cards{
-        word-wrap: break-word;
-        padding: .5rem;
-        background: rgba(255, 255, 255, 0.020);
-        color: rgba(245, 245, 245, 0.829);
-        width: 96%;
-        margin: 0 auto;  
-        height: 60px;     
-        border-radius: 5px;
-        border: 1px solid rgb(34, 33, 33);   
-    }
-    .text{
-        margin-top: -1em;
-        font-size: 1rem;
-        font-weight: 100;
-    }
-    
-    .cards:not(:last-child){
-        margin-top: 1rem;
     }
 
-    .date{
-        margin-top: .5rem;
-        display: block;
-        font-size: 1.2rem;
-        font-style: italic;
+    .item-md{
+        background: transparent;
+    }
+
+    .list-ios ion-item-options{
+        border-bottom: none !important;
     }
 
     .nocontent{
@@ -216,19 +231,8 @@ page-profile {
         }
     }
 
-    .information{
-        margin-left: 1rem;
-        .infotext{
-            margin-left: .5rem;
-            font-size: 1.6rem;
-            font-weight: 300;
-        }
-    }
-
     ion-fab{
         position: fixed;
         z-index: 999;
     }
-
-    @keyframes fade {0%{opacity: .1;}100%{opacity: .5;};}
 }
