@@ -98,6 +98,7 @@ condition;
         this.djEmail=djDetails.email;
         this.djStagename=djDetails.stagename;
         this.djBio = djDetails.bio;
+        
       }else{
         console.log("User has signed out");
 

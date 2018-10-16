@@ -23,23 +23,22 @@ import { SigninPage } from '../pages/signin/signin';
 import { ViewBookingPage } from '../pages/view-booking/view-booking';
 
 
-
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     EditPage,
-LoginPage,
-RegisterPage,
-ProfilePage,
-StartPage,
-ViewProfilePage,
-UploadPage,
-IdentityPage,
-CatergoriesPage,
-BookingsPage,
-SigninPage,
-ViewBookingPage
+    LoginPage,
+    RegisterPage,
+    ProfilePage,
+    StartPage,
+    ViewProfilePage,
+    UploadPage,
+    IdentityPage,
+    CatergoriesPage,
+    BookingsPage,
+    SigninPage,
+    ViewBookingPage
   ],
   imports: [
     BrowserModule,
@@ -51,23 +50,23 @@ ViewBookingPage
     MyApp,
     HomePage,
     EditPage,
-LoginPage,
-RegisterPage,
-ProfilePage,
-StartPage,
-ViewProfilePage,
-UploadPage,
-IdentityPage,
-CatergoriesPage,
-BookingsPage,SigninPage,
-ViewBookingPage
+    LoginPage,
+    RegisterPage,
+    ProfilePage,
+    StartPage,
+    ViewProfilePage,
+    UploadPage,
+    IdentityPage,
+    CatergoriesPage,
+    BookingsPage, SigninPage,
+    ViewBookingPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
     EmailComposer,
     DatabaseProvider
   ]
 })
-export class AppModule {}
+export class AppModule { }
