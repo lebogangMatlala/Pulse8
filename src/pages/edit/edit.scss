@@ -25,13 +25,11 @@ page-edit {
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        height: 100vh;
         &__iconcontainer{
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding-bottom: 6rem;
             &__icon{
               width: 10rem;
               height: 10rem;
@@ -53,6 +51,12 @@ page-edit {
 
         &__formcontent{
             width: 80%;
+            .prices{
+                display: flex;
+                flex-flow: row nowrap;
+                height: 6rem;
+                margin-top: 1rem;
+            }
         }
 
         &__buttoncontent{
@@ -86,6 +90,13 @@ page-edit {
             }
         }
     }
+    .Price{
+        width: 55%;
+    }
+    .payment{
+        width: 45%;
+        
+    }
 
     .item-input-has-focus{
         animation: pulseate 1s ease infinite, .3s ease grow;
@@ -114,5 +125,4 @@ page-edit {
             margin-bottom: 1rem;
         }
     }
-
 }

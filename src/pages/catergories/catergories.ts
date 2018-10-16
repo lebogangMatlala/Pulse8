@@ -102,23 +102,11 @@ export class CatergoriesPage {
       let stagename = profile[k].stagename
       this.role=profile[k].role;
       let genre = profile[k].genre;
+      let price = profile[k].price;
+      let payment = profile[k].payment;
 
       console.log(this.role +"  "+ genre);
       if(this.role=="Dj"){
-
-        ///track
-        firebase.database().ref('track/').on('value', (data) => {
-          this.infor = data.val();
-
-         
-      
-          
-          
-          console.log(this.infor);
-        }, (error) => {
-  
-          console.log(error.message);
-        });
         
         if(genre!= null && stagename!=null){    
            console.log("dj" + k + stagename )
@@ -127,7 +115,9 @@ export class CatergoriesPage {
           stagename:stagename,
           genre:genre,
           url:this.globalPic[i],
-          key:k
+          key:k,
+          price:price,
+          payment:payment
       }
       
 
@@ -216,7 +206,7 @@ export class CatergoriesPage {
        let keys  = this.arrDj[i].key;
       
         console.log(keys)
-         this.navCtrl.setRoot(ViewProfilePage,{keyobj:keys});
+         this.navCtrl.push(ViewProfilePage,{keyobj:keys});
    
   }
 
@@ -235,7 +225,7 @@ export class CatergoriesPage {
       }
       else{
         console.log("User has Logged out");
-        this.navCtrl.setRoot(LoginPage);
+        this.navCtrl.push(LoginPage);
       }
 
 
@@ -251,14 +241,14 @@ export class CatergoriesPage {
       firebase.auth().signOut().then(() =>{
           // Sign-out successful.
           console.log(" Sign-out successful");
-          this.navCtrl.setRoot(LoginPage);
+          this.navCtrl.push(LoginPage);
           }).catch(function(error) {
           // An error happened.
           console.log(error);
       });
     }
     else{
-      this.navCtrl.setRoot(StartPage);
+      this.navCtrl.push(StartPage);
     }
 
  
@@ -280,6 +270,8 @@ export class CatergoriesPage {
               let stagename = profile[k].stagename
               this.role=profile[k].role;
                let genre = profile[k].genre;
+               let price = profile[k].price;
+               let payment = profile[k].payment;
 
             console.log(this.role +"  "+ genre);
       if(this.role=="Dj"){
@@ -290,6 +282,8 @@ export class CatergoriesPage {
                stagename:stagename,
                 genre:genre,
                 url:this.globalPic[i],
+                price:price,
+                payment:payment,
                 key:k
   }
       console.log(objDj);

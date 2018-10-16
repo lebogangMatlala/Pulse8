@@ -73,7 +73,7 @@ export class SigninPage {
   
         }else{
           let djKey=this.key;
-          this.navCtrl.push(BookingsPage,{objBooking:this.userID});
+          this.navCtrl.push(BookingsPage,{objBooking:this.djKey});
         }
             
           
@@ -81,7 +81,7 @@ export class SigninPage {
       .catch(error => {
         loading.dismiss();
         const alert = this.alertCtrl.create({
-          title: error.code,
+          title: "Caution",
           subTitle: error.message,
           buttons: [
             {
@@ -102,7 +102,7 @@ export class SigninPage {
 
   resetPassword() {
     const prompt = this.alertCtrl.create({
-      title: "Auth",
+      title: "Reset Password",
       message: "Enter your email to reset your password",
       inputs: [
         {
@@ -115,11 +115,7 @@ export class SigninPage {
           text: "Cancel",
           handler: data => {
             console.log("Cancel clicked");
-            const loader = this.loadingCtrl.create({
-              content: "Please wait...",
-              duration: 5000
-            });
-            loader.present();
+          
             this.navCtrl.setRoot(LoginPage);
           }
         },

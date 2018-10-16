@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ActionSheetController, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ActionSheetController, AlertController, ModalController } from 'ionic-angular';
 import { UploadPage } from '../upload/upload';
 import { EditPage } from '../edit/edit';
 import firebase from 'firebase';
 import { CatergoriesPage } from '../catergories/catergories';
 import { DatabaseProvider } from '../../providers/database/database';
 import { LoginPage } from '../login/login';
+import { ViewBookingPage } from '../view-booking/view-booking';
 /**
  * Generated class for the ProfilePage page.
  *
@@ -36,23 +37,35 @@ export class ProfilePage {
   profile = "infor";
   id;
   artistName;
+  keyid;
+  key;
 
   condition;
+  picture;
+  globalPic=[];
+
+  displayMsg = " Would like to book you for an event,please respond to the email sent. ";
 
 
-  displayMsg = " would like to book you for an event.Please respond to the email sent on ";
+  constructor(private modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public db: DatabaseProvider) {
 
-
-  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public db: DatabaseProvider) {
-
+  
 
   }
+
+  ngOnInit() {
+
+    this.pic="http://www.dealnetcapital.com/files/2014/10/blank-profile.png";
+  }
+
+
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProfilePage');
 
     //let key = this.navParams.get("keyobj");
 
+    
 
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
@@ -87,7 +100,13 @@ export class ProfilePage {
           if (userDetails != null && userDetails != '') {
             firebase.database().ref('Pic/' + this.id).on('value', (data) => {
               var infor = data.val();
-              this.pic = infor.url;
+              if(infor != null && infor != ""){
+                this.pic = infor.url;
+              }else{
+                console.log("no picture");
+                
+              }
+              
               //  console.log("pciture"+infor);
 
             }, (error) => {
@@ -169,6 +188,8 @@ export class ProfilePage {
                   console.log(this.trackarray);
                 }
                 this.massage = ""
+
+                
               }
               else {
                 this.massage = "No Track Uploaded Yet"
@@ -188,33 +209,74 @@ export class ProfilePage {
 
         })
 
+        //picture for the profile of the booked user
+        
+
+          console.log("lebo");
+
+          console.log(this.globalPic);
+          
+
         this.db.retrieveBooking(this.id).on('value', (data) => {
           var bookingInfor = data.val();
-
+          
+          
           console.log(bookingInfor);
+
+
+
 
 
           if (bookingInfor != null && bookingInfor != "") {
             var keys: any = Object.keys(bookingInfor);
-
-            console.log(bookingInfor);
+            console.log("helo killer man");
+            console.log(this.id);
 
             this.bookingArr = [];
             for (var i = 0; i < keys.length; i++) {
 
+              // let picId= bookingInfor[k].userKey;
+              // console.log("Lebogang")
+              // console.log(picId);
+              
+
               var k = keys[i];
+              console.log("Lebogang");
+
+              let key=bookingInfor[k].key;
+              
+              console.log(bookingInfor[k].key);
+
+              
+            this.db.retriveProfilePicture(key).on('value', (data) => {
+              var infor = data.val();
+              this.picture = infor.url;
+            
+              console.log("picture");
+              console.log(this.picture);
+
+              }, (error) => {
+
+                console.log(error.message);
+
+
+              });
+
 
               let objBook = {
                 fanName: bookingInfor[k].name,
                 fanEmail: bookingInfor[k].email,
                 time: bookingInfor[k].time,
                 date: bookingInfor[k].date,
+                userKey:bookingInfor[k].key,
                 msg: this.displayMsg,
+               image:this.picture,
 
                 key: k,
                 count: this.count++
 
               }
+
               this.bookingArr.reverse();
               this.bookingArr.push(objBook);
               this.bookingArr.reverse();
@@ -247,7 +309,7 @@ export class ProfilePage {
               email: userInfor.email,
               city: userInfor.city
             }
-
+            console.log(`this is the empty stage name: ${objInfo.stagename}`);
             this.inforArray.push(objInfo);
 
             console.log("helo bbs");
@@ -279,36 +341,49 @@ export class ProfilePage {
     let fanMsg = this.bookingArr[a].msg;
     let fanDate = this.bookingArr[a].date;
     let fanTime = this.bookingArr[a].time;
-    let key = this.bookingArr[a].key;
+    let key = this.bookingArr[a].userKey;
+    let keyid =this.bookingArr[a].key;
+
     console.log(key);
     console.log("array");
     console.log(this.bookingArr);
 
+    this.db.retriveProfilePicture(key).on('value', (data) => {
+      var infor = data.val();
+      this.picture = infor.url;
+    
+      console.log("picture");
+      console.log(this.picture);
 
-    const alert = this.alertCtrl.create({
-      subTitle: fanName + '' + fanMsg + " " + fanDate + " " + fanTime + " Email :" + fanEmail,
-      buttons: [
-        {
-          text: 'Cancel',
-          handler: data => {
-            console.log('Cancel clicked');
+      }, (error) => {
 
-          }
-        },
-        {
-          text: 'Delete',
-          handler: data => {
-            console.log('Delete clicked');
-            firebase.database().ref('Bookings/' + this.id).child(key).remove().then(() => {
-              this.navCtrl.push(ProfilePage);
-            });
-          }
-        }
-      ]
-    });
-    alert.present();
+        console.log(error.message);
 
 
+      });
+
+     
+
+
+
+           let obj={
+              userskey:key,
+               fanName : this.bookingArr[a].fanName,
+               fanEmail : this.bookingArr[a].fanEmail,
+               fanMsg : this.bookingArr[a].msg,
+               fanDate : this.bookingArr[a].date,
+               fanTime : this.bookingArr[a].time,
+               picture:this.picture,
+               keyid:this.bookingArr[a].userKey,
+               key:this.bookingArr[a].key,
+               id:this.id
+
+            }
+          
+
+
+    const modal = this.modalCtrl.create(ViewBookingPage,{bookingDetails:obj});
+    modal.present();
   }
 
   deleteTrack(i) {
@@ -326,9 +401,6 @@ export class ProfilePage {
           handler: data => {
             console.log('No clicked');
 
-
-
-
           }
         },
         {
@@ -336,6 +408,7 @@ export class ProfilePage {
           handler: data => {
             console.log('Yes clicked');
             firebase.database().ref('artists/' + this.id).child(key).remove();
+            this.navCtrl.push(ProfilePage);
           }
         }
       ]
@@ -365,14 +438,14 @@ export class ProfilePage {
       firebase.auth().signOut().then(() => {
         // Sign-out successful.
         console.log(" Sign-out successful");
-        this.navCtrl.setRoot(LoginPage);
+        this.navCtrl.push(LoginPage);
       }).catch(function (error) {
         // An error happened.
         console.log(error);
       });
     }
     else {
-      this.navCtrl.setRoot(CatergoriesPage);
+      this.navCtrl.push(CatergoriesPage);
     }
 
 
@@ -382,4 +455,17 @@ export class ProfilePage {
     window.open(link);
     console.log(link);
   }
+
+  delete(a)
+  {
+    this.keyid=this.id,
+    this.key=this.bookingArr[a].key,
+
+    firebase.database().ref("Bookings/"+ this.keyid).child(this.key).remove().then(()=>{
+      //this.navCtrl.push(ProfilePage);
+    });
+   console.log("working current user " + this.keyid + " bookingID "+this.key);
+ 
+  }
+  
 }

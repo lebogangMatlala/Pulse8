@@ -46,95 +46,28 @@ $color-grey-dark: #666;
 $color-dark: #131618;
 $color-primary-light: #EFD268;
 $color-primary-dark: #AB8E21;
-
+$color-danger: #f53d3d;
 $color-secondary-light: #794DA1;
 $color-secondary-dark: #4A1D73;
 // App iOS Variables
 // --------------------------------------------------
 // iOS only Sass variables can go here
 
+@keyframes pulse {from{transform: scale3d(1, 1, 1);}50% {transform: scale3d(1.05, 1.05, 1.05);}to{transform: scale3d(1, 1, 1);}}
 
+@keyframes pulseate{0% {box-shadow: 0 0 0 0 rgba($color-grey-light, 0.4);}70% {box-shadow: 0 0 0 1rem rgba($color-grey-light, 0);}100% {box-shadow: 0 0 0 0 rgba($color-grey-light, 0);}}
 
+@keyframes fadeIn{0%{transform: scale(3);opacity: 0;}100%{transform: scale(1);opacity: 1;}}
 
-// App Material Design Variables
-@keyframes pulse {
-  from {
-    transform: scale3d(1, 1, 1);
-  }
+@keyframes grow{0%{transform: scale(1.0);}100%{transform: scale(1.5);}}
 
-  50% {
-    transform: scale3d(1.05, 1.05, 1.05);
-  }
+@keyframes moveInLeft {0%{opacity: 0;transform: translateX(-3rem);}100% {opacity: 1;transform: translateX(0);}}
 
-  to {
-    transform: scale3d(1, 1, 1);
-  }
-}
+@keyframes moveInRight {0% {opacity: 0;transform: translateX(3rem);}100% {opacity: 1;
+transform: translateX(0);}}
 
-@keyframes pulseate{
-  0% {
-      box-shadow: 0 0 0 0 rgba($color-grey-light, 0.4);
-    }
-    70% {
-      box-shadow: 0 0 0 1rem rgba($color-grey-light, 0);
-    }
-    100% {
-      box-shadow: 0 0 0 0 rgba($color-grey-light, 0);
-    }
-}
-
-@keyframes fadeIn{
-  0%{
-    transform: scale(3);
-    opacity: 0;
-  }
-
-  100%{
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-@keyframes grow{
-  0%{
-    transform: scale(1.0);
-  }
-  100%{
-    transform: scale(1.5);
-  }
-}
-
-@keyframes scrollUp{
-  90%{
-      transform: translateY(100%);
-      opacity: .9;
-  }
-  100%{
-      opacity: .4;
-  }
-}
-
-@keyframes moveInLeft {
-  0% {
-    opacity: 0;
-    transform: translateX(-3rem);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes moveInRight {
-  0% {
-    opacity: 0;
-    transform: translateX(3rem);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
+@keyframes fade {0%{opacity: .1;}100%{opacity: .5;};}
+@keyframes scale {0%{transform:  scale(0.5); opacity: 0;}100%{transform:  scale(1); opacity: 1;}}
 
 @import "ionic.theme.default";
 

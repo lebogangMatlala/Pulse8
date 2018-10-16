@@ -1,0 +1,69 @@
+page-view-booking {
+
+    .content{
+        animation: 1s ease fadeIn;
+        &__hero{
+            width: 100%;
+            height: 15rem;
+            background: url('../../assets/imgs/dj4.jpg');
+            background-position: bottom;
+            background-size: cover;
+            box-shadow: .2rem .5rem .7rem rgba($color-grey-dark, .6);
+            &--image{
+                width: 15rem;
+                height: 15rem;
+                border-radius: 50%;
+                margin: 0 auto;
+                display: block;
+                position: relative;
+                top:7.5rem;
+                box-shadow: .2rem .5rem .7rem rgba($color-grey-dark, .6);
+            }
+        }
+
+        &__maincontent{
+            margin-top: 10rem;
+            text-align: center;
+            color: $color-grey-dark;
+            &--name{
+                font-weight: 300;
+                font-size: 3rem;
+            }
+            &--email{
+                font-weight: 300;
+                font-size: 2rem;
+            }
+            &--message{
+                padding: 0 2rem;
+            }
+            &--time{
+                font-size: 1.2rem;
+                font-style: italic;
+            }
+        }
+
+        &__buttons{
+            display: flex;
+            justify-content: center;
+            &--button{
+                border: none;
+                height: 5rem;
+                width: 5rem;
+                font-size: 2rem;
+                color: $color-danger;
+                margin: 3rem auto;
+                animation: fade 2s ease;
+            }
+        }
+
+        &__back{
+            position: fixed;
+            top: 0vh;
+            &--button{
+                border: none;
+            }
+        }
+    }
+
+    @keyframes fade {0%{opacity: 0} 100%{opacity: 1;}}
+}

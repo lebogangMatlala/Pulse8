@@ -1,0 +1,18 @@
+<ion-content>
+  <div class="content">
+    <div class="content__hero">
+      <img class="content__hero--image" src="{{fanPic}}">
+    </div>
+    <div class="content__maincontent">
+      <h1 class="content__maincontent--name">{{fanName}}</h1>
+      <p class="content__maincontent--email">{{fanEmail}}</p>
+      <p class="content__maincontent--message">{{fanMsg}}</p>
+      <p class="content__maincontent--time">{{fanDate}}{{fanTime}}</p>
+    </div>
+    <div class="content__back">
+      <button class="content__back--button" dark outline ion-button icon-only (click)="back()">
+        <ion-icon name="arrow-round-back"></ion-icon>
+      </button>
+    </div>
+  </div>
+</ion-content>

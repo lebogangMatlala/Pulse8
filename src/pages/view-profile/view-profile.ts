@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ActionSheetController, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ActionSheetController, ToastController, ModalController } from 'ionic-angular';
 import { EditPage } from '../edit/edit';
 import { UploadPage } from '../upload/upload';
 import firebase from 'firebase';
 import { CatergoriesPage } from '../catergories/catergories';
 import { BookingsPage } from '../bookings/bookings';
-import { LoginPage } from '../login/login';
 import { SigninPage } from '../signin/signin';
+import { ViewBookingPage } from '../view-booking/view-booking';
 /**
  * Generated class for the ViewProfilePage page.
  *
@@ -40,9 +40,22 @@ export class ViewProfilePage {
   stagename;
   userid;
   condition;
+  obj;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,public actionSheetCtrl: ActionSheetController, public toastCtrl: ToastController ) {
+
+
+  constructor(private modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams,public actionSheetCtrl: ActionSheetController, public toastCtrl: ToastController ) {
+
+    this.obj=this.navParams.get("objKey");
+
+    //console.log(this.obj.key);
+
+   
+
+  
+
   }
+
 
   ionViewDidLoad() {
 
@@ -62,9 +75,20 @@ export class ViewProfilePage {
         this.userid =firebase.auth().currentUser.uid;
 
     
-        this.id = this.key;
-    
+       
+
+        if(this.obj==undefined){
+
+          this.id = this.key;
+        }
+       else{
+        this.id=this.obj.userskey;
+        console.log('killer killer ');
         console.log(this.id);
+       }
+      
+    
+        
  
         firebase.database().ref('Registration/' +this.id).on('value', (data: any) => {
  
@@ -178,7 +202,7 @@ export class ViewProfilePage {
                   let objart = {
                     artistName: inforArt[k].artistName,
                     trackName: inforArt[k].trackName,
-                    
+                    trackLink: inforArt[k].trackLink,
                     key: k,
                     count:this.count++
                     
@@ -186,8 +210,9 @@ export class ViewProfilePage {
        
                    this.artistName=objart.artistName;
                     this.trackarray.push(objart);
+                    console.log("link");
 
-                  //  console.log(this.trackarray);
+                  console.log(objart.trackLink);
                   }
                 }
                 else{
@@ -336,7 +361,7 @@ export class ViewProfilePage {
                   let objart = {
                     artistName: inforArt[k].artistName,
                     trackName: inforArt[k].trackName,
-                    
+                    trackLink: inforArt[k].trackLink,
                     key: k,
                     count:this.count++
                     
@@ -344,8 +369,9 @@ export class ViewProfilePage {
        
                    this.artistName=objart.artistName;
                     this.trackarray.push(objart);
+                    console.log("link");
 
-                  //  console.log(this.trackarray);
+                    console.log(objart.trackLink);
                   }
                 }
                 else{
@@ -419,7 +445,16 @@ export class ViewProfilePage {
   //   this.navCtrl.push('PlayerPage',{obj:i});
   // }
   back(){
-    this.navCtrl.push(CatergoriesPage);
+    if(this.obj==undefined){
+
+      this.navCtrl.push(CatergoriesPage);
+    }
+   else{
+ 
+    this.navCtrl.pop();
+    
+   }
+   
   }
 
   Booking()

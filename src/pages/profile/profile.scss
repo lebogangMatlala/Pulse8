@@ -1,9 +1,4 @@
 page-profile {
-    
-    .bn{
-        display: block;
-    }
-
     ion-content{
         background: linear-gradient(rgba($color-dark, .9), rgba($color-dark, .8)),url('../../assets/imgs/7.jpg');
         background-size: cover;
@@ -14,12 +9,16 @@ page-profile {
     }
 
     .hero{
-        width: 100vw;
+        width: 100%;
         background: linear-gradient(rgba($color-dark, .6), rgba($color-dark, .6)),url('../../assets/imgs/dj4.jpg');
         background-size: cover;
         background-position: bottom !important;
+        &--back{
+            display: inline-block;
+            zoom: 1.5;
+        }
         &__herobanner{
-            height: 20vh;
+            height: 12rem;
             display: flex;
             justify-content: space-evenly;
             flex-flow: row nowrap;
@@ -64,157 +63,154 @@ page-profile {
             }
         }
     }
-    
-    .segs{
-        margin-top: 89.8px;
+
+    .segcontainer{
+        &__seg{
+            margin: 0;
+            &__listitems{
+                background: transparent;
+                color: $color-primary-light !important;
+                &:nth-child(even){
+                    width: 100vw;
+                    background: rgba($color-grey-light, .1);
+                }
+
+                &--artistname, &--artisttrack{
+                    color: white;
+                    text-transform: capitalize;
+                }
+
+                &--artistname{
+                    letter-spacing: .3rem;
+                }
+
+                &--artisttrack{
+                    letter-spacing: .2rem;
+                }
+                
+                &--artistlink{
+                    a{
+                        color: white;
+                    }
+                }
+            }
+            &__bio{
+                &__userProfile{
+                    background: rgba(255, 255, 255, 0.020);
+                    color: rgba(245, 245, 245, 0.829);
+                    width: 100%;
+                    margin: 0 auto;
+                    padding: .5rem;
+                    text-align: center;
+                    &--bioheading{
+                        text-transform: uppercase;
+                        letter-spacing: .3rem;
+                        font-size: 3rem;
+                        font-weight: 300;
+                    }
+                    &--biotext{
+                        font-size: 1.5rem;
+                    }
+                }
+            }
+
+            &__profilecontainer{
+                padding: 1rem;
+                &__profile{
+                    &--bioheading{
+                        padding: 0;
+                        margin: 0;
+                        text-align: center;
+                        font-weight: 300;
+                        font-size: 3rem;
+                    }
+                    &--information{
+                        font-size: 1.6rem;
+                        ion-icon{
+                            position: relative;
+                            top: .2rem;
+                            margin-right: .5rem;
+                        }
+                    }
+                }
+            }
+            &__cardcontainer{
+                background: transparent !important;
+                border-radius: .5rem;
+                width: 95vw;
+                margin: 0 auto;
+                &:nth-child(even){
+                    background: rgba($color-grey-light, .2) !important;
+                }
+                &:nth-child(odd){
+                    background: rgba($color-grey-light, .2);
+                    border: 1px solid rgba($color-grey-light,.2);
+                }
+                &:not(:first-child){
+                    margin-top: 1rem;
+                }
+                &:first-child{
+                    margin-top: .5rem;
+                }
+
+                ion-item-options{
+                    border: none !important;
+                    animation: scale .5s ease;
+                }
+                p{
+                    color: $color-grey-light;
+                }
+                ion-avatar{
+                    margin: 0 1rem 0 0 !important;
+                    img{
+                        // width: 4rem;
+                        // height: 4rem;
+                    }
+                }
+                &__cards{
+                    &--datetext{
+                        margin-top: .5rem;
+                        display: block;
+                        font-size: 1.2rem;
+                        font-style: italic;
+                    }
+                }
+            }
+        }
     }
-    
-    .item-ios, .item-md{
+
+    .item-md{
         background: transparent;
-        border: none !important;
-        color: $color-primary-light !important;
-       
-    }
-   
-    ion-list{
-        position: absolute;
-        top: 25vh;
     }
 
-    .listitems{
-        &:nth-child(even){
-            width: 100vw;
-            background: rgba($color-grey-light, .1);
-        }
-    }
-
-    .section{
-        margin-top: 5vh;
-
-    }
-
-    ion-segment{
-        margin-top: 1rem !important;
-       
-    }
-
-    .userProfile{
-        word-wrap: break-word;
-        padding-left: 15px;
-        padding-right: 15px;
-        padding-top: -10px;
-        padding-bottom: 15px;
-        background: rgba(255, 255, 255, 0.020);
-        margin-bottom: -10%;
-        color: rgba(245, 245, 245, 0.829);
-        width: 100%;
-        margin: 0 auto; 
-        margin-top: -2.5em;
-    }
-
-    .bioheading{
-        text-align: center;
-        text-transform: uppercase;
-        letter-spacing: .3rem;
-        font-size: 3rem;
-        font-weight: 300;
-    }
-    .input-wrapper{
-        margin-top: -0.7 em;
-    }
- 
-    .biotext{
-        text-align: center;
-        font-size: 1.4rem !important;
-    }
-
-    .Profile{
-        word-wrap: break-word;
-        padding-left: 15px;
-        padding-right: 15px;
-        padding-top: 5px;
-        padding-bottom: 15px;
-        background: rgba(255, 255, 255, 0);
-        color: rgba(245, 245, 245, 0.829);
-        width: 100vw;
-        margin: 0 auto; 
-        p{
-            margin-left: 2.4em;
-            margin-top: -1.7em;
-        }  
-        h2{
-            text-align: center;
-            font-weight: 300;
-            font-size: 3rem;
-            letter-spacing: .3rem;
-            text-transform: uppercase;
-        }     
-    }
-
-    .cardcontainer{
-        .cards{
-            height: 15%;
-        }
-        &:not(:first-child){
-            margin-top: 1rem;
-        }
-
-        &:nth-child(odd){
-            .cards{
-                animation: moveInLeft .8s ease;
-                background: rgba($color-grey-light, .2);
-            }
-        }
-
-        &:nth-child(even){
-            .cards{
-                animation: moveInRight .5s ease;
-            }
-        }
-    }
-    .cards{
-        word-wrap: break-word;
-        padding-top: 2px;
-        padding-left: 8px;
-        background: rgba(255, 255, 255, 0.020);
-        color: rgba(245, 245, 245, 0.829);
-        width: 96%;
-        margin: 0 auto;  
-        height: 60px;     
-        border-radius: 5px;
-        border: 1px solid rgb(34, 33, 33);   
-    }
-    .text{
-        margin-top: -1em;
-        font-size: 1rem;
-        font-weight: 100;
-    }
-    
-    .cards:not(:last-child){
-        margin-top: 1rem;
-    }
-    .artistname , .artisttrack{
-        color: white;
-    }
-
-    .artistname,{
-        text-transform: capitalize;
-        letter-spacing: .3rem;
-    }
-
-    .artisttrack{
-        text-transform: capitalize;
-        letter-spacing: .2rem;
-    }
-
-    .date{
-        margin-top: .5rem;
-        display: block;
-        font-size: 1.2rem;
-        font-style: italic;
+    .list-ios ion-item-options{
+        border-bottom: none !important;
     }
 
     .nocontent{
+        animation: fade 1s ease;
+        display: flex;
+        justify-content: center;
+        width: 100vw;
+        height: 100%;
+        align-items: center;
+        opacity: .5;
+        margin-top: 5rem;
+        &__contents{
+            &--image{
+                width: 15rem;
+                height: 15rem;
+                margin: 0 auto;
+                display: block;
+            }
+            &--text{
+                font-size: 2.5rem;
+            }
+        }
+    }
+
+    .nocontent1{
+        background: rgba($color-grey-light, 0.05);
         animation: fade 1s ease;
         display: flex;
         justify-content: center;
@@ -239,6 +235,4 @@ page-profile {
         position: fixed;
         z-index: 999;
     }
-
-    @keyframes fade {0%{opacity: .1;}100%{opacity: .5;};}
 }
