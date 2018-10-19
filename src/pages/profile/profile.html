@@ -1,9 +1,8 @@
 <ion-content>
     <div class="hero">
-        <button ion-button clear class="hero__back">
+        <button ion-button clear style="zoom: 1.5;" class="hero__back">
             <ion-icon (click)="back()" ios="ios-arrow-round-back" md="md-arrow-round-back"></ion-icon>
         </button>
-
         <div class="hero__herobanner">
             <div class="hero__herobanner__heroimagecontainer">
                 <img [src]="pic" alt="" class="hero__herobanner__heroimagecontainer--image">
@@ -15,7 +14,6 @@
                         <button ion-button icon-only (click)="edit()">
                             <ion-icon ios="ios-create" md="md-create"></ion-icon>
                         </button>
-
                         <button ion-button icon-only (click)="upload()">
                             <ion-icon ios="ios-cloud-upload" md="md-cloud-upload"></ion-icon>
                         </button>

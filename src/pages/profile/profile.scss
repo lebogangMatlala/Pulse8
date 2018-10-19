@@ -66,6 +66,8 @@ page-profile {
 
     .segcontainer{
         &__seg{
+            overflow: scroll;
+            height: 68vh;
             margin: 0;
             &__listitems{
                 background: transparent;
