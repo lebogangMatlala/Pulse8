@@ -108,7 +108,7 @@ export class CatergoriesPage {
       console.log(this.role +"  "+ genre);
       if(this.role=="Dj"){
         
-        if(genre!= null && stagename!=null){    
+        if(genre!= null && stagename!=null&& genre!=='None'){    
            console.log("dj" + k + stagename )
          this.objDj ={
           role:this.role,

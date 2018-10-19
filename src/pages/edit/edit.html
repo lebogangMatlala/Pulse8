@@ -49,8 +49,9 @@ giving the form a template variable of f-->
                     Genre
                 </ion-label>
 
-                <ion-select name="genre" [(ngModel)]="genre" multiple="true" interface="popover">
-                    <ion-option value="House" (change)="input($event)">House</ion-option>
+                <ion-select name="genre" [(ngModel)]="genre" multiple="false" interface="popover">
+                    <ion-option value="None" (change)="input($event)">None</ion-option>
+                    <ion-option value="House">House</ion-option>
                     <ion-option value="Hip-Hop">Hip-Hop</ion-option>
                     <ion-option value="Rap">Rap</ion-option>
                     <ion-option value="Commercial house">Commercial house</ion-option>
@@ -70,7 +71,7 @@ giving the form a template variable of f-->
                     <ion-icon name="cash"></ion-icon>
                 </ion-label>
                 <ion-input type="number" name="price" [value]="price" placeholder="price" class="contentflex__formcontent--input"
-                    id="price" ngModel required></ion-input>
+                    id="price" ngModel pattern="^\\$?(([1-9](\\d*|\\d{0,2}(,\\d{3})*))|0)(\\.\\d{1,2})?$" required></ion-input>
             </ion-item>
 
              

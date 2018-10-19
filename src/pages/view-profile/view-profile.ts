@@ -42,6 +42,8 @@ export class ViewProfilePage {
   condition;
   obj;
 
+  userStatus;
+
 
 
   constructor(private modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams,public actionSheetCtrl: ActionSheetController, public toastCtrl: ToastController ) {
@@ -83,13 +85,24 @@ export class ViewProfilePage {
         }
        else{
         this.id=this.obj.userskey;
-        console.log('killer killer ');
+      
         console.log(this.id);
+       }
+
+       if(this.userid==this.key)
+       {
+        console.log('killer killer');
+          this.userStatus=true;
+          console.log(this.userStatus);
+          
+       }
+       else{
+          this.userStatus=false;
+          console.log(this.userStatus);
        }
       
     
         
- 
         firebase.database().ref('Registration/' +this.id).on('value', (data: any) => {
  
           let userDetails = data.val();

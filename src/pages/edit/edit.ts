@@ -205,12 +205,13 @@ back(){
     this.genre=event.target.value
   }
   submit(form: NgForm) {
-    form.value.price;
+    
+    this.price=form.value.price;
     
     form.value.payment;
 
 
-
+    if(this.price <= 5000){
     console.log(this.rate);
 
     const loader = this.loadingCtrl.create({
@@ -230,6 +231,11 @@ back(){
     this.city=form.value.city;
     this.price=form.value.price;
     this.payment=form.value.payment;
+
+  
+  
+
+  
     
 
 
@@ -277,6 +283,11 @@ back(){
         // An error happened.
         console.log(error);
       });
+    }
+    else{
+      alert('you are local')
+      form.value.price="";
+    }
    }
 
 }
