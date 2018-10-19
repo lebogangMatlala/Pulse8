@@ -39,7 +39,7 @@
     color: $color-primary-light;
 }
 
-.alert-md .alert-message{
+div.alert-message{
     color: white !important;
 }
 
@@ -48,4 +48,13 @@
     border: none !important;
     color: white !important;
     border-radius: 5rem !important;
+}
+
+.disable-hover.alert-button.alert-button-ios.alert-button-default.alert-button-default-ios:nth-child(1){
+    border-top: 1px solid rgba($color-grey-light, .5) !important;
+    border-right: 1px solid rgba($color-grey-light, .5) !important;
+}
+
+.disable-hover.alert-button.alert-button-ios.alert-button-default.alert-button-default-ios:nth-child(2){
+    border-top: 1px solid rgba($color-grey-light, .5) !important;
 }
