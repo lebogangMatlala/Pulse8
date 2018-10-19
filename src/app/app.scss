@@ -14,3 +14,38 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+.item.item-block.item-ios.item-radio{
+    background: linear-gradient(rgba($color-dark, .9), rgba($color-dark, .8)),url('../assets/imgs/7.jpg') !important;
+    background-size: cover !important;
+    border: none ;
+    color: white !important;
+}
+
+.popover-ios{
+    background: linear-gradient(rgba($color-dark, .9), rgba($color-dark, .8)) !important;
+}
+
+.popover-md{
+    background: linear-gradient(rgba($color-dark, .9), rgba($color-dark, .8)) !important;
+}
+
+.popover{
+    background: linear-gradient(rgba($color-dark, .9), rgba($color-dark, .8)) !important;
+}
+
+.alert-wrapper{
+    background: linear-gradient(rgba($color-dark, .9), rgba($color-dark, .8)),url('../assets/imgs/7.jpg') !important;
+    background-size: cover !important;
+    color: $color-primary-light;
+}
+
+.alert-md .alert-message{
+    color: white !important;
+}
+
+.alert-input{
+    background: rgba($color-grey-light, .1) !important;
+    border: none !important;
+    color: white !important;
+    border-radius: 5rem !important;
+}
