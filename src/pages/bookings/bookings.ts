@@ -98,6 +98,7 @@ condition;
         this.djEmail=djDetails.email;
         this.djStagename=djDetails.stagename;
         this.djBio = djDetails.bio;
+        
       }else{
         console.log("User has signed out");
 
@@ -152,8 +153,8 @@ condition;
       this.navCtrl.push(CatergoriesPage);
 
       const toast = this.toastCtrl.create({
-        message: 'Your request was sent',
-        duration: 10000
+        message: 'Please check if the email was sent',
+        duration: 5000
       });
       toast.present();
    

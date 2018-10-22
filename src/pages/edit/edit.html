@@ -80,15 +80,14 @@ giving the form a template variable of f-->
                         <ion-icon name="cash"></ion-icon>
                         Rate Per
                     </ion-label>
-    
-                    <ion-select name="payment" [(ngModel)]="payment" multiple="false" >
+
+                    <ion-select name="payment" [(ngModel)]="payment" multiple="false">
                         <ion-option value="Hour" (change)="input($event)">Hour</ion-option>
                         <ion-option value="Day">Day</ion-option>
                         <ion-option value="Half Hour">Half Hour</ion-option>
-    
+
                     </ion-select>
                 </ion-item>
-
 
                 <ion-item no-lines>
                     <ion-label color="light">
@@ -102,8 +101,8 @@ giving the form a template variable of f-->
                     <ion-label color="light">
                         <ion-icon name="contact"></ion-icon>
                     </ion-label>
-                    <ion-textarea type="name" name="bio" placeholder="Bio" [value]="bio" class="contentflex__formcontent--input"
-                        id="input" ngModel required></ion-textarea>
+                    <ion-textarea maxlength="1000" minlength="150" type="name" name="bio" placeholder="Bio" [value]="bio"
+                        class="contentflex__formcontent--input" id="input" ngModel required></ion-textarea>
                 </ion-item>
 
 

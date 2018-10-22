@@ -25,6 +25,7 @@ export class ViewBookingPage{
   fanTime;
   id;
   key;
+  city;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private view: ViewController) {
   
@@ -46,10 +47,10 @@ export class ViewBookingPage{
   this.fanTime=this.bookings.fanTime;
   this.id=this.bookings.id;
   this.key=this.bookings.key;
+  this.city = this.bookings.city;
 
 
-
-   console.log(this.fanPic);
+   console.log(this.city);
 
 
 

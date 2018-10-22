@@ -93,14 +93,8 @@ page-login {
             margin-top: 1rem;
             box-shadow: none;
             &--button{
-                background: linear-gradient(rgba($color-primary-dark, .5), rgba($color-primary-light, .8));
-                -webkit-background-clip: text;
-                color: transparent;
-                font-size: 1.4rem;
-                text-transform: capitalize;
-                word-wrap: break-word;
-                text-align: center;
-                box-shadow: none;
+                color: rgba($color-primary-light, .8);
+                background: transparent;
             }
         }
     }
