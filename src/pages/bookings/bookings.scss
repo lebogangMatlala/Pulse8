@@ -1,6 +1,11 @@
 page-bookings {
+    ion-content{
+        background: linear-gradient(rgba($color-dark, .9), rgba($color-dark, .8)),url('../../assets/imgs/7.jpg');
+        background-size: cover;
+    }
     .mainContent{
-        margin-top: 10vh;
+        margin-top: 10vh; 
+        color: white;
     }
 
     .messagecontainer{
