@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ActionSheetController, ToastController, ModalController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ActionSheetController, ToastController, ModalController, AlertController } from 'ionic-angular';
 import { EditPage } from '../edit/edit';
 import { UploadPage } from '../upload/upload';
 import firebase from 'firebase';
@@ -44,16 +44,11 @@ export class ViewProfilePage {
 
 
 
-  constructor(private modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams,public actionSheetCtrl: ActionSheetController, public toastCtrl: ToastController ) {
+  constructor(private modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams,public actionSheetCtrl: ActionSheetController, public toastCtrl: ToastController , private alert : AlertController) {
 
     this.obj=this.navParams.get("objKey");
 
     //console.log(this.obj.key);
-
-   
-
-  
-
   }
 
 

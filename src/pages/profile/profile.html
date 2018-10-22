@@ -1,9 +1,8 @@
 <ion-content>
     <div class="hero">
-        <button ion-button clear class="hero__back">
+        <button ion-button clear style="zoom: 1.5;" class="hero__back">
             <ion-icon (click)="back()" ios="ios-arrow-round-back" md="md-arrow-round-back"></ion-icon>
         </button>
-
         <div class="hero__herobanner">
             <div class="hero__herobanner__heroimagecontainer">
                 <img [src]="pic" alt="" class="hero__herobanner__heroimagecontainer--image">
@@ -15,7 +14,6 @@
                         <button ion-button icon-only (click)="edit()">
                             <ion-icon ios="ios-create" md="md-create"></ion-icon>
                         </button>
-
                         <button ion-button icon-only (click)="upload()">
                             <ion-icon ios="ios-cloud-upload" md="md-cloud-upload"></ion-icon>
                         </button>
@@ -68,19 +66,18 @@
                     </div>
                 </div>
             </div>
-            <div no-lines *ngFor="let z of inforArray;let a=index;">
-                <div class="Profile">
-                    <h2 class="bioheading">Profile</h2>
-                    <ion-icon style="zoom:1.5" name="contact"></ion-icon>
-
-                    <p>&nbsp;&nbsp;{{z.stagename}}</p>
-                    <!-- <i style="zoom:1.9" class="fas fa-mail-bulk"></i> -->
-                    <ion-icon style="zoom:1.5" name="mail"></ion-icon>
-                    <p>&nbsp;&nbsp;{{z.email}}</p>
-                    <ion-icon style="zoom:1.5" name="locate"></ion-icon>
-                    <p> &nbsp;&nbsp;{{z.city}}</p>
-                    <!-- <p *ngFor="let i of genreArr">{{i.genre}}</p> -->
-
+            <div no-lines *ngFor="let z of inforArray;let a=index;" class="segcontainer__seg__profilecontainer">
+                <div class="segcontainer__seg__profilecontainer__profile">
+                    <h2 class="segcontainer__seg__profilecontainer__profile--bioheading">Profile</h2>
+                    <p *ngIf="z.stagename != undefined || z.stagename != z.stagename" class="segcontainer__seg__profilecontainer__profile--information">
+                        <ion-icon name="contact"></ion-icon> <span class="infotext">{{z.stagename}}</span>
+                    </p>
+                    <p class="segcontainer__seg__profilecontainer__profile--information">
+                        <ion-icon name="mail"></ion-icon> <span class="infotext">{{z.email}}</span>
+                    </p>
+                    <p *ngIf="z.city != undefined || z.city != z.city" class="segcontainer__seg__profilecontainer__profile--information">
+                        <ion-icon name="locate"></ion-icon> <span class="infotext">{{z.city}}</span>
+                    </p>
                 </div>
             </div>
         </ion-list>

@@ -83,6 +83,7 @@ export class LoginPage {
     const prompt = this.alertCtrl.create({
       title: "Reser Password",
       message: "Enter your email to reset your password",
+      cssClass: '.background',
       inputs: [
         {
           name: "email",

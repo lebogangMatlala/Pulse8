@@ -23,7 +23,7 @@ page-signin {
 
     .contentflex{
         display: flex;
-        justify-content: center; 
+        justify-content: center;
         align-items: center;
         flex-direction: column;
         height: 100vh;
@@ -44,7 +44,6 @@ page-signin {
               text-align: center;
               &--headingtext{
                 text-transform: uppercase;
-                
                 font-size: 5rem;
                 font-weight: 300;
               }
@@ -57,7 +56,6 @@ page-signin {
 
         &__buttoncontent{
             width: 100%;
-           
             &--button{
                 background: linear-gradient(rgba($color-primary-dark, .5), rgba($color-primary-light, .8));
                 border-radius: 10rem;
@@ -78,17 +76,7 @@ page-signin {
                 -webkit-background-clip: text;
                 display: inline-block;
                 color: transparent;
-                padding-top: 1em;
             }
-            &--button2{
-                background: linear-gradient(rgba($color-primary-dark, .5), rgba($color-primary-light, .8));
-                -webkit-background-clip: text;
-                display: inline-block;
-                color: transparent;
-                padding-top: 1em;
-              margin-right: 5em;
-            }
-            
         }
 
         &__buttoncontent2{
@@ -98,17 +86,12 @@ page-signin {
             margin-top: 1rem;
             box-shadow: none;
             &--button{
-                background: linear-gradient(rgba($color-primary-dark, .5), rgba($color-primary-light, .8));
-                -webkit-background-clip: text;
-                color: transparent;
-                font-size: 1.4rem;
-                text-transform: capitalize;
-                word-wrap: break-word;
-                text-align: center;
-                box-shadow: none;
+                color: rgba($color-primary-light, .8);
+                background: transparent;
             }
         }
     }
+
     .item-input-has-focus{
         animation: pulseate 1s ease infinite, .3s ease grow;
     }

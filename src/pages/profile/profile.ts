@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ActionSheetController, AlertController, ModalController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ActionSheetController, AlertController, ModalController, PopoverController } from 'ionic-angular';
 import { UploadPage } from '../upload/upload';
 import { EditPage } from '../edit/edit';
 import firebase from 'firebase';
@@ -47,7 +47,7 @@ export class ProfilePage {
   displayMsg = " Would like to book you for an event,please respond to the email sent. ";
 
 
-  constructor(private modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public db: DatabaseProvider) {
+  constructor(private modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public db: DatabaseProvider, private popoverCtrl: PopoverController) {
 
   
 
@@ -57,7 +57,6 @@ export class ProfilePage {
 
     this.pic="http://www.dealnetcapital.com/files/2014/10/blank-profile.png";
   }
-
 
 
   ionViewDidLoad() {
@@ -343,6 +342,7 @@ export class ProfilePage {
     let fanTime = this.bookingArr[a].time;
     let key = this.bookingArr[a].userKey;
     let keyid =this.bookingArr[a].key;
+    let city = this.bookingArr[a].city;
 
     console.log(key);
     console.log("array");
@@ -376,14 +376,15 @@ export class ProfilePage {
                picture:this.picture,
                keyid:this.bookingArr[a].userKey,
                key:this.bookingArr[a].key,
-               id:this.id
+               id:this.id,
+               city:this.bookingArr[a].city,
 
             }
           
 
 
-    const modal = this.modalCtrl.create(ViewBookingPage,{bookingDetails:obj});
-    modal.present();
+    const modalCtrl = this.modalCtrl.create(ViewBookingPage,{bookingDetails:obj});
+    modalCtrl.present();
   }
 
   deleteTrack(i) {
