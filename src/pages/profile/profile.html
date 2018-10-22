@@ -68,7 +68,6 @@
                     </div>
                 </div>
             </div>
-<<<<<<< HEAD
             <div no-lines *ngFor="let z of inforArray;let a=index;">
                 <div class="Profile">
                     <h2 class="bioheading">Profile</h2>
@@ -82,20 +81,6 @@
                     <p> &nbsp;&nbsp;{{z.city}}</p>
                     <!-- <p *ngFor="let i of genreArr">{{i.genre}}</p> -->
 
-=======
-            <div no-lines *ngFor="let z of inforArray;let a=index;" class="segcontainer__seg__profilecontainer">
-                <div class="segcontainer__seg__profilecontainer__profile">
-                    <h2 class="segcontainer__seg__profilecontainer__profile--bioheading">Profile</h2>
-                    <p *ngIf="z.stagename != undefined || z.stagename != z.stagename" class="segcontainer__seg__profilecontainer__profile--information">
-                        <ion-icon name="contact"></ion-icon> <span class="infotext">{{z.stagename}}</span>
-                    </p>
-                    <p class="segcontainer__seg__profilecontainer__profile--information">
-                        <ion-icon name="mail"></ion-icon> <span class="infotext">{{z.email}}</span>
-                    </p>
-                    <p *ngIf="z.city != undefined || z.city != z.city" class="segcontainer__seg__profilecontainer__profile--information">
-                        <ion-icon name="locate"></ion-icon> <span class="infotext">{{z.city}}</span>
-                    </p>
->>>>>>> b688025d57a3adc93b6cf752aa702c1e7a2cf8a5
                 </div>
             </div>
         </ion-list>
