@@ -7,20 +7,52 @@
 
 
 <ion-content padding>
-    <h1 (click)="back()">Back</h1>
-    <ion-slides>
-     
-        <ion-slide>
-        
-          <h1>Slide 1</h1>
-        </ion-slide>
-        <ion-slide>
-          <h1>Slide 2</h1>
-        </ion-slide>
-        <ion-slide>
-          <h1>Slide 3</h1>
-          <button (click)="ready()">Ready</button>
-        </ion-slide>
-      </ion-slides>
+  <h3 class="heading" (click)="back()"><ion-icon name="arrow-back" color="primary"></ion-icon> Back</h3>
+  <ion-slides>
+
+    <ion-slide>
+      <div class="slidecontent">
+        <img src="../../assets/imgs/Sketch.png" alt="" class="slidecontent--image">
+        <h1 class="slidecontent--heading">Create a profile</h1>
+        <p class="slidecontent--text">To become a dj you must create a full profile, you will have to edit all of the
+          fields provided to be successful</p>
+      </div>
+    </ion-slide>
+    <ion-slide>
+
+      <div class="slidecontent">
+        <img src="../../assets/imgs/Sketch1.png" alt="" class="slidecontent--image">
+        <h1 class="slidecontent--heading">Features Unlocked</h1>
+        <p class="slidecontent--text">As a new dj you will find two additional buttons to you profile. <span class="emp">Music</span>
+          which will allow you to view your musical conent & <span class="emp">Profile</span> which will allow you to
+          see your booking requests</p>
+      </div>
+    </ion-slide>
+    <ion-slide>
+      <div class="slidecontent">
+        <img src="../../assets/imgs/Sketch2.png" alt="" class="slidecontent--image">
+        <h1 class="slidecontent--heading">Upload Capabilities</h1>
+        <p class="slidecontent--text">You will now be able to upload some music to your profile. To do so click on the
+          "<span class="emp">
+            <ion-icon ios="ios-cloud-upload" md="md-cloud-upload"></ion-icon>
+          </span>" icon and you will be able to add your links and music</p>
+      </div>
+    </ion-slide>
+    <ion-slide>
+      <div class="slidecontent">
+        <img src="../../assets/imgs/Sketch3.png" alt="" class="slidecontent--image">
+        <h1 class="slidecontent--heading">Bookings Capabilities</h1>
+        <p class="slidecontent--text">You will now be able to view your bookings and also delete them by swiping the card left</p>
+      </div>
+    </ion-slide>
+    <ion-slide>
+        <div class="slidecontent">
+          <img src="../../assets/imgs/point.png" alt="" class="slidecontent--image">
+          <h1 class="slidecontent--heading">Are you ready??</h1>
+          <p class="slidecontent--text">Since we have given you the basics, think youre ready to ride the wave??</p>
+          <button ion-button block (click)="ready()">Ready</button>
+        </div>
+      </ion-slide>
+  </ion-slides>
 
 </ion-content>

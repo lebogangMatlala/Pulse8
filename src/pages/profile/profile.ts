@@ -473,10 +473,8 @@ export class ProfilePage {
   }
   changes(){
   
-    alert("yes sir");
           this.navCtrl.push(UserProfilePage);
           this.role = "Audience";
-          alert("yes role"+this.role);
 
           let obj = {
             role:this.role
@@ -485,7 +483,6 @@ export class ProfilePage {
          
   }
   change(){
-    alert("yes sir")
         console.log(this.id);
 
    
