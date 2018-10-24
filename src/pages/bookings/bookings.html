@@ -6,19 +6,19 @@
 -->
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="transparent">
     <ion-title>Request Bookings</ion-title>
   </ion-navbar>
-
-</ion-header>
-
-<ion-content padding>
+ 
+ </ion-header>
+ 
+ <ion-content padding>
   <div class="mainContent">
-
+ 
     <h1>Confirm Your Booking</h1>
-
+ 
     <p>You are about to book this DJ for an event,please make sure that the details of the DJ are correct.</p>
-
+ 
     <div class="messagecontainer">
       <div class="messages">
         <p><span class="title">To:</span> <span class="text">{{djName}}</span></p>
@@ -27,7 +27,7 @@
         <p><span class="title">Message:</span> <span class="text">{{massage}}</span> </p>
       </div>
     </div>
-
-    <button class="contentflex__buttoncontent--button" type="submit" ion-button block (click)="send()">Request</button>
+ 
+    <button class="button" type="submit" ion-button block (click)="send()">Request</button>
   </div>
-</ion-content>
+ </ion-content>

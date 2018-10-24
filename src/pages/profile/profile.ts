@@ -7,6 +7,7 @@ import { CatergoriesPage } from '../catergories/catergories';
 import { DatabaseProvider } from '../../providers/database/database';
 import { LoginPage } from '../login/login';
 import { ViewBookingPage } from '../view-booking/view-booking';
+import { UserProfilePage } from '../user-profile/user-profile';
 /**
  * Generated class for the ProfilePage page.
  *
@@ -43,6 +44,7 @@ export class ProfilePage {
   condition;
   picture;
   globalPic=[];
+  role;
 
   displayMsg = " Would like to book you for an event,please respond to the email sent. ";
 
@@ -79,6 +81,7 @@ export class ProfilePage {
 
           let userDetails = data.val();
           this.genre = userDetails.genre;
+          this.role = userDetails.role;
 
           if (this.genre != null) {
 
@@ -463,10 +466,46 @@ export class ProfilePage {
     this.key=this.bookingArr[a].key,
 
     firebase.database().ref("Bookings/"+ this.keyid).child(this.key).remove().then(()=>{
-      //this.navCtrl.push(ProfilePage);
+      this.navCtrl.push(ProfilePage);
     });
    console.log("working current user " + this.keyid + " bookingID "+this.key);
  
+  }
+  changes(){
+  
+    alert("yes sir");
+          this.navCtrl.push(UserProfilePage);
+          this.role = "Audience";
+          alert("yes role"+this.role);
+
+          let obj = {
+            role:this.role
+         }
+          this.db.update(this.id,obj);
+         
+  }
+  change(){
+    alert("yes sir")
+        console.log(this.id);
+
+   
+
+          let obj = {
+             role:this.role
+          }
+          this.db.update(this.id,obj);
+
+          if(this.role=='Audience')
+          {
+
+           // this.navCtrl.push(UserProfilePage);
+          }
+        
+
+          console.log(this.role);
+  
+
+
   }
   
 }

@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
-import { ProfilePage } from '../profile/profile';
-import { DatabaseProvider } from '../../providers/database/database';
-import firebase from "firebase";
-import { NgForm } from '../../../node_modules/@angular/forms';
+import { IonicPage, NavController, NavParams, LoadingController, AlertController, ModalController } from 'ionic-angular';
 import { UserProfilePage } from '../user-profile/user-profile';
+import firebase from "firebase";
+import { DatabaseProvider } from '../../providers/database/database';
+import { NgForm } from '../../../node_modules/@angular/forms';
 /**
- * Generated class for the EditPage page.
+ * Generated class for the EditUserProfilePage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -14,44 +13,29 @@ import { UserProfilePage } from '../user-profile/user-profile';
 
 @IonicPage()
 @Component({
-  selector: 'page-edit',
-  templateUrl: 'edit.html',
+  selector: 'page-edit-user-profile',
+  templateUrl: 'edit-user-profile.html',
 })
-export class EditPage {
+export class EditUserProfilePage {
 
   arrProfile = new Array();
 
   fullname;
   email;
   pic;
-  genre;
   bio;
-  stagename;
-  g;
   role;
   city;
-  payment;
-  price;
-  rate;
   gender;
-
-
-
   profileObj = {};
-  constructor(
-    public navCtrl: NavController,
-    public navParams: NavParams,
-    public db: DatabaseProvider,
-    public loadingCtrl: LoadingController,
-    public alertCtrl: AlertController
-  ) {
 
-    console.log(this.genre,
-      this.bio,
-      this.stagename)
+  constructor(public navCtrl: NavController, public navParams: NavParams,   public db: DatabaseProvider,
+    public loadingCtrl: LoadingController,
+    public alertCtrl: AlertController) {
   }
 
   ionViewDidLoad() {
+    console.log('ionViewDidLoad EditUserProfilePage');
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
         console.log("User has sign in");
@@ -96,12 +80,9 @@ export class EditPage {
                 fullname: userDetails.fullname,
                 email: userDetails.email,
                 bio: userDetails.bio,
-                stagename:userDetails.stagename,
-                genre:userDetails.genre,
                 city:userDetails.city,
-                price:userDetails.price,
                 gender:userDetails.gender,
-                payment:userDetails.payment
+              
 
 
               };
@@ -111,12 +92,9 @@ export class EditPage {
               this.fullname = obj.fullname;
               this.email = obj.email;
               this.bio=obj.bio;
-              this.stagename=obj.stagename;
-              this.genre=obj.genre;
               this.city=obj.city;
-              this.price=obj.price;
               this.gender=obj.gender;
-              this.payment=obj.payment;
+             
 
               console.log(this.fullname);
               console.log(obj);
@@ -202,23 +180,17 @@ export class EditPage {
 
     }
   }
-back(){
-  this.navCtrl.pop();
-}
 
-  input(event){
-
-    this.genre=event.target.value
+  back()
+  {
+    this.navCtrl.push(UserProfilePage);
   }
+
   submit(form: NgForm) {
     
-    this.price=form.value.price;
-    
-    form.value.payment;
+   
 
-
-    if(this.price <= 5000){
-    console.log(this.rate);
+  
 
     const loader = this.loadingCtrl.create({
       content: "Please wait...",
@@ -228,39 +200,31 @@ back(){
   
  
     console.log(form.value.fullname + " " +form.value.email);
-    console.log(form.value.bio+" " + this.genre + " " +form.value.stagename);
+    console.log(form.value.bio+" " + " " +form.value.stagename);
 
     this.fullname=form.value.fullname ;
     this.email=form.value.email;
-    this.stagename=form.value.stagename;
     this.bio=form.value.bio;
     this.city=form.value.city;
-    this.price=form.value.price;
     this.gender=form.value.gender;
-    this.payment=form.value.payment;
+  
 
-    this.role="Dj"
-
-   /*  if(this.fullname!=null && this.fullname!=""&& this.email!=null && this.email!="" && this.stagename!=null && this.stagename!="" &&this.bio!=null && this.bio!="" &&this.city!=null && this.city!="")
-    {
-       
-    }
-    else{
-      this.role="Audience"
-    } */
+    // if(this.fullname!=null && this.fullname!=""&& this.email!=null && this.email!="" && this.bio!=null && this.bio!="" &&this.city!=null && this.city!="")
+    // {
+    //       this.role="Dj"
+    // }
+    // else{
+    //   this.role="Audience"
+    // }
 
 
     let obj = {
       fullname: form.value.fullname,
       email: form.value.email,
-      stagename:form.value.stagename,
       bio: form.value.bio,
       city:form.value.city,
-      genre: this.genre,
-      role:"Dj",
-      price: this.price,
       gender:this.gender,
-      payment: this.payment
+     
 
     };
 
@@ -279,38 +243,12 @@ back(){
       .then(() => {
         // Update successful.
 
-      
-      this.navCtrl.push(ProfilePage);
+      this.navCtrl.push(UserProfilePage);
       })
       .catch(function(error) {
         // An error happened.
         console.log(error);
       });
     }
-    else{
-
-      const prompt = this.alertCtrl.create({
-        title: 'Caution',
-        message: "The amount you have entered cannot be greater than R5000.00",
-        buttons: [
-          {
-            text: 'OK',
-            handler: data => {
-
-              console.log('price');
-              console.log(form.value.price);
-              form.value.price=0;
-              console.log(form.value.price);
-            }
-          },
-        ]
-      });
-      prompt.present();
-     
-      form.value.price=0;
-    }
-   }
-
-
-
+    
 }

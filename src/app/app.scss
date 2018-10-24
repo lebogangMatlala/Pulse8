@@ -58,3 +58,14 @@ div.alert-message{
 .disable-hover.alert-button.alert-button-ios.alert-button-default.alert-button-default-ios:nth-child(2){
     border-top: 1px solid rgba($color-grey-light, .5) !important;
 }
+.alert-md .alert-radio-label {
+    overflow: hidden;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: white;
+    padding: 13px 26px;
+}

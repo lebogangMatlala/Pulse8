@@ -45,6 +45,18 @@ giving the form a template variable of f-->
 
               <ion-item no-lines>
                 <ion-label color="light">
+                    <ion-icon ios="ios-transgender" md="md-transgender"></ion-icon>
+                    Gender
+                </ion-label>
+                <ion-select name="gender" [(ngModel)]="gender" multiple="false" >
+                    <ion-option value="None" (change)="input($event)">None</ion-option>
+                    <ion-option value="Female">Female</ion-option>
+                    <ion-option value="Male">Male</ion-option>
+                </ion-select>
+            </ion-item>
+
+              <ion-item no-lines>
+                <ion-label color="light">
                     <ion-icon name="contact"></ion-icon>
                     Genre
                 </ion-label>
@@ -71,7 +83,7 @@ giving the form a template variable of f-->
                     <ion-icon name="cash"></ion-icon>
                 </ion-label>
                 <ion-input type="number" name="price" [value]="price" placeholder="price" class="contentflex__formcontent--input"
-                    id="price" ngModel pattern="^\\$?(([1-9](\\d*|\\d{0,2}(,\\d{3})*))|0)(\\.\\d{1,2})?$" required></ion-input>
+                    id="price" ngModel min="100" max="5000" required></ion-input>
             </ion-item>
 
              
@@ -82,9 +94,9 @@ giving the form a template variable of f-->
                     </ion-label>
 
                     <ion-select name="payment" [(ngModel)]="payment" multiple="false">
-                        <ion-option value="Hour" (change)="input($event)">Hour</ion-option>
-                        <ion-option value="Day">Day</ion-option>
-                        <ion-option value="Half Hour">Half Hour</ion-option>
+                        <ion-option value="HR" (change)="input($event)">Hour</ion-option>
+                        <ion-option value="D">Day</ion-option>
+                        <ion-option value="H/hf">Half Hour</ion-option>
 
                     </ion-select>
                 </ion-item>
@@ -101,7 +113,7 @@ giving the form a template variable of f-->
                     <ion-label color="light">
                         <ion-icon name="contact"></ion-icon>
                     </ion-label>
-                    <ion-textarea maxlength="1000" minlength="150" type="name" name="bio" placeholder="Bio" [value]="bio"
+                    <ion-textarea maxlength="1000" minlength="10" type="name" name="bio" placeholder="Bio" [value]="bio"
                         class="contentflex__formcontent--input" id="input" ngModel required></ion-textarea>
                 </ion-item>
 

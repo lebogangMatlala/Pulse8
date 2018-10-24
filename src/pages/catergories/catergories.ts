@@ -7,6 +7,7 @@ import { LoginPage } from '../login/login';
 import { ProfilePage } from '../profile/profile';
 import { DatabaseProvider } from '../../providers/database/database';
 import { SigninPage } from '../signin/signin';
+import { UserProfilePage } from '../user-profile/user-profile';
 /**
  * Generated class for the CatergoriesPage page.
  *
@@ -217,9 +218,39 @@ export class CatergoriesPage {
 
     if(this.condition==true)
       {
+        let userKey = firebase.auth().currentUser.uid;
+
+        console.log(userKey);
+        
         console.log("user has signed in")
        
-          this.navCtrl.push(ProfilePage);
+        
+          this.db.retrieveInformation(userKey).on("value", (data) => {
+
+            let profile = data.val();
+            let key = Object.keys(profile);
+            console.log(key);
+            console.log(profile);
+
+            this.role=profile.role;
+            console.log(this.role);
+            if(this.role=='Audience')
+            {
+              this.navCtrl.push(UserProfilePage);
+            }
+            else if(this.role=='Dj'){
+              this.navCtrl.push(ProfilePage);
+            }
+            else{
+              console.log('Please log in');
+              
+            }
+
+            
+
+          });
+
+
      
    
       }

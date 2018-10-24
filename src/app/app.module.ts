@@ -21,6 +21,9 @@ import { BookingsPage } from '../pages/bookings/bookings';
 import { EmailComposer } from '@ionic-native/email-composer';
 import { SigninPage } from '../pages/signin/signin';
 import { ViewBookingPage } from '../pages/view-booking/view-booking';
+import { UserProfilePage } from '../pages/user-profile/user-profile';
+import { EditUserProfilePage } from '../pages/edit-user-profile/edit-user-profile';
+import { InstructionPage } from '../pages/instruction/instruction';
 
 
 @NgModule({
@@ -38,7 +41,10 @@ import { ViewBookingPage } from '../pages/view-booking/view-booking';
     CatergoriesPage,
     BookingsPage,
     SigninPage,
-    ViewBookingPage
+    ViewBookingPage,
+    UserProfilePage,
+    EditUserProfilePage,
+    InstructionPage
   ],
   imports: [
     BrowserModule,
@@ -58,8 +64,12 @@ import { ViewBookingPage } from '../pages/view-booking/view-booking';
     UploadPage,
     IdentityPage,
     CatergoriesPage,
-    BookingsPage, SigninPage,
-    ViewBookingPage
+    BookingsPage,
+     SigninPage,
+    ViewBookingPage,
+    UserProfilePage,
+    EditUserProfilePage,
+    InstructionPage
   ],
   providers: [
     StatusBar,
