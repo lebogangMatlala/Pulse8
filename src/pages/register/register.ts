@@ -22,7 +22,7 @@ export class RegisterPage {
   role: any;
   registrationObj;
 
-  url= "http://www.dealnetcapital.com/files/2014/10/blank-profile.png";
+  url= "../../assets/imgs/user.png";
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -54,7 +54,7 @@ export class RegisterPage {
           fullname: form.value.fullname,
           password: form.value.password,
           email: form.value.email,
-          role:"Audience",
+          role:'Audience',
           genre:"No Genre"
       
       }
