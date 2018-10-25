@@ -8,6 +8,11 @@ page-profile {
         animation: 1s ease fadeIn;
     }
 
+    .icontop{
+        zoom: 1.7;
+        font-weight: bold;
+    }
+
     .hero{
         width: 100%;
         background: linear-gradient(rgba($color-dark, .6), rgba($color-dark, .6)),url('../../assets/imgs/dj4.jpg');
