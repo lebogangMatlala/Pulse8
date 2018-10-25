@@ -471,38 +471,38 @@ export class ProfilePage {
    console.log("working current user " + this.keyid + " bookingID "+this.key);
  
   }
-  changes(){
+  // changes(){
   
-          this.navCtrl.push(UserProfilePage);
-          this.role = "Audience";
+  //         this.navCtrl.push(UserProfilePage);
+  //         this.role = "Audience";
 
-          let obj = {
-            role:this.role
-         }
-          this.db.update(this.id,obj);
+  //         let obj = {
+  //           role:this.role
+  //        }
+  //         this.db.update(this.id,obj);
          
-  }
-  change(){
-        console.log(this.id);
+  // }
+  // change(){
+  //       console.log(this.id);
 
    
 
-          let obj = {
-             role:this.role
-          }
-          this.db.update(this.id,obj);
+  //         let obj = {
+  //            role:this.role
+  //         }
+  //         this.db.update(this.id,obj);
 
-          if(this.role=='Audience')
-          {
+  //         if(this.role=='Audience')
+  //         {
 
-           // this.navCtrl.push(UserProfilePage);
-          }
+  //          // this.navCtrl.push(UserProfilePage);
+  //         }
         
 
-          console.log(this.role);
+  //         console.log(this.role);
   
 
 
-  }
+  // }
   
 }

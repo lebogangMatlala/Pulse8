@@ -73,3 +73,10 @@ div.alert-message{
 .alert-radio-label{
     color: $color-grey-light !important; 
 }
+
+.swiper-container-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet {
+    margin: 0 5px;
+    background-color: white;
+    border: 1px soild green;
+   
+}

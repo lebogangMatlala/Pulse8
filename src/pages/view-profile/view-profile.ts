@@ -41,7 +41,7 @@ export class ViewProfilePage {
   userid;
   condition;
   obj;
-
+  genre;
   userStatus;
 
 
@@ -109,23 +109,23 @@ export class ViewProfilePage {
           this.stagename=userDetails.stagename;
           this.city=userDetails.city;
           
-          let genre = userDetails.genre;
+          this.genre = userDetails.genre;
 
-          if(genre!=null){       
+          // if(genre!=null){       
 
-            // console.log( userDetails.genre)
-             for (let a = 0; a < genre.length; a++){
-               let genreobj={
-                 genre:genre[a]
-               }
-          //  console.log(userDetails[a].Role)
-            this. genreArr.push(genreobj);
-               console.log(this.genreArr);
-              }
+          //   // console.log( userDetails.genre)
+          //    for (let a = 0; a < genre.length; a++){
+          //      let genreobj={
+          //        genre:genre[a]
+          //      }
+          // //  console.log(userDetails[a].Role)
+          //   this.genreArr.push(genreobj);
+          //      console.log(this.genreArr);
+          //     }
   
-          }else{
-           // console.log("no")
-          }
+          // }else{
+          //  // console.log("no")
+          // }
         
 
 

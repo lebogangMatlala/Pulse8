@@ -126,4 +126,12 @@ page-edit-user-profile {
             margin-bottom: 1rem;
         }
     }
+
+    .buttton-clear.md{
+        transform: scale(25rem) !important;
+    }
+
+    .buttton-clear.ios{
+        transform: scale(5rem) !important;
+    }
 }
