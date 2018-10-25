@@ -57,22 +57,32 @@ export class CatergoriesPage {
   console.log(this.categoriesArr);
     this.db.retriveProfilePic().on('value', (data) => {
       var infor = data.val();
-      this.pic = infor.url;
+
+      if(infor!=null && infor!='undefined')
+      {
+        this.pic = infor.url;
       
-      // console.log( infor);
-       let keys = Object.keys(infor);
-
-       for (var i = 0; i < keys.length; i++) {
-       var k = keys[i];
-      this.obj = {
-            url: infor[k].url,
-            key: k 
+        // console.log( infor);
+         let keys = Object.keys(infor);
+  
+         for (var i = 0; i < keys.length; i++) {
+         var k = keys[i];
+        this.obj = {
+              url: infor[k].url,
+              key: k 
+        }
+  
+        this.globalPic[i] = infor[k].url
+               
+  
+       } 
+     
       }
-
-      this.globalPic[i] = infor[k].url
-             
-
-     } 
+      else{
+        console.log('no picture');
+        
+       }
+     
 
       }, (error) => {
 
@@ -89,6 +99,9 @@ export class CatergoriesPage {
 ///Djs details
     this.db.retrieveProfile().on("value", (data) => {
        let profile = data.val();
+      
+       if(profile!=null && profile!='undefined')
+       {
        let key = Object.keys(profile);
 
     
@@ -135,6 +148,11 @@ export class CatergoriesPage {
       }
      
     }
+
+  }else{
+    console.log('no details');
+    
+  }
   
    });
 

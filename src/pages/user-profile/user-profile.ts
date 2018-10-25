@@ -110,7 +110,7 @@ edit(){
 
 changeRole()
 {
-    alert("its working");
+  
     const modal = this.modalCtrl.create(InstructionPage);
     modal.present();
 }
