@@ -1,46 +1,57 @@
 <ion-content>
-    <ion-item class="dropdown" no-lines>
-      <ion-label class="dropdown--text">Genre</ion-label>
-      <ion-select name="genre" [(ngModel)]="genre" multiple="false" (ionChange)="input()" interface="popover">
-        <ion-option value="House">House</ion-option>
-        <ion-option value="Hip-Hop">Hip-Hop</ion-option>
-        <ion-option value="Rap">Rap</ion-option>
-        <ion-option value="Commercial house">Commercial house</ion-option>
-        <ion-option value="RnB">R`nB</ion-option>
-        <ion-option value="Deep House">Deep House</ion-option>
-        <ion-option value="Kwaito">Kwaito</ion-option>
-        <ion-option value="Afro Pop">Afro Pop</ion-option>
-        <ion-option value="Soul">Soul</ion-option>
-      </ion-select>
-    </ion-item>
-   
-    <h3 class="heading">Pulse List</h3>
-    <div class="list">
-        <div class="nocontent" *ngIf="arrDj.length == 0 || arrDj.length == undefined">
-            <div class="nocontent__contents">
-                <img class="nocontent__contents--image" src="../../assets/imgs/sound-wavesgrey.png" alt="">
-                <p class="nocontent__contents--text" style="color: white">Its lonely here...</p>
-            </div>
-        </div>
+  <ion-item class="dropdown" no-lines>
+    <ion-label class="dropdown--text">Filter</ion-label>
+    <ion-select name="genre" [(ngModel)]="genre" multiple="false" (ionChange)="input()" interface="popover">
+      <ion-option value="House">House</ion-option>
+      <ion-option value="Hip-Hop">Hip-Hop</ion-option>
+      <ion-option value="Rap">Rap</ion-option>
+      <ion-option value="Commercial house">Commercial house</ion-option>
+      <ion-option value="RnB">R`nB</ion-option>
+      <ion-option value="Deep House">Deep House</ion-option>
+      <ion-option value="Kwaito">Kwaito</ion-option>
+      <ion-option value="Afro Pop">Afro Pop</ion-option>
+      <ion-option value="Soul">Soul</ion-option>
+    </ion-select>
+    <ion-select [(ngModel)]="month" interface="popover">
+      <ion-option checked="true" value="01">Male</ion-option>
+      <ion-option value="02">Female</ion-option>
+    </ion-select>
+    <ion-select [(ngModel)]="year" interface="popover">
+      <ion-option>NAledi</ion-option>
+      <ion-option>Zola</ion-option>
+      <ion-option>Emdeni</ion-option>
+      <ion-option>Mapetla</ion-option>
+      <ion-option>Alex</ion-option>
+    </ion-select>
+  </ion-item>
 
-
-      <ion-list no-lines>
-        <ion-item *ngFor="let x of  arrDj;let i = index" (click)="viewProfile(i)">
-          <ion-thumbnail item-start>
-            <img src='{{x.url}}' height="2px">
-          </ion-thumbnail>
-          <h2 class="card-heading">{{x.stagename}}</h2>
-          <p>{{x.genre}}
-            <i class="fas fa-star"></i>
-          </p>
-          <button ion-button clear item-end>R{{x.price}}/{{x.payment}}</button>
-        </ion-item>
-      </ion-list>
+  <h3 class="heading">Pulse List</h3>
+  <div class="list">
+    <div class="nocontent" *ngIf="arrDj.length == 0 || arrDj.length == undefined">
+      <div class="nocontent__contents">
+        <img class="nocontent__contents--image" src="../../assets/imgs/sound-wavesgrey.png" alt="">
+        <p class="nocontent__contents--text" style="color: white">Its lonely here...</p>
+      </div>
     </div>
-   
-    <ion-fab right bottom>
-      <button ion-fab color="primary" (click)="profilePage()">
-        <ion-icon ios="ios-contact" md="md-contact"></ion-icon>
-      </button>
-    </ion-fab>
-   </ion-content>
+
+
+    <ion-list no-lines>
+      <ion-item *ngFor="let x of  arrDj;let i = index" (click)="viewProfile(i)">
+        <ion-thumbnail item-start>
+          <img src='{{x.url}}' height="2px">
+        </ion-thumbnail>
+        <h2 class="card-heading">{{x.stagename}}</h2>
+        <p>{{x.genre}}
+          <i class="fas fa-star"></i>
+        </p>
+        <button ion-button clear item-end>R{{x.price}}/{{x.payment}}</button>
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <ion-fab right bottom>
+    <button ion-fab color="primary" (click)="profilePage()">
+      <ion-icon ios="ios-contact" md="md-contact"></ion-icon>
+    </button>
+  </ion-fab>
+</ion-content>
