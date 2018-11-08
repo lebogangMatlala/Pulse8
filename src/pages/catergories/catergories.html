@@ -12,16 +12,16 @@
       <ion-option value="Afro Pop">Afro Pop</ion-option>
       <ion-option value="Soul">Soul</ion-option>
     </ion-select>
-    <ion-select [(ngModel)]="month" interface="popover">
+    <ion-select [(ngModel)]="gender" (ionChange)="input()" interface="popover">
       <ion-option checked="true" value="01">Male</ion-option>
       <ion-option value="02">Female</ion-option>
     </ion-select>
-    <ion-select [(ngModel)]="year" interface="popover">
-      <ion-option>NAledi</ion-option>
-      <ion-option>Zola</ion-option>
-      <ion-option>Emdeni</ion-option>
-      <ion-option>Mapetla</ion-option>
-      <ion-option>Alex</ion-option>
+    <ion-select [(ngModel)]="city" (ionChange)="input()" interface="popover">
+      <ion-option>Johannesburg</ion-option>
+      <ion-option>Nelspruit</ion-option>
+      <ion-option>Pretoria</ion-option>
+      <ion-option>Cape Town</ion-option>
+      <ion-option>Polokwane</ion-option>
     </ion-select>
   </ion-item>
 

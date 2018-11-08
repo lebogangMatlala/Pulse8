@@ -7,6 +7,7 @@ import { CatergoriesPage } from '../catergories/catergories';
 import { BookingsPage } from '../bookings/bookings';
 import { SigninPage } from '../signin/signin';
 import { ViewBookingPage } from '../view-booking/view-booking';
+import moment from 'moment';
 /**
  * Generated class for the ViewProfilePage page.
  *
@@ -49,13 +50,70 @@ export class ViewProfilePage {
   
   date = new Date();
 
+  commentuserid;
+  commentuserpic;
+  commentArr =[];
+  commentusername;
+
   messagestate = 'not sending' 
 
   constructor(private modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams,public actionSheetCtrl: ActionSheetController, public toastCtrl: ToastController , private alert : AlertController) {
 
     this.obj=this.navParams.get("objKey");
 
-    //console.log(this.obj.key);
+    this.key = this.navParams.get("keyobj");
+
+    firebase.database().ref("comments/"+ this.key).on("value",(data: any)=>{
+      let commentsinfor = data.val();
+      console.log("this are the comments");
+      console.log(commentsinfor)
+      var keys = Object.keys(commentsinfor);
+      
+      for(let i = 0; i< keys.length;++i){
+        let k = keys[i];
+        this.commentuserid=commentsinfor[k].uid
+
+        firebase.database().ref('Registration/' +this.commentuserid).on('value', (data: any) => {
+          var commentinfor = data.val();
+          this.commentusername = commentinfor.fullname;
+          console.log("user name  //////" + this.commentusername);
+        })
+
+        console.log("comment user id ////" +this.commentuserid);
+        firebase.database().ref('Pic/' + this.commentuserid).on('value', (data) => {
+          var infor = data.val();
+          this.commentuserpic = infor.url;
+        let a  = Object.keys(infor);
+        console.log(" this is the pic"+this.commentuserpic);
+    
+        }, (error) => {
+    
+          console.log(error.message);
+    
+    
+        });
+    
+
+        let objc = { 
+          comment: commentsinfor[k].comment,
+          uid:commentsinfor[k].uid,
+          date: moment(commentsinfor[k].date, 'MMMM Do YYYY, h:mm:ss a').startOf('minutes').fromNow(),
+          pic:this.commentuserpic,
+          name:this.commentusername
+                  }
+                  console.log("this is the object")
+                  console.log(objc);
+                  
+            this.commentArr.push(objc);
+            this.commentArr.reverse();
+             
+              
+      }
+
+    })
+
+    
+
   }
 
 
@@ -507,5 +565,16 @@ export class ViewProfilePage {
 
   onMessageAdded(messagedata){
     //todo: functionality of sending message goes here
+   this.commentArr =[];
+    var user = this.userid
+    var day = moment().format('MMMM Do YYYY, h:mm:ss a');
+    firebase.database().ref('comments/' + this.key).push({
+      comment: messagedata,
+      uid: user,
+      date: day,
+      
+    })
+   messagedata="";
+
   }
 }

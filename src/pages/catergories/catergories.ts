@@ -44,6 +44,8 @@ export class CatergoriesPage {
   infor;
   genre;
   objDj;
+  gender;
+  city;
 
   
 
@@ -321,6 +323,8 @@ export class CatergoriesPage {
                let genre = profile[k].genre;
                let price = profile[k].price;
                let payment = profile[k].payment;
+               let gender = profile[k].gender;
+               let city =profile[k].city
 
             console.log(this.role +"  "+ genre);
       if(this.role=="Dj"){
@@ -333,11 +337,17 @@ export class CatergoriesPage {
                 url:this.globalPic[i],
                 price:price,
                 payment:payment,
-                key:k
-  }
+                key:k,
+                gender:gender,
+                city:city
+
+  }   
       console.log(objDj);
+      
       this.arrDj.push(objDj);
       this.arrDj = this.arrDj.filter(x => x.genre[0] === this.genre);
+      this.arrDj = this.arrDj.filter(v => v.gender === this.gender);
+      this.arrDj = this.arrDj.filter(b => b.city === this.city);
 
    }
          else{

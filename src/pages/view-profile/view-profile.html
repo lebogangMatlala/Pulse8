@@ -90,17 +90,15 @@
         </ion-list>
 
         <ion-list *ngSwitchCase="'reviews'" class="segcontainer__seg">
-            <div no-lines class="segcontainer__seg__avatarcards">
+            <div no-lines class="segcontainer__seg__avatarcards" *ngFor="let n of commentArr">
                 <div class="segcontainer__seg__avatarcards__avatar">
-                    <img src="../../assets/imgs/27540814_10215734287658365_2735885339560353644_n.jpg" alt="" class="segcontainer__seg__avatarcards__avatar--image">
+                    <img src="{{n.pic}}" alt="" class="segcontainer__seg__avatarcards__avatar--image">
                 </div>
                 <div class="segcontainer__seg__avatarcards__text">
                     <div class="segcontainer__seg__avatarcards__text__textcontainer">
-                        <p class="segcontainer__seg__avatarcards__text__textcontainer--text"><strong>Linda Dube</strong>:
-                            Great track
-                            selection!!! He certainly reminded me of the classics i loved</p>
-                        <p class="segcontainer__seg__avatarcards__text__textcontainer--date">{{date | date:
-                            'ddMMyyyy'}}</p>
+                        <p class="segcontainer__seg__avatarcards__text__textcontainer--text"><strong>{{n.name}}</strong>:
+                           {{n.comment}}</p>
+                        <p class="segcontainer__seg__avatarcards__text__textcontainer--date">{{n.date}}</p>
                     </div>
                     <div class="segcontainer__seg__avatarcards__text__datecontainer">
 
@@ -110,35 +108,9 @@
             </div>
 
 
-            <div no-lines class="segcontainer__seg__avatarcards">
-                <div class="segcontainer__seg__avatarcards__avatar">
-                    <img src="../../assets/imgs/profile.png" alt="" class="segcontainer__seg__avatarcards__avatar--image">
-                </div>
-                <div class="segcontainer__seg__avatarcards__text">
-                    <div class="segcontainer__seg__avatarcards__text__textcontainer">
-                        <p class="segcontainer__seg__avatarcards__text__textcontainer--text"><strong>Linda Dube</strong>:
-                            Great track
-                            selection!!! He certainly reminded me of the classics i loved</p>
-                        <p class="segcontainer__seg__avatarcards__text__textcontainer--date">{{date | date:
-                            'ddMMyyyy'}}</p>
-                    </div>
-                </div>
-            </div>
+          
 
-            <div no-lines class="segcontainer__seg__avatarcards">
-                <div class="segcontainer__seg__avatarcards__avatar">
-                    <img src="../../assets/imgs/27540814_10215734287658365_2735885339560353644_n.jpg" alt="" class="segcontainer__seg__avatarcards__avatar--image">
-                </div>
-                <div class="segcontainer__seg__avatarcards__text">
-                    <div class="segcontainer__seg__avatarcards__text__textcontainer">
-                        <p class="segcontainer__seg__avatarcards__text__textcontainer--text"><strong>Linda Dube</strong>:
-                            Great track
-                            selection!!! He certainly reminded me of the classics i loved</p>
-                        <p class="segcontainer__seg__avatarcards__text__textcontainer--date">{{date | date:
-                            'ddMMyyyy'}}</p>
-                    </div>
-                </div>
-            </div>
+          
 
 
 
