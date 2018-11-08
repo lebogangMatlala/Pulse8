@@ -25,7 +25,6 @@ import { UserProfilePage } from '../pages/user-profile/user-profile';
 import { EditUserProfilePage } from '../pages/edit-user-profile/edit-user-profile';
 import { InstructionPage } from '../pages/instruction/instruction';
 
-
 @NgModule({
   declarations: [
     MyApp,
