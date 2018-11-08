@@ -33,6 +33,9 @@
         <ion-segment-button value="music">
             Music
         </ion-segment-button>
+        <ion-segment-button value="reviews">
+            Reviews
+        </ion-segment-button>
         <ion-segment-button value="bookings">
             Bookings
         </ion-segment-button>
@@ -100,6 +103,33 @@
                     <p class="segcontainer__seg__cardcontainer__cards--text"><strong>{{i.fanName}}</strong>, has requested
                         to book you, check your email.</p>
                     <p class="segcontainer__seg__cardcontainer__cards--datetext">{{i.date}} {{i.time}}</p>
+                </ion-item>
+                <ion-item-options side="right" (click)="delete(a)">
+                    <button ion-button color="danger">
+                        <ion-icon name="trash"></ion-icon>
+                        Delete
+                    </button>
+                </ion-item-options>
+            </ion-item-sliding>
+
+            <div class="nocontent" *ngIf="bookingArr.length == 0 || bookingArr.length == undefined">
+                <div class="nocontent__contents">
+                    <img class="nocontent__contents--image" src="../../assets/imgs/sound-wavesgrey.png" alt="">
+                    <p class="nocontent__contents--text" style="color: white">Its lonely here...</p>
+                </div>
+            </div>
+        </ion-list>
+
+        <ion-list *ngSwitchCase="'reviews'" class="segcontainer__seg">
+        
+            <ion-item-sliding *ngFor="let i of bookingArr;let a=index;" class="segcontainer__seg__cardcontainer">
+                <ion-item no-lines class="segcontainer__seg__cardcontainer__avatarcards" (click)="viewBooking(a)">
+                    <ion-avatar item-start>
+                        <img [src]="i.image">
+                    </ion-avatar>
+                    <p class="segcontainer__seg__cardcontainer__avatarcards--text"><strong>{{i.fanName}}</strong>, has requested
+                        to book you, check your email.</p>
+                    <p class="segcontainer__seg__cardcontainer__avatarcards--datetext">{{i.date}} {{i.time}}</p>
                 </ion-item>
                 <ion-item-options side="right" (click)="delete(a)">
                     <button ion-button color="danger">

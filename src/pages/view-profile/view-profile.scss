@@ -8,11 +8,6 @@ page-view-profile {
         animation: 1s ease fadeIn;
     }
 
-    .icontop{
-        zoom: 1.2;
-        font-weight: bold;
-    }
-
     .hero{
         width: 100%;
         background: linear-gradient(rgba($color-dark, .6), rgba($color-dark, .6)),url('../../assets/imgs/dj4.jpg');
@@ -56,6 +51,7 @@ page-view-profile {
 
                 &--tag{
                     margin-left: .5rem;
+                    margin-bottom: 1.5rem;
                 }
             }
             &__herobuttoncontainer{
@@ -63,8 +59,16 @@ page-view-profile {
                 display: flex;
                 height: 100%;
                 flex-direction: column;
-                justify-content: flex-end;
-                bottom: 15%;
+                justify-content: center;
+                // bottom: 15%;
+                margin-right: 1rem;
+
+                button{
+                    border-radius: 3em;
+                    height: 3rem;
+                    margin-bottom: 2rem;
+                    font-weight: bold;
+                }
             }
         }
     }
@@ -123,6 +127,18 @@ page-view-profile {
                         font-size: 1.5rem;
                     }
                 }
+
+                &__footer{
+                    background: rgba($color-primary-light, 1);
+                    width: 100%;
+                    position: fixed;
+                    text-align: center;
+                    bottom: 0vh;
+                    color: $color-grey-dark;
+                    font-size: 1.6rem; 
+                    font-weight: 500;
+                    letter-spacing: .2rem;
+                }
             }
             &__profilecontainer{
                 padding: 1rem;
@@ -174,6 +190,46 @@ page-view-profile {
                 }
                 &:not(:first-child){
                     margin-top: 1rem;
+                }
+            }
+
+            &__avatarcards{
+                height: 7.5rem;
+                padding: .3rem;
+                margin: .5rem .5rem;
+                border-radius: 1rem;
+                background: rgba($color-grey-light, .1);
+                display: flex;
+                flex-flow: row nowrap;
+                &__avatar{
+                    flex: auto 0 0;
+                    margin: 1rem 1rem  0 1rem;
+                    &--image{
+                        width: 5rem;
+                        height: 5rem;
+                        border-radius: 50%;
+                    }
+                }
+                &__text{
+                    height: 100%;
+                    display: flex;
+                    align-items: center;
+                    &__textcontainer{
+                        &--text{
+                            margin: .5rem 0 0 0;  
+                            strong{
+                                color: $color-primary-light;
+                            }        
+                        }
+                        &--date{
+                            margin: 0;
+                            font-size: 1rem;
+                            margin-top: .5rem;
+                            font-style: italic;
+                            float: right;
+                            margin-right: 1rem; 
+                        }
+                    }
                 }
             }
         }

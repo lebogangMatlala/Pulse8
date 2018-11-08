@@ -19,6 +19,9 @@ import { ViewBookingPage } from '../view-booking/view-booking';
   selector: 'page-view-profile',
   templateUrl: 'view-profile.html',
 })
+
+
+
 export class ViewProfilePage {
 
   fullname;
@@ -43,8 +46,8 @@ export class ViewProfilePage {
   obj;
   genre;
   userStatus;
-
-
+  
+  date = new Date();
 
   constructor(private modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams,public actionSheetCtrl: ActionSheetController, public toastCtrl: ToastController , private alert : AlertController) {
 
