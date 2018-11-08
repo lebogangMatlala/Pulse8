@@ -279,6 +279,15 @@ page-view-profile {
         }
     }
 
+    .comment{
+        border-radius: 50% !important;
+        width: 5rem !important;
+        height: 5rem !important;
+        position: fixed;
+        bottom: 0vh; 
+        right: 0vw;
+    }
+
     ion-fab{
         position: fixed;
         z-index: 999;

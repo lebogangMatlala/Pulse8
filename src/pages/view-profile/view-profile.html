@@ -20,9 +20,6 @@
                 </div> -->
             </div>
             <div class="hero__herobanner__herobuttoncontainer">
-                <button ion-button icon-only (click)="upload()">
-                    <ion-icon name="chatbubbles"></ion-icon>
-                </button>
             </div>
         </div>
     </div>
@@ -151,6 +148,10 @@
                     <p class="nocontent__contents--text" style="color: white">Its lonely here...</p>
                 </div>
             </div> -->
+            <button ion-button icon-only *ngIf="messagestate != 'sending'" class="comment" (click)="messagestate = 'sending'">
+                <ion-icon name="chatbubbles"></ion-icon>
+            </button>
+            <chatbox (messageCreate)="onMessageAdded($event)" *ngIf="messagestate == 'sending'"></chatbox>
         </ion-list>
     </div>
 </ion-content>

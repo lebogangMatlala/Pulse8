@@ -1,0 +1,30 @@
+chatbox {
+    div{
+        animation: fade .5s ease;
+        display: block;
+        color: white;
+        width: 100%;
+        // background: $color-primary-light;
+        position: fixed;
+        bottom: 0vh;
+        display: flex;
+        flex-flow: row nowrap;
+        height: 6rem;
+        ion-list{
+            width: 100%;
+            .input{
+                border: 1px solid rgba($color-grey-light, .1);
+                border-radius: 5rem;
+                padding: 0 1rem;
+                background: rgba($color-grey-light, .1);
+            }
+        }
+
+        button{
+            border-radius: 50% !important;
+            height: 5rem !important;
+            width: 5rem !important;
+        }
+    }
+
+}

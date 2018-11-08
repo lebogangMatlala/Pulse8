@@ -24,6 +24,7 @@ import { ViewBookingPage } from '../pages/view-booking/view-booking';
 import { UserProfilePage } from '../pages/user-profile/user-profile';
 import { EditUserProfilePage } from '../pages/edit-user-profile/edit-user-profile';
 import { InstructionPage } from '../pages/instruction/instruction';
+import { ChatboxComponent } from '../components/chatbox/chatbox';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { InstructionPage } from '../pages/instruction/instruction';
     ViewBookingPage,
     UserProfilePage,
     EditUserProfilePage,
-    InstructionPage
+    InstructionPage,
+    ChatboxComponent
   ],
   imports: [
     BrowserModule,
@@ -68,7 +70,8 @@ import { InstructionPage } from '../pages/instruction/instruction';
     ViewBookingPage,
     UserProfilePage,
     EditUserProfilePage,
-    InstructionPage
+    InstructionPage,
+    ChatboxComponent
   ],
   providers: [
     StatusBar,

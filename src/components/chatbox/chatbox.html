@@ -1,0 +1,10 @@
+<!-- Generated template for the ChatboxComponent component -->
+<div>
+  <ion-list>
+        <ion-textarea placeholder="Add A Review Message(max 100chars)" class="input" #message></ion-textarea>
+  </ion-list>
+  
+  <button ion-button class="hero--back">
+      <ion-icon name="send" (click)="onMessageAdded(message.value)"></ion-icon>
+  </button>
+</div>

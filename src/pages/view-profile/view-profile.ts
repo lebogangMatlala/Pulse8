@@ -49,6 +49,8 @@ export class ViewProfilePage {
   
   date = new Date();
 
+  messagestate = 'not sending' 
+
   constructor(private modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams,public actionSheetCtrl: ActionSheetController, public toastCtrl: ToastController , private alert : AlertController) {
 
     this.obj=this.navParams.get("objKey");
@@ -501,5 +503,9 @@ export class ViewProfilePage {
   openLink(link){
     window.open(link);
     console.log(link);
+  }
+
+  onMessageAdded(messagedata){
+    //todo: functionality of sending message goes here
   }
 }
