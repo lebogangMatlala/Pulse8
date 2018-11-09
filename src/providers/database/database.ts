@@ -38,11 +38,23 @@ retrieveProfile(){
 
 
 }
+
+
 createBookings(key){
 
   return firebase.database().ref('Bookings/' + key);
   }
   
+
+  createinbox(key)
+  {
+    return firebase.database().ref('inbox/' + key);
+  } 
+
+  createchatroom(key)
+  {
+    return firebase.database().ref('chatroom/' + key);
+  }
   sendEmail(){
   
    return this.emailComposer.isAvailable();
@@ -128,6 +140,12 @@ retrieveTracks()
     return firebase.database().ref('Bookings/'+key);
   }
 
+
+  
+  retrieveInbox(key)
+  {
+    return firebase.database().ref('inbox/'+key);
+  }
 
   categories() {
 

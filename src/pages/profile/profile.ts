@@ -220,13 +220,11 @@ export class ProfilePage {
           
 
         this.db.retrieveBooking(this.id).on('value', (data) => {
+          
           var bookingInfor = data.val();
           
           
           console.log(bookingInfor);
-
-
-
 
 
           if (bookingInfor != null && bookingInfor != "") {
@@ -293,6 +291,10 @@ export class ProfilePage {
         }, (error) => {
           console.log(error.message);
         });
+
+        //////////////////
+
+
 
         this.db.retrieveInformation(this.id).on('value', (data) => {
           var userInfor = data.val();

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 import { ProfilePage } from '../profile/profile';
 import firebase from 'firebase';
+import { ChatroomPage } from '../chatroom/chatroom';
 
 /**
  * Generated class for the ViewBookingPage page.
@@ -26,6 +27,7 @@ export class ViewBookingPage{
   id;
   key;
   city;
+  usersKey;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private view: ViewController) {
   
@@ -48,9 +50,10 @@ export class ViewBookingPage{
   this.id=this.bookings.id;
   this.key=this.bookings.key;
   this.city = this.bookings.city;
+  this.usersKey=this.bookings.userskey;
 
 
-   console.log(this.city);
+   console.log(this.usersKey);
 
 
 
@@ -58,6 +61,13 @@ export class ViewBookingPage{
 
   back(){
     this.view.dismiss();
+  }
+
+  chatroom(){
+      console.log(this.usersKey);
+
+      this.navCtrl.push(ChatroomPage,{usersKey:this.usersKey})
+      
   }
 
 

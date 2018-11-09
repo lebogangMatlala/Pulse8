@@ -345,9 +345,9 @@ export class CatergoriesPage {
       console.log(objDj);
       
       this.arrDj.push(objDj);
-      this.arrDj = this.arrDj.filter(x => x.genre[0] === this.genre);
-      this.arrDj = this.arrDj.filter(v => v.gender === this.gender);
-      this.arrDj = this.arrDj.filter(b => b.city === this.city);
+      this.arrDj = this.arrDj.filter(x => x.genre === this.genre);
+      // this.arrDj = this.arrDj.filter(v => v.gender === this.gender);
+      // this.arrDj = this.arrDj.filter(b => b.city === this.city);
 
    }
          else{

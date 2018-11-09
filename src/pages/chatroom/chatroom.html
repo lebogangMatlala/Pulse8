@@ -1,0 +1,46 @@
+<!--
+  Generated template for the ChatroomPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>chatroom</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-input placeholder="text" [(ngModel)]="message"></ion-input>
+  <button ion-button (click)="send()">send</button>
+  <ion-list>
+      <ion-item-sliding *ngFor="let x of arrMssg">
+        <ion-item>
+          <h1>{{x.name}}</h1><br>
+         
+          <h2>{{x.message}}</h2><br>
+          <h6>{{x.time}}</h6>
+        </ion-item>
+        <ion-item-options side="left">
+          <button ion-button color="primary">
+            <ion-icon name="text"></ion-icon>
+            Text
+          </button>
+          <button ion-button color="secondary">
+            <ion-icon name="call"></ion-icon>
+            Call
+          </button>
+        </ion-item-options>
+        <ion-item-options side="right">
+          <button ion-button color="primary">
+            <ion-icon name="mail"></ion-icon>
+            Email
+          </button>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+
+</ion-content>

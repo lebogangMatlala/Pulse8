@@ -6,6 +6,8 @@ import { EditUserProfilePage } from '../edit-user-profile/edit-user-profile';
 import { EditPage } from '../edit/edit';
 import { LoginPage } from '../login/login';
 import { InstructionPage } from '../instruction/instruction';
+import { DatabaseProvider } from '../../providers/database/database';
+import { ChatroomPage } from '../chatroom/chatroom';
 /**
  * Generated class for the UserProfilePage page.
  *
@@ -31,11 +33,14 @@ export class UserProfilePage {
   city;
   condition;
 
+  inboxArr=[];
+  picture;
+massage;
 
 
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,public modalCtrl: ModalController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,public modalCtrl: ModalController, public db: DatabaseProvider) {
   }
 
   ionViewDidLoad() {
@@ -48,6 +53,84 @@ export class UserProfilePage {
         this.condition=true;
 
       this.id = firebase.auth().currentUser.uid;
+
+
+
+      firebase.database().ref('inbox/' + this.id).on('value', (data: any) => {
+
+        var inboxInfo = data.val();
+          
+          
+          console.log(inboxInfo);
+
+
+          if (inboxInfo != null && inboxInfo != "") {
+            var keys: any = Object.keys(inboxInfo);
+            console.log("helo killer man");
+            console.log(this.id);
+
+            this.inboxArr = [];
+            for (var i = 0; i < keys.length; i++) {
+
+              // let picId= bookingInfor[k].userKey;
+              // console.log("Lebogang")
+              // console.log(picId);
+              
+
+              var k = keys[i];
+            
+
+              let key=inboxInfo[k].key;
+              
+              console.log(inboxInfo[k].key);
+
+              
+            this.db.retriveProfilePicture(key).on('value', (data) => {
+              var infor = data.val();
+              this.picture = infor.url;
+            
+              console.log("picture");
+              console.log(this.picture);
+
+              }, (error) => {
+
+                console.log(error.message);
+
+
+              });
+
+
+              let objInbox= {
+                fanName: inboxInfo[k].name,
+                fanEmail: inboxInfo[k].email,
+                time: inboxInfo[k].time,
+                date: inboxInfo[k].date,
+                userKey:inboxInfo[k].key,
+               image:this.picture,
+
+                key: k,
+               
+
+              }
+
+              this.inboxArr.reverse();
+              this.inboxArr.push(objInbox);
+              this.inboxArr.reverse();
+
+              console.log(this.inboxArr);
+            }
+            this.massage = ""
+          }
+          else {
+           
+          }
+        }, (error) => {
+          console.log(error.message);
+        });
+        
+
+
+
 
         firebase.database().ref('Registration/' + this.id).on('value', (data: any) => {
 
@@ -134,6 +217,13 @@ logout() {
   }
 
 
+}
+
+
+chat(i)
+{
+  alert(i.userKey)
+  this.navCtrl.push(ChatroomPage,{obj:i,objk:this.id});
 }
 
 }

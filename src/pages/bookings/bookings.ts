@@ -86,7 +86,7 @@ condition;
    this.massage="I would like to book you for an event.Please respond to my email as soon as possible.";
     
     ///Djs details
-    firebase.database().ref('Registration/' +this.djKey).on('value', (data: any) => {
+    firebase.database().ref('Registration/' + this.djKey).on('value', (data: any) => {
  
       let djDetails = data.val();
       console.log(djDetails);
@@ -149,6 +149,22 @@ condition;
 
  
     }).then(()=>{
+
+      this.db.createinbox(this.userKey).push({
+        name: this.djName,
+        email:this.djEmail,
+        date:date,
+        time:time,
+        key:this.djKey
+    
+
+     
+        })
+
+        this.db.createchatroom(this.userKey).push({
+          key:this.djKey
+       
+          })
 
       this.navCtrl.push(CatergoriesPage);
 
