@@ -1,30 +1,64 @@
 chatbox {
+    margin-top: 100rem;
     div{
-        animation: fade .5s ease;
-        display: block;
-        color: white;
-        width: 100%;
-        // background: $color-primary-light;
-        position: fixed;
-        bottom: 0vh;
-        display: flex;
-        flex-flow: row nowrap;
-        height: 6rem;
-        ion-list{
-            width: 100%;
-            .input{
-                border: 1px solid rgba($color-grey-light, .1);
-                border-radius: 5rem;
-                padding: 0 1rem;
-                background: rgba($color-grey-light, .1);
+        .contentflex{
+            animation: fade .5s ease;
+            display: block;
+            color: black;
+            width: 100vw;
+            background:rgb(24, 24, 24);
+            position: fixed;
+            bottom: 0;
+            display: flex;
+            flex-direction: row;
+            z-index: 9999;
+
+            .group{
+                flex:  0 0 80%;
+                .input{
+                    
+                    font-size: 1.5rem;
+                    font-family: inherit;
+                    color: inherit;
+                    margin-top: .5rem;
+                    margin-left: .3rem; 
+                    padding: 1rem 2rem;
+                    border-radius: 5rem;
+                    background: rgba($color-grey-light, .1);
+                    border: none;
+                    transition: all ease .2s;
+                    border-bottom: .3rem solid transparent;
+                    width: 100%;
+                    display: block;
+                    color: $color-grey-light;
+                    &:focus{
+                    outline: none;  
+                    box-shadow: 0 1rem 2rem rgba(black, .1);
+                    border-bottom: .3rem solid $color-primary-light;
+
+                    }
+        
+                    &:focus:invalid{
+                        border-bottom: .3rem solid $color-danger;
+                    }
+        
+                    &::-webkit-input-placeholder{
+                        color: $color-grey-dark;
+                    }
+                }
+            }
+            button{
+                flex: 0 0 auto;
+                display: block; 
+                margin: 0 auto;
+                border-radius: 50% !important;
+                height: 5rem !important;
+                width: 5rem !important;
+                z-index:9999;
+                display: block;
             }
         }
 
-        button{
-            border-radius: 50% !important;
-            height: 5rem !important;
-            width: 5rem !important;
-        }
     }
 
 }

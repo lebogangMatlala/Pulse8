@@ -11,7 +11,6 @@ import { Component, Output, EventEmitter } from '@angular/core';
   templateUrl: 'chatbox.html'
 })
 export class ChatboxComponent {
-
   @Output() messageCreate = new EventEmitter<any>();
 
   constructor() {
@@ -19,8 +18,8 @@ export class ChatboxComponent {
   }
 
   
-  onMessageAdded(messagedata){
-    this.messageCreate.emit(messagedata);
+  onMessageAdded(messageText){
+    this.messageCreate.emit(messageText);
   }
 
 }
