@@ -73,24 +73,27 @@
                 <div class="segcontainer__seg__profilecontainer__profile">
                     <h2 class="segcontainer__seg__profilecontainer__profile--bioheading">Profile</h2>
                     <p *ngIf="stagename != undefined || stagename != stagename" class="segcontainer__seg__profilecontainer__profile--information">
-                        <ion-icon name="contact"></ion-icon> <span class="infotext">{{stagename}}</span>
+                        <ion-icon name="contact"></ion-icon>
+                        <span class="infotext">{{stagename}}</span>
                     </p>
                     <p *ngIf="condition!= false" class="segcontainer__seg__profilecontainer__profile--information">
-                        <ion-icon name="mail"></ion-icon> <span class="infotext">{{email}}</span>
+                        <ion-icon name="mail"></ion-icon>
+                        <span class="infotext">{{email}}</span>
                     </p>
                     <p *ngIf="city != undefined || city != city" class="segcontainer__seg__profilecontainer__profile--information">
-                        <ion-icon name="locate"></ion-icon> <span class="infotext">{{city}}</span>
+                        <ion-icon name="locate"></ion-icon>
+                        <span class="infotext">{{city}}</span>
                     </p>
                 </div>
             </div>
 
-            <div class="segcontainer__seg__bio__footer" (click)="Booking()">
+            <div class="segcontainer__seg__bio__footer">
                 <p class="segcontainer__seg__bio__footer--text">Request A Booking</p>
             </div>
         </ion-list>
 
         <ion-list *ngSwitchCase="'reviews'" class="segcontainer__seg">
-            <div no-lines class="segcontainer__seg__avatarcards" *ngFor="let n of commentArr">
+            <!-- <div no-lines class="segcontainer__seg__avatarcards" *ngFor="let n of commentArr">
                 <div class="segcontainer__seg__avatarcards__avatar">
                     <img src="{{n.pic}}" alt="" class="segcontainer__seg__avatarcards__avatar--image">
                 </div>
@@ -105,14 +108,7 @@
                     </div>
 
                 </div>
-            </div>
-
-
-          
-
-          
-
-
+            </div> -->
 
             <!-- <div class="nocontent">
                 <div class="nocontent__contents">
@@ -120,6 +116,31 @@
                     <p class="nocontent__contents--text" style="color: white">Its lonely here...</p>
                 </div>
             </div> -->
+            <div class="commentslist">
+                <div class="chatBubble" *ngFor="let n of commentArr; let i = index; let odd = 'left'; let even = 'right'">
+                    <!-- <img class="profile-pic even" src="{{n.pic}}"> -->
+                    <div class="chat-bubble left">
+                        <div class="message">{{n.comment}}</div>
+                        <div class="message-detail">
+                            <span style="font-weight:bold;">{{n.name}} </span>,
+                            <span>{{n.date}}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chatBubble" *ngFor="let n of commentArr">
+                    <!-- <img class="profile-pic right" src="{{n.pic}}"> -->
+                    <div class="chat-bubble right">
+                        <div class="message">{{n.comment}}</div>
+                        <div class="message-detail">
+                            <span style="font-weight:bold;">{{n.name}} </span>,
+                            <span>{{n.date}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="block"></div>
+            </div>
+
             <button ion-button icon-only *ngIf="messagestate != 'sending'" class="comment" (click)="messagestate = 'sending'">
                 <ion-icon name="chatbubbles"></ion-icon>
             </button>

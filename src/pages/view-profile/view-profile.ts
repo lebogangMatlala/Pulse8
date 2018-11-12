@@ -574,7 +574,7 @@ export class ViewProfilePage {
       date: day,
       
     })
-   messagedata="";
+   this.messagestate = 'not sending';
 
   }
 }
