@@ -29,7 +29,7 @@ display;
   msgusername;
   arrMssg=[];
   djkeys;
-  condition: string;
+  condition;
 
 
   
@@ -76,6 +76,10 @@ display;
       this.arrMssg.length = 0;
       let msgInfo =data.val();
 
+      let meskey = msgInfo.uid;
+        alert(meskey);
+
+
       if(msgInfo!= null)
       {
 
@@ -85,20 +89,24 @@ display;
          let k = keys[i];
  
       this.msguserid=msgInfo[k].uid
+
+//
       if(this.msguserid == this.currentid){
-        this.condition="right";
-  
-       }else{
-         this.condition="left";
-       }
-  
-       console.log(this.condition);
+       this.condition="right";
+
+      }else{
+        this.condition="left";
+      }
+        
+      console.log(this.condition);
+      
          firebase.database().ref('Registration/' + this.msguserid).on('value', (data: any) => {
            var infor = data.val();
 
            if(infor!=null)
            {
               this.msgusername = infor.fullname;
+
             console.log("user name  //////" + this.msgusername);
            }else{
 
@@ -152,11 +160,11 @@ display;
       time:time
     })
 
-    if(this.currentid ==  this.key){
-      console.log('user')
+    if(this.currentid == this.currentid ){
+      console.log('user');
     }
    else{
-    console.log('dj')
+    console.log('dj');
    }
     
   }
