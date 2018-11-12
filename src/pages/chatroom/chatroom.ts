@@ -29,6 +29,7 @@ display;
   msgusername;
   arrMssg=[];
   djkeys;
+  condition: string;
 
 
   
@@ -84,7 +85,14 @@ display;
          let k = keys[i];
  
       this.msguserid=msgInfo[k].uid
-      
+      if(this.msguserid == this.currentid){
+        this.condition="right";
+  
+       }else{
+         this.condition="left";
+       }
+  
+       console.log(this.condition);
          firebase.database().ref('Registration/' + this.msguserid).on('value', (data: any) => {
            var infor = data.val();
 
@@ -102,7 +110,8 @@ display;
         let objc = { 
            message: msgInfo[k].message,
            time:msgInfo[k].time,
-           name:this.msgusername
+           name:this.msgusername,
+           condition: this.condition
                   }
                   console.log("this is the object")
                 console.log(objc);
@@ -129,7 +138,7 @@ display;
     console.log('ionViewDidLoad ChatroomPage');
     this.arrMssg.length=0;
   }
-  send(){
+  onMessageAdded(message){
     this.arrMssg.length = 0;
     let dateObj = new Date
     let time = dateObj.toTimeString().replace(/.*(\d{2}:\d{2}:\d{2}).*/, "$1")
@@ -138,7 +147,7 @@ display;
 
     firebase.database().ref('messages/'+ this.key).child(this.djkeys).push({
 
-      message:this.message,
+      message:message,
       uid:this.currentid, 
       time:time
     })
@@ -150,6 +159,10 @@ display;
     console.log('dj')
    }
     
+  }
+
+  back(){
+    this.navCtrl.pop();
   }
 
 }
