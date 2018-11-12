@@ -93,10 +93,12 @@ display;
 //
       if(this.msguserid == this.currentid){
        this.condition="right";
+
       }else{
         this.condition="left";
       }
         
+      console.log(this.condition);
       
          firebase.database().ref('Registration/' + this.msguserid).on('value', (data: any) => {
            var infor = data.val();
