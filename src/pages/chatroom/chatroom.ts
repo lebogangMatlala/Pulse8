@@ -75,31 +75,50 @@ display;
       this.arrMssg.length = 0;
       let msgInfo =data.val();
 
-      var keys = Object.keys(msgInfo);
-       console.log(msgInfo);
-      for(let i = 0; i< keys.length;++i){
-        let k = keys[i];
+      if(msgInfo!= null)
+      {
 
-     this.msguserid=msgInfo[k].uid
-     
-        firebase.database().ref('Registration/' + this.msguserid).on('value', (data: any) => {
-          var infor = data.val();
-         this.msgusername = infor.fullname;
-          console.log("user name  //////" + this.msgusername);
-      })
-     
-       let objc = { 
-          message: msgInfo[k].message,
-          time:msgInfo[k].time,
-          name:this.msgusername
-                 }
-                 console.log("this is the object")
-               console.log(objc);
-                  
-           this.arrMssg.push(objc);
-       
+        var keys = Object.keys(msgInfo);
+        console.log(msgInfo);
+       for(let i = 0; i< keys.length;++i){
+         let k = keys[i];
+ 
+      this.msguserid=msgInfo[k].uid
+      
+         firebase.database().ref('Registration/' + this.msguserid).on('value', (data: any) => {
+           var infor = data.val();
 
-      } 
+           if(infor!=null)
+           {
+              this.msgusername = infor.fullname;
+            console.log("user name  //////" + this.msgusername);
+           }else{
+
+            console.log('no data');
+           }
+         
+       })
+      
+        let objc = { 
+           message: msgInfo[k].message,
+           time:msgInfo[k].time,
+           name:this.msgusername
+                  }
+                  console.log("this is the object")
+                console.log(objc);
+                   
+            this.arrMssg.push(objc);
+        
+ 
+       } 
+
+      }
+      else{
+        console.log('no data');
+      }
+
+
+     
 
     })
 
@@ -123,7 +142,13 @@ display;
       uid:this.currentid, 
       time:time
     })
-   
+
+    if(this.currentid ==  this.key){
+      console.log('user')
+    }
+   else{
+    console.log('dj')
+   }
     
   }
 
