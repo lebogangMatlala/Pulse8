@@ -53,6 +53,7 @@ export class ViewBookingPage{
   this.usersKey=this.bookings.userskey;
 
 
+  console.log("users key ")
    console.log(this.usersKey);
 
 
@@ -66,7 +67,7 @@ export class ViewBookingPage{
   chatroom(){
       console.log(this.usersKey);
 
-      this.navCtrl.push(ChatroomPage,{usersKey:this.usersKey})
+     this.navCtrl.push(ChatroomPage,{theuserkey:this.usersKey})
       
   }
 

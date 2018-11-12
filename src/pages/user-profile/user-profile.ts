@@ -223,6 +223,8 @@ logout() {
 chat(i)
 {
   alert(i.userKey)
+  //alert(this.id)
+
   this.navCtrl.push(ChatroomPage,{obj:i,objk:this.id});
 }
 
