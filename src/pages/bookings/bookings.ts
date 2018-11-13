@@ -83,7 +83,7 @@ condition;
 
    //massage for the dj
 
-   this.massage="I would like to book you for an event.Please respond to my email as soon as possible.";
+   this.massage="I would like to book you for an event.Please respond to my chats as soon as possible.";
     
     ///Djs details
     firebase.database().ref('Registration/' + this.djKey).on('value', (data: any) => {
@@ -115,7 +115,7 @@ condition;
 
      
          
-      this.db.sendEmail().then((available: boolean) => {
+     /*  this.db.sendEmail().then((available: boolean) => {
 
 
        let email = {
@@ -133,7 +133,7 @@ condition;
 
 
 
-   }); 
+   });  */
 
    let dateObj = new Date
    let time = dateObj.toTimeString().replace(/.*(\d{2}:\d{2}:\d{2}).*/, "$1")
@@ -169,7 +169,7 @@ condition;
       this.navCtrl.push(CatergoriesPage);
 
       const toast = this.toastCtrl.create({
-        message: 'Please check if the email was sent',
+        message: 'Please check your inbox',
         duration: 5000
       });
       toast.present();

@@ -52,6 +52,7 @@ export class ProfilePage {
   commentuserpic;
   commentArr =[];
   commentusername;
+  commentnum;
 
   displayMsg = " Would like to book you for an event,please respond to the email sent. ";
 
@@ -95,6 +96,12 @@ export class ProfilePage {
               var commentinfor = data.val();
               this.commentusername = commentinfor.fullname;
               console.log("user name  //////" + this.commentusername);
+              if( commentsinfor == undefined){
+                this.commentnum = 0;
+              }else{
+                this.commentnum = i+1;
+              }
+              console.log(this.commentnum)
             })
     
             console.log("comment user id ////" +this.commentuserid);
@@ -107,6 +114,7 @@ export class ProfilePage {
             }, (error) => {
         
               console.log(error.message);
+            
         
         
             });

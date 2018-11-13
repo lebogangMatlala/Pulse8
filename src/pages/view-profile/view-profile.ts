@@ -80,6 +80,12 @@ export class ViewProfilePage {
           console.log("user name  //////" + this.commentusername);
         })
 
+        if( commentsinfor == undefined){
+          this.commentnum = 0;
+        }else{
+          this.commentnum = i+1;
+        }
+        console.log()
 
 
         console.log("comment user id ////" +this.commentuserid);
@@ -95,8 +101,9 @@ export class ViewProfilePage {
     
     
         });
-    
-        this.commentnum = i;
+        
+        
+     
 
         let objc = { 
           comment: commentsinfor[k].comment,

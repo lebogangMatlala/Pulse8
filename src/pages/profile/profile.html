@@ -34,10 +34,10 @@
             Music
         </ion-segment-button>
         <ion-segment-button value="reviews">
-            Reviews
+          {{commentnum}}    Comments
         </ion-segment-button>
         <ion-segment-button value="bookings">
-            Bookings
+            Inbox
         </ion-segment-button>
     </ion-segment>
 
@@ -101,7 +101,7 @@
                         <img [src]="i.image">
                     </ion-avatar>
                     <p class="segcontainer__seg__cardcontainer__cards--text"><strong>{{i.fanName}}</strong>, has requested
-                        to book you, check your email.</p>
+                        to chat with you.</p>
                     <p class="segcontainer__seg__cardcontainer__cards--datetext">{{i.date}} {{i.time}}</p>
                 </ion-item>
                 <!-- <ion-item-options side="right" (click)="delete(a)">
