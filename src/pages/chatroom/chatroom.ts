@@ -144,7 +144,7 @@ display;
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ChatroomPage');
-    this.arrMssg.length=0;
+  
   }
   onMessageAdded(message){
     this.arrMssg.length = 0;

@@ -44,14 +44,14 @@ export class ViewBookingPage{
    this.fanName=this.bookings.fanName;
    this.fanEmail=this.bookings.fanEmail;
    this.fanPic=this.bookings.picture;
-  this.fanMsg=this.bookings.fanMsg;
+  // this.fanMsg=this.bookings.fanMsg;
   this.fanDate=this.bookings.fanDate;
   this.fanTime=this.bookings.fanTime;
   this.id=this.bookings.id;
   this.key=this.bookings.key;
   this.city = this.bookings.city;
   this.usersKey=this.bookings.userskey;
-
+  this.fanMsg="Would like to chat with you, please respond";
 
   console.log("users key ")
    console.log(this.usersKey);
