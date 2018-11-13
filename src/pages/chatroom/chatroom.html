@@ -60,6 +60,10 @@
     </div>
   </div>
 
-  <chatbox (messageCreate)="onMessageAdded($event)"></chatbox>
+  <button ion-button icon-only *ngIf="messagestate != 'sending'" class="comment" (click)="messagestate = 'sending'">
+    <ion-icon name="chatbubbles"></ion-icon>
+  </button>
+
+  <chatbox (messageCreate)="onMessageAdded($event)" *ngIf="messagestate == 'sending'"></chatbox>
 
 </ion-content>

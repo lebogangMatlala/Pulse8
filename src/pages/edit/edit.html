@@ -103,10 +103,38 @@ giving the form a template variable of f-->
 
                 <ion-item no-lines>
                     <ion-label color="light">
-                        <ion-icon ios="ios-locate" md="md-locate"></ion-icon>
+                        <ion-icon ios="ios-locate" md="md-locate" ></ion-icon>
+                        City
                     </ion-label>
-                    <ion-input type="text" class="contentflex__formcontent--input" [value]="city" placeholder="City"
-                        name="city" id="input" ngModel required></ion-input>
+  
+                        <ion-select name="city" [(ngModel)]="city" (change)="input($event)" interface="popover">
+                            <ion-option value="Johannesburg">Johannesburg</ion-option>
+                            <ion-option value="Pretoria">Pretoria</ion-option>
+                            <ion-option value="Cape Town">Cape Town</ion-option>
+                            <ion-option value="limpopo">limpopo</ion-option>
+                            <ion-option value="Durban">Durban</ion-option>
+                            <ion-option value="Mafikeng">Mafikeng</ion-option>
+                            <ion-option value="Bloemfontein">Bloemfontein</ion-option>
+                            <ion-option value="Pietermaritzburg">Pietermaritzburg</ion-option>
+                            <ion-option value="East london">East london</ion-option>
+                            <ion-option value="Mbombela">Mbombela</ion-option>
+                            <ion-option value="Kimberley">Kimberley</ion-option> 
+                            <ion-option value="Rustenburg">Rustenburg</ion-option> 
+                            <ion-option value="George">George</ion-option>
+                            <ion-option value="Paarl">Paarl</ion-option>
+                            <ion-option value="Vereeniging">Vereeniging</ion-option>
+                            <ion-option value="Mahikeng">Mahikeng</ion-option>
+                            <ion-option value="Welkom">Welkom</ion-option>
+                            <ion-option value="Bhisho">Bhisho</ion-option>
+                            <ion-option value="Potchefstroom">Potchefstroom</ion-option>
+                            <ion-option value="Newcastle">Newcastle</ion-option>
+                            <ion-option value="Vanderbijlpark">Vanderbijlpark</ion-option>
+                            <ion-option value="Boksburg">Boksburg</ion-option>
+                            <ion-option value="Klerksdorp">Klerksdorp</ion-option>
+                            <ion-option value="Krugersdrop">Krugersdrop</ion-option>
+                            <ion-option value="Roodepoort">Roodepoort</ion-option>
+                            <ion-option value="Randfontein">Randfontein</ion-option>
+                          </ion-select>
                 </ion-item>
 
                 <ion-item no-lines>

@@ -53,7 +53,8 @@ export class ViewProfilePage {
   commentuserid;
   commentuserpic;
   commentArr =[];
-  commentusername;
+  commentusername; 
+  commentnum;
 
   messagestate = 'not sending' 
 
@@ -79,6 +80,8 @@ export class ViewProfilePage {
           console.log("user name  //////" + this.commentusername);
         })
 
+
+
         console.log("comment user id ////" +this.commentuserid);
         firebase.database().ref('Pic/' + this.commentuserid).on('value', (data) => {
           var infor = data.val();
@@ -93,6 +96,7 @@ export class ViewProfilePage {
     
         });
     
+        this.commentnum = i;
 
         let objc = { 
           comment: commentsinfor[k].comment,

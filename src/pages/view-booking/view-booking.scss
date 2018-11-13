@@ -64,6 +64,15 @@ page-view-booking {
             }
         }
     }
+    .buttoncontainer{
+        display:flex;
+        justify-content: center;
+        button{
+            border-radius: 50%;
+            height: 5rem;
+            width: 5rem;
+        }
+    }
 
     @keyframes fade {0%{opacity: 0} 100%{opacity: 1;}}
 }

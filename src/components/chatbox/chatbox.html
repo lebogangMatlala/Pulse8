@@ -3,9 +3,9 @@
   <!-- <ion-input type="text" placeholder="Add A Review Message(max 100chars)" class="input" ></ion-input> -->
 <div class="contentflex">
   <div class="group">
-    <input type="text" placeholder="Enter A Message (Max 100 chars)" class="input" id="name" required #message>
+    <input  type="text" placeholder="Enter A Message (Max 100 chars)" class="input" id="name" required #message>
   </div>
-    <button ion-button end class="hero--back">
+    <button ion-button end class="hero--back" >
       <ion-icon name="send" (click)="onMessageAdded(message.value)"></ion-icon>
     </button>
 </div>

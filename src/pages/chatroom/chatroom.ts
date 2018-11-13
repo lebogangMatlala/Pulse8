@@ -33,7 +33,7 @@ display;
 
 
   
-
+  messagestate = 'not sending' 
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
@@ -46,9 +46,9 @@ display;
     this.details=navParams.get('obj');
     if(this.details == undefined){
       this.userkey = navParams.get('theuserkey');
-      alert(this.userkey +" is true");
+  
       this.key = this.userkey;
-      alert("this.key "+ this.key)
+ 
       this.djkeys = this.currentid;
     }else{
       
@@ -77,7 +77,7 @@ display;
       let msgInfo =data.val();
 
       let meskey = msgInfo.uid;
-        alert(meskey);
+ 
 
 
       if(msgInfo!= null)
@@ -166,6 +166,8 @@ display;
    else{
     console.log('dj');
    }
+
+  this.messagestate = 'not sending'
     
   }
 

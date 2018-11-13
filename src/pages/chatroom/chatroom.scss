@@ -6,14 +6,26 @@ page-chatroom {
         background: linear-gradient(rgba($color-dark, .9), rgba($color-dark, .8)),url('../../assets/imgs/7.jpg');
         background-size: cover;
     }
+    .comment{
+      border-radius: 50% !important;
+      width: 5rem !important;
+      height: 5rem !important;
+      position: fixed;
+      bottom: 0vh; 
+      right: 0vw;
+  }
 
     .hero{
+      
         display: flex;
         flex-direction: row;
         &__buttoncontainer{
             &--button{
                 // font-size: 1.5rem;
+
                 ion-icon{
+              
+                
                     zoom: 1.5;
                     font-weight: bold;
                 }

@@ -345,9 +345,71 @@ export class CatergoriesPage {
       console.log(objDj);
       
       this.arrDj.push(objDj);
-      this.arrDj = this.arrDj.filter(x => x.genre === this.genre);
-      // this.arrDj = this.arrDj.filter(v => v.gender === this.gender);
-      // this.arrDj = this.arrDj.filter(b => b.city === this.city);
+      if(this.genre!==undefined){
+    
+        this.arrDj = this.arrDj.filter(x => x.genre === this.genre);
+
+        if(this.gender!==undefined){
+
+          this.arrDj = this.arrDj.filter(x => x.gender === this.gender);
+          if(this.city!==undefined){
+            this.arrDj = this.arrDj.filter(x => x.city === this.city);
+          } 
+         
+            } 
+               {
+         
+                }
+       
+      }
+
+      if(this.city!==undefined){
+    
+        this.arrDj = this.arrDj.filter(x => x.city === this.city);
+
+        if(this.gender!==undefined){
+
+          this.arrDj = this.arrDj.filter(x => x.gender === this.gender);
+          if(this.genre!==undefined){
+            this.arrDj = this.arrDj.filter(x => x.genre === this.genre);
+
+          } 
+         
+            } 
+               {
+         
+                }
+                
+       
+      }
+
+      if(this.gender!==undefined){
+    
+        this.arrDj = this.arrDj.filter(x => x.gender === this.gender);
+        if(this.genre!==undefined){
+          this.arrDj = this.arrDj.filter(x => x.genre === this.genre);
+          if(this.city!==undefined){
+    
+            this.arrDj = this.arrDj.filter(x => x.city === this.city);
+          }
+        } 
+      }
+    
+      if(this.gender!==undefined){
+    
+        this.arrDj = this.arrDj.filter(x => x.gender === this.gender);
+       
+          if(this.city!==undefined){
+
+            if(this.genre!==undefined){
+              this.arrDj = this.arrDj.filter(x => x.genre === this.genre);
+    
+            this.arrDj = this.arrDj.filter(x => x.city === this.city);
+          }
+        } 
+      }
+
+      
 
    }
          else{

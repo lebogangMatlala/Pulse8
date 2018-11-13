@@ -8,6 +8,7 @@ import { DatabaseProvider } from '../../providers/database/database';
 import { LoginPage } from '../login/login';
 import { ViewBookingPage } from '../view-booking/view-booking';
 import { UserProfilePage } from '../user-profile/user-profile';
+import moment from 'moment';
 /**
  * Generated class for the ProfilePage page.
  *
@@ -46,13 +47,18 @@ export class ProfilePage {
   globalPic=[];
   role;
 
+  
+  commentuserid;
+  commentuserpic;
+  commentArr =[];
+  commentusername;
+
   displayMsg = " Would like to book you for an event,please respond to the email sent. ";
 
 
   constructor(private modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public db: DatabaseProvider, private popoverCtrl: PopoverController) {
 
-  
-
+   
   }
 
   ngOnInit() {
@@ -74,6 +80,57 @@ export class ProfilePage {
         this.condition = true;
 
         this.id = firebase.auth().currentUser.uid;
+
+        firebase.database().ref("comments/"+ this.id).on("value",(data: any)=>{
+          let commentsinfor = data.val();
+          console.log("this are the comments");
+          console.log(commentsinfor)
+          var keys = Object.keys(commentsinfor);
+          
+          for(let i = 0; i< keys.length;++i){
+            let k = keys[i];
+            this.commentuserid=commentsinfor[k].uid
+    
+            firebase.database().ref('Registration/' + this.commentuserid).on('value', (data: any) => {
+              var commentinfor = data.val();
+              this.commentusername = commentinfor.fullname;
+              console.log("user name  //////" + this.commentusername);
+            })
+    
+            console.log("comment user id ////" +this.commentuserid);
+            firebase.database().ref('Pic/' + this.commentuserid).on('value', (data) => {
+              var infor = data.val();
+              this.commentuserpic = infor.url;
+            let a  = Object.keys(infor);
+            console.log(" this is the pic"+this.commentuserpic);
+        
+            }, (error) => {
+        
+              console.log(error.message);
+        
+        
+            });
+        
+    
+            let objc = { 
+              comment: commentsinfor[k].comment,
+              uid:commentsinfor[k].uid,
+              date: moment(commentsinfor[k].date, 'MMMM Do YYYY, h:mm:ss a').startOf('minutes').fromNow(),
+              pic:this.commentuserpic,
+              name:this.commentusername
+                      }
+                      console.log("this is the object")
+                      console.log(objc);
+                      
+                this.commentArr.push(objc);
+                this.commentArr.reverse();
+                
+                 
+                  
+          }
+    
+        })
+    
 
         console.log(this.id);
 
