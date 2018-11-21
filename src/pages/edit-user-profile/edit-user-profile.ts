@@ -28,6 +28,7 @@ export class EditUserProfilePage {
   city;
   gender;
   profileObj = {};
+  id;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,   public db: DatabaseProvider,
     public loadingCtrl: LoadingController,
@@ -39,11 +40,11 @@ export class EditUserProfilePage {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
         console.log("User has sign in");
-        let id = firebase.auth().currentUser.uid;
+        this.id = firebase.auth().currentUser.uid;
 
         firebase
           .database()
-          .ref("Pic/" + id)
+          .ref("Pic/" +this.id)
           .on(
             "value",
             data => {
@@ -60,11 +61,11 @@ export class EditUserProfilePage {
             }
           );
 
-        console.log(id);
+        console.log(this.id);
 
         firebase
           .database()
-          .ref("Registration/" + id)
+          .ref("Registration/" +this.id)
           .on("value", (data: any) => {
             let userDetails = data.val();
 
@@ -82,9 +83,6 @@ export class EditUserProfilePage {
                 bio: userDetails.bio,
                 city:userDetails.city,
                 gender:userDetails.gender,
-              
-
-
               };
 
               this.arrProfile.push(obj);
@@ -110,8 +108,7 @@ export class EditUserProfilePage {
     });
   }
 
-  url = "http://www.dealnetcapital.com/files/2014/10/blank-profile.png";
-
+  url =  "../../assets/imgs/user.png";
 
   insertImage(event: any) {
     if (event.target.files && event.target.files[0]) {
@@ -124,8 +121,7 @@ export class EditUserProfilePage {
       let selectedfile = event.target.files[0];
       let filename = selectedfile.name;
       const loader = this.loadingCtrl.create({
-        content: "Please wait...",
-        duration: 6500
+        content: "Please wait..."
       });
       loader.present();
 
@@ -147,7 +143,7 @@ export class EditUserProfilePage {
         },
         function() {
           // Handle successful uploads on complete
-         
+         loader.dismiss();
           uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
             console.log("File available at", downloadURL);
 
@@ -181,24 +177,8 @@ export class EditUserProfilePage {
     }
   }
 
-  back()
-  {
-    this.navCtrl.push(UserProfilePage);
-  }
-
   submit(form: NgForm) {
     
-   
-
-  
-
-    const loader = this.loadingCtrl.create({
-      content: "Please wait...",
-      duration: 2500
-    });
-    loader.present();
-  
- 
     console.log(form.value.fullname + " " +form.value.email);
     console.log(form.value.bio+" " + " " +form.value.stagename);
 
@@ -243,12 +223,22 @@ export class EditUserProfilePage {
       .then(() => {
         // Update successful.
 
-      this.navCtrl.push(UserProfilePage);
+      
       })
       .catch(function(error) {
         // An error happened.
         console.log(error);
       });
+
+      this.navCtrl.pop();
     }
-    
+  remove(){
+    this.url= "../../assets/imgs/user.png";
+    firebase
+    .database()
+    .ref("Pic/" + this.id)
+    .set({
+      url: this.url
+    })
+  }  
 }

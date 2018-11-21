@@ -13,12 +13,8 @@ page-profile {
         background: linear-gradient(rgba($color-dark, .6), rgba($color-dark, .6)),url('../../assets/imgs/dj4.jpg');
         background-size: cover;
         background-position: bottom !important;
-        &--back{
-            display: inline-block;
-            zoom: 1.5;
-        }
         &__herobanner{
-            height: 12rem;
+            height: 15rem;
             display: flex;
             justify-content: space-evenly;
             flex-flow: row nowrap;
@@ -62,6 +58,10 @@ page-profile {
                 bottom: 15%;
             }
         }
+    }
+
+    .block{
+        height: 5rem;
     }
 
     .segcontainer{
@@ -193,7 +193,6 @@ page-profile {
         height: 100%;
         align-items: center;
         opacity: .5;
-        margin-top: 5rem;
         &__contents{
             &--image{
                 width: 15rem;
@@ -267,7 +266,7 @@ page-profile {
           display: inline-block;
           padding: 10px 18px;
           position: relative;
-          margin: 10px;
+          margin: 1rem;
           max-width: 80%;
         }
       
@@ -283,7 +282,7 @@ page-profile {
         .chat-bubble.left {
           background-color: map-get($chat-bubble, background-left);
           float: left;
-          margin-left: 45px;
+          margin-left: 2rem;
         }
       
         .chat-bubble.left:before {
@@ -317,5 +316,14 @@ page-profile {
           flex-flow: column;
           margin-top: .5rem;
       }
+
+      .comment{
+        border-radius: 50% !important;
+        width: 5rem !important;
+        height: 5rem !important;
+        position: fixed;
+        bottom: 0vh; 
+        right: 0vw;
+    }
 
 }

@@ -6,7 +6,6 @@ import firebase from 'firebase';
 import { CatergoriesPage } from '../catergories/catergories';
 import { BookingsPage } from '../bookings/bookings';
 import { SigninPage } from '../signin/signin';
-import { ViewBookingPage } from '../view-booking/view-booking';
 import moment from 'moment';
 /**
  * Generated class for the ViewProfilePage page.

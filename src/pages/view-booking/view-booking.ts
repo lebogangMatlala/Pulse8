@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
-import { ProfilePage } from '../profile/profile';
-import firebase from 'firebase';
 import { ChatroomPage } from '../chatroom/chatroom';
 
 /**

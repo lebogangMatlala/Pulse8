@@ -49,7 +49,6 @@ import { ChatroomPage } from '../pages/chatroom/chatroom';
     InstructionPage,
     ChatboxComponent,
     ChatroomPage
-
   ],
   imports: [
     BrowserModule,

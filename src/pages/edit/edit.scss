@@ -20,6 +20,20 @@ page-edit {
         }
     }
 
+    .buttonbox{
+        width: 100vw;
+        display: flex;
+        flex-flow: row;
+        justify-content: center;
+        height: 2rem;
+    }
+    .delete{
+        border-radius: 50%;
+        postion: relative;
+        top: 10rem;
+        left: 3rem;
+    }
+
     .contentflex{
         overflow: scroll;
         display: flex;
@@ -115,6 +129,7 @@ page-edit {
             left: 0;
             top: 0;
             opacity: 0;
+            width: 5rem;
         }
 
         .btn {

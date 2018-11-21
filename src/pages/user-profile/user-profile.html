@@ -5,106 +5,94 @@
   Ionic pages and navigation.
 -->
 <ion-content>
-  <div class="hero">
-      <button ion-button clear class="hero__back">
-          <ion-icon class="icontop" (click)="back()" ios="ios-arrow-round-back" md="md-arrow-round-back"></ion-icon>
-      </button>
-      <div class="hero__herobanner">
-          <div class="hero__herobanner__heroimagecontainer">
-              <img [src]="pic" alt="" class="hero__herobanner__heroimagecontainer--image">
-          </div>
-          <div class="hero__herobanner__herotagcontainer">
-              <div class="hero__herobanner__herotagcontainer__headingcontainer">
-                  <h1 class="hero__herobanner__herotagcontainer__headingcontainer--heading">{{fullname}}</h1>
-                  <span class="buttoncontainer">
-                      <button ion-button icon-only (click)="edit()">
-                          <ion-icon ios="ios-create" md="md-create"></ion-icon>
-                      </button>
-                      <button ion-button icon-only (click)="changeRole()">
-                        <ion-icon ios="ios-headset" md="md-headset"></ion-icon>
-                      </button>
-                  </span>
-              </div>
-          </div>
-      </div>
-  </div>
-  <ion-segment [(ngModel)]="profile" class="segbtns">
-      <ion-segment-button value="infor">
-          Info
-      </ion-segment-button>
-      <ion-segment-button value="inbox">
-        Inbox
-     </ion-segment-button>
-  </ion-segment>
-  <div [ngSwitch]="profile" class="segcontainer">
-      <ion-list *ngSwitchCase="'infor'" class="segcontainer__seg">
-          <div no-lines class="segcontainer__seg__bio">
-              <div class="segcontainer__seg__bio__userProfile">
-                  <h2 class="segcontainer__seg__bio__userProfile--bioheading">Bio</h2>
-                  <p class="segcontainer__seg__bio__userProfile--biotext">{{bio}}</p>
-              </div>
-              <div class="nocontent1" *ngIf="bio == '' || bio == undefined">
+    <div class="hero">
+        <div class="hero__herobanner">
+            <div class="hero__herobanner__heroimagecontainer">
+                <img [src]="pic" alt="" class="hero__herobanner__heroimagecontainer--image">
+            </div>
+            <div class="hero__herobanner__herotagcontainer">
+                <div class="hero__herobanner__herotagcontainer__headingcontainer">
+                    <h1 class="hero__herobanner__herotagcontainer__headingcontainer--heading">{{fullname}}</h1>
+                    <span class="buttoncontainer">
+                        <button ion-button icon-only (click)="edit()">
+                            <ion-icon ios="ios-create" md="md-create"></ion-icon>
+                        </button>
+                        <button ion-button icon-only (click)="changeRole()">
+                            <ion-icon ios="ios-headset" md="md-headset"></ion-icon>
+                        </button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ion-segment [(ngModel)]="profile" class="segbtns">
+        <ion-segment-button value="infor">
+            Info
+        </ion-segment-button>
+        <ion-segment-button value="inbox">
+            Inbox
+        </ion-segment-button>
+    </ion-segment>
+    <div [ngSwitch]="profile" class="segcontainer">
+        <ion-list *ngSwitchCase="'infor'" class="segcontainer__seg">
+            <div no-lines class="segcontainer__seg__bio">
+                <div class="segcontainer__seg__bio__userProfile">
+                    <h2 class="segcontainer__seg__bio__userProfile--bioheading">Bio</h2>
+                    <p class="segcontainer__seg__bio__userProfile--biotext">{{bio}}</p>
+                </div>
+                <div class="nocontent1" *ngIf="bio == '' || bio == undefined">
+                    <div class="nocontent1__contents">
+                        <img class="nocontent1__contents--image" src="../../assets/imgs/sound-wavesgrey.png" alt="">
+                        <p class="nocontent1__contents--text" style="color: white">Its lonely here...</p>
+                    </div>
+                </div>
+            </div>
+            <div no-lines class="segcontainer__seg__profilecontainer">
+                <div class="segcontainer__seg__profilecontainer__profile">
+                    <h2 class="segcontainer__seg__profilecontainer__profile--bioheading">Profile</h2>
+                    <p *ngIf="email != undefined || email != email" class="segcontainer__seg__profilecontainer__profile--information">
+                        <ion-icon name="mail"></ion-icon> <span class="infotext">{{email}}</span>
+                    </p>
+                    <p *ngIf="city != undefined || city != city" class="segcontainer__seg__profilecontainer__profile--information">
+                        <ion-icon name="locate"></ion-icon> <span class="infotext">{{city}}</span>
+                    </p>
+                    <p *ngIf="gender != undefined || gender != gender" class="segcontainer__seg__profilecontainer__profile--information">
+                        <ion-icon ios="ios-transgender" md="md-transgender"></ion-icon><span class="infotext">{{gender}}</span>
+                    </p>
+                </div>
+            </div>
+        </ion-list>
+
+        <ion-list *ngSwitchCase="'inbox'" class="segcontainer__seg">
+
+            <ion-item-sliding *ngFor="let i of inboxArr;let a=index;" class="segcontainer__seg__cardcontainer">
+                <ion-item no-lines class="segcontainer__seg__cardcontainer__cards" (click)="chat(i)">
+                    <ion-avatar item-start>
+                        <img [src]="i.image">
+                    </ion-avatar>
+                    <p class="segcontainer__seg__cardcontainer__cards--text">Chat with <strong>{{i.fanName}}</strong>
+                    </p>
+                    <p class="segcontainer__seg__cardcontainer__cards--datetext">{{i.date}} {{i.time}}</p>
+                </ion-item>
+                <ion-item-options side="right" (click)="delete(a)">
+                    <button ion-button color="danger">
+                        <ion-icon name="trash"></ion-icon>
+                        Delete
+                    </button>
+                </ion-item-options>
+            </ion-item-sliding>
+
+            <div class="nocontent1" *ngIf="inboxArr.length == 0 || inboxArr.length == undefined">
                 <div class="nocontent1__contents">
                     <img class="nocontent1__contents--image" src="../../assets/imgs/sound-wavesgrey.png" alt="">
                     <p class="nocontent1__contents--text" style="color: white">Its lonely here...</p>
                 </div>
             </div>
-          </div>
-          <div no-lines class="segcontainer__seg__profilecontainer">
-              <div class="segcontainer__seg__profilecontainer__profile">
-                  <h2 class="segcontainer__seg__profilecontainer__profile--bioheading">Profile</h2>
-                  <p *ngIf="email != undefined || email != email" class="segcontainer__seg__profilecontainer__profile--information">
-                      <ion-icon name="mail"></ion-icon> <span class="infotext">{{email}}</span>
-                  </p>
-                  <p *ngIf="city != undefined || city != city" class="segcontainer__seg__profilecontainer__profile--information">
-                      <ion-icon name="locate"></ion-icon> <span class="infotext">{{city}}</span>
-                  </p>
-                  <p  *ngIf="gender != undefined || gender != gender" class="segcontainer__seg__profilecontainer__profile--information">
-                    <ion-icon ios="ios-transgender" md="md-transgender"></ion-icon><span class="infotext">{{gender}}</span>
-                  </p>
-              </div>
-          </div>
-      </ion-list>
-
-      <ion-list *ngSwitchCase="'inbox'" class="segcontainer__seg">
-
-            <ion-item-sliding *ngFor="let i of inboxArr;let a=index;" class="segcontainer__seg__cardcontainer">
-                    <ion-item no-lines class="segcontainer__seg__cardcontainer__cards" (click)="chat(i)">
-                        <ion-avatar item-start>
-                            <img [src]="i.image">
-                        </ion-avatar>
-                        <p class="segcontainer__seg__cardcontainer__cards--text">Chat with <strong>{{i.fanName}}</strong>
-                            </p>
-                        <p class="segcontainer__seg__cardcontainer__cards--datetext">{{i.date}} {{i.time}}</p>
-                    </ion-item>
-                    <ion-item-options side="right" (click)="delete(a)">
-                        <button ion-button color="danger">
-                            <ion-icon name="trash"></ion-icon>
-                            Delete
-                        </button>
-                    </ion-item-options>
-                </ion-item-sliding>
-
-        <div no-lines class="segcontainer__seg__bio"  *ngIf="inboxArr.length == 0 || inboxArr.length == undefined">
-            <div class="segcontainer__seg__bio__userProfile">
-                <h2 class="segcontainer__seg__bio__userProfile--bioheading">Messages</h2>
-                <p class="segcontainer__seg__bio__userProfile--biotext">{{bio}}</p>
-            </div>
-            <div class="nocontent1" *ngIf="inboxArr.length == 0 || inboxArr.length == undefined">
-              <div class="nocontent1__contents">
-                  <img class="nocontent1__contents--image" src="../../assets/imgs/sound-wavesgrey.png" alt="">
-                  <p class="nocontent1__contents--text" style="color: white">Its lonely here...</p>
-              </div>
-          </div>
-        </div>
-    </ion-list>
-      <ion-fab right bottom>
-          <button ion-fab color="primary" (click)="logout()">
-              <ion-icon name="log-out"></ion-icon>
-          </button>
-      </ion-fab>
-  </div>
+        </ion-list>
+        <ion-fab right bottom>
+            <button ion-fab color="primary" (click)="logout()">
+                <ion-icon name="log-out"></ion-icon>
+            </button>
+        </ion-fab>
+    </div>
 </ion-content>
-
-
-

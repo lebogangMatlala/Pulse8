@@ -54,6 +54,8 @@ export class ProfilePage {
   commentusername;
   commentnum;
 
+  messagestate = 'not sending';
+
   displayMsg = " Would like to book you for an event,please respond to the email sent. ";
 
 
@@ -132,6 +134,7 @@ export class ProfilePage {
                       
                 this.commentArr.push(objc);
                 this.commentArr.reverse();
+            
                 
                  
                   
@@ -538,38 +541,20 @@ export class ProfilePage {
    console.log("working current user " + this.keyid + " bookingID "+this.key);
  
   }
-  // changes(){
   
-  //         this.navCtrl.push(UserProfilePage);
-  //         this.role = "Audience";
+  onMessageAdded(messagedata){
+    //todo: functionality of sending message goes here
+   this.commentArr =[];
+    var user = ""
+    var day = moment().format('MMMM Do YYYY, h:mm:ss a');
+    firebase.database().ref('comments/' +      this.id).push({
+      comment: messagedata,
+      uid:      this.id,
+      date: day,
+      
+    })
+   this.messagestate = 'not sending';
 
-  //         let obj = {
-  //           role:this.role
-  //        }
-  //         this.db.update(this.id,obj);
-         
-  // }
-  // change(){
-  //       console.log(this.id);
-
-   
-
-  //         let obj = {
-  //            role:this.role
-  //         }
-  //         this.db.update(this.id,obj);
-
-  //         if(this.role=='Audience')
-  //         {
-
-  //          // this.navCtrl.push(UserProfilePage);
-  //         }
-        
-
-  //         console.log(this.role);
-  
-
-
-  // }
+  }
   
 }

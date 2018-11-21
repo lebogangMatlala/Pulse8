@@ -4,7 +4,7 @@ page-catergories {
         background-size: cover !important;
         animation: 1s ease fadeIn;
     }
- 
+
     .dropdown{
         background: rgba($color-grey-light, .1) !important;
         border-radius: 5rem;
@@ -12,6 +12,27 @@ page-catergories {
         color: $color-primary-light;
         width: 95%;
         margin: .5rem auto;
+    }
+
+    .heading{
+        font-size: 3rem;
+        letter-spacing: .2rem;
+        color: $color-grey-light;
+        text-transform: uppercase;
+        font-weight: 300;
+        text-align: center;
+        text-shadow: .2rem .3rem .5rem rgba($color-grey-light,.4);
+    }
+
+    .filtercontainer{
+        display:flex;
+    }
+
+    .refresh{
+        border-radius: 50%;
+        flex: auto 0 0 ;
+        width: 4.5rem;
+        height: 4.5rem;
     }
  
     .card-heading{
@@ -43,18 +64,10 @@ page-catergories {
  
     .list{
         overflow: scroll !important;
-        height: 85vh;
+        height: 78%;
     }
  
-    .heading{
-        font-size: 3rem;
-        letter-spacing: .2rem;
-        color: $color-grey-light;
-        text-transform: uppercase;
-        font-weight: 300;
-        text-align: center;
-        text-shadow: .2rem .3rem .5rem rgba($color-grey-light,.4);
-    }
+
 
     .nocontent{
         animation: fade 1s ease;
@@ -64,7 +77,6 @@ page-catergories {
         height: 100%;
         align-items: center;
         opacity: .5;
-        margin-top: -10rem;
         &__contents{
             &--image{
                 width: 15rem;

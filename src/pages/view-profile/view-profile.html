@@ -1,16 +1,12 @@
 <ion-content>
     <div class="hero">
-        <button ion-button clear class="hero--back">
-            <ion-icon (click)="back()" ios="ios-arrow-round-back" md="md-arrow-round-back"></ion-icon>
-        </button>
-
         <div class="hero__herobanner">
             <div class="hero__herobanner__heroimagecontainer">
                 <img [src]="pic" alt="" class="hero__herobanner__heroimagecontainer--image">
             </div>
             <div class="hero__herobanner__herotagcontainer">
                 <div class="hero__herobanner__herotagcontainer__headingcontainer">
-                    <h1 class="hero__herobanner__herotagcontainer__headingcontainer--heading">{{fullname}}</h1>
+                    <h1 class="hero__herobanner__herotagcontainer__headingcontainer--heading">{{fullname | slice:0:20}}</h1>
                 </div>
                 <div class="hero__herobanner__herotagcontainer__tagcontainer">
                     <ion-badge outline class="hero__herobanner__herotagcontainer--tag">{{genre}}</ion-badge>
@@ -32,7 +28,7 @@
             Music
         </ion-segment-button>
         <ion-segment-button value="reviews">
-            {{commentnum}}   Comments 
+            {{commentnum}} Comments
         </ion-segment-button>
 
 
@@ -76,10 +72,6 @@
                         <ion-icon name="contact"></ion-icon>
                         <span class="infotext">{{stagename}}</span>
                     </p>
-                    <p *ngIf="condition!= false" class="segcontainer__seg__profilecontainer__profile--information">
-                        <ion-icon name="mail"></ion-icon>
-                        <span class="infotext">{{email}}</span>
-                    </p>
                     <p *ngIf="city != undefined || city != city" class="segcontainer__seg__profilecontainer__profile--information">
                         <ion-icon name="locate"></ion-icon>
                         <span class="infotext">{{city}}</span>
@@ -87,7 +79,7 @@
                 </div>
             </div>
 
-            <div class="segcontainer__seg__bio__footer"  (click)="Booking()">
+            <div class="segcontainer__seg__bio__footer" (click)="Booking()">
                 <p class="segcontainer__seg__bio__footer--text">Message the Dj</p>
             </div>
         </ion-list>
@@ -128,7 +120,13 @@
                     </div>
                 </div>
 
-                <div class="block"></div>
+                <div class="block" *ngIf="commentArr.length != 0 || commentArr != undefined"></div>
+                <div class="nocontent1" *ngIf="commentArr.length == 0 || commentArr == undefined">
+                    <div class="nocontent__contents">
+                        <img class="nocontent__contents--image" src="../../assets/imgs/sound-wavesgrey.png" alt="">
+                        <p class="nocontent__contents--text" style="color: white">Its lonely here...</p>
+                    </div>
+                </div>
             </div>
 
             <button ion-button icon-only *ngIf="messagestate != 'sending'" class="comment" (click)="messagestate = 'sending'">

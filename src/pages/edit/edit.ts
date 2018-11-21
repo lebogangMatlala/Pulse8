@@ -4,7 +4,7 @@ import { ProfilePage } from '../profile/profile';
 import { DatabaseProvider } from '../../providers/database/database';
 import firebase from "firebase";
 import { NgForm } from '../../../node_modules/@angular/forms';
-import { UserProfilePage } from '../user-profile/user-profile';
+import { CatergoriesPage } from '../catergories/catergories';
 /**
  * Generated class for the EditPage page.
  *
@@ -34,6 +34,8 @@ export class EditPage {
   price;
   rate;
   gender;
+  id;
+  url= "../../assets/imgs/user.png";
 
 
 
@@ -55,20 +57,20 @@ export class EditPage {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
         console.log("User has sign in");
-        let id = firebase.auth().currentUser.uid;
+        this.id = firebase.auth().currentUser.uid;
 
         firebase
           .database()
-          .ref("Pic/" + id)
+          .ref("Pic/" + this.id)
           .on(
             "value",
             data => {
               let infor = data.val();
-              if(infor != null && infor != ""){
+              if (infor != null && infor != "") {
                 this.pic = infor.url;
-              }else{
+              } else {
                 console.log("no picture");
-                
+
               }
             },
             error => {
@@ -76,11 +78,11 @@ export class EditPage {
             }
           );
 
-        console.log(id);
+        console.log( this.id);
 
         firebase
           .database()
-          .ref("Registration/" + id)
+          .ref("Registration/" +  this.id)
           .on("value", (data: any) => {
             let userDetails = data.val();
 
@@ -96,12 +98,12 @@ export class EditPage {
                 fullname: userDetails.fullname,
                 email: userDetails.email,
                 bio: userDetails.bio,
-                stagename:userDetails.stagename,
-                genre:userDetails.genre,
-                city:userDetails.city,
-                price:userDetails.price,
-                gender:userDetails.gender,
-                payment:userDetails.payment
+                stagename: userDetails.stagename,
+                genre: userDetails.genre,
+                city: userDetails.city,
+                price: userDetails.price,
+                gender: userDetails.gender,
+                payment: userDetails.payment
 
 
               };
@@ -110,13 +112,13 @@ export class EditPage {
 
               this.fullname = obj.fullname;
               this.email = obj.email;
-              this.bio=obj.bio;
-              this.stagename=obj.stagename;
-              this.genre=obj.genre;
-              this.city=obj.city;
-              this.price=obj.price;
-              this.gender=obj.gender;
-              this.payment=obj.payment;
+              this.bio = obj.bio;
+              this.stagename = obj.stagename;
+              this.genre = obj.genre;
+              this.city = obj.city;
+              this.price = obj.price;
+              this.gender = obj.gender;
+              this.payment = obj.payment;
 
               console.log(this.fullname);
               console.log(obj);
@@ -132,7 +134,7 @@ export class EditPage {
     });
   }
 
-  url = "http://www.dealnetcapital.com/files/2014/10/blank-profile.png";
+
 
 
   insertImage(event: any) {
@@ -147,7 +149,6 @@ export class EditPage {
       let filename = selectedfile.name;
       const loader = this.loadingCtrl.create({
         content: "Please wait...",
-        duration: 6500
       });
       loader.present();
 
@@ -162,15 +163,15 @@ export class EditPage {
       }
       uploadTask.on(
         "state_changed",
-        function(snapshot) {},
-        function(error) {
+        function (snapshot) { },
+        function (error) {
           // Handle unsuccessful uploads
           alert("error !!1");
         },
-        function() {
+        function () {
           // Handle successful uploads on complete
-         
-          uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
+
+          uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
             console.log("File available at", downloadURL);
 
             firebase.auth().onAuthStateChanged(user => {
@@ -193,6 +194,7 @@ export class EditPage {
                 console.log("User has not sign in");
               }
             });
+            loader.dismiss();
           });
         }
       );
@@ -202,92 +204,91 @@ export class EditPage {
 
     }
   }
-back(){
-  this.navCtrl.pop();
-}
+  back() {
+    // this.navCtrl.pop();
+  }
 
-  input(event){
+  input(event) {
 
-    this.genre=event.target.value
+    this.genre = event.target.value
   }
   submit(form: NgForm) {
-    
-    this.price=form.value.price;
-    
+
+    this.price = form.value.price;
+
     form.value.payment;
 
 
-    if(this.price <= 5000){
-    console.log(this.rate);
-
-    const loader = this.loadingCtrl.create({
-      content: "Please wait...",
-      duration: 2500
-    });
-    loader.present();
-  
- 
-    console.log(form.value.fullname + " " +form.value.email);
-    console.log(form.value.bio+" " + this.genre + " " +form.value.stagename);
-
-    this.fullname=form.value.fullname ;
-    this.email=form.value.email;
-    this.stagename=form.value.stagename;
-    this.bio=form.value.bio;
-    this.city=form.value.city;
-    this.price=form.value.price;
-    this.gender=form.value.gender;
-    this.payment=form.value.payment;
-
-    this.role="Dj"
-
-   /*  if(this.fullname!=null && this.fullname!=""&& this.email!=null && this.email!="" && this.stagename!=null && this.stagename!="" &&this.bio!=null && this.bio!="" &&this.city!=null && this.city!="")
-    {
-       
-    }
-    else{
-      this.role="Audience"
-    } */
+    if (this.price <= 5000) {
+      console.log(this.rate);
 
 
-    let obj = {
-      fullname: form.value.fullname,
-      email: form.value.email,
-      stagename:form.value.stagename,
-      bio: form.value.bio,
-      city:form.value.city,
-      genre: this.genre,
-      role:"Dj",
-      price: this.price,
-      gender:this.gender,
-      payment: this.payment
-
-    };
-
-    this.arrProfile.push(obj);
-
-    let userID = firebase.auth().currentUser.uid;
 
 
-    this.db.update(userID, obj);
+      console.log(form.value.fullname + " " + form.value.email);
+      console.log(form.value.bio + " " + this.genre + " " + form.value.stagename);
 
-    //firebase.database().ref('Registration/'+userID).update(obj);
+      this.fullname = form.value.fullname;
+      this.email = form.value.email;
+      this.stagename = form.value.stagename;
+      this.bio = form.value.bio;
+      this.city = form.value.city;
+      this.price = form.value.price;
+      this.gender = form.value.gender;
+      this.payment = form.value.payment;
 
-    let user = firebase.auth().currentUser;
-    user
-      .updateEmail(obj.email)
-      .then(() => {
-        // Update successful.
+      this.role = "Dj"
 
-      
-      this.navCtrl.push(ProfilePage);
-      })
-      .catch(function(error) {
-        // An error happened.
-        console.log(error);
+      /*  if(this.fullname!=null && this.fullname!=""&& this.email!=null && this.email!="" && this.stagename!=null && this.stagename!="" &&this.bio!=null && this.bio!="" &&this.city!=null && this.city!="")
+       {
+          
+       }
+       else{
+         this.role="Audience"
+       } */
+
+
+      let obj = {
+        fullname: form.value.fullname,
+        email: form.value.email,
+        stagename: form.value.stagename,
+        bio: form.value.bio,
+        city: form.value.city,
+        genre: this.genre,
+        role: "Dj",
+        price: this.price,
+        gender: this.gender,
+        payment: this.payment
+
+      };
+
+      this.arrProfile.push(obj);
+
+      let userID = firebase.auth().currentUser.uid;
+
+
+      this.db.update(userID, obj);
+
+      //firebase.database().ref('Registration/'+userID).update(obj);
+
+      let user = firebase.auth().currentUser;
+      const loader = this.loadingCtrl.create({
+        content: "Please wait...",
       });
+      loader.present();
+      user.updateEmail(obj.email)
+        .then(() => {
+          // Update successful.
+
+          loader.dismiss();
+          this.navCtrl.setRoot(CatergoriesPage);
+        })
+        .catch(function (error) {
+          // An error happened.
+          console.log(error);
+        });
     }
-    else{
+    else {
 
       const prompt = this.alertCtrl.create({
         title: 'Caution',
@@ -299,17 +300,27 @@ back(){
 
               console.log('price');
               console.log(form.value.price);
-              form.value.price=0;
+              form.value.price = 0;
               console.log(form.value.price);
             }
           },
         ]
       });
       prompt.present();
-     
-      form.value.price=0;
+
+      form.value.price = 0;
     }
-   }
+  }
+ 
+  remove(){
+    this.url= "../../assets/imgs/user.png";
+    firebase
+    .database()
+    .ref("Pic/" + this.id)
+    .set({
+      url: this.url
+    })
+  }
 
 
 

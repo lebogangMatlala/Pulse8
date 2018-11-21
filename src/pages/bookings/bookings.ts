@@ -4,8 +4,6 @@ import firebase from 'firebase';
 import { DatabaseProvider } from '../../providers/database/database';
 import { EmailComposer } from '@ionic-native/email-composer';
 import { ToastController } from 'ionic-angular';
-import { ViewBookingPage } from '../view-booking/view-booking';
-import { ViewProfilePage } from '../view-profile/view-profile';
 import { CatergoriesPage } from '../catergories/catergories';
 /**
  * Generated class for the BookingsPage page.

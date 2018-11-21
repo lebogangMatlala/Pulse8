@@ -20,6 +20,20 @@ page-edit-user-profile {
         }
     }
 
+    .buttonbox{
+        width: 100vw;
+        display: flex;
+        flex-flow: row;
+        justify-content: center;
+        height: 3rem;
+    }
+    .delete{
+        border-radius: 50%;
+        postion: relative;
+        top: 10rem;
+        left: 3rem;
+    }
+
     .contentflex{
         overflow: scroll;
         display: flex;

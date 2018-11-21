@@ -13,12 +13,8 @@ page-view-profile {
         background: linear-gradient(rgba($color-dark, .6), rgba($color-dark, .6)),url('../../assets/imgs/dj4.jpg');
         background-size: cover;
         background-position: bottom !important;
-        &--back{
-            display: inline-block;
-            zoom: 1.5;
-        }
         &__herobanner{
-            height: 12rem;
+            height: 15rem;
             display: flex;
             justify-content: space-evenly;
             flex-flow: row nowrap;
@@ -138,6 +134,9 @@ page-view-profile {
                     font-size: 1.6rem; 
                     font-weight: 500;
                     letter-spacing: .2rem;
+                    &--text{
+                        text-transform: capitalize;
+                    }
                 }
             }
             &__profilecontainer{
@@ -293,7 +292,7 @@ page-view-profile {
     }
 
     .block{
-        margin-top: 5rem;
+        margin-top: 1rem;
     }
 
     .chatBubble{
@@ -346,7 +345,7 @@ page-view-profile {
         .chat-bubble.left {
           background-color: map-get($chat-bubble, background-left);
           float: left;
-          margin-left: 45px;
+          margin-left: 2rem;
         }
       
         .chat-bubble.left:before {
@@ -379,6 +378,7 @@ page-view-profile {
           display: flex;
           flex-flow: column;
           margin-top: .5rem;
+          height: 60vh;
       }
 
     ion-fab{

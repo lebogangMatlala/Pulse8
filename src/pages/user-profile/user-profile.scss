@@ -24,7 +24,7 @@ page-user-profile {
             zoom: 1.5;
         }
         &__herobanner{
-            height: 12rem;
+            height: 15rem;
             display: flex;
             justify-content: space-evenly;
             flex-flow: row nowrap;
@@ -222,6 +222,7 @@ page-user-profile {
         height: 100%;
         align-items: center;
         opacity: .5;
+        padding-top: 5rem;
         &__contents{
             &--image{
                 width: 15rem;

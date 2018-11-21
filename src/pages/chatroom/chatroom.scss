@@ -19,18 +19,7 @@ page-chatroom {
       
         display: flex;
         flex-direction: row;
-        &__buttoncontainer{
-            &--button{
-                // font-size: 1.5rem;
-
-                ion-icon{
-              
-                
-                    zoom: 1.5;
-                    font-weight: bold;
-                }
-            }
-        }
+        justify-content: center;
         &__headingcontainer{
             width: 70%;
             flex: auto 0 0;
