@@ -4,13 +4,24 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import firebase from 'firebase';
 import { HomePage } from '../pages/home/home';
+import { ScreenOrientation } from '@ionic-native/screen-orientation';
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = HomePage;
+  rootPage: any = HomePage;
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private screenOrientation: ScreenOrientation) {
+
+
+    // set to landscape
+    this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
+
+    // allow user rotate
+    this.screenOrientation.unlock();
+
+    // detect orientation changes
+
     firebase.initializeApp({
       apiKey: "AIzaSyDHRAF0bth4sm4p4xTTBzjqc3RmdMNLcY4",
       authDomain: "puls8-41496.firebaseapp.com",
@@ -19,7 +30,7 @@ export class MyApp {
       storageBucket: "puls8-41496.appspot.com",
       messagingSenderId: "110966517847"
     })
-    
+
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.

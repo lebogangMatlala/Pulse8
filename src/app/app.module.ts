@@ -26,7 +26,7 @@ import { EditUserProfilePage } from '../pages/edit-user-profile/edit-user-profil
 import { InstructionPage } from '../pages/instruction/instruction';
 import { ChatboxComponent } from '../components/chatbox/chatbox';
 import { ChatroomPage } from '../pages/chatroom/chatroom';
-
+import { ScreenOrientation } from '@ionic-native/screen-orientation';
 
 @NgModule({
   declarations: [
@@ -83,7 +83,8 @@ import { ChatroomPage } from '../pages/chatroom/chatroom';
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     EmailComposer,
-    DatabaseProvider
+    DatabaseProvider,
+    ScreenOrientation
   ]
 })
 export class AppModule { }
