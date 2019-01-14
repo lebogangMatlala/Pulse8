@@ -53,7 +53,7 @@ export class LoginPage {
         let userID = firebase.auth().currentUser.uid;
         loading.dismiss();
      
-                this.navCtrl.push(CatergoriesPage);
+                this.navCtrl.setRoot(CatergoriesPage);
           
       })
       .catch(error => {

@@ -63,7 +63,7 @@
                     </ion-label>
 
                     <ion-select name="genre" [(ngModel)]="genre" multiple="false" interface="popover">
-                        <ion-option value="None" (change)="input($event)">None</ion-option>
+                   
                         <ion-option value="House">House</ion-option>
                         <ion-option value="Hip-Hop">Hip-Hop</ion-option>
                         <ion-option value="Rap">Rap</ion-option>
@@ -84,7 +84,7 @@
                         <ion-icon name="cash"></ion-icon>
                     </ion-label>
                     <ion-input type="number" name="price" [value]="price" placeholder="price" class="contentflex__formcontent--input"
-                        id="price" ngModel min="500" max="5000" required></ion-input>
+                        id="price" ngModel min="500" max="5000"maxlength="4" minlength="3" required></ion-input>
                 </ion-item>
 
 

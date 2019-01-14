@@ -124,7 +124,7 @@ export class CatergoriesPage {
       console.log(this.role +"  "+ genre);
       if(this.role=="Dj"){
         
-        if(genre!= null && stagename!=null&& genre!=='None'&& price>=100){    
+        if(genre!= null && stagename!=null){    
            console.log("dj" + k + stagename )
          this.objDj ={
           role:this.role,
@@ -256,14 +256,10 @@ export class CatergoriesPage {
             console.log(this.role);
             if(this.role=='Audience')
             {
-              this.navCtrl.push(UserProfilePage);
-            }
-            else if(this.role=='Dj'){
-              this.navCtrl.push(ProfilePage);
+             this.navCtrl.push(UserProfilePage);
             }
             else{
-              console.log('Please log in');
-              
+              this.navCtrl.push(ProfilePage);
             }
 
             
@@ -337,7 +333,7 @@ export class CatergoriesPage {
 
             console.log(this.role +"  "+ genre);
       if(this.role=="Dj"){
-             if(genre!= null && stagename!=null&& genre!=='None'&& price>=100){
+             if(genre!= null && stagename!=null ){
                 console.log("dj" + k + stagename )
                let objDj ={
                role:this.role,
@@ -461,7 +457,7 @@ export class CatergoriesPage {
 
             console.log(this.role +"  "+ genre);
       if(this.role=="Dj"){
-             if(genre!= null && stagename!=null&& genre!=='None'&& price>=100){
+             if(genre!= null && stagename!=null){
                 console.log("dj" + k + stagename )
                let objDj ={
                role:this.role,

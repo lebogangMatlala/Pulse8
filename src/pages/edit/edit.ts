@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, AlertController, ToastController } from 'ionic-angular';
 import { ProfilePage } from '../profile/profile';
 import { DatabaseProvider } from '../../providers/database/database';
 import firebase from "firebase";
@@ -45,7 +45,8 @@ export class EditPage {
     public navParams: NavParams,
     public db: DatabaseProvider,
     public loadingCtrl: LoadingController,
-    public alertCtrl: AlertController
+    public alertCtrl: AlertController,
+    private toastCtrl: ToastController
   ) {
 
     console.log(this.genre,
@@ -217,9 +218,15 @@ export class EditPage {
     this.price = form.value.price;
 
     form.value.payment;
+    const toast = this.toastCtrl.create({
+      message: 'sucessfull saved your dj information',
+      duration: 3000
+   
+    });
 
+    toast.present();
 
-    if (this.price <= 5000) {
+    if (this.price >= 1  && this.price <=5000 ) {
       console.log(this.rate);
 
 
@@ -281,7 +288,7 @@ export class EditPage {
           // Update successful.
 
           loader.dismiss();
-          this.navCtrl.setRoot(CatergoriesPage);
+          // this.navCtrl.setRoot(CatergoriesPage);
         })
         .catch(function (error) {
           // An error happened.

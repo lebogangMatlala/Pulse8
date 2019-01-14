@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController, AlertController, ModalController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, AlertController, ModalController, ToastController } from 'ionic-angular';
 import { UserProfilePage } from '../user-profile/user-profile';
 import firebase from "firebase";
 import { DatabaseProvider } from '../../providers/database/database';
@@ -32,7 +32,7 @@ export class EditUserProfilePage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams,   public db: DatabaseProvider,
     public loadingCtrl: LoadingController,
-    public alertCtrl: AlertController) {
+    public alertCtrl: AlertController, private toastCtrl: ToastController) {
   }
 
   ionViewDidLoad() {
@@ -222,15 +222,20 @@ export class EditUserProfilePage {
       .updateEmail(obj.email)
       .then(() => {
         // Update successful.
+        const toast = this.toastCtrl.create({
+          message: 'Information Successfuly Saved',
+          duration: 2000
+        });
 
-      
+        toast.present();
+        // this.navCtrl.popToRoot();
       })
       .catch(function(error) {
         // An error happened.
         console.log(error);
       });
 
-      this.navCtrl.pop();
+      
     }
   remove(){
     this.url= "../../assets/imgs/user.png";

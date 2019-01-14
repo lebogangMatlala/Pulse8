@@ -512,14 +512,14 @@ export class ProfilePage {
       firebase.auth().signOut().then(() => {
         // Sign-out successful.
         console.log(" Sign-out successful");
-        this.navCtrl.push(LoginPage);
+        this.navCtrl.setRoot(CatergoriesPage);
       }).catch(function (error) {
         // An error happened.
         console.log(error);
       });
     }
     else {
-      this.navCtrl.push(CatergoriesPage);
+      this.navCtrl.setRoot(CatergoriesPage);
     }
 
 

@@ -139,8 +139,6 @@ export class ViewProfilePage {
       if (user) {
         console.log('User has sign in');
        this.condition=true;
- 
-        
           
         this.userid =firebase.auth().currentUser.uid;
 
@@ -159,7 +157,6 @@ export class ViewProfilePage {
 
        if(this.userid==this.key)
        {
-        console.log('killer killer');
           this.userStatus=true;
           console.log(this.userStatus);
           
@@ -575,16 +572,24 @@ export class ViewProfilePage {
 
   onMessageAdded(messagedata){
     //todo: functionality of sending message goes here
-   this.commentArr =[];
-    var user = this.userid
-    var day = moment().format('MMMM Do YYYY, h:mm:ss a');
-    firebase.database().ref('comments/' + this.key).push({
-      comment: messagedata,
-      uid: user,
-      date: day,
-      
-    })
-   this.messagestate = 'not sending';
+    firebase.auth().onAuthStateChanged((data)=> {
+      if (data) {
+        this.commentArr =[];
+        var user = this.userid
+        var day = moment().format('MMMM Do YYYY, h:mm:ss a');
+        firebase.database().ref('comments/' + this.key).push({
+          comment: messagedata,
+          uid: user,
+          date: day,
+          
+        })
+       this.messagestate = 'not sending';
+      }else{
+        alert("login ");
+      }
+    
+    });
+
 
   }
 }
