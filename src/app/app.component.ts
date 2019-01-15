@@ -15,12 +15,7 @@ export class MyApp {
 
 
     // set to landscape
-    this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
-
-    // allow user rotate
-    this.screenOrientation.unlock();
-
-    // detect orientation changes
+    // this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
 
     firebase.initializeApp({
       apiKey: "AIzaSyDHRAF0bth4sm4p4xTTBzjqc3RmdMNLcY4",

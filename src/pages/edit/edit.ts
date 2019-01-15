@@ -218,13 +218,13 @@ export class EditPage {
     this.price = form.value.price;
 
     form.value.payment;
-    const toast = this.toastCtrl.create({
-      message: 'sucessfull saved your dj information',
-      duration: 3000
+    // const toast = this.toastCtrl.create({
+    //   message: 'sucessfull saved your dj information',
+    //   duration: 3000
    
-    });
+    // });
 
-    toast.present();
+    // toast.present();
 
     if (this.price >= 1  && this.price <=5000 ) {
       console.log(this.rate);
@@ -288,7 +288,15 @@ export class EditPage {
           // Update successful.
 
           loader.dismiss();
-          // this.navCtrl.setRoot(CatergoriesPage);
+
+          const toast = this.toastCtrl.create({
+            message: 'sucessfully saved your dj information',
+            duration: 3000
+         
+          });
+      
+          toast.present();
+          this.navCtrl.pop();
         })
         .catch(function (error) {
           // An error happened.
